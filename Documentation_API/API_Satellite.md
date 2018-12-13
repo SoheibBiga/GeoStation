@@ -158,6 +158,9 @@ At response :
 <td>satlongitude</td><td>float</td><td>Satellite footprint longitude (decimal degrees format)</td>
 </tr>
 <tr>
+<td>sataltitude</td><td>float</td><td>Satellite footprint altitude (kilometers format)</td>
+</tr>
+<tr>
 <td>azimuth</td><td>float</td><td>Satellite azimuth with respect to observer's location (degrees)</td>
 </tr>
 <tr>
@@ -482,19 +485,22 @@ Each request is construct this way:
 
 {Base URL}/{Function}/{NORAD_ID}/{parameters}&apiKey={your API key} 
 
+-	TLE:
+{Base URL}/**tle**/{NORAD_ID}/{parameters}&apiKey={your API key} 
+
+
+
 ####Example
 ***
  
 -	**TLE:**
-
-.margin{ margin : 3cm 20cm ; }
 
 <table class="gridtable">
 <tr>
 <th>Base URL</th><th>Function</th><th>NORAD_ID</th><th>Parameters</th><th>apiKey</th>
 </tr>
 <tr>
-<td><p style="background-color; color:green">gogo</p>https://www.n2yo.com/rest/v1/satellite/</td><p style="margin: 3cm 20cm ;"><td>tle/</td></p><td>25544/</td><td>id</td><td>&apiKey=589P8Q-SDRYX8-L842ZD-5Z9 </td>   
+<td>https://www.n2yo.com/rest/v1/satellite/</td><td>tle/</td></p><td>25544/</td><td>id</td><td>&apiKey=589P8Q-SDRYX8-L842ZD-5Z9 </td>   
 </table>
 
 -	**Satellite position:**
