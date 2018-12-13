@@ -10,6 +10,10 @@ This API is based on a **RE**prensational **S**tate **T**ransfert  web service.
 This REST API is free but is limited to **1000 transactions/hour**.
 If API used in improper ways, user will be limited or blocked.
 
+Each request takes approximately 8 seconds on Raspberry Pi 3.
+
+
+
 ####Login
 ***
 Each transaction must be identified and authorized with a license key.
