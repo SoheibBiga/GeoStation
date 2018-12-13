@@ -1,10 +1,12 @@
 - Prochain Depart de la station/gare la plus proche 
 
-600ms
+
 
 utiliser l'api liste_des_gare puis celle de la sncf
 
 https://api.sncf.com/v1/coverage/sncf/stop_areas/stop_area:OCE:SA:87391003/departures?datetime=20181205T124413
+
+Temps de réponse : 6150ms
 
 - gare proche de ma position 
 
