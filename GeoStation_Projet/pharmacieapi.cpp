@@ -1,4 +1,4 @@
-#include "PharmacieApi.h"
+#include "pharmacieapi.h"
 
 #include <QNetworkAccessManager>
 

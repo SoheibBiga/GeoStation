@@ -1,14 +1,14 @@
-#ifndef EVENTAPI_H
-#define EVENTAPI_H
+#ifndef EVENEMENTAPI_H
+#define EVENEMENTAPI_H
 
 #include "abstractapi.h"
 
 //181214 GB => create class EventApi
 
-class EventApi : public AbstractApi
+class EvenementApi : public AbstractApi
 {
 public:
-    EventApi(QObject *parent, int id);
+    EvenementApi(QObject *parent, int id);
 
     QString latitude;
     QString longitude;
@@ -22,7 +22,7 @@ public:
     QDateTime dateTime1;
     QDateTime dateTime_fin;
     QDateTime dateTime_request;
-    ~EventApi();
+    ~EvenementApi();
 
 private slots:
     void display();
