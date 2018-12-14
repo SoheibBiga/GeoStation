@@ -1,3 +1,8 @@
 *~
 *.o
 #*
+build/*
+moc_*
+Makefile
+ui_*
+*.pro.user
