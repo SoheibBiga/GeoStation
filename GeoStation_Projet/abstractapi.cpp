@@ -4,3 +4,8 @@ AbstractApi::AbstractApi()
 {
 
 }
+
+AbstractApi::AbstractApi(int myId) : Id(myId)
+{
+
+}
