@@ -1,13 +1,14 @@
-#ifndef API_H
-#define API_H
+#ifndef ABSTRACTAPI_H
+#define ABSTRACTAPI_H
 
-#include <QObject>
 #include <QMap>
 #include <QNetworkAccessManager>
 
 class AbstractApi
 {
 
+private:
+     AbstractApi();
 protected:
     //Correspond au formulaire que l'on veut afficher dans la widget
     //Par exemple si l'on veut afficher dans la widget le titre et l'adresse du musée Grevin à savoir 10 Boulevard Montmartre, 75009 Paris
@@ -23,5 +24,4 @@ protected:
 
 
 };
-
-#endif // API_H
+#endif // ABSTRACTAPI_H

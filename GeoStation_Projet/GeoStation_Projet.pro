@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-12-14T09:41:27
+# Project created by QtCreator 2018-12-14T11:16:31
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = GeoStation
+TARGET = GeoStation_Projet
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,18 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    api.cpp \
-    apisncf.cpp \
     abstractapi.cpp
 
 HEADERS += \
         mainwindow.h \
-    api.h \
-    apisncf.h \
     abstractapi.h
 
 FORMS += \
         mainwindow.ui
-
-target.path = /home/root
-INSTALLS += target
