@@ -12,11 +12,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    SncfApi *sncf_api;
-    AbstractApi *api_index;
-    sncf_api = new SncfApi(2);
-    QList<AbstractApi*> liste_api;
-
+    //AbstractApi *api_index;
+    //SncfApi *sncf_api = new SncfApi(api_index->Sncf);
+    /*QList<AbstractApi*> liste_api;
+    SncfApi *ev;
+    liste_api <<ev;
+    AbstractApi *ptr=new lliste_api[0];*/
+    //api_index =1
     /*SatelliteApi *satellite_api;
     BorneElectriqueApi *borne_electrique_api;
     MuseeApi *musee_api;

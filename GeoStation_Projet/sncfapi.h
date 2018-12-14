@@ -5,9 +5,10 @@
 
 class SncfApi : public AbstractApi
 {
+    Q_OBJECT
 
 public:
-    SncfApi(int id, QObject *parent=0);
+    SncfApi(int id = 0,QObject *parent=0);
     QNetworkAccessManager *manager_prochain_depart;
     QString code_uic_gare;
     qint64 t1;

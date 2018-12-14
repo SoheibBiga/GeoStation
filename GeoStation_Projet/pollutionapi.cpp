@@ -42,7 +42,7 @@ void PollutionApi::replyFinished(QNetworkReply *Reply)
         /*end of timer*/
         qiTimestamp2 =QDateTime::currentMSecsSinceEpoch();
 
-        int temps = qiTimestamp2 - qiTimestamp1;
+        //int temps = qiTimestamp2 - qiTimestamp1;
 
         //        qDebug() << qiTimestamp1;
         //        qDebug() << qiTimestamp2;

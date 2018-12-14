@@ -13,7 +13,6 @@
 
 class AbstractApi : public QObject
 {
-     Q_OBJECT
 
 private:
     //Vous ne pouvez pas utiliser ce constructeur
@@ -49,3 +48,5 @@ protected:
 
 };
 #endif // ABSTRACTAPI_H
+
+//getID virtual
