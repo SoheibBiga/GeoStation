@@ -3,10 +3,8 @@
 #include "pollutionapi.h"
 #include "pharmacieapi.h"
 #include "evenementapi.h"
-
 #include "sncfapi.h"
 #include "evenementapi.h"
-//181214 => GB : remplacer ApiNom/api_nom par NomApi/nom_api
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,8 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //SncfApi *sncf_api;
-    //sncf_api = new SncfApi()
+    SncfApi *sncf_api;
+    AbstractApi *api_index;
+    sncf_api = new SncfApi(2);
+    QList<AbstractApi*> liste_api;
 
     /*SatelliteApi *satellite_api;
     BorneElectriqueApi *borne_electrique_api;
@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     evenement_api = new EvenementApi(this,evenement_api->Id);
     VegicrueApi *vegicrue_api;
     pollution_api=new PollutionApi(this,pollution_api->Id);
-    QList<QObject*> liste_api;
+
     liste_api.append(sncf_api);
     liste_api.append(satellite_api);
     liste_api.append(borne_electrique_api);

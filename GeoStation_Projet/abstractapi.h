@@ -22,8 +22,13 @@ private:
 public:
     //Lie l'objet à parent, initialise l'attribut id à myId
     explicit AbstractApi(QObject *parent, int myId, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
+
+    //explicit AbstractApi(int myId, QObject *parent = 0, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
+
     //Il faut initialiser Id lors de l'appel au constructeur en utilisant IdWidget
     int Id;
+    //Associe chaque API à un id, evenement = 0; vegicrue = 1 ...
+    enum IdWidget {Evenement,Vegicrue,Avions,Meteo,Pollution,Musee,Pharmacie,BorneElectrique,Satellite,Geolocalisation,Sncf};
 
 protected:
 
@@ -38,8 +43,7 @@ protected:
 
     QNetworkAccessManager *manager;
 
-    //Associe chaque API à un id, evenement = 0; vegicrue = 1 ...
-    enum IdWidget {Evenement,Vegicrue,Avions,Meteo,Pollution,Musee,Pharmacie,BorneElectrique,Satellite,Geolocalisation,Sncf};
+
 
 
 
