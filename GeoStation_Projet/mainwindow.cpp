@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    SncfApi *sncf_api;
+    //SncfApi *sncf_api;
     //sncf_api = new SncfApi()
 
     /*SatelliteApi *satellite_api;
@@ -22,16 +22,16 @@ MainWindow::MainWindow(QWidget *parent) :
     MuseeApi *musee_api;
     AvionApi *avion_api;
     GeolocalisationApi *geolocalisation_api;*/
-    PharmacieApi *pharmacie_api;
+    /*PharmacieApi *pharmacie_api;
     pharmacie_api = new PharmacieApi(this,pharmacie_api->Id);
-    /*MeteoApi *meteo_api;*/
+    MeteoApi *meteo_api;
     PollutionApi *pollution_api;
     EvenementApi *evenement_api;
     evenement_api = new EvenementApi(this,evenement_api->Id);
-    /*VegicrueApi *vegicrue_api;*/
+    VegicrueApi *vegicrue_api;
     pollution_api=new PollutionApi(this,pollution_api->Id);
     QList<QObject*> liste_api;
-    /*liste_api.append(sncf_api);
+    liste_api.append(sncf_api);
     liste_api.append(satellite_api);
     liste_api.append(borne_electrique_api);
     liste_api.append(musee_api);

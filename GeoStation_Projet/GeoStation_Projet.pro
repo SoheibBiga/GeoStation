@@ -31,7 +31,8 @@ SOURCES += \
     sncfapi.cpp \
     pharmacieapi.cpp \
     pollutionapi.cpp \
-    satelliteapi.cpp
+    satelliteapi.cpp \
+    borneelectriqueapi.cpp
 
 
 HEADERS += \
@@ -41,7 +42,8 @@ HEADERS += \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
-    satelliteapi.h
+    satelliteapi.h \
+    borneelectriqueapi.h
 
 
 FORMS += \

@@ -5,7 +5,7 @@
 #include <QFile>
 #include <qdatetime.h>
 
-BorneElectriqueAPI::BorneElectriqueAPI():AbstractApi(parent,borneelectrique)
+BorneElectriqueAPI::BorneElectriqueAPI(QObject* parent, int id) : AbstractApi(parent,id)
 {
 
 
