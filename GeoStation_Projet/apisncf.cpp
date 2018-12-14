@@ -6,6 +6,8 @@ ApiSncf::ApiSncf(QObject *parent,int id): AbstractApi(parent,id)
     manager = new QNetworkAccessManager(parent);
     manager_prochain_depart = new QNetworkAccessManager(parent);
 
+    map_formulaire = new QMap<QString, QString>;
+
     //Attend la réponse des managers
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(result_liste_gare(QNetworkReply*)));
     connect(manager_prochain_depart, SIGNAL(finished(QNetworkReply*)), this, SLOT(result_prochain_depart(QNetworkReply*)));
@@ -13,6 +15,11 @@ ApiSncf::ApiSncf(QObject *parent,int id): AbstractApi(parent,id)
     //Lance la requete
     //connect(ui->pushButton_go,SIGNAL(clicked(bool)),this,SLOT(button_clicked()));
 
+    QString position = "geofilter.distance="+QString::number(latitude)+"%2C"+QString::number(longitude)+"%2C"+"10000"; // mettre le radian en parametre
+    QString ul_liste_gare = "https://data.sncf.com/api/records/1.0/search/?dataset=liste-des-gares&"+position;
+    QUrl url(ul_liste_gare);
+    qDebug() << ul_liste_gare;
+    manager->get(QNetworkRequest(url));
 }
 
 /*
@@ -34,16 +41,17 @@ void ApiSncf::result_liste_gare(QNetworkReply* reply)
         return;  // ...only in a blog post
 
     // Now parse this JSON according to your needs !
-    qDebug() << "json liste gare";
+    //qDebug() << "json liste gare";
     QJsonDocument jsdoc;
     jsdoc = QJsonDocument::fromJson(reply->readAll());
     QString libelle_gare = jsdoc.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["libelle_gare"].toString();
-    qDebug() << libelle_gare;
+    //qDebug() << libelle_gare;
     //ui->label_gare->setText(libelle_gare);
+    //map_formulaire
     code_uic_gare = jsdoc.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["code_uic"].toString();
     QString token_sncf = "b9b428ee-3f1c-4c4e-82c0-6448e4c99ed7";
     QString ul_prochain_depart = "https://"+token_sncf+"@api.sncf.com/v1/coverage/sncf/stop_areas/stop_area:OCE:SA:"+code_uic_gare+"/departures?datetime=20181212T174530";
-    qDebug() << ul_prochain_depart << "\t" << code_uic_gare;
+    //qDebug() << ul_prochain_depart << "\t" << code_uic_gare;
     QUrl url(ul_prochain_depart);
     manager_prochain_depart->get(QNetworkRequest(url));
 
