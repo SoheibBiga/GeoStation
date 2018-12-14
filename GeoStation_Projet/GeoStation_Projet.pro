@@ -27,16 +27,12 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     abstractapi.cpp \
-    apisncf.cpp \
-    eventapi.cpp \
     evenementapi.cpp \
     sncfapi.cpp
 
 HEADERS += \
         mainwindow.h \
     abstractapi.h \
-    apisncf.h \
-    eventapi.h \
     evenementapi.h \
     sncfapi.h
 

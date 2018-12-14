@@ -1,6 +1,6 @@
-#include "apisncf.h"
+#include "sncfapi.h"
 
-ApiSncf::ApiSncf(QObject *parent,int id): AbstractApi(parent,id)
+SncfApi::SncfApi(QObject *parent,int id): AbstractApi(parent,id)
 {
     //Crée les network acces managers
     manager = new QNetworkAccessManager(parent);
@@ -35,7 +35,7 @@ void ApiSncf::button_clicked()
 
 }*/
 
-void ApiSncf::result_liste_gare(QNetworkReply* reply)
+void SncfApi::result_liste_gare(QNetworkReply* reply)
 {
     if (reply->error() != QNetworkReply::NoError)
         return;  // ...only in a blog post
@@ -58,7 +58,7 @@ void ApiSncf::result_liste_gare(QNetworkReply* reply)
 }
 
 
-void ApiSncf::result_prochain_depart(QNetworkReply* reply)
+void SncfApi::result_prochain_depart(QNetworkReply* reply)
 {
 
     //Parse le json
