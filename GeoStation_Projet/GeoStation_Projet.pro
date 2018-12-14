@@ -30,11 +30,9 @@ SOURCES += \
     evenementapi.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
-<<<<<<< HEAD
-    borneelectrique.cpp
-=======
-    satelliteapi.cpp
->>>>>>> 2e26ec245c4cb142c87a2501d30af119e0f51568
+    pollutionapi.cpp \
+    satelliteapi.cpp \
+    borneelectriqueapi.cpp
 
 
 HEADERS += \
@@ -43,11 +41,9 @@ HEADERS += \
     evenementapi.h \
     sncfapi.h \
     pharmacieapi.h \
-<<<<<<< HEAD
-    borneelectrique.h
-=======
-    satelliteapi.h
->>>>>>> 2e26ec245c4cb142c87a2501d30af119e0f51568
+    pollutionapi.h \
+    satelliteapi.h \
+    borneelectriqueapi.h
 
 
 FORMS += \
