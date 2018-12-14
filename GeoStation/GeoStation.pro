@@ -26,11 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    api.cpp
+    api.cpp \
+    apisncf.cpp \
+    abstractapi.cpp
 
 HEADERS += \
         mainwindow.h \
-    api.h
+    api.h \
+    apisncf.h \
+    abstractapi.h
 
 FORMS += \
         mainwindow.ui

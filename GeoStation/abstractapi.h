@@ -7,8 +7,6 @@
 
 class AbstractApi
 {
-public:
-    Api();
 
 protected:
     //Correspond au formulaire que l'on veut afficher dans la widget
@@ -18,6 +16,8 @@ protected:
     QNetworkAccessManager manager;
     enum IdWidget {Evenement,Vegicrue,Avions,Meteo,Pollution,Musee,Pharmacie,BorneElectrique,Satellite,Geolocalisation,Sncf};
 
+    //Doit retourner votre IdWidget
+    //Par
     virtual IdWidget getIdWidget() = 0;
 
 
