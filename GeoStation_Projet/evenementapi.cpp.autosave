@@ -1,4 +1,4 @@
-#include "eventapi.h"
+#include "evenementapi.h"
 
 
 
@@ -15,20 +15,7 @@ EventApi::EvenementApi(QObject *parent,int id): AbstractApi(parent,id)
 
 }
 
-EventApi::~EventApi()
-{
-
-}
-
-void EventApi::display()
-{
-
-}
-
-
-
-
-void EventApi::reponseRecue(QNetworkReply *reply)
+EventApi::~EvenementApi()
 {
 
 }

@@ -1,18 +1,32 @@
-#ifndef EVENTAPI_H
-#define EVENTAPI_H
+#ifndef EVENEMENTAPI_H
+#define EVENEMENTAPI_H
 
 #include "abstractapi.h"
 
-//1. GB: 181214 => create class EventApi
+//181214 GB => create class EventApi
 
-class EventApi : public AbstractApi
+class EvenementApi : public AbstractApi
 {
 public:
-    EventApi(QObject *parent, int id);
+    EvenementApi(QObject *parent, int id);
 
-    // code => methodes + attribues
+    QString latitude;
+    QString longitude;
+    QString radius;
 
-    ~EventApi();
+    QNetworkAccessManager *m_event;
+    QNetworkReply *m_reply;
+    QNetworkRequest m_request;
+    QJsonDocument Myjson;
+
+    QDateTime dateTime1;
+    QDateTime dateTime_fin;
+    QDateTime dateTime_request;
+    ~EvenementApi();
+
+private slots:
+    void display();
+    void reponseRecue(QNetworkReply *reply);
 };
 
 #endif // EVENTAPI_H
