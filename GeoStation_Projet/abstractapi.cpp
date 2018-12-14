@@ -1,11 +1,11 @@
 #include "abstractapi.h"
 
-AbstractApi::AbstractApi()
+AbstractApi::AbstractApi(QObject *parent) : QObject(parent)
 {
 
 }
 
-AbstractApi::AbstractApi(int myId) : Id(myId)
+AbstractApi::AbstractApi(QObject *parent,int myId) : QObject(parent), Id(myId)
 {
 
 }
