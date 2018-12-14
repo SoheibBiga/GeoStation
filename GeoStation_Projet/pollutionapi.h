@@ -5,6 +5,7 @@
 
 class PollutionApi : public AbstractApi
 {
+    Q_OBJECT
 public:
     PollutionApi(QObject *parent, int id);
     QNetworkAccessManager *manager;
