@@ -7,6 +7,9 @@
 
 class EvenementApi : public AbstractApi
 {
+
+    Q_OBJECT
+
 public:
     EvenementApi(QObject *parent, int id);
 
@@ -14,7 +17,6 @@ public:
     QString longitude;
     QString radius;
 
-    QNetworkAccessManager *m_event;
     QNetworkReply *m_reply;
     QNetworkRequest m_request;
     QJsonDocument Myjson;
@@ -26,7 +28,9 @@ public:
 
 private slots:
     void display();
-    void reponseRecue(QNetworkReply *reply);
+    void reponseRecue(QNetworkReply *rep);
+    void slotError(QNetworkReply::NetworkError erreurtype);
+    void slotSslErrors(QList<QSslError>);
 };
 
 #endif // EVENTAPI_H
