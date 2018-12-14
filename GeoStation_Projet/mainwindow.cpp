@@ -3,39 +3,44 @@
 
 #include "pharmacieapi.h"
 #include "sncfapi.h"
-
+//181214 => GB : remplacer ApiNom/api_nom par NomApi/nom_api
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    SncfApi *apisncf;
-    /*ApiSatellite *api_satellite;
-    ApiBorneElectrique *api_borne_electrique;
-    ApiMusee *api_musee;
-    ApiAvion *api_avion;
-    ApiGeolocalisation *api_geolocalisation;*/
-    ApiPharmacie *api_pharmacie;
-    api_pharmacie = new ApiPharmacie(this,api_pharmacie->Id);
-    /*ApiMeteo *api_meteo;
-    ApiPollution *api_pollution;
-    ApiEvenement *api_evenement;
-    Api_Vegicrue *api_vegicrue;*/
-    QList<QObject*> liste_api;
-    liste_api.append(apisncf);
-    /*liste_api.append(api_satellite);
-    liste_api.append(api_borne_electrique);
-    liste_api.append(api_musee);
-    liste_api.append(api_avion);
-    liste_api.append(api_geolocalisation);
-    liste_api.append(api_pharmacie);
-    liste_api.append(api_meteo);
-    liste_api.append(api_pollution);
-    liste_api.append(api_evenement);
-    liste_api.append(api_vegicrue);*/
 
-    //apisncf = new ApiSncf()
+    SncfApi *apisncf_api;
+    //sncf_api = new SncfApi()
+
+    /*SatelliteApi *satellite_api;
+    BorneElectriqueApi *borne_electrique_api;
+    MuseeApi *musee_api;
+    AvionApi *avion_api;
+    GeolocalisationApi *geolocalisation_api;*/
+    PharmacieApi *pharmacie_api;
+    pharmacie_api = new PharmacieApi(this,pharmacie_api->Id);
+    /*MeteoApi *meteo_api;
+    PollutionApi *pollution_api;*/
+    EvenementApi *evenement_api;
+    evenement_api = new EvenementApi(this,evenement_api->Id);
+    /*VegicrueApi *vegicrue_api;*/
+
+    QList<QObject*> liste_api;
+    liste_api.append(sncf_api);
+    /*liste_api.append(satellite_api);
+    liste_api.append(borne_electrique_api);
+    liste_api.append(musee_api);
+    liste_api.append(avion_api);
+    liste_api.append(geolocalisation_api);*/
+    liste_api.append(pharmacie_api);
+    /*liste_api.append(meteo_api);
+    liste_api.append(pollution_api);*/
+    liste_api.append(evenement_api);
+    /*liste_api.append(vegicrue_api);*/
+
+
 }
 
 MainWindow::~MainWindow()

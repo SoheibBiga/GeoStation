@@ -6,12 +6,12 @@
 #include <QtNetwork>
 
 
-class ApiPharmacie : public AbstractApi
+class PharmacieApi : public AbstractApi
 {
     Q_OBJECT
 
 public:
-    ApiPharmacie(QObject *parent, int id);
+    PharmacieApi(QObject *parent, int id);
 
     QNetworkRequest request;
     QNetworkReply *reply;
@@ -25,4 +25,4 @@ private slots:
     void slotSslErrors(QList<QSslError>);
 };
 
-#endif // APIPHARMACIE_H
+#endif // PHARMACIEAPI_H
