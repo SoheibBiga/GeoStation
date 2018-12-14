@@ -30,7 +30,8 @@ SOURCES += \
     evenementapi.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
-    pollutionapi.cpp
+    pollutionapi.cpp \
+    satelliteapi.cpp
 
 
 HEADERS += \
@@ -39,7 +40,8 @@ HEADERS += \
     evenementapi.h \
     sncfapi.h \
     pharmacieapi.h \
-    pollutionapi.h
+    pollutionapi.h \
+    satelliteapi.h
 
 
 FORMS += \
