@@ -18,7 +18,7 @@ ApiSncf::ApiSncf(QObject *parent,int id): AbstractApi(parent,id)
     QString position = "geofilter.distance="+QString::number(latitude)+"%2C"+QString::number(longitude)+"%2C"+"10000"; // mettre le radian en parametre
     QString ul_liste_gare = "https://data.sncf.com/api/records/1.0/search/?dataset=liste-des-gares&"+position;
     QUrl url(ul_liste_gare);
-    qDebug() << ul_liste_gare;
+    //qDebug() << ul_liste_gare;
     manager->get(QNetworkRequest(url));
 }
 
