@@ -1,13 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "apisncf.h"
+#include "sncfapi.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ApiSncf *apisncf;
+    SncfApi *apisncf;
     /*ApiSatellite *api_satellite;
     ApiBorneElectrique *api_borne_electrique;
     ApiMusee *api_musee;

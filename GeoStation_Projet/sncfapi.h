@@ -3,11 +3,11 @@
 
 #include "abstractapi.h"
 
-class ApiSncf : public AbstractApi
+class SncfApi : public AbstractApi
 {
 
 public:
-    ApiSncf(QObject *parent, int id);
+    SncfApi(QObject *parent, int id);
     QNetworkAccessManager *manager_prochain_depart;
     QString code_uic_gare;
     qint64 t1;
