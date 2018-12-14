@@ -4,6 +4,7 @@
 #include "pharmacieapi.h"
 #include "sncfapi.h"
 #include "evenementapi.h"
+
 //181214 => GB : remplacer ApiNom/api_nom par NomApi/nom_api
 
 MainWindow::MainWindow(QWidget *parent) :
