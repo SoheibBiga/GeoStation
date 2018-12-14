@@ -1,5 +1,5 @@
-#ifndef APIPHARMACIE_H
-#define APIPHARMACIE_H
+#ifndef PHARMACIEAPI_H
+#define PHARMACIEAPI_H
 
 #include "abstractapi.h"
 
@@ -8,6 +8,7 @@
 
 class ApiPharmacie : public AbstractApi
 {
+    Q_OBJECT
 
 public:
     ApiPharmacie(QObject *parent, int id);
@@ -15,8 +16,6 @@ public:
     QNetworkRequest request;
     QNetworkReply *reply;
 
-    QString latitude = "48.871671";
-    QString longitude = "2.346106";
     QString rayon = "500";
 
 private slots:

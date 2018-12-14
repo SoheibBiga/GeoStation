@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "apisncf.h"
+#include "PharmacieApi.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -12,9 +13,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ApiBorneElectrique *api_borne_electrique;
     ApiMusee *api_musee;
     ApiAvion *api_avion;
-    ApiGeolocalisation *api_geolocalisation;
+    ApiGeolocalisation *api_geolocalisation;*/
     ApiPharmacie *api_pharmacie;
-    ApiMeteo *api_meteo;
+    api_pharmacie = new ApiPharmacie(this,api_pharmacie->Id);
+    /*ApiMeteo *api_meteo;
     ApiPollution *api_pollution;
     ApiEvenement *api_evenement;
     Api_Vegicrue *api_vegicrue;*/

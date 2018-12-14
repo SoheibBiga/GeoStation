@@ -20,6 +20,8 @@ private:
 
 public:
      explicit AbstractApi(QObject *parent,int myId);
+    //Il faut initialiser Id lors de l'appel au constructeur en utilisant IdWidget
+    int Id;
 
 protected:
 
@@ -35,9 +37,6 @@ protected:
 
     //Associe chaque API à un id, evenement = 0; vegicrue = 1 ...
     enum IdWidget {Evenement,Vegicrue,Avions,Meteo,Pollution,Musee,Pharmacie,BorneElectrique,Satellite,Geolocalisation,Sncf};
-
-    //Il faut initialiser Id lors de l'appel au constructeur en utilisant IdWidget
-    int Id;
 
 
 

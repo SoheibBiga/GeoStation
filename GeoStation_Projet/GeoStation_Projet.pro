@@ -27,16 +27,16 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     abstractapi.cpp \
-    apipharmacie.cpp \
     apisncf.cpp \
-    eventapi.cpp
+    eventapi.cpp \
+    PharmacieApi.cpp
 
 HEADERS += \
         mainwindow.h \
     abstractapi.h \
-    apipharmacie.h \
     apisncf.h \
-    eventapi.h
+    eventapi.h \
+    PharmacieApi.h
 
 FORMS += \
         mainwindow.ui
