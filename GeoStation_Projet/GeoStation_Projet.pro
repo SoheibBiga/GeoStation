@@ -28,13 +28,17 @@ SOURCES += \
         mainwindow.cpp \
     abstractapi.cpp \
     apisncf.cpp \
-    eventapi.cpp
+    eventapi.cpp \
+    evenementapi.cpp \
+    sncfapi.cpp
 
 HEADERS += \
         mainwindow.h \
     abstractapi.h \
     apisncf.h \
-    eventapi.h
+    eventapi.h \
+    evenementapi.h \
+    sncfapi.h
 
 FORMS += \
         mainwindow.ui
