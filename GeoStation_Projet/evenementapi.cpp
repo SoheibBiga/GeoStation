@@ -1,34 +1,26 @@
 #include "evenementapi.h"
 
 
-
-
-
-EventApi::EvenementApi(QObject *parent,int id): AbstractApi(parent,id)
+EvenementApi::EvenementApi(QObject *parent,int id): AbstractApi(parent,id)
 {
   //manager
   manager = new QNetworkAccessManager (parent);
   m_event = new QNetworkAccessManager (parent);
 
-  connect(manager, SIGNAL(finished(QNetworkReply *)), this, SLOT(reponseRecue(QNetworkReply *)));
-  connect(m_event, SIGNAL(finished(QNetworkReply *)), this, SLOT(reponseRecue(QNetworkReply *)));
-
 }
 
-EventApi::~EventApi()
+EvenementApi::~EvenementApi()
 {
 
 }
 
-void EventApi::display()
+void EvenementApi::display()
 {
 
 }
 
 
-
-
-void EventApi::reponseRecue(QNetworkReply *reply)
+void EvenementApi::reponseRecue(QNetworkReply *reply)
 {
 
 }
