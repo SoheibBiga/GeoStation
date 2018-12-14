@@ -1,6 +1,11 @@
 #include "eventapi.h"
 
-EventApi::EventApi(int e):AbstractApi(e)
+EventApi::EventApi(QObject *parent,int id): AbstractApi(parent,id)
+{
+
+}
+
+EventApi::~EventApi()
 {
 
 }

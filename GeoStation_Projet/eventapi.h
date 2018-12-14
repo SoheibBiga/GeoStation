@@ -8,7 +8,7 @@
 class EventApi : public AbstractApi
 {
 public:
-    EventApi(int e);
+    EventApi(QObject *parent, int id);
 
     // code => methodes + attribues
 
