@@ -23,8 +23,9 @@ MainWindow::MainWindow(QWidget *parent) :
     BorneElectriqueApi *borne_electrique_api;
     MuseeApi *musee_api;
     AvionApi *avion_api;
-    GeolocalisationApi *geolocalisation_api;*/
-    /*PharmacieApi *pharmacie_api;
+    GeolocalisationApi *geolocalisation_api;
+
+    PharmacieApi *pharmacie_api;
     pharmacie_api = new PharmacieApi(this,pharmacie_api->Id);
     MeteoApi *meteo_api;
     PollutionApi *pollution_api;
@@ -39,15 +40,15 @@ MainWindow::MainWindow(QWidget *parent) :
     liste_api.append(musee_api);
     liste_api.append(avion_api);
     liste_api.append(geolocalisation_api);
-    liste_api.append(pharmacie_api);
+    liste_api.append(pharmacie_api);*/
 
     //liste_api.append(meteo_api);
 
-    liste_api.append(meteo_api);
+    //liste_api.append(meteo_api);
 
-    liste_api.append(pollution_api);
-    liste_api.append(evenement_api);
-    liste_api.append(vegicrue_api);*/
+    //liste_api.append(pollution_api);
+    //liste_api.append(evenement_api);
+    //liste_api.append(vegicrue_api);
 
 
 }
