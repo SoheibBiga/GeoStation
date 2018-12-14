@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    SncfApi *apisncf_api;
+    SncfApi *sncf_api;
     //sncf_api = new SncfApi()
 
     /*SatelliteApi *satellite_api;
