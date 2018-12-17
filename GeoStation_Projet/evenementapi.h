@@ -11,7 +11,7 @@ class EvenementApi : public AbstractApi
     Q_OBJECT
 
 public:
-    EvenementApi(QObject *parent, int id);
+    EvenementApi(QObject *parent = 0);
 
     QNetworkReply *m_reply;
     QNetworkRequest m_request;

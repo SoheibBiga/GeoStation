@@ -1,6 +1,6 @@
 #include "satelliteapi.h"
 
-SatelliteApi::SatelliteApi(QObject *parent, int id) : AbstractApi(parent,id)
+SatelliteApi::SatelliteApi(QObject *parent) : AbstractApi(IdWidget(Sncf),parent)
 {
     manager = new QNetworkAccessManager(this);
     QFont MyFont("Arial",15);
@@ -26,6 +26,15 @@ SatelliteApi::SatelliteApi(QObject *parent, int id) : AbstractApi(parent,id)
     //connect(ui->pushButton, SIGNAL(clicked(bool)),this,SLOT(Refresh()));
     connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
 
+    //set the CurrentSecSince to the current
+    //CurrentSecSinceRequestStart = QDateTime::currentMSecsSinceEpoch(); //renvoi un qint64
+
+    //Set request URL
+    for(int i=0;i<50;i++)
+    {
+        Request_Url(fonction,i);
+        manager->get(request);
+    }
 
 }
 
@@ -111,19 +120,6 @@ void SatelliteApi::Request_Url(int pos,int category)
 
     }
 }
-void SatelliteApi::Refresh()
-{
-
-    //set the CurrentSecSince to the current
-    CurrentSecSinceRequestStart = QDateTime::currentMSecsSinceEpoch(); //renvoi un qint64
-
-    //Set request URL
-    for(int i=0;i<50;i++)
-    {
-        Request_Url(fonction,i);
-        manager->get(request);
-    }
-}
 void SatelliteApi::RetrieveInfo(QString request, int NumSat)
 {
 
@@ -142,26 +138,32 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     switch (id)
     {
     case 0:
-        map_formulaire->insert("ID : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["satid"].toInt()));
+        map_formulaire->insert("ID : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satid"].toInt()));
         //EngineView->load(QUrl(QString("https://www.mapquestapi.com/staticmap/v5/map?key=ta03QMSiqjdKDaZGG7DaxNRo17Kxmd09&shape=border:0000ff|48.866074,2.301211|48.871575,2.363969&size=800,600&banner=SatId: %1|lg").arg(Sat)));
         break;
     case 1:
         map_formulaire->insert("Nom : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["satname"].toString()));
         break;
     case 2:
-        map_formulaire->insert("Date de lancement",QString(Above_Array.at(NumSat).toObject().toVariantMap()["launchDate"].toString()));
+        map_formulaire->insert("Date de lancement : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["launchDate"].toString()));
         break;
     case 3:
-        map_formulaire->insert("Altitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toFloat()));
+        map_formulaire->insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toFloat()));
         break;
     case 4:
-        //ui->textEdit->insertPlainText(QString("satellite longitude\t \t%1 \n").arg(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toFloat()));
+        map_formulaire->insert("Longitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toFloat()));
         break;
     case 5:
-        //ui->textEdit->insertPlainText(QString("satellite altitude\t \t%1 \n").arg(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
+        map_formulaire->insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
         //ui->textEdit->insertPlainText("\n");
         break;
 
     }
 
+}
+bool SatelliteApi::isMap(){
+    return true;
+}
+bool SatelliteApi::hasBigLayout(){
+    return true;
 }

@@ -1,5 +1,11 @@
 #ifndef APIAVIONS_H
 #define APIAVIONS_H
+
+
+
+#include "abstractapi.h"
+
+#include <QCoreApplication>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QUrl>
