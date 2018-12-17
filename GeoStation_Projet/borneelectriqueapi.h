@@ -4,11 +4,11 @@
 
 #include "abstractapi.h"
 
-class BorneElectriqueAPI : public AbstractApi
+class BorneElectriqueApi : public AbstractApi
 {
 public:
-    BorneElectriqueAPI(QObject *parent, int id);
-    ~BorneElectriqueAPI();
+    BorneElectriqueApi(QObject *parent, int id);
+    ~BorneElectriqueApi();
 
 public slots:
     void replyFinished(QNetworkReply *reply);
