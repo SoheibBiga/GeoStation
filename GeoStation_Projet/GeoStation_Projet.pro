@@ -33,7 +33,6 @@ SOURCES += \
     pollutionapi.cpp \
     satelliteapi.cpp \
     borneelectriqueapi.cpp \
-    pokemap.cpp \
     ordonnanceur.cpp \
     tablewidget.cpp \
     mainwindowghania.cpp
@@ -48,7 +47,6 @@ HEADERS += \
     pollutionapi.h \
     satelliteapi.h \
     borneelectriqueapi.h \
-    pokemap.h \
     ordonnanceur.h \
     tablewidget.h \
     mainwindowghania.h

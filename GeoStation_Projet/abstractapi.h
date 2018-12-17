@@ -55,7 +55,6 @@ protected:
     double radius;
 
     QNetworkAccessManager *manager;
-    PokeMap *map;
 
     //A utiliser lorsque l'ensemble des requêtes de notre api on été recuperer et enregistrer dans map_formulaire
     void finish(bool work);
