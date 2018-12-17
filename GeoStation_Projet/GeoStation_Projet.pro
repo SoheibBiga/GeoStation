@@ -34,7 +34,8 @@ SOURCES += \
     pollutionapi.cpp \
     satelliteapi.cpp \
     borneelectriqueapi.cpp \
-    pokemap.cpp
+    pokemap.cpp \
+    tablewidget.cpp
 
 
 HEADERS += \
@@ -46,8 +47,10 @@ HEADERS += \
     pollutionapi.h \
     satelliteapi.h \
     borneelectriqueapi.h \
-    pokemap.h
+    pokemap.h \
+    tablewidget.h
 
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    tablewidget.ui
