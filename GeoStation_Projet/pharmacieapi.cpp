@@ -7,7 +7,7 @@ PharmacieApi::PharmacieApi(int id, QObject *parent):AbstractApi(parent, id)
     manager = new QNetworkAccessManager(parent);
 
     request.setUrl(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=finess-etablissements&q=Pharmacie+d%27Officine&geofilter.distance="
-                        + QString::number(latitude) + "%2C+" + QString::number(longitude) + "%2C+" + radius));
+                        + QString::number(latitude) + "%2C+" + QString::number(longitude) + "%2C+" + QString::number(radius)));
 
     reply = manager->get(request);
 
@@ -40,7 +40,7 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
     QString codePostal = doc.object().toVariantMap()["records"].toJsonArray().at(i)["fields"].toObject()["ligneacheminement"].toString();
 
     //ui->textEdit->insertPlainText(nom + "\n" + adresse + "\n" + codePostal + "\nà " + distance + " mètres\n\n");
-
+    //qDebug() << nom <<"\n" << adresse << "\n" << codePostal << "\nà " <<  distance << " mètres\n\n";
     }
 }
 

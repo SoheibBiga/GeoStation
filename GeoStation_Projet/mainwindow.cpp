@@ -23,10 +23,10 @@ MainWindow::MainWindow(QWidget *parent) :
     BorneElectriqueApi *borne_electrique_api;
     MuseeApi *musee_api;
     AvionApi *avion_api;
-    GeolocalisationApi *geolocalisation_api;
+    GeolocalisationApi *geolocalisation_api;*/
 
-    PharmacieApi *pharmacie_api;
-    pharmacie_api = new PharmacieApi(this,pharmacie_api->Id);
+    /*PharmacieApi *pharmacie_api;
+    pharmacie_api = new PharmacieApi(api_index->Pharmacie);
     MeteoApi *meteo_api;
     PollutionApi *pollution_api;
     EvenementApi *evenement_api;
