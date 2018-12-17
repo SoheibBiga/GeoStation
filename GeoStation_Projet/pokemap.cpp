@@ -5,15 +5,8 @@ PokeMap::PokeMap(QWidget *parent) : QObject(parent)
     view = new QWebEngineView(parent);
     view->setFixedWidth(parent->width());
     view->setFixedHeight(parent->height());
-}
 
-PokeMap::PokeMap(QWidget *parent, double longitude, double latitude) : QObject(parent)
-{
-    view = new QWebEngineView(parent);
-    view->setFixedWidth(parent->width());
-    view->setFixedHeight(parent->height());
-    locations = true;
-    initLocation(longitude, latitude);
+    connect(view, &QWebEngineView::loadFinished, [=] {QTimer::singleShot(200, this, &PokeMap::CaptureAPI_timer);});
 }
 
 void PokeMap::initLocation(double longitude, double latitude)
@@ -39,13 +32,8 @@ void    PokeMap::initTitre(QString titre)
 void PokeMap::afficherMap()
 {
     view->load(QUrl(base));
-    connect(view, &QWebEngineView::loadFinished, this, &PokeMap::CaptureAPI);
     qDebug() << base;
-}
 
-void    PokeMap::CaptureAPI()
-{
-    QTimer::singleShot(500, this, &PokeMap::CaptureAPI_timer);
 }
 
 void PokeMap::CaptureAPI_timer()
@@ -53,6 +41,12 @@ void PokeMap::CaptureAPI_timer()
     QPalette pal;
     pal.setBrush(QPalette::Background, view->grab());
 
+    static_cast<QWidget*>(this->parent())->setPalette(pal);
     view->stop();
     view->close();
+}
+
+PokeMap::~PokeMap()
+{
+    delete view;
 }

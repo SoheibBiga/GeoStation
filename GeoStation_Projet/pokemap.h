@@ -8,12 +8,11 @@
 
 class PokeMap : public QObject
 {
-
+    Q_OBJECT
 
 public:
-    PokeMap(QWidget *parent);
-    // Ajouter possibilité de mettre des strings (penser à remplacer les espaces par des +)
-    PokeMap(QWidget *parent, double longitude, double latitude);
+    explicit PokeMap(QWidget *parent = nullptr);
+    ~PokeMap();
 
     void    initLocation(double longitude, double latitude);
     void    initLocation(QString adresse);
@@ -29,8 +28,7 @@ private:
     bool taille = false;
     bool titre = false;
 
-private slots:
-    void    CaptureAPI();
+public slots:
     void CaptureAPI_timer();
 };
 

@@ -34,7 +34,8 @@ SOURCES += \
     satelliteapi.cpp \
     borneelectriqueapi.cpp \
     pokemap.cpp \
-    ordonnanceur.cpp
+    ordonnanceur.cpp \
+    tablewidget.cpp
 
 
 HEADERS += \
@@ -47,8 +48,10 @@ HEADERS += \
     satelliteapi.h \
     borneelectriqueapi.h \
     pokemap.h \
-    ordonnanceur.h
+    ordonnanceur.h \
+    tablewidget.h
 
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    tablewidget.ui
