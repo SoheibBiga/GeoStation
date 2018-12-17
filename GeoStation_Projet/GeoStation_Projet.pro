@@ -35,7 +35,8 @@ SOURCES += \
     borneelectriqueapi.cpp \
     pokemap.cpp \
     ordonnanceur.cpp \
-    tablewidget.cpp
+    tablewidget.cpp \
+    mainwindowghania.cpp
 
 
 HEADERS += \
@@ -49,9 +50,11 @@ HEADERS += \
     borneelectriqueapi.h \
     pokemap.h \
     ordonnanceur.h \
-    tablewidget.h
+    tablewidget.h \
+    mainwindowghania.h
 
 
 FORMS += \
         mainwindow.ui \
-    tablewidget.ui
+    tablewidget.ui \
+    mainwindowghania.ui
