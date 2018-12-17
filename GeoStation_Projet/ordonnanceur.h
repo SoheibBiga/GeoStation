@@ -8,7 +8,6 @@
 #include "evenementapi.h"
 #include "borneelectriqueapi.h"
 #include "satelliteapi.h"
-#include "pokemap.h"
 
 class ordonnanceur : public QObject
 {
