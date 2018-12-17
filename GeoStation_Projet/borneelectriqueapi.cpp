@@ -3,24 +3,28 @@
 #include <QFile>
 #include <qdatetime.h>
 
-BorneElectriqueAPI::BorneElectriqueAPI(QObject* parent, int id) : AbstractApi(parent,id)
+BorneElectriqueApi::BorneElectriqueApi(QObject* parent, int id) : AbstractApi(parent,id)
 {
 
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
     //+§connect(ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(Request()));
 
+    //start since epoch
+    t1= QDateTime::currentMSecsSinceEpoch();
+    manager->get(QNetworkRequest(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=fichier-consolide-des-bornes-de-recharge-pour-vehicules-electriques-irve&sort=-date_maj")));
+    finish(0);
 }
 
-BorneElectriqueAPI::~BorneElectriqueAPI()
+BorneElectriqueApi::~BorneElectriqueApi()
 {
 
 }
 
-void BorneElectriqueAPI::replyFinished(QNetworkReply* reply)
+void BorneElectriqueApi::replyFinished(QNetworkReply* reply)
 {
     QString reply_string;
-    reply_string=(QString)reply->readAll();
+    reply_string=reply->readAll();
     //ui->textEdit->setText(reply_string);
 
     doc ={QJsonDocument::fromJson(reply_string.toUtf8())};
@@ -52,13 +56,7 @@ void BorneElectriqueAPI::replyFinished(QNetworkReply* reply)
     qDebug() << t2-t1;
 }
 
-void BorneElectriqueAPI::Request()
-{
-    //start since epoch
-    t1= QDateTime::currentMSecsSinceEpoch();
-    manager->get(QNetworkRequest(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=fichier-consolide-des-bornes-de-recharge-pour-vehicules-electriques-irve&sort=-date_maj")));
 
-}
 
 
 
