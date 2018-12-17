@@ -34,9 +34,9 @@ class apiavions : public AbstractApi
 
 
 public:
-    apiavions(QObject *parent, int id);
-       QNetworkReply* reply;
-       QNetworkReply* reply_singleplane;
+    apiavions(QObject *parent = 0);
+    QNetworkReply* reply;
+    QNetworkReply* reply_singleplane;
 
     ~apiavions();
 
@@ -59,7 +59,7 @@ private:
     QDateTime timeBegin;
     QDateTime timeEnd;
 
- private slots:
+private slots:
 
     void delay(int);
 

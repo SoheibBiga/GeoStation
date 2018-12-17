@@ -34,10 +34,10 @@ void ApiSncf::button_clicked()
 
 void SncfApi::result_liste_gare(QNetworkReply* reply)
 {
-    if (reply->error() != QNetworkReply::NoError)
+    if (reply->error() != QNetworkReply::NoError){
         finish(1);
         return;  // ...only in a blog post
-
+    }
     // Now parse this JSON according to your needs !
     //qDebug() << "json liste gare";
     QJsonDocument jsdoc;

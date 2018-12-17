@@ -1,6 +1,6 @@
 #include "satelliteapi.h"
 
-SatelliteApi::SatelliteApi(QObject *parent) : AbstractApi(IdWidget(Sncf),parent)
+SatelliteApi::SatelliteApi(QObject *parent) : AbstractApi(IdWidget(Satellite),parent)
 {
     manager = new QNetworkAccessManager(this);
     QFont MyFont("Arial",15);

@@ -1,7 +1,7 @@
 #include "vigicruesapi.h"
 
 
-VigicruesApi::VigicruesApi(QObject *parent,int id): AbstractApi(parent,id)
+VigicruesApi::VigicruesApi(QObject *parent): AbstractApi(IdWidget(Vigicrues),parent)
 {
   //manager
   manager = new QNetworkAccessManager (parent);

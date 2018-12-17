@@ -2,7 +2,7 @@
 
 #include <QNetworkAccessManager>
 
-PharmacieApi::PharmacieApi(QObject *parent): AbstractApi(IdWidget(Sncf),parent)
+PharmacieApi::PharmacieApi(QObject *parent): AbstractApi(IdWidget(Pharmacie),parent)
 {
     manager = new QNetworkAccessManager(parent);
 

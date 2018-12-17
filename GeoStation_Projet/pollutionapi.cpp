@@ -1,6 +1,6 @@
 #include "pollutionapi.h"
 
-PollutionApi::PollutionApi(QObject *parent) : AbstractApi(IdWidget(Sncf),parent)
+PollutionApi::PollutionApi(QObject *parent) : AbstractApi(IdWidget(Pollution),parent)
 {
     manager = new QNetworkAccessManager(parent);
 

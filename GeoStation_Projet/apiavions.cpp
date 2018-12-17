@@ -1,7 +1,7 @@
 #include "apiavions.h"
 
 
-apiavions::apiavions(QObject *parent, int id) : AbstractApi(parent, id)
+apiavions::apiavions(QObject *parent) : AbstractApi(IdWidget(Avions),parent)
 {
     timeBegin = QDateTime::currentDateTime();
 
