@@ -28,6 +28,7 @@ SOURCES += \
         mainwindow.cpp \
     abstractapi.cpp \
     evenementapi.cpp \
+    apiavions.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
     pollutionapi.cpp \
@@ -35,13 +36,15 @@ SOURCES += \
     borneelectriqueapi.cpp \
     ordonnanceur.cpp \
     tablewidget.cpp \
-    mainwindowghania.cpp
+    mainwindowghania.cpp \
+    vigicruesapi.cpp
 
 
 HEADERS += \
         mainwindow.h \
     abstractapi.h \    
     evenementapi.h \
+    apiavions.h \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
@@ -49,7 +52,8 @@ HEADERS += \
     borneelectriqueapi.h \
     ordonnanceur.h \
     tablewidget.h \
-    mainwindowghania.h
+    mainwindowghania.h \
+    vigicruesapi.h
 
 
 FORMS += \
