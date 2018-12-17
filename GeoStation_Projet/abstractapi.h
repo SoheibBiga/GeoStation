@@ -21,6 +21,7 @@ private:
 public:
     //Lie l'objet à parent, initialise l'attribut id à myId
     explicit AbstractApi(QObject *parent, int myId, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
+    explicit AbstractApi(QObject *parent = 0, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
 
     //explicit AbstractApi(int myId, QObject *parent = 0, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
 
