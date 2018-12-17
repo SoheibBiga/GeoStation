@@ -7,7 +7,7 @@
 class BorneElectriqueApi : public AbstractApi
 {
 public:
-    BorneElectriqueApi(QObject *parent, int id);
+    BorneElectriqueApi(QObject *parent = 0);
     ~BorneElectriqueApi();
 
 public slots:
