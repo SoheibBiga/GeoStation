@@ -45,7 +45,7 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
 
     //ui->textEdit->append(strJson);
 
-    int i = 0;
+    int i;
 
     int count = Myjson.object().toVariantMap()["records"].toJsonArray().count();
 

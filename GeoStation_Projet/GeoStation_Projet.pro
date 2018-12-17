@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network
-QT       += webenginewidgets
+QT       += core gui network webenginewidgets widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -34,7 +33,8 @@ SOURCES += \
     pollutionapi.cpp \
     satelliteapi.cpp \
     borneelectriqueapi.cpp \
-    pokemap.cpp
+    pokemap.cpp \
+    ordonnanceur.cpp
 
 
 HEADERS += \
@@ -46,7 +46,8 @@ HEADERS += \
     pollutionapi.h \
     satelliteapi.h \
     borneelectriqueapi.h \
-    pokemap.h
+    pokemap.h \
+    ordonnanceur.h
 
 
 FORMS += \

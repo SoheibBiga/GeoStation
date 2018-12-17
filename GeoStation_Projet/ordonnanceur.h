@@ -1,0 +1,24 @@
+#ifndef ORDONNANCEUR_H
+#define ORDONNANCEUR_H
+
+#include "pollutionapi.h"
+#include "pharmacieapi.h"
+#include "evenementapi.h"
+#include "sncfapi.h"
+#include "evenementapi.h"
+#include "borneelectriqueapi.h"
+#include "satelliteapi.h"
+#include "pokemap.h"
+
+class ordonnanceur : public QObject
+{
+    Q_OBJECT
+
+public:
+    ordonnanceur(QObject* parent = 0);
+
+private:
+
+};
+
+#endif // ORDONNANCEUR_H
