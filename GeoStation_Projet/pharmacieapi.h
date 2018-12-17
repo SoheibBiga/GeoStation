@@ -11,7 +11,7 @@ class PharmacieApi : public AbstractApi
     Q_OBJECT
 
 public:
-    PharmacieApi(QObject *parent, int id);
+    PharmacieApi(int id = 0, QObject *parent = 0);
     ~PharmacieApi();
 
     QNetworkRequest request;
