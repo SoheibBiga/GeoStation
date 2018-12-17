@@ -3,8 +3,6 @@
 
 #include "abstractapi.h"
 
-#include <QtNetwork>
-
 
 class PharmacieApi : public AbstractApi
 {
@@ -16,6 +14,9 @@ public:
 
     QNetworkRequest request;
     QNetworkReply *reply;
+
+    bool isMap();
+    bool hasBigLayout();
 
 private slots:
     void listePharmacie(QNetworkReply *reply);
