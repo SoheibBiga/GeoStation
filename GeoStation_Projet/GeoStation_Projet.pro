@@ -28,6 +28,7 @@ SOURCES += \
         mainwindow.cpp \
     abstractapi.cpp \
     evenementapi.cpp \
+    apiavions.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
     pollutionapi.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
         mainwindow.h \
     abstractapi.h \    
     evenementapi.h \
+    apiavions.h
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
