@@ -6,11 +6,8 @@ PharmacieApi::PharmacieApi(QObject *parent,int id):AbstractApi(parent, id)
 {
     manager = new QNetworkAccessManager(parent);
 
-    latitude = 48.871671;
-    longitude = 2.346106;
-
     request.setUrl(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=finess-etablissements&q=Pharmacie+d%27Officine&geofilter.distance="
-                        + QString::number(latitude) + "%2C+" + QString::number(longitude) + "%2C+" + rayon));
+                        + QString::number(latitude) + "%2C+" + QString::number(longitude) + "%2C+" + radius));
 
     reply = manager->get(request);
 
@@ -18,6 +15,11 @@ PharmacieApi::PharmacieApi(QObject *parent,int id):AbstractApi(parent, id)
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(slotSslErrors(QList<QSslError>)));
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(listePharmacie(QNetworkReply*)));
+
+}
+
+PharmacieApi::~PharmacieApi()
+{
 
 }
 
