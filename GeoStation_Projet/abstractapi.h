@@ -10,7 +10,7 @@
 #include <QSettings>
 #include <QDebug>
 #include <QEventLoop>
-#include "pokemap.h"
+
 
 //Associe chaque API à un id, evenement = 0; vegicrue = 1 ...
 enum IdWidget {Evenement,Vegicrue,Avions,Meteo,Pollution,Musee,Pharmacie,BorneElectrique,Satellite,Geolocalisation,Sncf};
@@ -55,7 +55,6 @@ protected:
     double radius;
 
     QNetworkAccessManager *manager;
-    PokeMap *map;
 
     //A utiliser lorsque l'ensemble des requêtes de notre api on été recuperer et enregistrer dans map_formulaire
     void finish(bool work);
