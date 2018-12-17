@@ -1,7 +1,7 @@
-#include "evenementapi.h"
+#include "vigicruesapi.h"
 
 
-EvenementApi::EvenementApi(QObject *parent): AbstractApi(IdWidget(Evenement),parent)
+VigicruesApi::VigicruesApi(QObject *parent): AbstractApi(IdWidget(Vigicrues),parent)
 {
   //manager
   manager = new QNetworkAccessManager (parent);
@@ -24,12 +24,12 @@ EvenementApi::EvenementApi(QObject *parent): AbstractApi(IdWidget(Evenement),par
 
 }
 
-EvenementApi::~EvenementApi()
+VigicruesApi::~VigicruesApi()
 {
 
 }
 
-void EvenementApi::reponseRecue(QNetworkReply *rep)
+void VigicruesApi::reponseRecue(QNetworkReply *rep)
 {
     qDebug()<< "reponseRecue";
     m_reply={rep};
@@ -78,7 +78,7 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
 
 //gérer les erreurs
 
-void EvenementApi::slotError(QNetworkReply::NetworkError erreurtype)
+void VigicruesApi::slotError(QNetworkReply::NetworkError erreurtype)
 {
     QString m_message;
     if (erreurtype == QNetworkReply::NoError) { return; }
@@ -86,7 +86,7 @@ void EvenementApi::slotError(QNetworkReply::NetworkError erreurtype)
     qDebug()<< "Erreur";
 }
 
-void EvenementApi::slotSslErrors(QList<QSslError>)
+void VigicruesApi::slotSslErrors(QList<QSslError>)
 {
      qDebug()<< "slotSslErrors";
 }

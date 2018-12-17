@@ -14,7 +14,7 @@ class SatelliteApi : public AbstractApi
 
 public:
 
-    SatelliteApi(QObject *parent, int id);
+    SatelliteApi(QObject *parent = 0);
     ~SatelliteApi();
 
     enum enum_function {tle=0,positions=1,visualpasses=2,radiopasses=3,above=4};
@@ -29,11 +29,13 @@ public:
 
     void Request_Url(int pos, int category);
     void RetrieveInfo(QString request, int NumSat);
+    bool isMap();
+    bool hasBigLayout();
 
 public slots:
 
     void replyFinished(QNetworkReply *reply);
-    void Refresh();
+
 
 
 private:

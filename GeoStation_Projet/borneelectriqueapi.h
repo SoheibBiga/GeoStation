@@ -4,10 +4,18 @@
 
 #include "abstractapi.h"
 
-class BorneElectriqueAPI : public AbstractApi
+class BorneElectriqueApi : public AbstractApi
 {
 public:
-    BorneElectriqueAPI(QObject *parent, int id);
+    BorneElectriqueApi(QObject *parent = 0);
+    ~BorneElectriqueApi();
+
+public slots:
+    void replyFinished(QNetworkReply *reply);
+    void Request();
+private:
+    QJsonDocument doc;
+    qint64 t1,t2;
 };
 
 #endif // BORNEELECTRIQUEAPI_H

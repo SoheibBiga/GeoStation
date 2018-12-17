@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network
+QT       += core gui network webenginewidgets widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,23 +28,35 @@ SOURCES += \
         mainwindow.cpp \
     abstractapi.cpp \
     evenementapi.cpp \
+    apiavions.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
     pollutionapi.cpp \
     satelliteapi.cpp \
-    borneelectriqueapi.cpp
+    borneelectriqueapi.cpp \
+    ordonnanceur.cpp \
+    tablewidget.cpp \
+    mainwindowghania.cpp \
+    vigicruesapi.cpp
 
 
 HEADERS += \
         mainwindow.h \
     abstractapi.h \    
     evenementapi.h \
+    apiavions.h \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
     satelliteapi.h \
-    borneelectriqueapi.h
+    borneelectriqueapi.h \
+    ordonnanceur.h \
+    tablewidget.h \
+    mainwindowghania.h \
+    vigicruesapi.h
 
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    tablewidget.ui \
+    mainwindowghania.ui
