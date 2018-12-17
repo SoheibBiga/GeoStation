@@ -12,11 +12,10 @@ class PharmacieApi : public AbstractApi
 
 public:
     PharmacieApi(QObject *parent, int id);
+    ~PharmacieApi();
 
     QNetworkRequest request;
     QNetworkReply *reply;
-
-    QString rayon = "500";
 
 private slots:
     void listePharmacie(QNetworkReply *reply);
