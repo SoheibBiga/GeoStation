@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     AbstractApi *ptr=new lliste_api[0];*/
     //api_index =1
     /*SatelliteApi *satellite_api;
-    BorneElectriqueApi *borne_electrique_api;
+    BorneElectriqueApi *borne_electrique_api;a
     MuseeApi *musee_api;
     AvionApi *avion_api;
     GeolocalisationApi *geolocalisation_api;
