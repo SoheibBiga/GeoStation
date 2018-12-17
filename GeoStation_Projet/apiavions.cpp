@@ -54,7 +54,7 @@ void apiavions::change_coordinates()
 
 
 
-void apiavions::affiche_erreurs( QNetworkReply* reply, QList<QSslError> list  )
+void apiavions::affiche_erreurs( QNetworkReply* , QList<QSslError> list  )
 {
     if(list.isEmpty() ) qDebug()<<"list est vide"<<endl;
 
@@ -241,8 +241,8 @@ void apiavions::replyFinished(QNetworkReply*  reply)
 
     timeEnd = QDateTime::currentDateTime();
 
-    int bigtime = timeEnd.toMSecsSinceEpoch();
-    int smalltime = timeBegin.toMSecsSinceEpoch();
+    qint64 bigtime = timeEnd.toMSecsSinceEpoch();
+    qint64 smalltime = timeBegin.toMSecsSinceEpoch();
 
     qDebug()<<"LE TEMPS D'EXECUTION EST DE      "<<bigtime - smalltime <<endl;
 
