@@ -10,6 +10,7 @@
 #include <QSettings>
 #include <QDebug>
 
+#include "pokemap.h"
 
 class AbstractApi : public QObject
 {
@@ -41,7 +42,7 @@ protected:
 
 
     QNetworkAccessManager *manager;
-
+    PokeMap *map;
 
 
 
