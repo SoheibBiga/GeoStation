@@ -2,10 +2,16 @@
 
 ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
 {
+    AbstractApi *api_index;
+    switch(api_index->Id){
+        case IdWidget(Evenement):
+        api_index = new Evenement();
+        api_index->loop->exec();
+    }
     //SncfApi *soh = new SncfApi();
     //SncfApi *soh = new SncfApi();
     //soh->loop->exec();
-    //AbstractApi *api_index;
+    //
     //QList<AbstractApi*> liste_api;
     //switch(i)
         //SncfApi *sncf_api = new SncfApi(api_index->Sncf);
