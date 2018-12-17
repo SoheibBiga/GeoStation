@@ -43,7 +43,7 @@ HEADERS += \
         mainwindow.h \
     abstractapi.h \    
     evenementapi.h \
-    apiavions.h
+    apiavions.h \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
