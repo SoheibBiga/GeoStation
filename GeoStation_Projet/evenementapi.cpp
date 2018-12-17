@@ -1,7 +1,7 @@
 #include "evenementapi.h"
 
 
-EvenementApi::EvenementApi(QObject *parent,int id): AbstractApi(parent,id)
+EvenementApi::EvenementApi(QObject *parent): AbstractApi(IdWidget(Sncf),parent)
 {
   //manager
   manager = new QNetworkAccessManager (parent);

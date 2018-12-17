@@ -10,15 +10,15 @@ class SncfApi : public AbstractApi
 
 public:
     SncfApi(QObject *parent = 0);
-    QNetworkAccessManager *manager_prochain_depart;
-    QString code_uic_gare;
-    qint64 t1;
-    qint64 t2;
 
     bool isMap();
     bool hasBigLayout();
 
-
+private:
+    QNetworkAccessManager *manager_prochain_depart;
+    QString code_uic_gare;
+    qint64 t1;
+    qint64 t2;
 
 private slots:
     void result_liste_gare(QNetworkReply *reply);

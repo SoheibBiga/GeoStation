@@ -14,7 +14,7 @@ class SatelliteApi : public AbstractApi
 
 public:
 
-    SatelliteApi(QObject *parent, int id);
+    SatelliteApi(QObject *parent = 0);
     ~SatelliteApi();
 
     enum enum_function {tle=0,positions=1,visualpasses=2,radiopasses=3,above=4};
