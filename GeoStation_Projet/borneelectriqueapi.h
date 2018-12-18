@@ -6,13 +6,16 @@
 
 class BorneElectriqueApi : public AbstractApi
 {
+
+    Q_OBJECT
+
 public:
     BorneElectriqueApi(QObject *parent = 0);
     ~BorneElectriqueApi();
 
 public slots:
     void replyFinished(QNetworkReply *reply);
-    void Request();
+
 private:
     QJsonDocument doc;
     qint64 t1,t2;
