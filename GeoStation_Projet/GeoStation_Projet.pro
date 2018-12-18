@@ -64,3 +64,6 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     tablewidget.ui
+
+RESOURCES += \
+    resources.qrc
