@@ -64,6 +64,13 @@ private:
     QString API_key;
 
 
+    QString airport_code;
+    QString plane_code;
+    QString airport_name;
+    QString plane_model_name;
+
+
+
 private slots:
 
     void delay(int);
@@ -81,6 +88,10 @@ private slots:
     void getsingleplaneinfo(QNetworkReply*);
 
     void parseplanelist();
+
+    void readairports();
+    void readplane_type();
+
 
 };
 
