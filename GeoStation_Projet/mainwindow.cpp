@@ -9,15 +9,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //ordonnanceur ord;
+    //connect(ord.api_index,SIGNAL(finish(QMap<QString, QString> *map_formulaire)),)
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::affiche(QBoxLayout* layout){
-    QWidget *mawid = new QWidget(this);
-    mawid->setLayout(layout);
-    mawid->show();
 }
