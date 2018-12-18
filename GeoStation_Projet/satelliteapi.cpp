@@ -1,13 +1,10 @@
 #include "satelliteapi.h"
 
-SatelliteApi::SatelliteApi(QObject *parent) : AbstractApi(IdWidget(Satellite),parent)
+SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdWidget(Satellite),ord,parent)
 {
-    manager = new QNetworkAccessManager(this);
-    QFont MyFont("Arial",15);
+   // QFont MyFont("Arial",15);
 
     //request information
-    Obs_Latitude=48.871656;
-    Obs_Longitude= 2.345931;
     Obs_Altitude=35;
     Seconds=1;
     APIKEY="QSJWEK-UEPBYL-FSPNEM-3X9G";
@@ -23,12 +20,22 @@ SatelliteApi::SatelliteApi(QObject *parent) : AbstractApi(IdWidget(Satellite),pa
     fonction=above;
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    //connect(ui->pushButton, SIGNAL(clicked(bool)),this,SLOT(Refresh()));
+
+    //This timer is set to send request each time requested in the settimer.
+    //QTimer *timer=new QTimer(this);
+    //timer->setInterval(5000);
+
+    //connection between Timer and request sender
+    //connect(timer, SIGNAL(timeout()),this,SLOT(Refresh()));
+
+    //connection between Manager which request reply;
     connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
 
     //set the CurrentSecSince to the current
     //CurrentSecSinceRequestStart = QDateTime::currentMSecsSinceEpoch(); //renvoi un qint64
 
+    //Start timer ;
+    //timer->start();
     //Set request URL
     for(int i=0;i<50;i++)
     {
@@ -38,10 +45,10 @@ SatelliteApi::SatelliteApi(QObject *parent) : AbstractApi(IdWidget(Satellite),pa
 
 }
 
-SatelliteApi::~SatelliteApi()
+/*atelliteApi::~SatelliteApi()
 {
 
-}
+}*/
 
 void SatelliteApi::replyFinished(QNetworkReply* reply)
 {
@@ -58,7 +65,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
 
 
     if (jsonError.error != QJsonParseError::NoError){
-        //qDebug() << jsonError.errorString();
+        qDebug() << jsonError.errorString();
     }
 
     //(MyJsonDoc.isArray()) ? qDebug() << "Json Document contains an array" : qDebug() << "Json Document does not contains an array" ;
@@ -106,16 +113,16 @@ void SatelliteApi::Request_Url(int pos,int category)
         request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(NORAD_ID)+"/&apiKey="+APIKEY));
         break;
     case positions:
-        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(NORAD_ID)+"/"+QString::number(Obs_Latitude)+"/"+QString::number(Obs_Longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Seconds)+"/&apiKey="+APIKEY));
+        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(NORAD_ID)+"/"+QString::number(latitude)+"/"+QString::number(longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Seconds)+"/&apiKey="+APIKEY));
         break;
     case visualpasses:
-        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(NORAD_ID)+"/"+QString::number(Obs_Latitude)+"/"+QString::number(Obs_Longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Days_Of_Predic)+"/"+QString::number(Minimun_Visibility)+"/&apiKey="+APIKEY));
+        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(NORAD_ID)+"/"+QString::number(latitude)+"/"+QString::number(longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Days_Of_Predic)+"/"+QString::number(Minimun_Visibility)+"/&apiKey="+APIKEY));
         break;
     case radiopasses:
-        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(NORAD_ID)+"/"+QString::number(Obs_Latitude)+"/"+QString::number(Obs_Longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Days_Of_Predic)+"/"+QString::number(Minimim_Elevation)+"/&apiKey="+APIKEY));
+        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(NORAD_ID)+"/"+QString::number(latitude)+"/"+QString::number(longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Days_Of_Predic)+"/"+QString::number(Minimim_Elevation)+"/&apiKey="+APIKEY));
         break;
     case above:
-        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(Obs_Latitude)+"/"+QString::number(Obs_Longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Search_Radius)+"/"+QString::number(category)+"/&apiKey="+APIKEY));
+        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(latitude)+"/"+QString::number(longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Search_Radius)+"/"+QString::number(category)+"/&apiKey="+APIKEY));
         break;
 
     }
@@ -139,7 +146,6 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     {
     case 0:
         map_formulaire->insert("ID : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satid"].toInt()));
-        //EngineView->load(QUrl(QString("https://www.mapquestapi.com/staticmap/v5/map?key=ta03QMSiqjdKDaZGG7DaxNRo17Kxmd09&shape=border:0000ff|48.866074,2.301211|48.871575,2.363969&size=800,600&banner=SatId: %1|lg").arg(Sat)));
         break;
     case 1:
         map_formulaire->insert("Nom : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["satname"].toString()));
@@ -155,11 +161,10 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
         break;
     case 5:
         map_formulaire->insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
-        //ui->textEdit->insertPlainText("\n");
         break;
-
     }
-
+    emit send_info(*map_formulaire);
+    finish(0);
 }
 bool SatelliteApi::isMap(){
     return true;

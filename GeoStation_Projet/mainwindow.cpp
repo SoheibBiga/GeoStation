@@ -23,7 +23,7 @@ void MainWindow::receive_info(QMap<QString, QString> map_formulaire)
 {
     int i = 0;
     for(i = 0; i < map_formulaire.keys().size(); i++){
-        //qDebug() << map_formulaire.keys()[i] << " : " << map_formulaire.value(map_formulaire.keys()[i]) << endl;
+        qDebug() << map_formulaire.keys()[i] << " : " << map_formulaire.value(map_formulaire.keys()[i]) << endl;
     }
 }
 

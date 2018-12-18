@@ -10,6 +10,9 @@
 #include "borneelectriqueapi.h"
 #include "satelliteapi.h"
 #include "nullapi.h"
+#include "vigicruesapi.h"
+#include "meteoapi.h"
+
 
 class ordonnanceur : public QObject
 {
