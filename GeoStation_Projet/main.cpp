@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "widgetghania.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -9,10 +8,10 @@ int main(int argc, char *argv[])
     //w.show();
 
     //181217 by GB => MyWidget
-    WidgetGhania MyWidget;
+    //WidgetGhania MyWidget;
     //static_cast<QWidget>(MyWidget);
 
-    MyWidget.show();
+    //MyWidget.show();
 
     return a.exec();
 }

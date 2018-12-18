@@ -2,7 +2,7 @@
 #include "ui_tablewidget.h"
 
 TableWidget::TableWidget(QWidget *parent) :
-    QWidget(parent),
+    QTableWidget(parent),
     ui(new Ui::TableWidget)
 {
     ui->setupUi(this);
