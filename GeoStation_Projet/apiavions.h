@@ -43,7 +43,6 @@ public:
 
 private:
 
-    //QNetworkAccessManager *manager;
     QNetworkAccessManager *manager_singleplane;
     QList<QSslError> list;
 

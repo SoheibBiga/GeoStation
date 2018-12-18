@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ordonnanceur *ord = new ordonnanceur();;
     //QList<QWidget> list_widget;
     connect(ord,SIGNAL(send_info(QMap<QString,QString>)),this,SLOT(receive_info(QMap<QString,QString>)));
+    //connect(ord,SIGNAL(send_info(QMap<QString,QString>)),list_widget[ord->api_index->Id],SIGNAL(send_info(QMap<QString,QString>)));
+
     ord->run();
 }
 
