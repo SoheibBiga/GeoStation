@@ -12,9 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     sncfwidget *swidget = new sncfwidget(this);
     widgets->addWidget(swidget);
-    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),this,SLOT(receive_info(QMap<QString,QString>)));
+    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),swidget,SIGNAL(send_info(QMap<QString,QString>)));
     //connect(ord,SIGNAL(send_info(QMap<QString,QString>)),list_widget[ord->api_index->Id],SIGNAL(send_info(QMap<QString,QString>)));
-
     //ord->run();
 }
 

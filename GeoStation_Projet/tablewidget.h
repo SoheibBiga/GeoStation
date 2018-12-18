@@ -18,11 +18,10 @@ public:
     ~TableWidget();
     QTableWidgetItem *AdressItem, *DateItem, *TarifItem,  *ItineraireItem;
 
-    bool refresh();
+    bool refresh(QMap<QString, QString> map_formulaire);
 
 private:
     Ui::TableWidget *ui;
-    QMap<QString, QString> *map_formulaire;
 };
 
 #endif // TABLEWIDGET_H

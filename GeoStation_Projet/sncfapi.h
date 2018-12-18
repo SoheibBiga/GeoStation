@@ -2,7 +2,6 @@
 #define APISNCF_H
 
 #include "abstractapi.h"
-#include <QTextEdit>
 
 class SncfApi : public AbstractApi
 {

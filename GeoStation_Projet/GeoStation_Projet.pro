@@ -61,8 +61,6 @@ HEADERS += \
     awidget.h \
     nullapi.h \
     sncfwidget.h \
-    iwidget.h \
-    nullapi.h \
     cherchephotos.h
 
 

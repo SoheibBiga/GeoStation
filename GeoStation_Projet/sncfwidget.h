@@ -2,6 +2,7 @@
 #define SNCFWIDGET_H
 
 #include <QWidget>
+#include <QMap>
 
 namespace Ui {
 class sncfwidget;
@@ -17,6 +18,12 @@ public:
 
 private:
     Ui::sncfwidget *ui;
+
+signals:
+    void send_info(QMap<QString,QString>);
+
+private slots:
+    void receive_info(QMap<QString,QString>);
 };
 
 #endif // SNCFWIDGET_H
