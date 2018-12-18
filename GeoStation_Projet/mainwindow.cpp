@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "sncfapi.h"
+#include "ordonnanceur.h"
 #include <QThread>
 
 MainWindow::MainWindow(QWidget *parent) :

@@ -2,12 +2,15 @@
 
 ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
 {
-    AbstractApi *api_index;
-   // api_index = new SncfApi(parent);
-    switch(api_index->Id){
-    case IdWidget(Sncf):
-        api_index = new SncfApi(parent);
-    /*case IdWidget(Evenement):
+    api_index = new SncfApi(parent);
+    while(1){
+        //if(api_index->Id==IdWidget(Sncf)) api_index->Id=IdWidget(Evenement);
+        //else api_index->Id++;
+        // api_index = new SncfApi(parent);
+        switch(api_index->Id){
+        case IdWidget(Sncf):
+            api_index = new SncfApi(parent);
+            /*case IdWidget(Evenement):
         api_index = new EvenementApi(parent);
     case IdWidget(Pollution):
         api_index = new PollutionApi(parent);
@@ -17,7 +20,7 @@ ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
         api_index = new PharmacieApi(parent);
     case IdWidget(Satellite):
         api_index = new SatelliteApi(parent);*/
-    /*case IdWidget(Meteo):
+            /*case IdWidget(Meteo):
         api_index = new MeteoApi(parent);
     case IdWidget(Vigicrues):
         api_index = new VigicruesApi(parent);
@@ -27,9 +30,11 @@ ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
         api_index = new GeolocalisationApi();
     case IdWidget():
         api_index = new Evenement();*/
+        }
     }
     api_index->loop->exec();
-
+    qDebug() << api_index->map_formulaire->value("libelle_gare");
+   // emit finish(api_index->map_formulaire);
     //SncfApi *soh = new SncfApi();
     //SncfApi *soh = new SncfApi();
     //soh->loop->exec();

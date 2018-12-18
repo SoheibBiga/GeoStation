@@ -36,10 +36,9 @@ SOURCES += \
     borneelectriqueapi.cpp \
     ordonnanceur.cpp \
     tablewidget.cpp \
-    mainwindowghania.cpp \
     vigicruesapi.cpp \
     meteoapi.cpp \
-    AWidget.cpp
+    awidget.cpp
 
 
 HEADERS += \
@@ -54,14 +53,12 @@ HEADERS += \
     borneelectriqueapi.h \
     ordonnanceur.h \
     tablewidget.h \
-    mainwindowghania.h \
     vigicruesapi.h \
     meteoapi.h \
-    IWidget.hh \
-    AWidget.hh
+    awidget.h \
+    iwidget.h
 
 
 FORMS += \
         mainwindow.ui \
-    tablewidget.ui \
-    mainwindowghania.ui
+    tablewidget.ui

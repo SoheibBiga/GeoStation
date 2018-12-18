@@ -1,14 +1,15 @@
 #ifndef TABLEWIDGET_H
 #define TABLEWIDGET_H
 
-#include <QWidget>
+#include "awidget.h"
 #include <QTableWidget>
+
 
 namespace Ui {
 class TableWidget;
 }
 
-class TableWidget : public QWidget
+class TableWidget : public QTableWidget
 {
     Q_OBJECT
 
@@ -19,7 +20,7 @@ public:
 
 private:
     Ui::TableWidget *ui;
-
+    //QMap<QString, QString> *map_formulaire;
 };
 
 #endif // TABLEWIDGET_H

@@ -1,4 +1,4 @@
-#include "AWidget.hh"
+#include "awidget.h"
 
 int	AWidget::currentId_ = 0;
 
@@ -34,7 +34,7 @@ AWidget&			AWidget::operator=(AWidget const& other)
 	return (*this);
 }
 
-int						AWidget::getId() const
+/*int						AWidget::getId() const
 {
 	return (id_);
 }
@@ -47,4 +47,4 @@ QLayout*			AWidget::getMainLayout() const
 QLayout*			AWidget::getMozaicLayout() const
 {
 	return (mozaicLayout_);
-}
+}*/

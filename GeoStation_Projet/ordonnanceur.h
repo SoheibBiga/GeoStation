@@ -16,6 +16,7 @@ class ordonnanceur : public QObject
 
 public:
     ordonnanceur(QObject* parent = 0);
+    AbstractApi *api_index;
 
 private:
 
