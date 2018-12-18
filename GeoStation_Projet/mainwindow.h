@@ -5,6 +5,9 @@
 #include "ordonnanceur.h"
 #include <QMap>
 #include <QBoxLayout>
+#include <QStackedWidget>
+#include "awidget.h"
+#include "sncfwidget.h"
 
 namespace Ui {
 class MainWindow;

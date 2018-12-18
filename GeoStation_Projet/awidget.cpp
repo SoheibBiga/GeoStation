@@ -1,6 +1,6 @@
-#include "awidget.hh"
+#include "awidget.h"
 
-intAWidget::currentId_ = 0;
+int AWidget::currentId_ = 0;
 
 AWidget::AWidget()
   : QWidget(),
@@ -34,7 +34,7 @@ AWidget&AWidget::operator=(AWidget const& other)
   return (*this);
 }
 
-intAWidget::getId() const
+int AWidget::getId() const
 {
   return (id_);
 }

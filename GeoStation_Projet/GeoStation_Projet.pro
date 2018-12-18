@@ -39,7 +39,8 @@ SOURCES += \
     vigicruesapi.cpp \
     meteoapi.cpp \
     awidget.cpp \
-    nullapi.cpp
+    nullapi.cpp \
+    sncfwidget.cpp
 
 
 HEADERS += \
@@ -57,13 +58,14 @@ HEADERS += \
     vigicruesapi.h \
     meteoapi.h \
     awidget.h \
-    iwidget.h \
-    nullapi.h
+    nullapi.h \
+    sncfwidget.h
 
 
 FORMS += \
         mainwindow.ui \
-    tablewidget.ui
+    tablewidget.ui \
+    sncfwidget.ui
 
 RESOURCES += \
     resources.qrc

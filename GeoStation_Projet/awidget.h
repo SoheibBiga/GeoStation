@@ -1,7 +1,8 @@
-#ifndefAWIDGET_HH_
-# defineAWIDGET_HH_
+#ifndef AWIDGET_H_
+# define AWIDGET_H_
 
 # include <QWidget>
+# include <QMap>
 
 /*
 **AWidget::mainLayout_ and AWidget::mozaicLayout_ to instanciate in the
@@ -11,6 +12,8 @@
 
 class AWidget : public QWidget
 {
+    Q_OBJECT
+
   AWidget();
   AWidget(AWidget const& other);
   AWidget&operator=(AWidget const& other);
@@ -36,6 +39,10 @@ class AWidget : public QWidget
   virtual bool		run() = 0;
   virtual bool		end() = 0;
   virtual void		addWidget(QWidget* widget) = 0;
+
+signals:
+  void send_info(QMap<QString,QString>);
+
 };
 
-#endif // AWIDGET_HH_
+#endif // AWIDGET_H_
