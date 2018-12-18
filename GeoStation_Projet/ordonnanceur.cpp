@@ -7,38 +7,51 @@ ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
 }
 
 void ordonnanceur::run(){
-    api_index = new SncfApi(this);
-    //while(1){
+    //api_index = new SncfApi(this);
+    int wait=1;
+    while(wait){
         //if(api_index->Id==IdWidget(Sncf)) api_index->Id=IdWidget(Evenement);
         //else api_index->Id++;
         // api_index = new SncfApi(parent);
-//        switch(api_index->Id){
-//        case IdWidget(Sncf):
-//            api_index = new SncfApi(parent);
-            /*case IdWidget(Evenement):
-        api_index = new EvenementApi(parent);
-    case IdWidget(Pollution):
-        api_index = new PollutionApi(parent);
-    case IdWidget(BorneElectrique):
-        api_index = new BorneElectriqueApi(parent);
-    case IdWidget(Pharmacie):
-        api_index = new PharmacieApi(parent);
-    case IdWidget(Satellite):
-        api_index = new SatelliteApi(parent);*/
-            /*case IdWidget(Meteo):
-        api_index = new MeteoApi(parent);
-    case IdWidget(Vigicrues):
-        api_index = new VigicruesApi(parent);
-    case IdWidget(Musee):
-        api_index = new MuseeApi();
-    case IdWidget(Geolocalisation):
-        api_index = new GeolocalisationApi();
-    case IdWidget():
-        api_index = new Evenement();*/
-        //}
-        api_index->loop->exec();
 
-       // qDebug() << api_index->map_formulaire->value("libelle_gare");
+        switch(api_index->Id){
+        case IdWidget(Sncf):
+        /*{api_index = new SncfApi(this);
+            break;}*/
+            /*case IdWidget(Evenement):
+        {api_index = new EvenementApi(this);
+            break;}
+        case IdWidget(Pollution):
+        {api_index = new PollutionApi(this);
+            break;}
+        case IdWidget(BorneElectrique):
+        {api_index = new BorneElectriqueApi(this);
+            break;}
+        case IdWidget(Pharmacie):
+        {api_index = new PharmacieApi(this);
+            break;}*/
+        case IdWidget(Satellite):
+        {api_index = new SatelliteApi(this);
+            break;}
+            /*case IdWidget(Meteo):
+        {api_index = new MeteoApi(this);
+            break;}
+        case IdWidget(Vigicrues):
+        {api_index = new VigicruesApi(this);
+            break;}
+        case IdWidget(Musee):
+        {api_index = new MuseeApi(this);
+            break;}
+        case IdWidget(Geolocalisation):
+        {api_index = new GeolocalisationApi(this);
+            break;}*/
+            /*case IdWidget():
+            api_index = new Evenement();*/
+        }
+        api_index->loop->exec();
+    }
+
+    // qDebug() << api_index->map_formulaire->value("libelle_gare");
     //}
 
     // emit finish(api_index->map_formulaire);
