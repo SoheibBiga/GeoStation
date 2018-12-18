@@ -38,7 +38,8 @@ SOURCES += \
     tablewidget.cpp \
     mainwindowghania.cpp \
     vigicruesapi.cpp \
-    meteoapi.cpp
+    meteoapi.cpp \
+    AWidget.cpp
 
 
 HEADERS += \
@@ -55,7 +56,9 @@ HEADERS += \
     tablewidget.h \
     mainwindowghania.h \
     vigicruesapi.h \
-    meteoapi.h
+    meteoapi.h \
+    IWidget.hh \
+    AWidget.hh
 
 
 FORMS += \
