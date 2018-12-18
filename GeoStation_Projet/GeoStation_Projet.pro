@@ -40,7 +40,8 @@ SOURCES += \
     meteoapi.cpp \
     awidget.cpp \
     nullapi.cpp \
-    sncfwidget.cpp
+    sncfwidget.cpp \
+    cherchephotos.cpp
 
 
 HEADERS += \
@@ -59,7 +60,10 @@ HEADERS += \
     meteoapi.h \
     awidget.h \
     nullapi.h \
-    sncfwidget.h
+    sncfwidget.h \
+    iwidget.h \
+    nullapi.h \
+    cherchephotos.h
 
 
 FORMS += \
