@@ -9,6 +9,7 @@
 #include "evenementapi.h"
 #include "borneelectriqueapi.h"
 #include "satelliteapi.h"
+#include "nullapi.h"
 
 class ordonnanceur : public QObject
 {
@@ -16,9 +17,11 @@ class ordonnanceur : public QObject
 
 public:
     ordonnanceur(QObject* parent = 0);
+    //AbstractApi *api_index;
     AbstractApi *api_index;
-
-private:
+    void run();
+signals:
+    void send_info(QMap<QString,QString>);
 
 };
 

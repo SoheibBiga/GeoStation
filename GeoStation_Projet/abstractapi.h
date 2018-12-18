@@ -11,6 +11,8 @@
 #include <QDebug>
 #include <QEventLoop>
 
+class ordonnanceur;
+
 
 //Associe chaque API à un id, evenement = 0; vegicrue = 1 ...
 enum IdWidget {Evenement,Vigicrues,Avions,Meteo,Pollution,Musee,Pharmacie,BorneElectrique,Satellite,Geolocalisation,Sncf};
@@ -18,14 +20,20 @@ enum IdWidget {Evenement,Vigicrues,Avions,Meteo,Pollution,Musee,Pharmacie,BorneE
 class AbstractApi : public QObject
 {
 
+    Q_OBJECT
+
 private:
     //Vous ne pouvez pas utiliser ce constructeur
     AbstractApi(QObject *parent);
 
+    ordonnanceur *ord;
+
 public:
     //Lie l'objet à parent, initialise l'attribut id à myId
-    AbstractApi(QObject *parent, int myId, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
-    explicit AbstractApi(int myId,QObject *parent = 0,QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
+    //AbstractApi(QObject *parent, int myId, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
+    explicit AbstractApi(int myId, ordonnanceur *ord_, QObject *parent = 0,QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
+    //A supprimer
+    AbstractApi(int myId, QObject *parent = 0,QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
 
     //explicit AbstractApi(int myId, QObject *parent = 0, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
 
@@ -58,5 +66,8 @@ protected:
 
     //A utiliser lorsque l'ensemble des requêtes de notre api on été recuperer et enregistrer dans map_formulaire
     void finish(bool work);
+
+signals:
+    void send_info(QMap<QString, QString>);
 };
 #endif // ABSTRACTAPI_H

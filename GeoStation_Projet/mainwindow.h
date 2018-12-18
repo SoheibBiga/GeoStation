@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "ordonnanceur.h"
+#include <QMap>
 #include <QBoxLayout>
 
 namespace Ui {
@@ -18,6 +20,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+public slots:
+    void receive_info(QMap<QString,QString>);
+
 };
 
 #endif // MAINWINDOW_H

@@ -1,12 +1,9 @@
 #include "sncfapi.h"
 
-SncfApi::SncfApi(QObject *parent): AbstractApi(IdWidget(Sncf),parent)
+SncfApi::SncfApi(ordonnanceur *ord_, QObject *parent): AbstractApi(IdWidget(Sncf), ord_, parent)
 {
     //Crée les network acces managers
-    manager = new QNetworkAccessManager(parent);
     manager_prochain_depart = new QNetworkAccessManager(parent);
-
-    map_formulaire = new QMap<QString, QString>;
 
     //Attend la réponse des managers
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(result_liste_gare(QNetworkReply*)));
@@ -93,6 +90,7 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
             //QString string_color = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["display_informations"].toMap()["color"].toString();
             //QColor color_ligne("#"+string_color);
         }
+        emit send_info(*map_formulaire);
         finish(0);
     }
     t2 = QDateTime::currentMSecsSinceEpoch();
