@@ -11,7 +11,7 @@ apiavions::apiavions(QObject *parent) : AbstractApi(IdWidget(Avions),parent)
 
 
 
-    manager = new QNetworkAccessManager(this);
+    //manager = new QNetworkAccessManager(this);
     manager_singleplane = new QNetworkAccessManager(this);
 
     connect(manager, SIGNAL(finished(QNetworkReply* )), this, SLOT(replyFinished(QNetworkReply* )));
