@@ -33,7 +33,7 @@
 class apiavions : public AbstractApi
 {
 
-
+    Q_OBJECT
 public:
     apiavions(QObject *parent = 0);
     QNetworkReply* reply;
@@ -43,7 +43,6 @@ public:
 
 private:
 
-   QNetworkAccessManager *manager;
     QNetworkAccessManager *manager_singleplane;
     QList<QSslError> list;
 
@@ -64,6 +63,13 @@ private:
     QString API_key;
 
 
+    QString airport_code;
+    QString plane_code;
+    QString airport_name;
+    QString plane_model_name;
+
+
+
 private slots:
 
     void delay(int);
@@ -81,6 +87,10 @@ private slots:
     void getsingleplaneinfo(QNetworkReply*);
 
     void parseplanelist();
+
+    void readairports();
+    void readplane_type();
+
 
 };
 

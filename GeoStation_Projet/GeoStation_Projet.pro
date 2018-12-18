@@ -38,7 +38,8 @@ SOURCES += \
     tablewidget.cpp \
     vigicruesapi.cpp \
     meteoapi.cpp \
-    awidget.cpp
+    awidget.cpp \
+    nullapi.cpp
 
 
 HEADERS += \
@@ -56,9 +57,13 @@ HEADERS += \
     vigicruesapi.h \
     meteoapi.h \
     awidget.h \
-    iwidget.h
+    iwidget.h \
+    nullapi.h
 
 
 FORMS += \
         mainwindow.ui \
     tablewidget.ui
+
+RESOURCES += \
+    resources.qrc

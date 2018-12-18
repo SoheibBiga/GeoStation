@@ -12,14 +12,8 @@ class EvenementApi : public AbstractApi
 
 public:
     EvenementApi(QObject *parent = 0);
-
-    QNetworkReply *m_reply;
-    QNetworkRequest m_request;
-    QJsonDocument Myjson;
-
-    QDateTime dateTime1;
-    QDateTime dateTime_fin;
-    QDateTime dateTime_request;
+    bool isMap();
+    bool hasBigLayout();
     ~EvenementApi();
 
 private slots:
