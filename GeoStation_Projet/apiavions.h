@@ -1,11 +1,9 @@
 #ifndef APIAVIONS_H
 #define APIAVIONS_H
 
-
-
 #include "abstractapi.h"
 
-
+#include <QCoreApplication>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QUrl>
@@ -25,6 +23,9 @@
 #include <QFile>
 
 #include <QDateTime>
+//#include <QSqlDatabase>
+//#include <QSqlQuery>
+
 
 #include <QMainWindow>
 
@@ -34,32 +35,36 @@ class apiavions : public AbstractApi
 
 
 public:
-    apiavions(QObject *parent, int id);
-       QNetworkReply* reply;
-       QNetworkReply* reply_singleplane;
+    apiavions(QObject *parent = 0);
+    QNetworkReply* reply;
+    QNetworkReply* reply_singleplane;
 
     ~apiavions();
 
 private:
 
-    QNetworkAccessManager *manager;
+   QNetworkAccessManager *manager;
     QNetworkAccessManager *manager_singleplane;
     QList<QSslError> list;
 
-    QString lat_min = "44";
-    QString lat_max = "45";
+    QString lat_min = "43.5";
+    QString lat_max = "44";
     QString longi_min = "1";
     QString longi_max = "2";
-
     QString construct_URL;
     QString URL_singleplane;
     QString ICAO24;
     QString writesingleplanes;
+    //QString path_file_airports = (QDir::homePath() +  "/Documents/WILLIAM/Embarque/project/icao_world.xls");
 
     QDateTime timeBegin;
     QDateTime timeEnd;
+    QJsonArray list_planes_array;
 
- private slots:
+    QString API_key;
+
+
+private slots:
 
     void delay(int);
 
@@ -75,7 +80,7 @@ private:
 
     void getsingleplaneinfo(QNetworkReply*);
 
-
+    void parseplanelist();
 
 };
 

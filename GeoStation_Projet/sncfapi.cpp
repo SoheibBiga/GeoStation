@@ -34,9 +34,10 @@ void ApiSncf::button_clicked()
 
 void SncfApi::result_liste_gare(QNetworkReply* reply)
 {
-    if (reply->error() != QNetworkReply::NoError)
+    if (reply->error() != QNetworkReply::NoError){
+        finish(1);
         return;  // ...only in a blog post
-
+    }
     // Now parse this JSON according to your needs !
     //qDebug() << "json liste gare";
     QJsonDocument jsdoc;
@@ -92,7 +93,7 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
             //QString string_color = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["display_informations"].toMap()["color"].toString();
             //QColor color_ligne("#"+string_color);
         }
-        loop->exit(0);
+        finish(0);
     }
     t2 = QDateTime::currentMSecsSinceEpoch();
     //qDebug() << "Time elapsed " << (t2-t1);

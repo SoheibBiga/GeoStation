@@ -3,19 +3,20 @@
 
 #include "abstractapi.h"
 
-#include <QtNetwork>
-
 
 class PharmacieApi : public AbstractApi
 {
     Q_OBJECT
 
 public:
-    PharmacieApi(int id = 0, QObject *parent = 0);
+    PharmacieApi(QObject *parent = 0);
     ~PharmacieApi();
 
     QNetworkRequest request;
     QNetworkReply *reply;
+
+    bool isMap();
+    bool hasBigLayout();
 
 private slots:
     void listePharmacie(QNetworkReply *reply);

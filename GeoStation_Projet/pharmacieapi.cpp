@@ -1,8 +1,7 @@
 #include "pharmacieapi.h"
 
-#include <QNetworkAccessManager>
 
-PharmacieApi::PharmacieApi(int id, QObject *parent):AbstractApi(parent, id)
+PharmacieApi::PharmacieApi(QObject *parent): AbstractApi(IdWidget(Pharmacie),parent)
 {
     manager = new QNetworkAccessManager(parent);
 
@@ -57,4 +56,14 @@ void PharmacieApi::slotError(QNetworkReply::NetworkError)
 void PharmacieApi::slotSslErrors(QList<QSslError>)
 {
 
+}
+
+bool PharmacieApi::isMap()
+{
+    return true;
+}
+
+bool PharmacieApi::hasBigLayout()
+{
+    return false;
 }
