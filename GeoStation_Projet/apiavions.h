@@ -33,7 +33,7 @@
 class apiavions : public AbstractApi
 {
 
-
+    Q_OBJECT
 public:
     apiavions(QObject *parent = 0);
     QNetworkReply* reply;
@@ -43,7 +43,7 @@ public:
 
 private:
 
-   QNetworkAccessManager *manager;
+    //QNetworkAccessManager *manager;
     QNetworkAccessManager *manager_singleplane;
     QList<QSslError> list;
 
