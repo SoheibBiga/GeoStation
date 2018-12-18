@@ -2,7 +2,7 @@
 #include "ui_sncfwidget.h"
 
 sncfwidget::sncfwidget(QWidget *parent) :
-    QWidget(parent),
+    AWidget(parent),
     ui(new Ui::sncfwidget)
 {
     ui->setupUi(this);
@@ -15,5 +15,5 @@ sncfwidget::~sncfwidget()
 }
 
 void sncfwidget::receive_info(QMap<QString, QString> map_formulaire){
-    //refresh(map_formulaire);
+    ui->tableWidget->refresh(map_formulaire);
 }

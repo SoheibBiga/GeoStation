@@ -1,32 +1,32 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+//#ifndef MAINWINDOW_H
+//#define MAINWINDOW_H
 
-#include <QMainWindow>
-#include "ordonnanceur.h"
-#include <QMap>
-#include <QBoxLayout>
-#include <QStackedWidget>
-#include "awidget.h"
-#include "sncfwidget.h"
+//#include <QMainWindow>
+//#include "ordonnanceur.h"
+//#include <QMap>
+//#include <QBoxLayout>
+//#include <QStackedWidget>
+//#include "awidget.h"
+//#include "sncfwidget.h"
 
-namespace Ui {
-class MainWindow;
-}
+//namespace Ui {
+//class MainWindow;
+//}
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
+//class MainWindow : public QMainWindow
+//{
+//    Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+//public:
+//    explicit MainWindow(QWidget *parent = 0);
+//    ~MainWindow();
 
-private:
-    Ui::MainWindow *ui;
+//private:
+//    Ui::MainWindow *ui;
 
-public slots:
-    void receive_info(QMap<QString,QString>);
+//public slots:
+//    void receive_info(QMap<QString,QString>);
 
-};
+//};
 
-#endif // MAINWINDOW_H
+//#endif // MAINWINDOW_H

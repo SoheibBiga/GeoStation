@@ -35,13 +35,15 @@ SOURCES += \
     satelliteapi.cpp \
     borneelectriqueapi.cpp \
     ordonnanceur.cpp \
-    tablewidget.cpp \
     vigicruesapi.cpp \
     meteoapi.cpp \
     awidget.cpp \
     nullapi.cpp \
     sncfwidget.cpp \
-    cherchephotos.cpp
+    cherchephotos.cpp \
+    mmainwindow.cpp \
+    mozaic.cpp \
+    tableDisplay.cpp
 
 
 HEADERS += \
@@ -55,19 +57,22 @@ HEADERS += \
     satelliteapi.h \
     borneelectriqueapi.h \
     ordonnanceur.h \
-    tablewidget.h \
     vigicruesapi.h \
     meteoapi.h \
     awidget.h \
     nullapi.h \
     sncfwidget.h \
-    cherchephotos.h
+    cherchephotos.h \
+    mmainwindow.h \
+    mozaic.h \
+    tableDisplay.h
 
 
 FORMS += \
         mainwindow.ui \
     tablewidget.ui \
     sncfwidget.ui
+
 
 RESOURCES += \
     resources.qrc

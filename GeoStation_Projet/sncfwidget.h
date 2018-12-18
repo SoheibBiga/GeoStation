@@ -1,14 +1,14 @@
 #ifndef SNCFWIDGET_H
 #define SNCFWIDGET_H
 
-#include <QWidget>
+#include "awidget.h"
 #include <QMap>
 
 namespace Ui {
 class sncfwidget;
 }
 
-class sncfwidget : public QWidget
+class sncfwidget : public AWidget
 {
     Q_OBJECT
 

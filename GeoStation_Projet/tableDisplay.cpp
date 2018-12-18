@@ -1,4 +1,4 @@
-#include "tablewidget.h"
+#include "tableDisplay.h"
 #include "ui_tablewidget.h"
 
 TableWidget::TableWidget(QWidget *parent) :

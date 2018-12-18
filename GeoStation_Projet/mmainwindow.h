@@ -5,6 +5,11 @@
 # include <QWidget>
 # include <QTimer>
 # include "mozaic.h"
+# include "ordonnanceur.h"
+# include <QStackedWidget>
+# include "awidget.h"
+# include "sncfwidget.h"
+# include <QMap>
 
 class MainWindow : public QWidget
 {
