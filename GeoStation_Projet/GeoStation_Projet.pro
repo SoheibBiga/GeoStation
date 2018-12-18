@@ -37,7 +37,8 @@ SOURCES += \
     ordonnanceur.cpp \
     tablewidget.cpp \
     mainwindowghania.cpp \
-    vigicruesapi.cpp
+    vigicruesapi.cpp \
+    meteoapi.cpp
 
 
 HEADERS += \
@@ -53,7 +54,8 @@ HEADERS += \
     ordonnanceur.h \
     tablewidget.h \
     mainwindowghania.h \
-    vigicruesapi.h
+    vigicruesapi.h \
+    meteoapi.h
 
 
 FORMS += \
