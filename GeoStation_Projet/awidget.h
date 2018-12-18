@@ -22,7 +22,7 @@ class AWidget : public QWidget
 		explicit AWidget(QWidget* parent = 0);
 		~AWidget();
 
-//		virtual int					getId() const = 0;
+//		virtual int					getId() const;
 //		virtual QLayout*		getMainLayout() const;
 //		virtual QLayout*		getMozaicLayout() const;
 //		virtual bool				contentMap() const = 0;
