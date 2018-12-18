@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ord,SIGNAL(send_info(QMap<QString,QString>)),this,SLOT(receive_info(QMap<QString,QString>)));
     //connect(ord,SIGNAL(send_info(QMap<QString,QString>)),list_widget[ord->api_index->Id],SIGNAL(send_info(QMap<QString,QString>)));
 
-    ord->run();
+    //ord->run();
 }
 
 MainWindow::~MainWindow()

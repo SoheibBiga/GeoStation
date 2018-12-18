@@ -1,50 +1,50 @@
-#include "awidget.h"
+#include "awidget.hh"
 
-int	AWidget::currentId_ = 0;
+intAWidget::currentId_ = 0;
 
 AWidget::AWidget()
-	: QWidget(),
-		id_(currentId_++),
-		mainLayout_(),
-		mozaicLayout_()
+  : QWidget(),
+    id_(currentId_++),
+    mainLayout_(Q_NULLPTR),
+    mozaicLayout_(Q_NULLPTR)
 {}
 
 AWidget::AWidget(QWidget* parent)
-	: QWidget(parent),
-		id_(currentId_++),
-		mainLayout_(),
-		mozaicLayout_()
+  : QWidget(parent),
+    id_(currentId_++),
+    mainLayout_(Q_NULLPTR),
+    mozaicLayout_(Q_NULLPTR)
 {}
 
 AWidget::~AWidget()
 {}
 
 AWidget::AWidget(AWidget const& other)
-	: QWidget(),
-		id_(currentId_++),
-		mainLayout_(),
-		mozaicLayout_()
+  : QWidget(),
+    id_(currentId_++),
+    mainLayout_(Q_NULLPTR),
+    mozaicLayout_(Q_NULLPTR)
 {
-	(void)other;
+  (void)other;
 }
 
-AWidget&			AWidget::operator=(AWidget const& other)
+AWidget&AWidget::operator=(AWidget const& other)
 {
-	(void)other;
-	return (*this);
+  (void)other;
+  return (*this);
 }
 
-/*int						AWidget::getId() const
+intAWidget::getId() const
 {
-	return (id_);
+  return (id_);
 }
 
-QLayout*			AWidget::getMainLayout() const
+QLayout*AWidget::getMainLayout() const
 {
-	return (mainLayout_);
+  return (mainLayout_);
 }
 
-QLayout*			AWidget::getMozaicLayout() const
+QLayout*AWidget::getMozaicLayout() const
 {
-	return (mozaicLayout_);
-}*/
+  return (mozaicLayout_);
+}

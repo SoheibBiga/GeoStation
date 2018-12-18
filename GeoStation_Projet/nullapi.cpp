@@ -1,6 +1,6 @@
 #include "nullapi.h"
 
-nullapi::nullapi(ordonnanceur *ord_, QObject *parent): AbstractApi(IdWidget(Sncf), ord_, parent)
+nullapi::nullapi(ordonnanceur *ord_, QObject *parent): AbstractApi(IdWidget(0), ord_, parent)
 {
 
 }
