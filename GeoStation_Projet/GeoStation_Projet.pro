@@ -43,7 +43,8 @@ SOURCES += \
     mmainwindow.cpp \
     mozaic.cpp \
     tableauwidget.cpp \
-    geolocalisationapi.cpp
+    geolocalisationapi.cpp \
+    pokemap.cpp \
 
 
 HEADERS += \
@@ -65,7 +66,8 @@ HEADERS += \
     mmainwindow.h \
     mozaic.h \
     tableauwidget.h \
-    geolocalisationapi.h
+    geolocalisationapi.h \
+    pokemap.h \
 
 
 FORMS += \
