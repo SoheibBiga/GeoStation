@@ -72,6 +72,8 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
 
 
      }
+    emit send_info(*map_formulaire);
+    finish(0);
 }
 
 //gérer les erreurs
