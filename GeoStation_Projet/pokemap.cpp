@@ -42,7 +42,7 @@ void    PokeMap::get_pixmap(QNetworkReply *reply)
     }
 }
 
-void    PokeMap::ajouterMarqueur(QList<QVector2D> coord)
+void    PokeMap::ajouterMarqueur(QList<QVector2D> coord, QString iconURL)
 {
     if (locations_set)
         url += "||";
@@ -53,11 +53,15 @@ void    PokeMap::ajouterMarqueur(QList<QVector2D> coord)
     {
         url += QString::number(static_cast<double>(it->x())) + "," + QString::number(static_cast<double>(it->y()));
         if (it + 1 < coord.end())
+        {
+            if (iconURL.size() != 0)
+                url += "|" + iconURL;
             url += "||";
+        }
     }
 }
 
-void    PokeMap::ajouterMarqueur(QList<QStringList> coord)
+void    PokeMap::ajouterMarqueur(QList<QStringList> coord, QString iconURL)
 {
     if (locations_set)
         url += "||";
@@ -68,11 +72,15 @@ void    PokeMap::ajouterMarqueur(QList<QStringList> coord)
     {
         url += it->at(0) + "," + it->at(1);
         if (it + 1 < coord.end())
+        {
+            if (iconURL.size() != 0)
+                url += "|" + iconURL;
             url += "||";
+        }
     }
 }
 
-void    PokeMap::ajouterMarqueur(QString latitude, QString longitude)
+void    PokeMap::ajouterMarqueur(QString latitude, QString longitude, QString iconURL)
 {
     if (locations_set)
         url += "||";
@@ -80,9 +88,11 @@ void    PokeMap::ajouterMarqueur(QString latitude, QString longitude)
         locations_set = true;
     }
     url += latitude + "," + longitude;
+    if (iconURL.size() != 0)
+        url += "|" + iconURL;
 }
 
-void    PokeMap::ajouterMarqueur(double latitude, double longitude)
+void    PokeMap::ajouterMarqueur(double latitude, double longitude, QString iconURL)
 {
     if (locations_set)
         url += "||";
@@ -90,5 +100,7 @@ void    PokeMap::ajouterMarqueur(double latitude, double longitude)
         locations_set = true;
     }
     url += QString::number(latitude) + "," + QString::number(longitude);
+    if (iconURL.size() != 0)
+        url += "|" + iconURL;
 }
 
