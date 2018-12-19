@@ -9,6 +9,7 @@
 # include <QStackedWidget>
 # include "awidget.h"
 # include "sncfwidget.h"
+# include "tableauwidget.h"
 # include <QMap>
 
 class MainWindow : public QWidget
