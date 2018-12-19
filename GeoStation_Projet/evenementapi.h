@@ -11,7 +11,7 @@ class EvenementApi : public AbstractApi
     Q_OBJECT
 
 public:
-    EvenementApi(QObject *parent = 0);
+    EvenementApi(ordonnanceur *ord_, QObject *parent = 0);
     bool isMap();
     bool hasBigLayout();
     ~EvenementApi();
