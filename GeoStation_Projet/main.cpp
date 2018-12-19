@@ -4,10 +4,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
     MainWindow w;
     w.show();
 
