@@ -43,7 +43,9 @@ SOURCES += \
     mmainwindow.cpp \
     mozaic.cpp \
     tableauwidget.cpp \
-    geolocalisationapi.cpp
+    geolocalisationapi.cpp \
+    pokemap.cpp \
+    evenementwidget.cpp
 
 
 HEADERS += \
@@ -65,13 +67,16 @@ HEADERS += \
     mmainwindow.h \
     mozaic.h \
     tableauwidget.h \
-    geolocalisationapi.h
+    geolocalisationapi.h \
+    pokemap.h \
+    evenementwidget.h
 
 
 FORMS += \
         mainwindow.ui \
     sncfwidget.ui \
-    tableauwidget.ui
+    tableauwidget.ui \
+    evenementwidget.ui
 
 
 RESOURCES += \
