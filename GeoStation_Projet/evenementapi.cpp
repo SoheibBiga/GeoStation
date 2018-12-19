@@ -15,7 +15,7 @@ EvenementApi::EvenementApi(ordonnanceur *ord_,QObject *parent): AbstractApi(IdWi
   radius = 5000;
 
   QString req("https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&sort=date_start&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&geofilter.distance="+QString::number(latitude)+"%2C+"+QString::number(longitude)+"%2C+"+QString::number(radius));
-  qDebug()<<req;
+  //qDebug()<<req;
   m_request.setUrl(QUrl(req));
   m_reply = manager->get(m_request);
 
