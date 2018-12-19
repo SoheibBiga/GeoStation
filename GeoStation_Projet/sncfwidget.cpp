@@ -1,54 +1,49 @@
 #include "sncfwidget.h"
-#include "ui_sncfwidget.h"
 
-sncfwidget::sncfwidget(QWidget *parent) :
-    AWidget(parent),
-    ui(new Ui::sncfwidget)
+SncfWidget::SncfWidget(QWidget *parent) :
+    AWidget(parent)
 {
-    ui->setupUi(this);
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),this,SLOT(receive_info(QMap<QString,QString>)));
+    sncf_mozaic_widget = new SncfMozaicWidget(this);
+    mozaicLayout_ = new QHBoxLayout(this);
+    mozaicLayout_->addWidget(sncf_mozaic_widget);
+    //connect(this,SIGNAL(send_info(QMap<QString,QString>)),sncf_mozaic_widget,SLOT(send_info(QMap<QString,QString>)));
 }
 
-sncfwidget::~sncfwidget()
+SncfWidget::~SncfWidget()
 {
-    delete ui;
 }
 
-void sncfwidget::receive_info(QMap<QString, QString> map_formulaire){
-    ui->tableWidget->refresh(map_formulaire);
-}
-
-bool				sncfwidget::contentMap() const
+bool				SncfWidget::contentMap() const
 {
     return (true);
 }
 
-bool				sncfwidget::hasMozaicLayout() const
+bool				SncfWidget::hasMozaicLayout() const
 {
     return (true);
 }
 
-bool				sncfwidget::refresh() const
+bool				SncfWidget::refresh() const
 {
     return (true);
 }
 
-bool				sncfwidget::init()
+bool				SncfWidget::init()
 {
     return true;
 }
 
-bool				sncfwidget::run()
+bool				SncfWidget::run()
 {
     qDebug() << "[ DBG ] : run";
     return (true);
 }
 
-bool				sncfwidget::end()
+bool				SncfWidget::end()
 {
     return (true);
 }
 
-void				sncfwidget::addWidget(QWidget* widget)
+void				SncfWidget::addWidget(QWidget* widget)
 {
 }

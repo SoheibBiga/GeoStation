@@ -1,6 +1,6 @@
 #include <QDebug>
 
-#include "mmainwindow.h"
+#include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QWidget(parent),
@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget* parent)
     QStackedWidget *widgets = new QStackedWidget(this);
 
 //    //Remplacer les objets sncf par les vtres
-    sncfwidget *sncf_widget = new sncfwidget(widgets);
+    AWidget *sncf_widget = new SncfWidget(widgets);
 
     widgets->addWidget(sncf_widget);
     AbstractApi *api= new SncfApi(ord,this);
