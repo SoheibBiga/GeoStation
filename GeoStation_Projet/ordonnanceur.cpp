@@ -23,11 +23,11 @@ void ordonnanceur::run(){
             break;
         }
 
-        case IdWidget(Satellite):
-        {
-            api_index = new SatelliteApi(this);
-            break;
-        }
+//        case IdWidget(Satellite):
+//        {
+//            api_index = new SatelliteApi(this);
+//            break;
+//        }
             /*case IdWidget(Evenement):
         {api_index = new EvenementApi(this);
             break;}

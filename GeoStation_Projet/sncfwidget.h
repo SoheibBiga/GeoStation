@@ -2,7 +2,6 @@
 #define SNCFWIDGET_H
 
 #include "awidget.h"
-#include <QMap>
 
 namespace Ui {
 class sncfwidget;
@@ -15,6 +14,14 @@ class sncfwidget : public AWidget
 public:
     explicit sncfwidget(QWidget *parent = 0);
     ~sncfwidget();
+
+    virtual bool				contentMap() const;
+    virtual bool				hasMozaicLayout() const;
+    virtual bool				refresh() const;
+    virtual bool				init();
+    virtual bool				run();
+    virtual bool				end();
+    virtual void				addWidget(QWidget* widget);
 
 private:
     Ui::sncfwidget *ui;

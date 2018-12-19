@@ -26,6 +26,9 @@ class Mozaic : public AWidget
 		virtual bool				run();
 		virtual bool				end();
 		virtual void				addWidget(QWidget* widget);
+
+private slots:
+    void receive_info(QMap<QString,QString>);
 };
 
 #endif // MOZAIC_H_

@@ -17,3 +17,38 @@ sncfwidget::~sncfwidget()
 void sncfwidget::receive_info(QMap<QString, QString> map_formulaire){
     ui->tableWidget->refresh(map_formulaire);
 }
+
+bool				sncfwidget::contentMap() const
+{
+    return (true);
+}
+
+bool				sncfwidget::hasMozaicLayout() const
+{
+    return (true);
+}
+
+bool				sncfwidget::refresh() const
+{
+    return (true);
+}
+
+bool				sncfwidget::init()
+{
+    return true;
+}
+
+bool				sncfwidget::run()
+{
+    qDebug() << "[ DBG ] : run";
+    return (true);
+}
+
+bool				sncfwidget::end()
+{
+    return (true);
+}
+
+void				sncfwidget::addWidget(QWidget* widget)
+{
+}

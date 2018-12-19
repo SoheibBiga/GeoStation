@@ -1,5 +1,6 @@
 #include "tableauwidget.h"
 #include "ui_tableauwidget.h"
+#include <QDebug>
 
 tableauwidget::tableauwidget(QWidget *parent) :
     QWidget(parent),
@@ -21,13 +22,12 @@ bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
     int nb_row = map_formulaire.keys().size();
     ui->tableWidget->setRowCount(nb_row);
     ui->tableWidget->setColumnCount(1);
-    int i = 0, j = 0;
+    int i = 0;
     for(i = 0; i < nb_row; i++){
-        for(j = 0; j < nb_row; j++){
+            //qDebug() << map_formulaire.keys()[i] << "  :  " << map_formulaire.value(map_formulaire.keys()[i]) << endl;
             vlabels << map_formulaire.keys()[i];
             item ->setText(map_formulaire.value(map_formulaire.keys()[i]));
-            ui->tableWidget->setItem(i, j, item);
-        }
+            ui->tableWidget->setItem(i, 1, item);
     }
     return true;
 }

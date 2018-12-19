@@ -2,6 +2,8 @@
 # define			AWIDGET_H_
 
 # include <QWidget>
+# include <QMap>
+# include <QDebug>
 
 /*
  **	AWidget::mainLayout_ and AWidget::mozaicLayout_ to instanciate in the
@@ -32,13 +34,16 @@ class AWidget : public QWidget
 		virtual int					getId() const;
 		virtual QLayout*		getMainLayout() const;
 		virtual QLayout*		getMozaicLayout() const;
-//		virtual bool				contentMap() const = 0;
-//		virtual bool				hasMozaicLayout() const = 0;
-//		virtual bool				refresh() const = 0;
-//		virtual bool				init() = 0;
-//		virtual bool				run() = 0;
-//		virtual bool				end() = 0;
-//		virtual void				addWidget(QWidget* widget) = 0;
+        virtual bool				contentMap() const = 0;
+        virtual bool				hasMozaicLayout() const = 0;
+        virtual bool				refresh() const = 0;
+        virtual bool				init() = 0;
+        virtual bool				run() = 0;
+        virtual bool				end() = 0;
+        virtual void				addWidget(QWidget* widget) = 0;
+
+
+
 };
 
 #endif // AWIDGET_H_

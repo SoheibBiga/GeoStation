@@ -91,5 +91,10 @@ void				Mozaic::addWidget(QWidget* widget)
 	if (vLayout1_->count() > vLayout2_->count())
 		vLayout2_->addWidget(widget);
 	else
-		vLayout1_->addWidget(widget);
+        vLayout1_->addWidget(widget);
+}
+
+void Mozaic::receive_info(QMap<QString, QString>)
+{
+
 }

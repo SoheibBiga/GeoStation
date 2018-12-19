@@ -25,7 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
     abstractapi.cpp \
     evenementapi.cpp \
     apiavions.cpp \
@@ -47,7 +46,6 @@ SOURCES += \
 
 
 HEADERS += \
-        mainwindow.h \
     abstractapi.h \    
     evenementapi.h \
     apiavions.h \
