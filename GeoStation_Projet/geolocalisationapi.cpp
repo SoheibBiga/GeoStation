@@ -27,6 +27,7 @@ void    GeolocalisationApi::get_response(QNetworkReply *reply)
         map_formulaire->insert("codePostal", base["postalCode"].toString());
 
         emit send_info(*map_formulaire);
+        finish(true);
     }
 }
 
