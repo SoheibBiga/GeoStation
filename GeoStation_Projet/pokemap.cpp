@@ -48,7 +48,11 @@ void    PokeMap::get_pixmap(QNetworkReply *reply)
 
 void    PokeMap::ajouterMarqueur(QList<QVector2D> coord)
 {
-
+    if (locations_set)
+        url += "||";
+    else {
+        locations_set = true;
+    }
     for(QList<QVector2D>::iterator it = coord.begin(); it < coord.end(); it++)
     {
         url += QString::number(static_cast<double>(it->x())) + "," + QString::number(static_cast<double>(it->y()));
@@ -59,7 +63,11 @@ void    PokeMap::ajouterMarqueur(QList<QVector2D> coord)
 
 void    PokeMap::ajouterMarqueur(QList<QStringList> coord)
 {
-
+    if (locations_set)
+        url += "||";
+    else {
+        locations_set = true;
+    }
     for(QList<QStringList>::iterator it = coord.begin(); it < coord.end(); it++)
     {
         url += it->at(0) + "," + it->at(1);
@@ -70,11 +78,21 @@ void    PokeMap::ajouterMarqueur(QList<QStringList> coord)
 
 void    PokeMap::ajouterMarqueur(QString latitude, QString longitude)
 {
-        url += latitude + "," + longitude;
+    if (locations_set)
+        url += "||";
+    else {
+        locations_set = true;
+    }
+    url += latitude + "," + longitude;
 }
 
 void    PokeMap::ajouterMarqueur(double latitude, double longitude)
 {
-        url += QString::number(latitude) + "," + QString::number(longitude);
+    if (locations_set)
+        url += "||";
+    else {
+        locations_set = true;
+    }
+    url += QString::number(latitude) + "," + QString::number(longitude);
 }
 

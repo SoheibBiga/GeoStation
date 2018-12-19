@@ -29,6 +29,7 @@ private:
     QPixmap *pix = new QPixmap;
     QString base_url = "https://www.mapquestapi.com/staticmap/v5/map?key=iGT3ydQS7XPt0LAjtbfk2LBioZCiUbOB&locations=";
     QString url = base_url;
+    bool locations_set = false;
 signals:
     void    get_label();
 private slots:
