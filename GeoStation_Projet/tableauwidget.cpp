@@ -17,10 +17,16 @@ bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
 {
     if(map_formulaire.keys().size() == 0) return false;
     QTableWidgetItem *item =new QTableWidgetItem();
+
     QStringList vlabels;
     int nb_row = map_formulaire.keys().size();
     ui->tableWidget->setRowCount(nb_row);
     ui->tableWidget->setColumnCount(1);
+    ui->tableWidget->horizontalHeader()->setVisible(false);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section {background-color:yellow}");
+
     int i = 0, j = 0;
     for(i = 0; i < nb_row; i++){
         for(j = 0; j < nb_row; j++){

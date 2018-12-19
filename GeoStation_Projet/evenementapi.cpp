@@ -1,7 +1,7 @@
 #include "evenementapi.h"
 
 
-EvenementApi::EvenementApi(QObject *parent): AbstractApi(IdWidget(Evenement),parent)
+EvenementApi::EvenementApi(ordonnanceur *ord_,QObject *parent): AbstractApi(IdWidget(Evenement),ord_,parent)
 {
   //manager
   manager = new QNetworkAccessManager (parent);
@@ -34,59 +34,44 @@ EvenementApi::~EvenementApi()
 
 void EvenementApi::reponseRecue(QNetworkReply *rep)
 {
-    qDebug()<< "reponseRecue";
-    QNetworkReply *m_reply;
-    m_reply={rep};
 
     QByteArray m_response = rep->readAll();
-    qDebug()<< "bytearry" << m_response.isEmpty() <<endl;
 
     QJsonDocument Myjson;
     Myjson = QJsonDocument::fromJson(m_response);
-    qDebug() << "mon json" << Myjson.isEmpty() <<endl;
 
     QString strJson(Myjson.toJson(QJsonDocument::Compact)); // Indented or Compact
-    qDebug() << "strJson" << strJson.isEmpty() <<endl;
-
-    //ui->textEdit->append(strJson);
 
     int i;
 
     int count = Myjson.object().toVariantMap()["records"].toJsonArray().count();
 
-    //ui->textEdit->clear();
-
     for (i = 0; i < count; i++)
       {
 
-        /*QString nhits = Myjson.object().toVariantMap()["nhits"].toString();
-          qDebug()<< "afficher nhits : nbr d'événement" << nhits <<endl*/;
-        qDebug()<< "title de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"]<<endl;
+        //qDebug()<< "title de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"]<<endl;
         QString title = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"].toString();
         map_formulaire->insert("Title", title);
 
-        qDebug()<< "description de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["description"]<<endl;
-        QString description = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"].toString();
+        //qDebug()<< "description de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["description"]<<endl;
+        QString description = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["description"].toString();
         map_formulaire->insert("Description", description);
 
-        qDebug()<< "address de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"]<<endl;
+        //qDebug()<< "address de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"]<<endl;
         QString address = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"].toString();
         map_formulaire->insert("Adresse", address);
 
-        qDebug()<< "space time info de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["space_time_info"]<<endl;
+        //qDebug()<< "space time info de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["space_time_info"]<<endl;
         QString space_time_info = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["space_time_info"].toString();
         map_formulaire->insert("Lieu_Date_Heure", space_time_info);
 
-        qDebug()<< "tarif de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["pricing_info"]<<endl;
+        //qDebug()<< "tarif de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["pricing_info"]<<endl;
         QString pricing_info = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["princing_info"].toString();
         map_formulaire->insert("Tarif", pricing_info);
 
-        //qDebug()<< "image de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["image"]<<endl;
-        //QString Image = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["image"].toString();
-        //map_formulaire->insert("Date",space_time_info);
 
-        //ui->textEdit->append ("énvénement => \n" + nhits + "\n" + "Titre => \n"+  title + "\n" + "Addresse => \n"+ address + " \n" + "Date => \n" + space_time_info + " \n" + "Tarif => \n" + pricing_info + "\n " + "Image => \n" + image + "\n");
-       }
+
+     }
 }
 
 //gérer les erreurs
