@@ -8,24 +8,21 @@ PokeMap::PokeMap(QWidget *parent) : QWidget(parent)
 PokeMap::~PokeMap()
 {
     delete manager;
-    delete pix;
-
 }
 
 void    PokeMap::afficherMap()
 {
     QNetworkAccessManager *manag = new QNetworkAccessManager(this);
-    connect(manag,&QNetworkAccessManager::finished, this, &PokeMap::get_pixmap, Qt::UniqueConnection);
 
-    url.append(QString("&size=") + QString::number(this->parentWidget()->size().width()) + "," + QString::number(this->parentWidget()->size().height()) +QString("@2x"));
+    connect(manag,&QNetworkAccessManager::finished, this, &PokeMap::get_pixmap, Qt::UniqueConnection);
+    url.append(QString("&size=") + QString::number(this->parentWidget()->size().width()) + "," + QString::number(this->parentWidget()->size().height()) + QString("@2x"));
     manag->get(QNetworkRequest(QUrl(url)));
 
-    connect(this, &PokeMap::get_label, [=] {
+    connect(this, &PokeMap::get_label, [=]
+    {
         url.clear();
         url.append(base_url);
         dynamic_cast<QLabel*>(this->parent())->setPixmap(pix->scaled(this->parentWidget()->size(), Qt::KeepAspectRatio));
-        //dynamic_cast<QLabel*>(this->parent())->setScaledContents(true);
-
     });
 }
 
@@ -42,7 +39,6 @@ void    PokeMap::get_pixmap(QNetworkReply *reply)
             pix->loadFromData(bytes);
             emit get_label();
         }
-
     }
 }
 
