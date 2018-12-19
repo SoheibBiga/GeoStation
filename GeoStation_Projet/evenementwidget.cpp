@@ -6,6 +6,8 @@ evenementwidget::evenementwidget(QWidget *parent) :
     ui(new Ui::evenementwidget)
 {
     ui->setupUi(this);
+    connect(this,SIGNAL(send_info(QMap<QString,QString>)),this,SLOT(receive_info(QMap<QString,QString>)));
+
 }
 
 evenementwidget::~evenementwidget()
