@@ -2,18 +2,15 @@
 #define SNCFWIDGET_H
 
 #include "awidget.h"
+#include "sncfmozaicwidget.h"
 
-namespace Ui {
-class sncfwidget;
-}
-
-class sncfwidget : public AWidget
+class SncfWidget : public AWidget
 {
     Q_OBJECT
 
 public:
-    explicit sncfwidget(QWidget *parent = 0);
-    ~sncfwidget();
+    explicit SncfWidget(QWidget *parent = 0);
+    ~SncfWidget();
 
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
@@ -23,14 +20,12 @@ public:
     virtual bool				end();
     virtual void				addWidget(QWidget* widget);
 
-private:
-    Ui::sncfwidget *ui;
+    SncfMozaicWidget *sncf_mozaic_widget;
+
 
 signals:
     void send_info(QMap<QString,QString>);
-
-private slots:
-    void receive_info(QMap<QString,QString>);
 };
 
 #endif // SNCFWIDGET_H
+

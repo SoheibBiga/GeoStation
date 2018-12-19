@@ -38,14 +38,15 @@ SOURCES += \
     meteoapi.cpp \
     awidget.cpp \
     nullapi.cpp \
-    sncfwidget.cpp \
     cherchephotos.cpp \
-    mmainwindow.cpp \
     mozaic.cpp \
     tableauwidget.cpp \
     geolocalisationapi.cpp \
     pokemap.cpp \
-    evenementwidget.cpp
+    evenementwidget.cpp \
+    sncfwidget.cpp \
+    sncfmozaicwidget.cpp \
+    mainwindow.cpp
 
 
 HEADERS += \
@@ -62,21 +63,22 @@ HEADERS += \
     meteoapi.h \
     awidget.h \
     nullapi.h \
-    sncfwidget.h \
     cherchephotos.h \
-    mmainwindow.h \
     mozaic.h \
     tableauwidget.h \
     geolocalisationapi.h \
     pokemap.h \
-    evenementwidget.h
+    evenementwidget.h \
+    sncfwidget.h \
+    sncfmozaicwidget.h \
+    mainwindow.h
 
 
 FORMS += \
         mainwindow.ui \
-    sncfwidget.ui \
     tableauwidget.ui \
-    evenementwidget.ui
+    evenementwidget.ui \
+    sncfmozaicwidget.ui
 
 
 RESOURCES += \
