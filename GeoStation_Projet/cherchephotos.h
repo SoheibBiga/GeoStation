@@ -55,6 +55,8 @@ private:
     QEventLoop loop_json;
     QEventLoop loop_photo;
     bool photoChargee = false ;
+    bool jsonOK ;
+    int nbrImages ;
 
 private slots:
     void jsonFinished(QNetworkReply*);
