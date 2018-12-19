@@ -164,7 +164,7 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
         break;
     }
     emit send_info(*map_formulaire);
-    finish(0);
+    finish(1);
 }
 bool SatelliteApi::isMap(){
     return true;

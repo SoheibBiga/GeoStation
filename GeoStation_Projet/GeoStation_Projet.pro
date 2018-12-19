@@ -43,7 +43,11 @@ SOURCES += \
     mmainwindow.cpp \
     mozaic.cpp \
     tableauwidget.cpp \
-    pharmaciewidget.cpp
+    pharmaciewidget.cpp\
+    geolocalisationapi.cpp \
+    pokemap.cpp \
+    evenementwidget.cpp
+
 
 
 HEADERS += \
@@ -65,14 +69,18 @@ HEADERS += \
     mmainwindow.h \
     mozaic.h \
     tableauwidget.h \
-    pharmaciewidget.h
+    pharmaciewidget.h\
+    geolocalisationapi.h \
+    pokemap.h \
+    evenementwidget.h
 
 
 FORMS += \
         mainwindow.ui \
     sncfwidget.ui \
     tableauwidget.ui \
-    pharmaciewidget.ui
+    pharmaciewidget.ui\
+    evenementwidget.ui
 
 
 RESOURCES += \
