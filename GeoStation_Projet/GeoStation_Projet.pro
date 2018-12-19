@@ -42,7 +42,8 @@ SOURCES += \
     cherchephotos.cpp \
     mmainwindow.cpp \
     mozaic.cpp \
-    tableauwidget.cpp
+    tableauwidget.cpp \
+    pharmaciewidget.cpp
 
 
 HEADERS += \
@@ -63,13 +64,15 @@ HEADERS += \
     cherchephotos.h \
     mmainwindow.h \
     mozaic.h \
-    tableauwidget.h
+    tableauwidget.h \
+    pharmaciewidget.h
 
 
 FORMS += \
         mainwindow.ui \
     sncfwidget.ui \
-    tableauwidget.ui
+    tableauwidget.ui \
+    pharmaciewidget.ui
 
 
 RESOURCES += \
