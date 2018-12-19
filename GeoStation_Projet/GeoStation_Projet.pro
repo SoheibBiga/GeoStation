@@ -42,7 +42,8 @@ SOURCES += \
     cherchephotos.cpp \
     mmainwindow.cpp \
     mozaic.cpp \
-    tableauwidget.cpp
+    tableauwidget.cpp \
+    geolocalisationapi.cpp
 
 
 HEADERS += \
@@ -63,7 +64,8 @@ HEADERS += \
     cherchephotos.h \
     mmainwindow.h \
     mozaic.h \
-    tableauwidget.h
+    tableauwidget.h \
+    geolocalisationapi.h
 
 
 FORMS += \
