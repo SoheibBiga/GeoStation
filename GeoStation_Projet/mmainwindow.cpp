@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget* parent)
     ordonnanceur *ord = new ordonnanceur();;
     QStackedWidget *widgets = new QStackedWidget(this);
 
-    //Remplacer les objets sncf par les vtres
+//    //Remplacer les objets sncf par les vtres
     sncfwidget *sncf_widget = new sncfwidget(widgets);
 
     widgets->addWidget(sncf_widget);
