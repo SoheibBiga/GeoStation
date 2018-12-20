@@ -14,6 +14,7 @@ class TableauPanoramicWidget : public QWidget
 public:
     explicit TableauPanoramicWidget(QWidget *parent = nullptr);
     ~TableauPanoramicWidget();
+    bool refresh(QMap<QString, QString> map_formulaire);
 
 private:
     Ui::TableauPanoramicWidget *ui;
