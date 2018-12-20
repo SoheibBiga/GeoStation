@@ -49,6 +49,7 @@ SOURCES += \
     mainwindow.cpp \
     museesapi.cpp \
     museesmozaicwidget.cpp \
+    museesmainwidget.cpp \
     museeswidget.cpp \
     evenementmozaicwidget.cpp \
     evenementwidget.cpp \
@@ -81,6 +82,7 @@ HEADERS += \
     mainwindow.h \
     museesapi.h \
     museesmozaicwidget.h \
+    museesmainwidget.h \
     museeswidget.h \
     evenementmozaicwidget.h \
     evenementwidget.h \

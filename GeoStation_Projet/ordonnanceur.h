@@ -6,6 +6,7 @@
 #include "pharmacieapi.h"
 #include "evenementapi.h"
 #include "sncfapi.h"
+#include "museesapi.h"
 #include "evenementapi.h"
 #include "borneelectriqueapi.h"
 #include "satelliteapi.h"

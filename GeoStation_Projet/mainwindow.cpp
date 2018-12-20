@@ -10,12 +10,16 @@ MainWindow::MainWindow(QWidget* parent)
     ordonnanceur *ord = new ordonnanceur();;
     QStackedWidget *widgets = new QStackedWidget(this);
 
-//    //Remplacer les objets sncf par les vtres
-    AWidget *sncf_widget = new SncfWidget(widgets);
+//    //Remplacer les objets sncf par les vôtres
+    //AWidget *sncf_widget = new SncfWidget(widgets);
+    AWidget *musees_widget = new MuseesWidget(widgets);
 
-    widgets->addWidget(sncf_widget);
-    AbstractApi *api= new SncfApi(ord,this);
-    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),sncf_widget,SIGNAL(send_info(QMap<QString,QString>)));
+    //widgets->addWidget(sncf_widget);
+    widgets->addWidget(musees_widget);
+    //AbstractApi *api= new SncfApi(ord,this);
+    AbstractApi *api= new MuseesApi(ord,this);
+    //connect(ord,SIGNAL(send_info(QMap<QString,QString>)),sncf_widget,SIGNAL(send_info(QMap<QString,QString>)));
+    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),musees_widget,SIGNAL(send_info(QMap<QString,QString>)));
 
 
 
