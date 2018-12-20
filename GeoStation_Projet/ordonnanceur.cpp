@@ -17,10 +17,16 @@ void ordonnanceur::run(){
 
         switch(api_index->Id){
 
-        if(api_index->Id==IdWidget(Satellite)) api_index->Id=IdWidget(Sncf);
+        /*if(api_index->Id==IdWidget(Satellite)) api_index->Id=IdWidget(Sncf);
         case IdWidget(Sncf):
         {
             api_index = new SncfApi(this);
+            break;
+        }*/
+        if(api_index->Id==IdWidget(Satellite)) api_index->Id=IdWidget(Musee);
+        case IdWidget(Musee):
+        {
+            api_index = new MuseesApi(this);
             break;
         }
 

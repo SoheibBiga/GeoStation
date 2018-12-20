@@ -1,19 +1,15 @@
 #ifndef EVENEMENTWIDGET_H
 #define EVENEMENTWIDGET_H
+
 #include "awidget.h"
+#include "evenementmozaicwidget.h"
 
-namespace Ui {
-class evenementwidget;
-}
-
-class evenementwidget : public AWidget
+class EvenementWidget : public AWidget
 {
-    Q_OBJECT
-
 public:
-    explicit evenementwidget(QWidget *parent = nullptr);
-    ~evenementwidget();
+    explicit EvenementWidget(QWidget *parent = 0);
 
+    ~EvenementWidget();
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
     virtual bool				refresh() const;
@@ -22,13 +18,11 @@ public:
     virtual bool				end();
     virtual void				addWidget(QWidget* widget);
 
-private:
-    Ui::evenementwidget *ui;
+    EvenementMozaicWidget *evenement_mozaic_widget;
+
 signals:
     void send_info(QMap<QString,QString>);
 
-private slots:
-    void receive_info(QMap<QString,QString>);
 };
 
 #endif // EVENEMENTWIDGET_H

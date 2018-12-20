@@ -1,20 +1,19 @@
-#include "tableauwidget.h"
-#include "ui_tableauwidget.h"
-#include <QDebug>
+#include "tableaupanoramicwidget.h"
+#include "ui_tableaupanoramicwidget.h"
 
-tableauwidget::tableauwidget(QWidget *parent) :
+TableauPanoramicWidget::TableauPanoramicWidget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::tableauwidget)
+    ui(new Ui::TableauPanoramicWidget)
 {
     ui->setupUi(this);
 }
 
-tableauwidget::~tableauwidget()
+TableauPanoramicWidget::~TableauPanoramicWidget()
 {
     delete ui;
 }
 
-bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
+bool TableauPanoramicWidget::refresh(QMap<QString, QString> map_formulaire)
 {
     if(map_formulaire.keys().size() == 0) return false;
 
@@ -23,10 +22,8 @@ bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
     int nb_row = map_formulaire.keys().size();
     ui->tableWidget->setRowCount(nb_row);
 
-//    int nb_Column= map_formulaire.keys().size();
-//    ui->tableWidget->setColumnCount(nb_Column);
-
-    ui->tableWidget->setColumnCount(1);
+    int nb_Column= map_formulaire.keys().size();
+    ui->tableWidget->setColumnCount(nb_Column);
 
     ui->tableWidget->horizontalHeader()->setVisible(false);
     ui->tableWidget->verticalHeader()->setVisible(false);
@@ -44,9 +41,3 @@ bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
     }
     return true;
 }
-
-void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
-{
-    //qDebug() << map_ameliore["Tableau"].toList().at(0).toMap()["Direction"];
-}
-
