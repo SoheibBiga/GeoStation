@@ -117,3 +117,9 @@ QPixmap* CherchePhotos::getPhoto()
     return photo ;
 }
 
+
+
+
+bool CherchePhotos::isMap(){
+    return true;
+}
