@@ -18,7 +18,6 @@ public:
     virtual bool				init();
     virtual bool				run();
     virtual bool				end();
-    virtual void				addWidget(QWidget* widget);
 
     SncfMozaicWidget *sncf_mozaic_widget;
 

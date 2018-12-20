@@ -13,6 +13,7 @@
 # include "tableauwidget.h"
 # include <QMap>
 # include "evenementwidget.h"
+# include <sncfapi.h>
 
 class MainWindow : public QWidget
 {

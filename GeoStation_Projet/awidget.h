@@ -41,7 +41,7 @@ class AWidget : public QWidget
         virtual bool				init() = 0;
         virtual bool				run() = 0;
         virtual bool				end() = 0;
-        virtual void				addWidget(QWidget* widget) = 0;
+        virtual void				addWidget(QWidget* widget);
 
 signals:
     void send_info(QMap<QString,QString>);

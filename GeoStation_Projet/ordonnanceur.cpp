@@ -9,8 +9,7 @@ ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
 
 void ordonnanceur::run(){
     //api_index = new SncfApi(this);
-    int wait=1;
-    //while(wait){
+    //while(1){
         //if(api_index->Id==IdWidget(Sncf)) api_index->Id=IdWidget(Evenement);
         //else api_index->Id++;
         // api_index = new SncfApi(parent);

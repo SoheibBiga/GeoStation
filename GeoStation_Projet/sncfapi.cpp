@@ -87,10 +87,8 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
             date = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["stop_date_time"].toMap()["departure_date_time"].toString();
             affiche = ligne+" "+date[9]+date[10]+"H"+date[11]+date[12]+" Direction "+direction+"\n";
             element.insert("Direction",QVariant(direction));
-            add_list(element);
-            element.insert("Ligne",ligne);
-            add_list(element);
-            element.insert("Date",date);
+            element.insert("Ligne",QVariant(ligne));
+            element.insert("Date",QVariant(date));
             add_list(element);
             //QString string_color = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["display_informations"].toMap()["color"].toString();
             //QColor color_ligne("#"+string_color);

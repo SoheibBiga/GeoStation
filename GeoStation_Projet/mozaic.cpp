@@ -37,40 +37,7 @@ bool				Mozaic::init()
 	setLayout(hLayout_);
 	hLayout_->addLayout(vLayout1_);
 	hLayout_->addLayout(vLayout2_);
-
-
-//	qDebug() << "[ DBG ] : A";
-
-	int				i;
-	for (i = 0; i < 10; i++)
-		{
-			QWidget*			wid;
-			QLayout*			lay;
-
-//			qDebug() << "[ DBG ] : B";
-
-			wid = new QWidget();
-			lay = new QHBoxLayout();
-			wid->setStyleSheet("color : rgb(255, 255, 255);");
-			lay->addWidget(new QPushButton("a"));
-			wid->setLayout(lay);
-			vLayout1_->addWidget(wid);
-
-//			qDebug() << "[ DBG ] : C";
-
-			wid = new QWidget();
-			lay = new QHBoxLayout();
-			wid->setStyleSheet("color : rgb(0, 0, 0);");
-			lay->addWidget(new QPushButton("b"));
-			wid->setLayout(lay);
-			vLayout2_->addWidget(wid);
-
-//			qDebug() << "[ DBG ] : D";
-		}
-
-//	qDebug() << "[ DBG ] : E";
-
-	setStyleSheet("background-color : rgb(0, 255, 0);");
+    setStyleSheet("background-color : rgb(0, 255, 0);");
 
 	return (true);
 }
@@ -88,10 +55,10 @@ bool				Mozaic::end()
 
 void				Mozaic::addWidget(QWidget* widget)
 {
-	if (vLayout1_->count() > vLayout2_->count())
-		vLayout2_->addWidget(widget);
-	else
-        vLayout1_->addWidget(widget);
+    AWidget* wid;
+    wid = reinterpret_cast<AWidget*>(widget);
+    if(vLayout1_->count() > vLayout2_->count()) vLayout2_->addLayout(wid->getMozaicLayout());
+    else vLayout1_->addLayout(wid->getMozaicLayout());
 }
 
 void Mozaic::receive_info(QMap<QString, QString>)
