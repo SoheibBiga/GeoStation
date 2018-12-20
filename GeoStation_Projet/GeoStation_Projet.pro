@@ -50,7 +50,6 @@ SOURCES += \
     museeswidget.cpp \
     museesapi.cpp \
     evenementmozaicwidget.cpp \
-    evenementwidget_old.cpp \
     evenementwidget.cpp
 
 
@@ -81,7 +80,6 @@ HEADERS += \
     museeswidget.h \
     museesapi.h \
     evenementmozaicwidget.h \
-    evenementwidget_old.h \
     evenementwidget.h
 
 
@@ -91,8 +89,7 @@ FORMS += \
     pharmaciewidget.ui\
     sncfmozaicwidget.ui \
     museeswidget.ui \
-    evenementmozaicwidget.ui \
-    evenementwidget_old.ui
+    evenementmozaicwidget.ui
 
 
 RESOURCES += \

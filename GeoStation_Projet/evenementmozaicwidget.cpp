@@ -12,3 +12,7 @@ EvenementMozaicWidget::~EvenementMozaicWidget()
 {
     delete ui;
 }
+void EvenementMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
+{
+    ui->tableWidget->refresh(map_formulaire);
+}

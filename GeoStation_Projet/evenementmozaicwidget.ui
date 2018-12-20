@@ -1,7 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>EvenementMozaicWidget</class>
  <widget class="QWidget" name="EvenementMozaicWidget">
   <property name="geometry">
@@ -15,7 +13,19 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="tableauwidget" name="tableWidget"/>
+   </item>
+  </layout>
  </widget>
- <pixmapfunction/>
+ <customwidgets>
+  <customwidget>
+   <class>tableauwidget</class>
+   <extends>QTableWidget</extends>
+   <header>tableauwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
  <connections/>
 </ui>

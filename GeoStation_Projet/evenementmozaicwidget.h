@@ -2,6 +2,7 @@
 #define EVENEMENTMOZAICWIDGET_H
 
 #include <QWidget>
+#include <QMap>
 
 namespace Ui {
 class EvenementMozaicWidget;
@@ -17,6 +18,10 @@ public:
 
 private:
     Ui::EvenementMozaicWidget *ui;
+
+public slots:
+    void receive_info(QMap<QString,QString> map_formulaire);
+
 };
 
 #endif // EVENEMENTMOZAICWIDGET_H

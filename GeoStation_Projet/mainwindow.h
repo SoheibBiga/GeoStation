@@ -11,7 +11,7 @@
 # include "sncfwidget.h"
 # include "tableauwidget.h"
 # include <QMap>
-# include "evenementwidget.h"
+# include "evenementwidget_old.h"
 
 class MainWindow : public QWidget
 {
