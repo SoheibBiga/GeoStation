@@ -59,7 +59,7 @@ SOURCES += \
 
 
 HEADERS += \
-    abstractapi.h \    
+    abstractapi.h \
     evenementapi.h \
     avionsapi.h \
     sncfapi.h \
