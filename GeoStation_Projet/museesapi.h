@@ -10,6 +10,10 @@ class MuseesApi : public AbstractApi
 
 public:
     MuseesApi(ordonnanceur *ord_, QObject *parent = nullptr);
+    bool isMap();
+
+private:
+    QNetworkAccessManager *networkManager;
 };
 
 #endif // MUSEESAPI_H
