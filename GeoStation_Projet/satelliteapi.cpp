@@ -3,9 +3,11 @@
 SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdWidget(Satellite),ord,parent)
 {
     //request information
-    Obs_Latitude=48.871656;
-    Obs_Longitude= 2.345931;
+    //Obs_Latitude=48.871656;
+    //Obs_Longitude= 2.345931;
     Obs_Altitude=35;
+    total=0;
+    nb=0;
     Seconds=1;
     APIKEY="QSJWEK-UEPBYL-FSPNEM-3X9G";
     BaseUrl="https://www.n2yo.com/rest/v1/satellite";
@@ -28,7 +30,9 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
     {
         Request_Url(fonction,i);
         manager->get(request);
+
     }
+
 
 }
 
@@ -39,7 +43,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
     connect(reply, SIGNAL(sslErrors(QList<QSslError>)),this, SLOT(slotSslErrors(QList<QSslError>)));
 
     //Read information from reply
-    reply_string=(QString)reply->readAll();
+    reply_string=QString(reply->readAll());
     QJsonParseError jsonError;
 
     //Initialise un QJsonDocument en format Json avec le contenu en format QString de reply
@@ -55,7 +59,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
     //get satcount and category
     satCount=MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["satcount"].toInt();
     satCatAny=MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["category"].toString();
-
+    nb++;
     //get available satellite
     if (satCount!=0 && satCatAny!="ANY")
     {
@@ -82,7 +86,9 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
             RetrieveInfo("satlng",i);
             RetrieveInfo("satalt",i);
             //list.push_back(RetrieveInfo("satalt",i));
+
         }
+        total+=satCount;
        }
 
 
@@ -115,7 +121,7 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
 
     //request that can be called: {"satid","satname","launchDate","satlat","satlng","satalt"}
 
-    int id;
+    int id=0;
 
     if (request == "satid"){id=0;};
     if (request == "satname"){id=1;};
@@ -124,7 +130,7 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     if (request == "satlng"){id=4;};
     if (request == "satalt"){id=5;};
 
-    QMap<QString,QVariant>   element;
+    QMap<QString,QVariant> element;
 
     switch (id)
     {
@@ -138,18 +144,23 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
         element.insert("Date de lancement",QString(Above_Array.at(NumSat).toObject().toVariantMap()["launchDate"].toString()));
         break;
     case 3:
-        element.insert("Altitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toFloat()));
+        element.insert("Altitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toDouble()));
         break;
     case 4:
-        element.insert("Longitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toFloat()));
+        element.insert("Longitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toDouble()));
         break;
     case 5:
-        element.insert("Altitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
+        element.insert("Altitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toDouble()));
         break;
     }
     add_list(element);
+    if(nb>=50){
+        add_nb_entree(total);
+        add_titre("Satellite à proximité");
 
-    //emit send_info(*map_ameliore);
+        emit send_info2(map_ameliore);
+    }
+    //
     finish(1);
 }
 
@@ -163,7 +174,7 @@ void SatelliteApi::slotError(QNetworkReply::NetworkError RequestNetworkError)
     }
 
 }
-void SatelliteApi::slotSslErrors(QList<QSslError>(SslErrors))
+void SatelliteApi::slotSslErrors(QList<QSslError>SslErrors)
 {
     for(int i=0;i<SslErrors.count();i++)
     {
