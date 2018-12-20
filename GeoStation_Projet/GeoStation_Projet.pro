@@ -54,16 +54,16 @@ SOURCES += \
     evenementmozaicwidget.cpp \
     evenementwidget.cpp \
     tableaupanoramicwidget.cpp \
-    evenementmainwidget.cpp
+    evenementmainwidget.cpp \
+    avionswidget.cpp \
+    avionsmozaicwidget.cpp
 
 
 
 HEADERS += \
-    abstractapi.h \    
+    abstractapi.h \
     evenementapi.h \
     avionsapi.h \
-    avionsmozaicwidget.h \
-    avionswidget.h \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
@@ -90,7 +90,9 @@ HEADERS += \
     evenementmozaicwidget.h \
     evenementwidget.h \
     tableaupanoramicwidget.h \
-    evenementmainwidget.h
+    evenementmainwidget.h \
+    avionswidget.h \
+    avionsmozaicwidget.h
 
 
 FORMS += \
@@ -102,7 +104,8 @@ FORMS += \
     museesmainwidget.ui \
     evenementmozaicwidget.ui \
     tableaupanoramicwidget.ui \
-    evenementmainwidget.ui
+    evenementmainwidget.ui \
+    avionsmozaicwidget.ui
 
 
 RESOURCES += \
