@@ -124,7 +124,7 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     if (request == "satlng"){id=4;};
     if (request == "satalt"){id=5;};
 
-    QMap<QString,QString>   element;
+    QMap<QString,QVariant>   element;
 
     switch (id)
     {
@@ -150,7 +150,6 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     add_list(element);
 
     //emit send_info(*map_ameliore);
-
     finish(1);
 }
 bool SatelliteApi::isMap(){

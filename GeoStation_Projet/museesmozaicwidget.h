@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QMap>
+#include <QDebug>
 
 namespace Ui {
 class MuseesMozaicWidget;

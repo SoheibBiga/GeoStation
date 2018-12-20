@@ -22,11 +22,11 @@ void    GeolocalisationApi::get_response(QNetworkReply *reply)
         manager->clearConnectionCache();
         manager->clearAccessCache();
 
-        map_formulaire->insert("adresse", base["street"].toString());
-        map_formulaire->insert("ville", base["adminArea5"].toString());
-        map_formulaire->insert("codePostal", base["postalCode"].toString());
+        map_formulaire.insert("adresse", base["street"].toString());
+        map_formulaire.insert("ville", base["adminArea5"].toString());
+        map_formulaire.insert("codePostal", base["postalCode"].toString());
 
-        emit send_info(*map_formulaire);
+        emit send_info(map_formulaire);
         finish(true);
     }
 }

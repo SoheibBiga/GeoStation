@@ -13,7 +13,8 @@ MuseesMozaicWidget::~MuseesMozaicWidget()
     delete ui;
 }
 
-void MuseesMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
+void MuseesMozaicWidget::receive_info(QMap<QString, QString>)
 {
+    qDebug() << "to change";
     //ui->tableWidget->refresh(map_formulaire);
 }

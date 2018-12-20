@@ -7,6 +7,10 @@ tableauwidget::tableauwidget(QWidget *parent) :
     ui(new Ui::tableauwidget)
 {
     ui->setupUi(this);
+    QTimer *timer = new QTimer();
+    timer->connect(timer, SIGNAL(timeout()),this, SLOT(displayHello()));
+    timer->start(10000);
+    
 }
 
 tableauwidget::~tableauwidget()
