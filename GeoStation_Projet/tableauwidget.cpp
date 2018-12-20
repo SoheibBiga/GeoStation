@@ -16,7 +16,6 @@ tableauwidget::~tableauwidget()
 
 bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
 {
-    qDebug() << "of refresh" ;
     if(map_formulaire.keys().size() == 0) return false;
 
 
@@ -24,10 +23,10 @@ bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
     int nb_row = map_formulaire.keys().size();
     ui->tableWidget->setRowCount(nb_row);
 
-//    int nb_Column= map_formulaire.keys().size();
-//    ui->tableWidget->setColumnCount(nb_Column);
+    int nb_Column= map_formulaire.keys().size();
+    ui->tableWidget->setColumnCount(nb_Column);
 
-    ui->tableWidget->setColumnCount(1);
+//    ui->tableWidget->setColumnCount(1);
 
     ui->tableWidget->horizontalHeader()->setVisible(false);
     ui->tableWidget->verticalHeader()->setVisible(false);

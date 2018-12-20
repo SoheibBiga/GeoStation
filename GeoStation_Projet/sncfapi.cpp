@@ -48,7 +48,6 @@ void SncfApi::result_liste_gare(QNetworkReply* reply)
     QString ul_prochain_depart = "https://"+token_sncf+"@api.sncf.com/v1/coverage/sncf/stop_areas/stop_area:OCE:SA:"+code_uic_gare+"/departures?datetime=20181212T174530";
     //qDebug() << ul_prochain_depart << "\t" << code_uic_gare;
     QUrl url(ul_prochain_depart);
-
     manager_prochain_depart->get(QNetworkRequest(url));
 
 }
@@ -84,9 +83,9 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
             ligne = commercial_mode+ " " + code;
             date = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["stop_date_time"].toMap()["departure_date_time"].toString();
             affiche = ligne+" "+date[9]+date[10]+"H"+date[11]+date[12]+" Direction "+direction+"\n";
-            map_formulaire->insert("Direction",direction);
-            map_formulaire->insert("Ligne",ligne);
-            map_formulaire->insert("Date",date);
+//            map_formulaire->insert("Direction",direction);
+//            map_formulaire->insert("Ligne",ligne);
+//            map_formulaire->insert("Date",date);
             //QString string_color = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["display_informations"].toMap()["color"].toString();
             //QColor color_ligne("#"+string_color);
         }

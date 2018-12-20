@@ -10,7 +10,7 @@ class BorneElectriqueApi : public AbstractApi
     Q_OBJECT
 
 public:
-    BorneElectriqueApi(QObject *parent = 0);
+    BorneElectriqueApi(ordonnanceur *ord_, QObject *parent = 0);
     ~BorneElectriqueApi();
 
 public slots:

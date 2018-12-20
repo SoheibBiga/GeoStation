@@ -32,8 +32,6 @@ public:
     //Lie l'objet à parent, initialise l'attribut id à myId
     //AbstractApi(QObject *parent, int myId, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
     explicit AbstractApi(int myId, ordonnanceur *ord_, QObject *parent = 0,QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
-    //A supprimer
-    AbstractApi(int myId, QObject *parent = 0,QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
 
     //explicit AbstractApi(int myId, QObject *parent = 0, QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
 
@@ -47,6 +45,7 @@ public:
     //Par exemple si l'on veut afficher dans la widget le titre et l'adresse du musée Grevin à savoir 10 Boulevard Montmartre, 75009 Paris
     //On fera map_formulaire.insert("Nom","Musée Grevin") et map_formulaire.insert("Adresse","10 Boulevard Montmartre, 75009 Paris"
     QMap<QString, QString> *map_formulaire;
+    QMap<QString,QVariantMap> *map_ameliore;
 
     //return s'il y a la présence d'une map ou non dans la widget
     virtual bool isMap() = 0;
@@ -66,6 +65,9 @@ protected:
 
     //A utiliser lorsque l'ensemble des requêtes de notre api on été recuperer et enregistrer dans map_formulaire
     void finish(bool work);
+
+    void add_list(QMap<QString,QString> element);
+    void add_titre(QString titre);
 
 signals:
     void send_info(QMap<QString, QString>);
