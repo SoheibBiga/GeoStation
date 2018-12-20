@@ -6,7 +6,8 @@ SncfWidget::SncfWidget(QWidget *parent) :
     sncf_mozaic_widget = new SncfMozaicWidget(this);
     mozaicLayout_ = new QHBoxLayout(this);
     mozaicLayout_->addWidget(sncf_mozaic_widget);
-    //connect(this,SIGNAL(send_info(QMap<QString,QString>)),sncf_mozaic_widget,SLOT(send_info(QMap<QString,QString>)));
+    connect(this,SIGNAL(send_info(QMap<QString,QString>)),sncf_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
+
 }
 
 SncfWidget::~SncfWidget()

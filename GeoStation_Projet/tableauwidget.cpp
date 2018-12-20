@@ -16,6 +16,7 @@ tableauwidget::~tableauwidget()
 
 bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
 {
+    qDebug() << "of refresh" ;
     if(map_formulaire.keys().size() == 0) return false;
 
 
