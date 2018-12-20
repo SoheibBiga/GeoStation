@@ -47,7 +47,10 @@ SOURCES += \
     evenementwidget.cpp \
     sncfwidget.cpp \
     sncfmozaicwidget.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    borneelectriquewidget.cpp \
+    borneelectriquemozaicwidget.cpp \
+    borneelectriquemainwidget.cpp
 
 
 
@@ -74,7 +77,10 @@ HEADERS += \
     evenementwidget.h \
     sncfwidget.h \
     sncfmozaicwidget.h \
-    mainwindow.h
+    mainwindow.h \
+    borneelectriquewidget.h \
+    borneelectriquemozaicwidget.h \
+    borneelectriquemainwidget.h
 
 
 FORMS += \
@@ -83,7 +89,9 @@ FORMS += \
     pharmaciewidget.ui\
     evenementwidget.ui\
     evenementwidget.ui \
-    sncfmozaicwidget.ui
+    sncfmozaicwidget.ui \
+    borneelectriquemozaicwidget.ui \
+    borneelectriquemainwidget.ui
 
 
 RESOURCES += \
