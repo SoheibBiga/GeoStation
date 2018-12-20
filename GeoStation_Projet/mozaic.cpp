@@ -37,8 +37,7 @@ bool				Mozaic::init()
 	setLayout(hLayout_);
 	hLayout_->addLayout(vLayout1_);
 	hLayout_->addLayout(vLayout2_);
-    setStyleSheet("background-color : rgb(0, 255, 0);");
-
+   setStyleSheet("background-color : rgb(255, 255, 255);");
 	return (true);
 }
 

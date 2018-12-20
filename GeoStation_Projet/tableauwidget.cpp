@@ -48,8 +48,6 @@ bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
 void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
 {
     //if(map_formulaire.keys().size() == 0) return;
-
-    qDebug() << map_ameliore["Tableau"].toList().at(0).toMap()["Ligne"].toString();
     QStringList vlabels;
     int nb_row = map_ameliore["Tableau"].toList().at(0).toMap().keys().size();
     ui->tableWidget->setRowCount(nb_row);
@@ -67,7 +65,6 @@ void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
 
     int i = 0;
     for(i = 0; i < nb_row; i++){
-        qDebug() << "d";
             QTableWidgetItem *item =new QTableWidgetItem();
             //vlabels << map_formulaire.keys()[i];
             //item ->setText(map_formulaire.value(map_formulaire.keys()[i]));

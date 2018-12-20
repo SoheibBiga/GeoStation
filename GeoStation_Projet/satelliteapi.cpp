@@ -2,9 +2,9 @@
 
 SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdWidget(Satellite),ord,parent)
 {
-   // QFont MyFont("Arial",15);
-
     //request information
+    Obs_Latitude=48.871656;
+    Obs_Longitude= 2.345931;
     Obs_Altitude=35;
     Seconds=1;
     APIKEY="QSJWEK-UEPBYL-FSPNEM-3X9G";
@@ -13,29 +13,16 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
     Days_Of_Predic=2;
     Minimun_Visibility=10;
     Minimim_Elevation=30;
-    Search_Radius=10;
+    Search_Radius=8;
     API_Function << "tle" << "positions" << "visualpasses" << "radiopasses" << "above";
 
     //set the function needed for the satellite request
     fonction=above;
 
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    //This timer is set to send request each time requested in the settimer.
-    //QTimer *timer=new QTimer(this);
-    //timer->setInterval(5000);
-
-    //connection between Timer and request sender
-    //connect(timer, SIGNAL(timeout()),this,SLOT(Refresh()));
-
     //connection between Manager which request reply;
+    connect(manager,SIGNAL(networkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility)),this,SLOT(NetworkStatus(QNetworkAccessManager::NetworkAccessibility)));
     connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
 
-    //set the CurrentSecSince to the current
-    //CurrentSecSinceRequestStart = QDateTime::currentMSecsSinceEpoch(); //renvoi un qint64
-
-    //Start timer ;
-    //timer->start();
     //Set request URL
     for(int i=0;i<50;i++)
     {
@@ -45,64 +32,60 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
 
 }
 
-/*atelliteApi::~SatelliteApi()
-{
-
-}*/
 
 void SatelliteApi::replyFinished(QNetworkReply* reply)
 {
-    int total=0;
-    //Permet de lire le contenu de la requête dans un textEdit
-    QString reply_string;
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(slotError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(sslErrors(QList<QSslError>)),this, SLOT(slotSslErrors(QList<QSslError>)));
+
+    //Read information from reply
     reply_string=(QString)reply->readAll();
-
-
-
     QJsonParseError jsonError;
+
     //Initialise un QJsonDocument en format Json avec le contenu en format QString de reply
     MyJsonDoc=QJsonDocument::fromJson(reply_string.toUtf8(),&jsonError);
 
-
-    if (jsonError.error != QJsonParseError::NoError){
-        qDebug() << jsonError.errorString();
+    //Check for error at json parsing
+    if (jsonError.error != QJsonParseError::NoError)
+    {
+        finish(1);
+        return;
     }
 
-    //(MyJsonDoc.isArray()) ? qDebug() << "Json Document contains an array" : qDebug() << "Json Document does not contains an array" ;
-    //(MyJsonDoc.isObject()) ? qDebug() << "Json Document contains an object" : qDebug() << "Json Document does not contains an object" ;
-    //(MyJsonDoc.object().isEmpty()) ? qDebug() << "Json Object is empty" : qDebug() << "Json Object is not empty";
+    //get satcount and category
+    satCount=MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["satcount"].toInt();
+    satCatAny=MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["category"].toString();
+
+    //get available satellite
+    if (satCount!=0 && satCatAny!="ANY")
+    {
+
+        //Initialise Above_array avec le tableau above.
+        Above_Array=MyJsonDoc.toVariant().toMap()["above"].toJsonArray();
+
+        //Vérifie si le tableau est vide et avise si c'est bien le cas
+        if (Above_Array.isEmpty())
+        {
+            //qDebug()  << QString("%1 JSON Array is empty.").arg(MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["category"].toString());
+            finish(1);
+            return;
+        }
+
+        //Show infos for each satellite in selected category
+
+        for(int i=0;i<satCount;i++){
+
+            RetrieveInfo("satname",i);
+            RetrieveInfo("satid",i);
+            RetrieveInfo("launchDate",i);
+            RetrieveInfo("satlat",i);
+            RetrieveInfo("satlng",i);
+            RetrieveInfo("satalt",i);
+            //list.push_back(RetrieveInfo("satalt",i));
+        }
+       }
 
 
-    //Initialise satCount avec le nombre de satellite issue de la requête
-    satCount = MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["satcount"].toInt();
-    total+=satCount;
-
-    //Initialise Above_array avec le tableau above.
-    Above_Array = MyJsonDoc.toVariant().toMap()["above"].toJsonArray();
-
-    //Vérifie si le tableau est vide et avise si c'est bien le cas
-    if (Above_Array.isEmpty()) {
-    //qDebug()  << QString("%1 JSON Array is empty.").arg(MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["category"].toString());
-
-    }
-
-    //affiche les infos de chaque satellite issues de la requête
-    //qDebug()<<satCount<<endl;
-
-    for(int i=0;i<satCount;i++){
-        RetrieveInfo("satname",i);
-        RetrieveInfo("satid",i);
-        RetrieveInfo("launchDate",i);
-        RetrieveInfo("satlat",i);
-        RetrieveInfo("satlng",i);
-        RetrieveInfo("satalt",i);
-    }
-
-
-    //get request duration
-    CurrentSecSinceRequestStop = QDateTime::currentMSecsSinceEpoch(); //renvoi un qint64
-
-    //ui->label_3->setText(QString("%1 ms").arg(CurrentSecSinceRequestStop-CurrentSecSinceRequestStart));
 }
 void SatelliteApi::Request_Url(int pos,int category)
 {
@@ -141,29 +124,32 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     if (request == "satlng"){id=4;};
     if (request == "satalt"){id=5;};
 
+    QMap<QString,QVariant>   element;
 
     switch (id)
     {
     case 0:
-        map_formulaire.insert("ID : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satid"].toInt()));
+        element.insert("ID : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satid"].toInt()));
         break;
     case 1:
-        map_formulaire.insert("Nom : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["satname"].toString()));
+        element.insert("Nom : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["satname"].toString()));
         break;
     case 2:
-        map_formulaire.insert("Date de lancement : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["launchDate"].toString()));
+        element.insert("Date de lancement : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["launchDate"].toString()));
         break;
     case 3:
-        map_formulaire.insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toFloat()));
+        element.insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toFloat()));
         break;
     case 4:
-        map_formulaire.insert("Longitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toFloat()));
+        element.insert("Longitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toFloat()));
         break;
     case 5:
-        map_formulaire.insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
+        element.insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
         break;
     }
-    emit send_info(map_formulaire);
+    add_list(element);
+
+    //emit send_info(*map_ameliore);
     finish(1);
 }
 bool SatelliteApi::isMap(){
@@ -171,4 +157,34 @@ bool SatelliteApi::isMap(){
 }
 bool SatelliteApi::hasBigLayout(){
     return true;
+}
+void SatelliteApi::slotError(QNetworkReply::NetworkError RequestNetworkError)
+{
+    if (RequestNetworkError!=0)
+    {
+        finish(0);
+        //qDebug() << "RequestNetwork error" << "\t" << RequestNetworkError;
+        return;
+    }
+
+}
+void SatelliteApi::slotSslErrors(QList<QSslError>(SslErrors))
+{
+    for(int i=0;i<SslErrors.count();i++)
+    {
+        if (SslErrors.at(i).error()!=0){
+            finish(0);
+            //qDebug() << "SSL error" << "\t" << SslErrors.at(i).errorString();
+            return;
+        }
+    }
+}
+void SatelliteApi::NetworkStatus(QNetworkAccessManager::NetworkAccessibility NetStatus)
+{
+    if (NetStatus!=1)
+    {
+        finish(0);
+        //qDebug() << "Network Status" << "\t" << NetStatus;
+        return;
+    }
 }
