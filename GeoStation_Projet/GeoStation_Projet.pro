@@ -24,7 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
+    main.cpp \
     abstractapi.cpp \
     evenementapi.cpp \
     avionsapi.cpp \
@@ -54,8 +54,9 @@ SOURCES += \
     evenementmozaicwidget.cpp \
     evenementwidget.cpp \
     tableaupanoramicwidget.cpp \
-    evenementmainwidget.cpp
-
+    evenementmainwidget.cpp \
+    satellitewidget.cpp \
+    satellitemozaicwidget.cpp
 
 
 HEADERS += \
@@ -88,7 +89,9 @@ HEADERS += \
     evenementmozaicwidget.h \
     evenementwidget.h \
     tableaupanoramicwidget.h \
-    evenementmainwidget.h
+    evenementmainwidget.h \
+    satellitewidget.h \
+    satellitemozaicwidget.h
 
 
 FORMS += \
@@ -100,7 +103,8 @@ FORMS += \
     museesmainwidget.ui \
     evenementmozaicwidget.ui \
     tableaupanoramicwidget.ui \
-    evenementmainwidget.ui
+    evenementmainwidget.ui \
+    satellitemozaicwidget.ui
 
 
 RESOURCES += \
