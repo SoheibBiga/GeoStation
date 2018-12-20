@@ -58,7 +58,10 @@ SOURCES += \
     satellitewidget.cpp \
     satellitemozaicwidget.cpp \
     avionswidget.cpp \
-    avionsmozaicwidget.cpp
+    avionsmozaicwidget.cpp \
+    linechartwidget.cpp \
+    vigicruesmosaicwidget.cpp \
+    vigicrueswidget.cpp
 
 
 
@@ -97,7 +100,10 @@ HEADERS += \
     satellitewidget.h \
     satellitemozaicwidget.h \
     avionswidget.h \
-    avionsmozaicwidget.h
+    avionsmozaicwidget.h \
+    linechartwidget.h \
+    vigicruesmosaicwidget.h \
+    vigicrueswidget.h
 
 
 FORMS += \
@@ -112,7 +118,9 @@ FORMS += \
     evenementmainwidget.ui \
     satellitemozaicwidget.ui \
     satellitewidget.ui \
-    avionsmozaicwidget.ui
+    avionsmozaicwidget.ui \
+    linechartwidget.ui \
+    vigicruesmosaicwidget.ui
 
 
 
