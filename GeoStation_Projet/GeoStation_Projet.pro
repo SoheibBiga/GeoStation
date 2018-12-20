@@ -63,7 +63,7 @@ HEADERS += \
     evenementapi.h \
     avionsapi.h \
     avionsmozaicwidget.h \
-    avioinswidget.h \
+    avionswidget.h \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
