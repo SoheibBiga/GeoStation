@@ -9,6 +9,7 @@
 # include <QStackedWidget>
 # include "awidget.h"
 # include "sncfwidget.h"
+# include "satellitewidget.h"
 # include "museeswidget.h"
 # include "tableauwidget.h"
 # include <QMap>
