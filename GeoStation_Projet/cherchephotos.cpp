@@ -3,7 +3,7 @@
 // Le mode d'emploi de la classe se trouve dans cherchephotos.h
 
 CherchePhotos::CherchePhotos(QString texteRecherche, int combientieme, ordonnanceur *ord_, QObject *parent)
-    : AbstractApi(IdWidget(Sncf), ord_, parent)
+    : AbstractApi(IdWidget(Photo), ord_, parent)
     , texteRecherche(texteRecherche)
     , combientieme(combientieme)
 {

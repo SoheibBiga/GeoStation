@@ -15,7 +15,7 @@ class ordonnanceur;
 
 
 //Associe chaque API à un id, evenement = 0; vegicrue = 1 ...
-enum IdWidget {Sncf,Satellite,Evenement,Vigicrues,Avions,Meteo,Pollution,Musee,Pharmacie,BorneElectrique,Geolocalisation,CherchePhotos};
+enum IdWidget {Sncf,Satellite,Evenement,Vigicrues,Avions,Meteo,Pollution,Musee,Pharmacie,BorneElectrique,Geolocalisation,Photo};
 
 class AbstractApi : public QObject
 {
