@@ -4,7 +4,7 @@
 ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
 {
     api_index = new nullapi(this);
-    //connect(api_index,SIGNAL(send_info(QMap<QString,QString>)),this,SIGNAL(send_info(QMap<QString,QString>)));
+    connect(api_index,SIGNAL(send_info(QMap<QString,QString>)),this,SIGNAL(send_info(QMap<QString,QString>)));
 }
 
 void ordonnanceur::run(){

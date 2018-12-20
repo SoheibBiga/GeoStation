@@ -117,7 +117,6 @@ FORMS += \
     tableaupanoramicwidget.ui \
     evenementmainwidget.ui \
     satellitemozaicwidget.ui \
-    satellitewidget.ui \
     avionsmozaicwidget.ui \
     linechartwidget.ui \
     vigicruesmosaicwidget.ui
