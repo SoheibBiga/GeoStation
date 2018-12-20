@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     widgets->addWidget(sncf_widget);
     AbstractApi *api= new SncfApi(ord,this);
-    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),sncf_widget,SIGNAL(send_info(QMap<QString,QString>)));
+    connect(ord,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
 
     //this->setla
     //connect(ord,SIGNAL(send_info(QMap<QString,QString>)),list_widget[ord->api_index->Id],SIGNAL(send_info(QMap<QString,QString>)));

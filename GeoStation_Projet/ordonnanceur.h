@@ -25,7 +25,7 @@ public:
     void run();
 signals:
     void send_info(QMap<QString,QString>);
-
+    void send_info2(QMap<QString, QVariant>);
 };
 
 #endif // ORDONNANCEUR_H

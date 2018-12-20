@@ -44,3 +44,9 @@ bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
     }
     return true;
 }
+
+void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
+{
+    qDebug() << map_ameliore["Tableau"].toList().at(0).toMap()["Direction"];
+}
+

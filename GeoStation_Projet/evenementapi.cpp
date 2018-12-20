@@ -6,7 +6,6 @@ EvenementApi::EvenementApi(ordonnanceur *ord_,QObject *parent): AbstractApi(IdWi
   manager = new QNetworkAccessManager (parent);
   QNetworkReply *m_reply;
   QNetworkRequest m_request;
-  map_formulaire = new QMap<QString, QString>;
 
 
   latitude = 50.8550625;
@@ -64,27 +63,27 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
        {
         //qDebug()<< "title de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"]<<endl;
         QString title = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"].toString();
-        map_formulaire->insert("Title", title);
+        map_formulaire.insert("Title", title);
 
         //qDebug()<< "description de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["description"]<<endl;
         QString description = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["description"].toString();
-        map_formulaire->insert("Description", description);
+        map_formulaire.insert("Description", description);
 
         //qDebug()<< "address de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"]<<endl;
         QString address = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"].toString();
-        map_formulaire->insert("Adresse", address);
+        map_formulaire.insert("Adresse", address);
 
         qDebug()<< "space time info de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["space_time_info"]<<endl;
         QString space_time_info = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["space_time_info"].toString();
-        map_formulaire->insert("Lieu_Date_Heure", space_time_info);
+        map_formulaire.insert("Lieu_Date_Heure", space_time_info);
 
         //qDebug()<< "tarif de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["pricing_info"]<<endl;
         QString pricing_info = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["princing_info"].toString();
-        map_formulaire->insert("Tarif", pricing_info);
+        map_formulaire.insert("Tarif", pricing_info);
       }
 
      }
-    emit send_info(*map_formulaire);
+    emit send_info(map_formulaire);
     finish(0);
 }
 
