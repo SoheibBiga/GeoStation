@@ -37,7 +37,7 @@ void AbstractApi::finish(bool work)
 
 void AbstractApi::add_list(QMap<QString, QVariant> element)
 {
-    tableau+=QVariant(element);
+    tableau.append(QVariant(element));
 }
 
 void AbstractApi::add_titre(QString titre_value)

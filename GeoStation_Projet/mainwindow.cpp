@@ -7,17 +7,14 @@ MainWindow::MainWindow(QWidget* parent)
       mozaic_(Q_NULLPTR),
       timer_(Q_NULLPTR)
 {
-    ordonnanceur *ord = new ordonnanceur();;
-    QStackedWidget *widgets = new QStackedWidget(this);
 
     //Remplacer les objets sncf par les vôtres
-    AWidget *sncf_widget = new SncfWidget(widgets);
+
     //    widgets->addWidget(sncf_widget);
     //    AbstractApi *api= new SncfApi(ord,this);
     //    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),sncf_widget,SIGNAL(send_info(QMap<QString,QString>)));
-    widgets->addWidget(sncf_widget);
+
     //new SncfApi(ord,this);
-    connect(ord,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
 
     //    AWidget *musees_widget = new MuseesWidget(widgets);
     //    widgets->addWidget(musees_widget);
@@ -62,7 +59,13 @@ bool				MainWindow::init()
     mozaic_ = new Mozaic();
     mozaic_->init();
     mozaic_->show();
-
+    ordonnanceur *ord = new ordonnanceur();
+    QStackedWidget *widgets = new QStackedWidget(this);
+    widgets->addWidget(mozaic_);
+    AWidget *sncf_widget = new SncfWidget(this);
+    connect(ord,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
+    new SncfApi(ord);
+    mozaic_->addWidget(sncf_widget);
     return (true);
 }
 

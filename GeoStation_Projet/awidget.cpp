@@ -48,3 +48,8 @@ QLayout*			AWidget::getMozaicLayout() const
 {
 	return (mozaicLayout_);
 }
+
+
+void				AWidget::addWidget(QWidget* widget)
+{
+}
