@@ -86,6 +86,7 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
             ligne = commercial_mode+ " " + code;
             date = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["stop_date_time"].toMap()["departure_date_time"].toString();
             affiche = ligne+" "+date[9]+date[10]+"H"+date[11]+date[12]+" Direction "+direction+"\n";
+            date = ""+date[9]+date[10]+"H"+date[11]+date[12];
             element.insert("Direction",QVariant(direction));
             element.insert("Ligne",QVariant(ligne));
             element.insert("Date",QVariant(date));

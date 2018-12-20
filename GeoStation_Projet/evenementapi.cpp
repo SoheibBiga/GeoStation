@@ -54,8 +54,8 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
         //QString city = Myjson.object().toVariantMap()["records"].toJsonArray().["fields"]["date_start"].toString();
         QString city = Myjson.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["city"].toString();
 
-        add_titre("Evenement " + city );
-        add_nb_entree(total_event);
+        //add_titre("Evenement " + city );
+        //add_nb_entree(total_event);
 
         int i;
         int count = Myjson.object().toVariantMap()["records"].toJsonArray().count();
@@ -91,17 +91,17 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
 
             }
 
-            element.insert("Titre",QVariant(title));
-            element.insert("Description",QVariant(description));
-            element.insert("Adresse",QVariant(address));
-            element.insert("Date",QVariant(space_time_info));
-            element.insert("Tarif",QVariant(pricing_info));
-            add_list(element);
+//            element.insert("Titre",QVariant(title));
+//            element.insert("Description",QVariant(description));
+//            element.insert("Adresse",QVariant(address));
+//            element.insert("Date",QVariant(space_time_info));
+//            element.insert("Tarif",QVariant(pricing_info));
+//            add_list(element);
 
         }
-        map_ameliore.insert("Tableau",QVariant(tableau));
-        map_ameliore.insert("Titre",QVariant(parametre));
-        emit send_info2(map_ameliore);
+//        map_ameliore.insert("Tableau",QVariant(tableau));
+//        map_ameliore.insert("Titre",QVariant(parametre));
+       // emit send_info2(map_ameliore);
         finish(0);
     }
 }

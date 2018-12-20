@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QMap>
+#include <QVariant>
 
 namespace Ui {
 class EvenementMozaicWidget;
