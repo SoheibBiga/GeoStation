@@ -129,22 +129,22 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     switch (id)
     {
     case 0:
-        element.insert("ID : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satid"].toInt()));
+        element.insert("ID",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satid"].toInt()));
         break;
     case 1:
-        element.insert("Nom : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["satname"].toString()));
+        element.insert("Nom",QString(Above_Array.at(NumSat).toObject().toVariantMap()["satname"].toString()));
         break;
     case 2:
-        element.insert("Date de lancement : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["launchDate"].toString()));
+        element.insert("Date de lancement",QString(Above_Array.at(NumSat).toObject().toVariantMap()["launchDate"].toString()));
         break;
     case 3:
-        element.insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toFloat()));
+        element.insert("Altitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toFloat()));
         break;
     case 4:
-        element.insert("Longitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toFloat()));
+        element.insert("Longitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toFloat()));
         break;
     case 5:
-        element.insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
+        element.insert("Altitude",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
         break;
     }
     add_list(element);

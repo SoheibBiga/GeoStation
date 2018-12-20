@@ -16,6 +16,7 @@ SncfMozaicWidget::~SncfMozaicWidget()
 void SncfMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
 {
     ui->tableWidget->refresh(map_formulaire);
+
 }
 
 
