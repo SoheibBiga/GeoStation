@@ -73,6 +73,6 @@ void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
             item ->setText(map_ameliore["Tableau"].toList().at(0).toMap().value(map_ameliore["Tableau"].toList().at(0).toMap().keys()[i]).toString());
             ui->tableWidget->setItem(0, i, item);
     }
-    //qDebug() << map_ameliore["Tableau"].toList().at(0).toMap()["Direction"];
+    qDebug() << map_ameliore["Tableau"].toList().at(0).toMap()["Ligne"];
 }
 
