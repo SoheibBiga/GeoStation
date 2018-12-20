@@ -41,12 +41,14 @@ SOURCES += \
     cherchephotos.cpp \
     mozaic.cpp \
     tableauwidget.cpp \
+    pharmaciewidget.cpp\
     geolocalisationapi.cpp \
     pokemap.cpp \
     evenementwidget.cpp \
     sncfwidget.cpp \
     sncfmozaicwidget.cpp \
     mainwindow.cpp
+
 
 
 HEADERS += \
@@ -66,6 +68,7 @@ HEADERS += \
     cherchephotos.h \
     mozaic.h \
     tableauwidget.h \
+    pharmaciewidget.h\
     geolocalisationapi.h \
     pokemap.h \
     evenementwidget.h \
@@ -77,6 +80,8 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     tableauwidget.ui \
+    pharmaciewidget.ui\
+    evenementwidget.ui\
     evenementwidget.ui \
     sncfmozaicwidget.ui
 
