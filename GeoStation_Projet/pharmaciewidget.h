@@ -1,16 +1,19 @@
-#ifndef SNCFWIDGET_H
-#define SNCFWIDGET_H
+#ifndef PHARMACIEWIDGET_H
+#define PHARMACIEWIDGET_H
 
 #include "awidget.h"
-#include "sncfmozaicwidget.h"
 
-class SncfWidget : public AWidget
+namespace Ui {
+class PharmacieWidget;
+}
+
+class PharmacieWidget : public AWidget
 {
     Q_OBJECT
 
 public:
-    explicit SncfWidget(QWidget *parent = 0);
-    ~SncfWidget();
+    explicit PharmacieWidget(QWidget *parent = nullptr);
+    ~PharmacieWidget();
 
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
@@ -20,12 +23,15 @@ public:
     virtual bool				end();
     virtual void				addWidget(QWidget* widget);
 
-    SncfMozaicWidget *sncf_mozaic_widget;
 
+private:
+    Ui::PharmacieWidget *ui;
 
 signals:
     void send_info(QMap<QString,QString>);
+
+private slots:
+    void receive_info(QMap<QString,QString>);
 };
 
-#endif // SNCFWIDGET_H
-
+#endif // PHARMACIEWIDGET_H

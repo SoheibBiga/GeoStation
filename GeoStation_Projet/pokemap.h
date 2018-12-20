@@ -18,11 +18,10 @@ public:
     PokeMap(QWidget *label);
     ~PokeMap();
     void    afficherMap();
-    void    ajouterMarqueur(QList<QVector2D> coord);
-    void    ajouterMarqueur(QList<QStringList> coord);
-    void    ajouterMarqueur(QString latitude, QString longitude);
-    void    ajouterMarqueur(double latitude, double longitude);
-
+    void    ajouterMarqueur(QList<QVector2D> coord, QString iconURL = "");
+    void    ajouterMarqueur(QList<QStringList> coord, QString iconURL = "");
+    void    ajouterMarqueur(QString latitude, QString longitude, QString iconURL = "");
+    void    ajouterMarqueur(double latitude, double longitude, QString iconURL = "");
 private:
     QNetworkAccessManager *manager = new QNetworkAccessManager;
     QPixmap *pix = new QPixmap;

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network webenginewidgets widgets
+QT       += core gui network widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -38,15 +38,17 @@ SOURCES += \
     meteoapi.cpp \
     awidget.cpp \
     nullapi.cpp \
-    sncfwidget.cpp \
     cherchephotos.cpp \
-    mmainwindow.cpp \
     mozaic.cpp \
     tableauwidget.cpp \
+    pharmaciewidget.cpp\
     geolocalisationapi.cpp \
     pokemap.cpp \
     evenementwidget.cpp \
-    museeswidget.cpp
+    sncfwidget.cpp \
+    sncfmozaicwidget.cpp \
+    mainwindow.cpp
+
 
 
 HEADERS += \
@@ -63,23 +65,25 @@ HEADERS += \
     meteoapi.h \
     awidget.h \
     nullapi.h \
-    sncfwidget.h \
     cherchephotos.h \
-    mmainwindow.h \
     mozaic.h \
     tableauwidget.h \
+    pharmaciewidget.h\
     geolocalisationapi.h \
     pokemap.h \
     evenementwidget.h \
-    museeswidget.h
+    sncfwidget.h \
+    sncfmozaicwidget.h \
+    mainwindow.h
 
 
 FORMS += \
         mainwindow.ui \
-    sncfwidget.ui \
     tableauwidget.ui \
+    pharmaciewidget.ui\
+    evenementwidget.ui\
     evenementwidget.ui \
-    museeswidget.ui
+    sncfmozaicwidget.ui
 
 
 RESOURCES += \

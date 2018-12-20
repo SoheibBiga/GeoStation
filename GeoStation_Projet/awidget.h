@@ -4,6 +4,7 @@
 # include <QWidget>
 # include <QMap>
 # include <QDebug>
+# include <QHBoxLayout>
 
 /*
  **	AWidget::mainLayout_ and AWidget::mozaicLayout_ to instanciate in the
@@ -42,7 +43,8 @@ class AWidget : public QWidget
         virtual bool				end() = 0;
         virtual void				addWidget(QWidget* widget) = 0;
 
-
+signals:
+    void send_info(QMap<QString,QString>);
 
 };
 
