@@ -35,7 +35,7 @@ class apiavions : public AbstractApi
 
     Q_OBJECT
 public:
-    apiavions(QObject *parent = 0);
+    apiavions(ordonnanceur *ord_, QObject *parent = 0);
     QNetworkReply* reply;
     QNetworkReply* reply_singleplane;
 
