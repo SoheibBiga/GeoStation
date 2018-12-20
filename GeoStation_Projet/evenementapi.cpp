@@ -119,11 +119,3 @@ void EvenementApi::slotSslErrors(QList<QSslError>)
 {
     qDebug()<< "slotSslErrors";
 }
-
-
-bool EvenementApi::isMap(){
-    return true;
-}
-bool EvenementApi::hasBigLayout(){
-    return true;
-}

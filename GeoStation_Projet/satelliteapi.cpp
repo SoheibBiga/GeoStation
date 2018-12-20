@@ -152,12 +152,7 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     //emit send_info(*map_ameliore);
     finish(1);
 }
-bool SatelliteApi::isMap(){
-    return true;
-}
-bool SatelliteApi::hasBigLayout(){
-    return true;
-}
+
 void SatelliteApi::slotError(QNetworkReply::NetworkError RequestNetworkError)
 {
     if (RequestNetworkError!=0)

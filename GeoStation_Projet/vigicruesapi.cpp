@@ -133,10 +133,7 @@ void VigicruesApi::traitementRequeteEnregistrements(QNetworkReply *rep)
     boolUnSeulAppelALafois = true;
 }
 
-bool VigicruesApi::isMap()
-{
-    return false;
-}
+
 
 void VigicruesApi::definitionAppelRequete()
 {

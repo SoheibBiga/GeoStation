@@ -104,10 +104,7 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
     //qDebug() << "Time elapsed " << (t2-t1);
 }
 
-bool SncfApi::isMap(){
-    return true;
-}
+SncfApi::~SncfApi()
+{
 
-bool SncfApi::hasBigLayout(){
-    return true;
 }

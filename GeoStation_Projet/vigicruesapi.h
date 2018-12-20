@@ -31,7 +31,6 @@ public:
 private :
     void traitementRequeteInitialisation(QNetworkReply *rep);
     void traitementRequeteEnregistrements(QNetworkReply *rep);
-    bool isMap() override;
 
 private slots:
     void reponseRecue(QNetworkReply *rep);

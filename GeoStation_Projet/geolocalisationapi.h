@@ -6,7 +6,7 @@
 class GeolocalisationApi : public AbstractApi
 {
 public:
-    GeolocalisationApi(ordonnanceur *ord, QObject *parent);
+    GeolocalisationApi(ordonnanceur *ord, QObject *parent = 0);
     ~GeolocalisationApi();
 private slots:
     void    get_response(QNetworkReply *reply);

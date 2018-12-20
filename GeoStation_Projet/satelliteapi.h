@@ -25,8 +25,6 @@ public:
 
     void Request_Url(int pos, int category);
     void RetrieveInfo(QString request, int NumSat);
-    bool isMap();
-    bool hasBigLayout();
 
 public slots:
 
