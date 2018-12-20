@@ -2,10 +2,9 @@
 #define MUSEESWIDGET_H
 
 #include "awidget.h"
+#include "museesmozaicwidget.h"
+#include "museesmainwidget.h"
 
-namespace Ui {
-class MuseesWidget;
-}
 
 class MuseesWidget : public AWidget
 {
@@ -13,10 +12,21 @@ class MuseesWidget : public AWidget
 
 public:
     explicit MuseesWidget(QWidget *parent = nullptr);
-    ~MuseesWidget();
+    ~MuseesWidget() ;
+    virtual bool				contentMap() const;
+    virtual bool				hasMozaicLayout() const;
+    virtual bool				refresh() const;
+    virtual bool				init();
+    virtual bool				run();
+    virtual bool				end();
+    virtual void				addWidget(QWidget* widget);
 
-private:
-    Ui::MuseesWidget *ui;
+    MuseesMozaicWidget *musees_mozaic_widget;
+    MuseesMainWidget *musees_main_widget;
+
+
+signals:
+    void send_info(QMap<QString,QString>);
 };
 
 #endif // MUSEESWIDGET_H

@@ -1,14 +1,50 @@
 #include "museeswidget.h"
-#include "ui_museeswidget.h"
 
-MuseesWidget::MuseesWidget(QWidget *parent) :
-    AWidget(parent),
-    ui(new Ui::MuseesWidget)
+MuseesWidget::MuseesWidget(QWidget *parent):
+    AWidget(parent)
 {
-    ui->setupUi(this);
+    musees_mozaic_widget = new MuseesMozaicWidget(this);
+    //mozaicLayout_ = new QHBoxLayout(this);
+    //mozaicLayout_->addWidget(sncf_mozaic_widget);
+    connect(this,SIGNAL(send_info(QMap<QString,QString>)),musees_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
+
 }
 
 MuseesWidget::~MuseesWidget()
 {
-    delete ui;
+}
+
+bool				MuseesWidget::contentMap() const
+{
+    return (true);
+}
+
+bool				MuseesWidget::hasMozaicLayout() const
+{
+    return (true);
+}
+
+bool				MuseesWidget::refresh() const
+{
+    return (true);
+}
+
+bool				MuseesWidget::init()
+{
+    return true;
+}
+
+bool				MuseesWidget::run()
+{
+    qDebug() << "[ DBG ] : run";
+    return (true);
+}
+
+bool				MuseesWidget::end()
+{
+    return (true);
+}
+
+void				MuseesWidget::addWidget(QWidget* )
+{
 }

@@ -48,8 +48,10 @@ SOURCES += \
     sncfwidget.cpp \
     sncfmozaicwidget.cpp \
     mainwindow.cpp \
+    museesapi.cpp \
+    museesmozaicwidget.cpp \
     museeswidget.cpp \
-    museesapi.cpp
+    museesmainwidget.cpp
 
 
 
@@ -77,8 +79,10 @@ HEADERS += \
     sncfwidget.h \
     sncfmozaicwidget.h \
     mainwindow.h \
+    museesapi.h \
+    museesmozaicwidget.h \
     museeswidget.h \
-    museesapi.h
+    museesmainwidget.h
 
 
 FORMS += \
@@ -87,7 +91,8 @@ FORMS += \
     pharmaciewidget.ui\
     evenementwidget.ui\
     sncfmozaicwidget.ui \
-    museeswidget.ui
+    museesmozaicwidget.ui \
+    museesmainwidget.ui
 
 
 RESOURCES += \

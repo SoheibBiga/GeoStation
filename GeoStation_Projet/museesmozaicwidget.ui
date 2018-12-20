@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MuseesWidget</class>
- <widget class="QWidget" name="MuseesWidget">
+ <class>MuseesMozaicWidget</class>
+ <widget class="QWidget" name="MuseesMozaicWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
