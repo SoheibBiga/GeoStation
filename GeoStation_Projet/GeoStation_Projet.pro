@@ -44,14 +44,16 @@ SOURCES += \
     pharmaciewidget.cpp\
     geolocalisationapi.cpp \
     pokemap.cpp \
-    evenementwidget.cpp \
     sncfwidget.cpp \
     sncfmozaicwidget.cpp \
     mainwindow.cpp \
     museesapi.cpp \
     museesmozaicwidget.cpp \
     museeswidget.cpp \
-    museesmainwidget.cpp
+    museesapi.cpp \
+    evenementmozaicwidget.cpp \
+    evenementwidget.cpp \
+    tableaupanoramicwidget.cpp
 
 
 
@@ -75,24 +77,26 @@ HEADERS += \
     pharmaciewidget.h\
     geolocalisationapi.h \
     pokemap.h \
-    evenementwidget.h \
     sncfwidget.h \
     sncfmozaicwidget.h \
     mainwindow.h \
     museesapi.h \
     museesmozaicwidget.h \
     museeswidget.h \
-    museesmainwidget.h
+    museesapi.h \
+    evenementmozaicwidget.h \
+    evenementwidget.h \
+    tableaupanoramicwidget.h
 
 
 FORMS += \
         mainwindow.ui \
     tableauwidget.ui \
     pharmaciewidget.ui\
-    evenementwidget.ui\
     sncfmozaicwidget.ui \
-    museesmozaicwidget.ui \
-    museesmainwidget.ui
+    museeswidget.ui \
+    evenementmozaicwidget.ui \
+    tableaupanoramicwidget.ui
 
 
 RESOURCES += \
