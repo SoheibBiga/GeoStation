@@ -10,12 +10,14 @@ MainWindow::MainWindow(QWidget* parent)
     ordonnanceur *ord = new ordonnanceur();;
     QStackedWidget *widgets = new QStackedWidget(this);
 
-    //Remplacer les objets sncf par les vtres
+//    //Remplacer les objets sncf par les vtres
     AWidget *sncf_widget = new SncfWidget(widgets);
 
     widgets->addWidget(sncf_widget);
     AbstractApi *api= new SncfApi(ord,this);
     connect(ord,SIGNAL(send_info(QMap<QString,QString>)),sncf_widget,SIGNAL(send_info(QMap<QString,QString>)));
+
+
 
     //this->setla
     //connect(ord,SIGNAL(send_info(QMap<QString,QString>)),list_widget[ord->api_index->Id],SIGNAL(send_info(QMap<QString,QString>)));
