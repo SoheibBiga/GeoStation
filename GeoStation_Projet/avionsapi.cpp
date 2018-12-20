@@ -1,7 +1,7 @@
-#include "apiavions.h"
+#include "avionsapi.h"
 
 
-apiavions::apiavions(ordonnanceur *ord_, QObject *parent) : AbstractApi(IdWidget(Avions), ord_, parent)
+avionsapi::avionsapi(ordonnanceur *ord_, QObject *parent) : AbstractApi(IdWidget(Avions), ord_, parent)
 {
     timeBegin = QDateTime::currentDateTime();
 
@@ -38,12 +38,12 @@ apiavions::apiavions(ordonnanceur *ord_, QObject *parent) : AbstractApi(IdWidget
 
 }
 
-apiavions::~apiavions()
+avionsapi::~avionsapi()
 {
 
 }
 
-void apiavions::change_coordinates()
+void avionsapi::change_coordinates()
 {
     //contenu placé dans le constructeur
 
@@ -54,7 +54,7 @@ void apiavions::change_coordinates()
 
 
 
-void apiavions::affiche_erreurs( QNetworkReply* , QList<QSslError> list  )
+void avionsapi::affiche_erreurs( QNetworkReply* , QList<QSslError> list  )
 {
     if(list.isEmpty() ) qDebug()<<"list est vide"<<endl;
 
@@ -71,7 +71,7 @@ void apiavions::affiche_erreurs( QNetworkReply* , QList<QSslError> list  )
 
 }
 
-void apiavions::replyFinished(QNetworkReply*  reply)
+void avionsapi::replyFinished(QNetworkReply*  reply)
 {
 
 
@@ -123,14 +123,14 @@ void apiavions::replyFinished(QNetworkReply*  reply)
 }
 
 
-void apiavions::view_airlinecompanies()
+void avionsapi::view_airlinecompanies()
 {
 
 
 
 }
 
-void apiavions::query_singleplane()
+void avionsapi::query_singleplane()
 {
 
 
@@ -151,14 +151,14 @@ void apiavions::query_singleplane()
 
 }
 
-void apiavions::delay(int i)
+void avionsapi::delay(int i)
 {
     QTime dieTime= QTime::currentTime().addMSecs(i);
     while (QTime::currentTime() < dieTime) QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
 
-void apiavions::parseplanelist()
+void avionsapi::parseplanelist()
 {
 
 
@@ -337,7 +337,7 @@ void apiavions::parseplanelist()
 
 
 
-void apiavions::getsingleplaneinfo(QNetworkReply* reply_singleplane)
+void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
 {
 
 
@@ -557,7 +557,7 @@ void apiavions::getsingleplaneinfo(QNetworkReply* reply_singleplane)
 
 
 
-void apiavions::readairports()
+void avionsapi::readairports()
 {
 
 
@@ -637,7 +637,7 @@ void apiavions::readairports()
 
 
 
-void apiavions::readplane_type()
+void avionsapi::readplane_type()
 {
 
 

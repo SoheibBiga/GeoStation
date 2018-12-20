@@ -1,7 +1,7 @@
 #include "pharmacieapi.h"
 
 
-PharmacieApi::PharmacieApi(QObject *parent): AbstractApi(IdWidget(Pharmacie),parent)
+PharmacieApi::PharmacieApi(ordonnanceur *ord_, QObject *parent): AbstractApi(IdWidget(Pharmacie), ord_, parent)
 {
     manager = new QNetworkAccessManager(parent);
 
@@ -41,7 +41,7 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
     //ui->textEdit->insertPlainText(nom + "\n" + adresse + "\n" + codePostal + "\nà " + distance + " mètres\n\n");
     //qDebug() << nom <<"\n" << adresse << "\n" << codePostal << "\nà " <<  distance << " mètres\n\n";
     }
-    emit send_info(*map_formulaire);
+    emit send_info(map_formulaire);
     finish(0);
 }
 

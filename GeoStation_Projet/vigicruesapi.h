@@ -7,7 +7,7 @@ class VigicruesApi  : public AbstractApi
 
         Q_OBJECT
 public:
-    VigicruesApi(QObject *parent = 0);
+    VigicruesApi(ordonnanceur *ord_, QObject *parent = 0);
 
     QNetworkReply *m_reply;
     QNetworkRequest m_request;

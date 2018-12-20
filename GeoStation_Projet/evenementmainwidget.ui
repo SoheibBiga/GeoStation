@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>evenementwidget</class>
- <widget class="QWidget" name="evenementwidget">
+ <class>EvenementMainWidget</class>
+ <widget class="QWidget" name="EvenementMainWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,15 +15,15 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="tableauwidget" name="tableWidget"/>
+    <widget class="TableauPanoramicWidget" name="tableWidget"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>tableauwidget</class>
+   <class>TableauPanoramicWidget</class>
    <extends>QTableWidget</extends>
-   <header>tableauwidget.h</header>
+   <header location="global">tableaupanoramicwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

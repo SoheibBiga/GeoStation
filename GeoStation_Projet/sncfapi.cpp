@@ -39,16 +39,15 @@ void SncfApi::result_liste_gare(QNetworkReply* reply)
     //qDebug() << "json liste gare";
     QJsonDocument jsdoc;
     jsdoc = QJsonDocument::fromJson(reply->readAll());
-    QString libelle_gare = jsdoc.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["libelle_gare"].toString();
+    libelle_gare = jsdoc.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["libelle_gare"].toString();
     //qDebug() << libelle_gare;
     //ui->label_gare->setText(libelle_gare);
-    map_formulaire->insert("Libelle Gare",libelle_gare);
+    map_formulaire.insert("Libelle Gare",libelle_gare);
     code_uic_gare = jsdoc.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["code_uic"].toString();
     QString token_sncf = "b9b428ee-3f1c-4c4e-82c0-6448e4c99ed7";
     QString ul_prochain_depart = "https://"+token_sncf+"@api.sncf.com/v1/coverage/sncf/stop_areas/stop_area:OCE:SA:"+code_uic_gare+"/departures?datetime=20181212T174530";
     //qDebug() << ul_prochain_depart << "\t" << code_uic_gare;
     QUrl url(ul_prochain_depart);
-
     manager_prochain_depart->get(QNetworkRequest(url));
 
 }
@@ -76,6 +75,9 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
         QString date;
         //QString heure, minute;
         //QString string_color;
+        QMap<QString,QVariant> element;
+        add_titre("Prochains Train au depart de " + libelle_gare );
+        add_nb_entree(total_result);
         for(i = 0; i < total_result ; i++){
             direction = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["display_informations"].toMap()["direction"].toString();
             commercial_mode = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["display_informations"].toMap()["commercial_mode"].toString();
@@ -84,13 +86,19 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
             ligne = commercial_mode+ " " + code;
             date = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["stop_date_time"].toMap()["departure_date_time"].toString();
             affiche = ligne+" "+date[9]+date[10]+"H"+date[11]+date[12]+" Direction "+direction+"\n";
-            map_formulaire->insert("Direction",direction);
-            map_formulaire->insert("Ligne",ligne);
-            map_formulaire->insert("Date",date);
+            element.insert("Direction",QVariant(direction));
+            add_list(element);
+            element.insert("Ligne",ligne);
+            add_list(element);
+            element.insert("Date",date);
+            add_list(element);
             //QString string_color = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["display_informations"].toMap()["color"].toString();
             //QColor color_ligne("#"+string_color);
         }
-        emit send_info(*map_formulaire);
+        //emit send_info(*map_formulaire);
+        map_ameliore.insert("Tableau",QVariant(tableau));
+        map_ameliore.insert("Titre",QVariant(parametre));
+        emit send_info2(map_ameliore);
         finish(0);
     }
     t2 = QDateTime::currentMSecsSinceEpoch();

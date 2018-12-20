@@ -27,7 +27,7 @@ SOURCES += \
         main.cpp \
     abstractapi.cpp \
     evenementapi.cpp \
-    avionsapi.cpp \
+    apiavions.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
     pollutionapi.cpp \
@@ -47,25 +47,24 @@ SOURCES += \
     sncfwidget.cpp \
     sncfmozaicwidget.cpp \
     mainwindow.cpp \
-    borneelectriquewidget.cpp \
-    borneelectriquemozaicwidget.cpp \
-    borneelectriquemainwidget.cpp \
     museesapi.cpp \
     museesmozaicwidget.cpp \
-    museesmainwidget.cpp \
     museeswidget.cpp \
+<<<<<<< HEAD
+    museesmainwidget.cpp
+=======
+    museesapi.cpp \
     evenementmozaicwidget.cpp \
     evenementwidget.cpp \
-    tableaupanoramicwidget.cpp \
-    evenementmainwidget.cpp
+    tableaupanoramicwidget.cpp
+>>>>>>> 17624b4f999d7f96a567c98def9e94951bafd6dc
 
 
 
 HEADERS += \
     abstractapi.h \    
     evenementapi.h \
-    avionsapi.h \
-    avionswidget.h \
+    apiavions.h \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
@@ -85,17 +84,17 @@ HEADERS += \
     sncfwidget.h \
     sncfmozaicwidget.h \
     mainwindow.h \
-    borneelectriquewidget.h \
-    borneelectriquemozaicwidget.h \
-    borneelectriquemainwidget.h \
     museesapi.h \
     museesmozaicwidget.h \
-    museesmainwidget.h \
     museeswidget.h \
+<<<<<<< HEAD
+    museesmainwidget.h
+=======
+    museesapi.h \
     evenementmozaicwidget.h \
     evenementwidget.h \
-    tableaupanoramicwidget.h \
-    evenementmainwidget.h
+    tableaupanoramicwidget.h
+>>>>>>> 17624b4f999d7f96a567c98def9e94951bafd6dc
 
 
 FORMS += \
@@ -103,14 +102,14 @@ FORMS += \
     tableauwidget.ui \
     pharmaciewidget.ui\
     sncfmozaicwidget.ui \
-    borneelectriquemozaicwidget.ui \
-    borneelectriquemainwidget.ui \
-    sncfmozaicwidget.ui \
+<<<<<<< HEAD
     museesmozaicwidget.ui \
-    museesmainwidget.ui \
+    museesmainwidget.ui
+=======
+    museeswidget.ui \
     evenementmozaicwidget.ui \
-    tableaupanoramicwidget.ui \
-    evenementmainwidget.ui
+    tableaupanoramicwidget.ui
+>>>>>>> 17624b4f999d7f96a567c98def9e94951bafd6dc
 
 
 RESOURCES += \

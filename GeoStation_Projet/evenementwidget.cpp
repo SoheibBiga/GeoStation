@@ -1,55 +1,50 @@
 #include "evenementwidget.h"
-#include "ui_evenementwidget.h"
 
-evenementwidget::evenementwidget(QWidget *parent) :
-    AWidget(parent),
-    ui(new Ui::evenementwidget)
+EvenementWidget::EvenementWidget(QWidget *parent) :
+    AWidget(parent)
 {
-    ui->setupUi(this);
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),this,SLOT(receive_info(QMap<QString,QString>)));
+    evenement_mozaic_widget = new EvenementMozaicWidget(this);
+    mozaicLayout_ = new QHBoxLayout(this);
+    mozaicLayout_->addWidget(evenement_mozaic_widget);
+    connect(this,SIGNAL(send_info(QMap<QString,QString>)),evenement_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
 
 }
 
-evenementwidget::~evenementwidget()
+EvenementWidget::~EvenementWidget()
 {
-    delete ui;
 }
 
-void evenementwidget::receive_info(QMap<QString, QString> map_formulaire){
-    ui->tableWidget->refresh(map_formulaire);
-}
-
-bool				evenementwidget::contentMap() const
+bool				EvenementWidget::contentMap() const
 {
     return (true);
 }
 
-bool				evenementwidget::hasMozaicLayout() const
+bool				EvenementWidget::hasMozaicLayout() const
 {
     return (true);
 }
 
-bool				evenementwidget::refresh() const
+bool				EvenementWidget::refresh() const
 {
     return (true);
 }
 
-bool				evenementwidget::init()
+bool				EvenementWidget::init()
 {
     return true;
 }
 
-bool				evenementwidget::run()
+bool				EvenementWidget::run()
 {
     qDebug() << "[ DBG ] : run";
     return (true);
 }
 
-bool				evenementwidget::end()
+bool				EvenementWidget::end()
 {
     return (true);
 }
 
-void				evenementwidget::addWidget(QWidget* widget)
+void				EvenementWidget::addWidget(QWidget* widget)
 {
 }

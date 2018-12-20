@@ -1,17 +1,18 @@
-#ifndef SNCFWIDGET_H
-#define SNCFWIDGET_H
+#ifndef MUSEESWIDGET_H
+#define MUSEESWIDGET_H
 
 #include "awidget.h"
-#include "sncfmozaicwidget.h"
+#include "museesmozaicwidget.h"
+#include "museesmainwidget.h"
 
-class SncfWidget : public AWidget
+
+class MuseesWidget : public AWidget
 {
     Q_OBJECT
 
 public:
-    explicit SncfWidget(QWidget *parent = 0);
-    ~SncfWidget();
-
+    explicit MuseesWidget(QWidget *parent = nullptr);
+    ~MuseesWidget() ;
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
     virtual bool				refresh() const;
@@ -20,13 +21,12 @@ public:
     virtual bool				end();
     virtual void				addWidget(QWidget* widget);
 
-    SncfMozaicWidget *sncf_mozaic_widget;
+    MuseesMozaicWidget *musees_mozaic_widget;
+    MuseesMainWidget *musees_main_widget;
 
 
 signals:
     void send_info(QMap<QString,QString>);
-    void send_info2(QMap<QString,QVariant>);
 };
 
-#endif // SNCFWIDGET_H
-
+#endif // MUSEESWIDGET_H

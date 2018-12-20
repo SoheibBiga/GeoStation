@@ -1,5 +1,5 @@
-#ifndef APIAVIONS_H
-#define APIAVIONS_H
+#ifndef AVIONSAPI_H
+#define AVIONSAPI_H
 
 #include "abstractapi.h"
 
@@ -30,16 +30,16 @@
 #include <QMainWindow>
 
 
-class apiavions : public AbstractApi
+class avionsapi : public AbstractApi
 {
 
     Q_OBJECT
 public:
-    apiavions(ordonnanceur *ord_, QObject *parent = 0);
+    avionsapi(ordonnanceur *ord_, QObject *parent = 0);
     QNetworkReply* reply;
     QNetworkReply* reply_singleplane;
 
-    ~apiavions();
+    ~avionsapi();
 
 private:
 
@@ -97,4 +97,4 @@ private slots:
 
 
 
-#endif // APIAVIONS_H
+#endif // AVIONSAPI_H

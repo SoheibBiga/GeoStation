@@ -145,25 +145,25 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     switch (id)
     {
     case 0:
-        map_formulaire->insert("ID : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satid"].toInt()));
+        map_formulaire.insert("ID : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satid"].toInt()));
         break;
     case 1:
-        map_formulaire->insert("Nom : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["satname"].toString()));
+        map_formulaire.insert("Nom : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["satname"].toString()));
         break;
     case 2:
-        map_formulaire->insert("Date de lancement : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["launchDate"].toString()));
+        map_formulaire.insert("Date de lancement : ",QString(Above_Array.at(NumSat).toObject().toVariantMap()["launchDate"].toString()));
         break;
     case 3:
-        map_formulaire->insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toFloat()));
+        map_formulaire.insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlat"].toFloat()));
         break;
     case 4:
-        map_formulaire->insert("Longitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toFloat()));
+        map_formulaire.insert("Longitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satlng"].toFloat()));
         break;
     case 5:
-        map_formulaire->insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
+        map_formulaire.insert("Altitude : ",QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toFloat()));
         break;
     }
-    emit send_info(*map_formulaire);
+    emit send_info(map_formulaire);
     finish(1);
 }
 bool SatelliteApi::isMap(){

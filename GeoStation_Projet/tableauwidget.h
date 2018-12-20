@@ -17,6 +17,8 @@ public:
     ~tableauwidget();
 
     bool refresh(QMap<QString, QString> map_formulaire);
+    void refresh_ameliore(QMap<QString,QVariant> map_ameliore);
+
 private:
     Ui::tableauwidget *ui;
 };

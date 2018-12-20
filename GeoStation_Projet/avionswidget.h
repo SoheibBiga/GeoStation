@@ -1,15 +1,19 @@
-#ifndef EVENEMENTWIDGET_H
-#define EVENEMENTWIDGET_H
+#ifndef AVIONSWIDGET_H
+#define AVIONSWIDGET_H
+
+
 
 #include "awidget.h"
-#include "evenementmozaicwidget.h"
+#include "avionsmozaicwidget.h"
 
-class EvenementWidget : public AWidget
+class AvionsWidget : public AWidget
 {
-public:
-    explicit EvenementWidget(QWidget *parent = 0);
+    Q_OBJECT
 
-    ~EvenementWidget();
+public:
+    explicit AvionsWidget(QWidget *parent = 0);
+    ~AvionsWidget();
+
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
     virtual bool				refresh() const;
@@ -18,11 +22,13 @@ public:
     virtual bool				end();
     virtual void				addWidget(QWidget* widget);
 
-    EvenementMozaicWidget *evenement_mozaic_widget;
+    AvionsMozaicWidget *avions_mozaic_widget;
+
 
 signals:
     void send_info(QMap<QString,QString>);
-
 };
 
-#endif // EVENEMENTWIDGET_H
+
+
+#endif // AVIONSWIDGET_H
