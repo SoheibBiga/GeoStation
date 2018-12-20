@@ -165,5 +165,6 @@ void MuseesMozaicWidget::resizeEvent ( QResizeEvent * )
 
 void MuseesMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
 {
+    qDebug() << "to change";
     //ui->tableWidget->refresh(map_formulaire);
 }

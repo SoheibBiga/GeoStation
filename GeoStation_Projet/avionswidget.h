@@ -1,16 +1,18 @@
-#ifndef SNCFWIDGET_H
-#define SNCFWIDGET_H
+#ifndef AVIONSWIDGET_H
+#define AVIONSWIDGET_H
+
+
 
 #include "awidget.h"
-#include "sncfmozaicwidget.h"
+#include "avionsmozaicwidget.h"
 
-class SncfWidget : public AWidget
+class AvionsWidget : public AWidget
 {
     Q_OBJECT
 
 public:
-    explicit SncfWidget(QWidget *parent = 0);
-    ~SncfWidget();
+    explicit AvionsWidget(QWidget *parent = 0);
+    ~AvionsWidget();
 
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
@@ -20,13 +22,13 @@ public:
     virtual bool				end();
     virtual void				addWidget(QWidget* widget);
 
-    SncfMozaicWidget *sncf_mozaic_widget;
+    AvionsMozaicWidget *avions_mozaic_widget;
 
 
 signals:
     void send_info(QMap<QString,QString>);
-    void send_info2(QMap<QString,QVariant>);
 };
 
-#endif // SNCFWIDGET_H
 
+
+#endif // AVIONSWIDGET_H

@@ -18,6 +18,7 @@ private:
     QString code_uic_gare;
     qint64 t1;
     qint64 t2;
+    QString libelle_gare;
 
 private slots:
     void result_liste_gare(QNetworkReply *reply);
