@@ -48,7 +48,6 @@ void SncfApi::result_liste_gare(QNetworkReply* reply)
     QString ul_prochain_depart = "https://"+token_sncf+"@api.sncf.com/v1/coverage/sncf/stop_areas/stop_area:OCE:SA:"+code_uic_gare+"/departures?datetime=20181212T174530";
     //qDebug() << ul_prochain_depart << "\t" << code_uic_gare;
     QUrl url(ul_prochain_depart);
-
     manager_prochain_depart->get(QNetworkRequest(url));
 
 }
