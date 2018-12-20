@@ -54,7 +54,9 @@ SOURCES += \
     evenementmozaicwidget.cpp \
     evenementwidget.cpp \
     tableaupanoramicwidget.cpp \
-    evenementmainwidget.cpp
+    evenementmainwidget.cpp \
+    avionswidget.cpp \
+    avionsmozaicwidget.cpp
 
 
 
@@ -88,7 +90,9 @@ HEADERS += \
     evenementmozaicwidget.h \
     evenementwidget.h \
     tableaupanoramicwidget.h \
-    evenementmainwidget.h
+    evenementmainwidget.h \
+    avionswidget.h \
+    avionsmozaicwidget.h
 
 
 FORMS += \
@@ -100,7 +104,8 @@ FORMS += \
     museesmainwidget.ui \
     evenementmozaicwidget.ui \
     tableaupanoramicwidget.ui \
-    evenementmainwidget.ui
+    evenementmainwidget.ui \
+    avionsmozaicwidget.ui
 
 
 RESOURCES += \
