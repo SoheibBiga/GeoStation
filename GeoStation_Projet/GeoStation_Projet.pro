@@ -27,7 +27,7 @@ SOURCES += \
         main.cpp \
     abstractapi.cpp \
     evenementapi.cpp \
-    apiavions.cpp \
+    avionsapi.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
     pollutionapi.cpp \
@@ -59,7 +59,7 @@ SOURCES += \
 HEADERS += \
     abstractapi.h \    
     evenementapi.h \
-    apiavions.h \
+    avionsapi.h \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
