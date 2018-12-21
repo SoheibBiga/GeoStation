@@ -60,8 +60,8 @@ void MeteoApi::Read(QNetworkReply *reply)
 //    double maintempmax=doc.toVariant().toHash()["main"].toHash()["temp_max"].toDouble();
 
 
-      map_formulaire->insert("Temperature",QString::number(maintempmin));
-      map_formulaire->insert("Temperature",QString::number(maintempmax));
+//      map_formulaire.insert("Temperature",QString::number(maintempmin));
+//      map_formulaire.insert("Temperature",QString::number(maintempmax));
 
 
     // ui->textEdit->insertPlainText(QString("%1"));
@@ -74,6 +74,6 @@ void MeteoApi::Read(QNetworkReply *reply)
 //    ui->textEdit->insertPlainText(QString("base : %1\n").arg(weatherbase));
 
 //    ui->textEdit->insertPlainText(QString("humidite: %1\n").arg(mainhum));
-//    ui->textEdit->insertPlainText(QString("tempmin: %1\n").arg(maintempmin));
+//    ui->textEdit->insertPla->inText(QString("tempmin: %1\n").arg(maintempmin));
 //    ui->textEdit->insertPlainText(QString("tempmax: %1\n").arg(maintempmax));
 }
