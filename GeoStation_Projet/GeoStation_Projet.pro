@@ -33,6 +33,7 @@ SOURCES += \
     pollutionapi.cpp \
     satelliteapi.cpp \
     borneelectriqueapi.cpp \
+    borneelectriquewidget.cpp \
     ordonnanceur.cpp \
     vigicruesapi.cpp \
     meteoapi.cpp \
@@ -80,6 +81,7 @@ HEADERS += \
     pollutionapi.h \
     satelliteapi.h \
     borneelectriqueapi.h \
+    borneelectriquewidget.h \
     ordonnanceur.h \
     vigicruesapi.h \
     meteoapi.h \
