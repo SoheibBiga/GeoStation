@@ -50,20 +50,6 @@ MainWindow::~MainWindow()
 
 void						MainWindow::initWidgets()
 {
-<<<<<<< HEAD
-    mozaic_->init();
-
-
-    AWidget *sncf_widget = new SncfWidget(mozaic_);
-    connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
-    mozaic_->addWidget(sncf_widget);
-
-
-    AWidget *satellite_widget = new SatelliteWidget(mozaic_);
-    connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),satellite_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
-    mozaic_->addWidget(satellite_widget);
-=======
->>>>>>> 2fad903a3b2945cda0d59e9a72a0c862021672be
 
 	AWidget*			widget;
 	int						count;
