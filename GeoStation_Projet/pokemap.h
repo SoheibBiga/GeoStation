@@ -6,33 +6,45 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QPixmap>
-#include <QList>
-#include <QVector2D>
-#include <QLabel>
-#include <QStringList>
+#include <QStandardPaths>
+#include <QSettings>
+#include <QPainter>
+#include <QImage>
 
-class PokeMap : public QWidget
+static QString configDef = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/Geostation/Map/";
+
+
+class PokeMap
 {
-    Q_OBJECT
 public:
-    PokeMap(QWidget *label);
-    ~PokeMap();
-    void    afficherMap();
-    void    ajouterMarqueur(QList<QVector2D> coord, QString iconURL = "");
-    void    ajouterMarqueur(QList<QStringList> coord, QString iconURL = "");
-    void    ajouterMarqueur(QString latitude, QString longitude, QString iconURL = "");
-    void    ajouterMarqueur(double latitude, double longitude, QString iconURL = "");
+    enum        MAP{CENT_M, DEUX_CENT_M, CINQ_CENT_M, MILLE_M, MILLE_CINQ_CENT_M, CINQ_MILLE_M, TROIS_CENT_KM, HUIT_CENT_KM};
+    enum        COULEUR{NOIR = Qt::black, BLANC = Qt::white, BLEU = Qt::blue, ROUGE = Qt::red, GRIS = Qt::gray, VERT = Qt::green, JAUNE = Qt::yellow};
+    PokeMap(MAP index);
+    virtual     ~PokeMap();
+    void        addPoint(QString latitude, QString longitude, QColor brush = BLEU);
+    void        addText(int x, int y, QString text, QColor brush = BLEU);
+    QPixmap     pixmap();
 private:
-    QNetworkAccessManager *manager = new QNetworkAccessManager;
-    QPixmap *pix = new QPixmap;
-    QString base_url = "https://www.mapquestapi.com/staticmap/v5/map?key=iGT3ydQS7XPt0LAjtbfk2LBioZCiUbOB&locations="; // Clé supplémentaire : DODjLAEshjEPsa3cTQmzMUVmv4g4zacn
-    QString url = base_url;
-    bool locations_set = false;
-
-signals:
-    void    get_label();
-private slots:
-    void    get_pixmap(QNetworkReply *);
+    int init_data(QStringList list);
+private:
+    QNetworkAccessManager *manager;
+    MAP index;
+    double yMax;
+    double xMax;
+    double yMin;
+    double xMin;
+    QImage img;
+    QHash<int, QString> map_name = {
+        {0, configDef + "map100m.png"},
+        {1, configDef + "map250m.png"},
+        {2, configDef + "map500m.png"},
+        {3, configDef + "map1000m.png"},
+        {4, configDef + "map1500m.png"},
+        {5, configDef + "map500m.png"},
+        {6, configDef + "map300km.png"},
+        {7, configDef + "map800km.png"}
+    };
+    int p = 0;
 };
 
 #endif // POKEMAP_H
