@@ -125,3 +125,6 @@ FORMS += \
 
 RESOURCES += \
     resources.qrc
+
+target.path = /home/root
+INSTALLS += target
