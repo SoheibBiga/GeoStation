@@ -50,6 +50,7 @@ MainWindow::~MainWindow()
 
 void						MainWindow::initWidgets()
 {
+
 	AWidget*			widget;
 	int						count;
 	int						idx;
@@ -62,8 +63,8 @@ void						MainWindow::initWidgets()
 			qDebug() << "[ DBG ] : Widget id = " << widget->getId();
 			mozaic_->addWidget(widget);
 		}
-}
 
+}
 
 bool						MainWindow::init()
 {
