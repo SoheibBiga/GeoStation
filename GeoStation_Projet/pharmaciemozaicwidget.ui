@@ -1,21 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>PharmacieMozaicWidget</class>
- <widget name="PharmacieMozaicWidget" class="QWidget">
+ <widget class="QWidget" name="PharmacieMozaicWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>375</width>
+    <height>337</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="tableauwidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>100</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>70</y>
+     <width>169</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pharmacie la plus proche</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_photo">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>20</y>
+     <width>42</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Photo</string>
+   </property>
+  </widget>
  </widget>
- <pixmapfunction/>
+ <customwidgets>
+  <customwidget>
+   <class>tableauwidget</class>
+   <extends>QTableWidget</extends>
+   <header>tableauwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
  <connections/>
 </ui>

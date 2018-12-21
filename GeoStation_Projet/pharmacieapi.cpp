@@ -8,6 +8,10 @@ PharmacieApi::PharmacieApi(ordonnanceur *ord_, QObject *parent): AbstractApi(IdW
     request.setUrl(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=finess-etablissements&q=Pharmacie+d%27Officine&geofilter.distance="
                         + QString::number(latitude) + "%2C+" + QString::number(longitude) + "%2C+" + QString::number(radius)));
 
+    latitude = 48.871671;
+    longitude = 2.346106;
+    radius = 500;
+
     reply = manager->get(request);
 
     connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
@@ -25,6 +29,8 @@ PharmacieApi::~PharmacieApi()
 
 void PharmacieApi::listePharmacie(QNetworkReply *reply)
 {
+    QMap<QString,QVariant> element;
+
     QByteArray tab = reply->readAll();
 
     QJsonDocument doc = QJsonDocument::fromJson(tab);
@@ -38,10 +44,19 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
     QString distance = doc.object().toVariantMap()["records"].toJsonArray().at(i)["fields"].toObject()["dist"].toString();
     QString codePostal = doc.object().toVariantMap()["records"].toJsonArray().at(i)["fields"].toObject()["ligneacheminement"].toString();
 
+    element.insert("Nom",QVariant(nom));
+    element.insert("Adresse",QVariant(adresse));
+    element.insert("CodePostal",QVariant(codePostal));
+    element.insert("Distance",QVariant(distance));
+    add_list(element);
+
     //ui->textEdit->insertPlainText(nom + "\n" + adresse + "\n" + codePostal + "\nà " + distance + " mètres\n\n");
     //qDebug() << nom <<"\n" << adresse << "\n" << codePostal << "\nà " <<  distance << " mètres\n\n";
     }
-    emit send_info(map_formulaire);
+    map_ameliore.insert("Tableau",QVariant(tableau));
+    map_ameliore.insert("Titre",QVariant(parametre));
+
+    emit send_info2(map_ameliore);
     finish(0);
 }
 
@@ -60,12 +75,12 @@ void PharmacieApi::slotSslErrors(QList<QSslError>)
 
 }
 
-bool PharmacieApi::isMap()
-{
-    return true;
-}
+//bool PharmacieApi::isMap()
+//{
+//    return true;
+//}
 
-bool PharmacieApi::hasBigLayout()
-{
-    return false;
-}
+//bool PharmacieApi::hasBigLayout()
+//{
+//    return false;
+//}

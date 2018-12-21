@@ -4,29 +4,24 @@
 # include <QStackedWidget>
 # include <QWidget>
 # include <QTimer>
-# include "mozaic.h"
 # include "ordonnanceur.h"
-# include <QStackedWidget>
 # include "awidget.h"
-# include "sncfwidget.h"
-# include "satellitewidget.h"
-# include "museeswidget.h"
-# include "tableauwidget.h"
-# include <QMap>
-# include "evenementwidget.h"
-# include <sncfapi.h>
+# include "mozaic.h"
 
 class MainWindow : public QWidget
 {
 		Q_OBJECT
 
-        QStackedWidget*		widgets_;
-        ordonnanceur*        ordonnanceur_;
-        Mozaic*				mozaic_;
-        QTimer*				timer_;
+		QStackedWidget*		widgets_;
+		ordonnanceur*     ordonnanceur_;
+		Mozaic*						mozaic_;
+		QTimer*						timer_;
 
 		MainWindow(MainWindow const& other);
 		MainWindow&			operator=(MainWindow const& other);
+
+		void				initMozaic();
+		void				initWidgets();
 
 	public:
 		explicit MainWindow(QWidget *parent = 0);

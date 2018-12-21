@@ -33,6 +33,7 @@ SOURCES += \
     pollutionapi.cpp \
     satelliteapi.cpp \
     borneelectriqueapi.cpp \
+    borneelectriquewidget.cpp \
     ordonnanceur.cpp \
     vigicruesapi.cpp \
     meteoapi.cpp \
@@ -65,7 +66,8 @@ SOURCES += \
     satellitemozaicwidget.cpp \
     labeldyn.cpp \
     geolocalisationwidget.cpp \
-    geolocalisationmozaicwidget.cpp
+    geolocmozaicwidget.cpp \
+    borneelectriquemozaicwidget.cpp
 
 
 
@@ -80,6 +82,7 @@ HEADERS += \
     pollutionapi.h \
     satelliteapi.h \
     borneelectriqueapi.h \
+    borneelectriquewidget.h \
     ordonnanceur.h \
     vigicruesapi.h \
     meteoapi.h \
@@ -112,14 +115,14 @@ HEADERS += \
     satellitemozaicwidget.h \
     labeldyn.h \
     geolocalisationwidget.h \
-    geolocalisationmozaicwidget.h
+    geolocmozaicwidget.h \
+    borneelectriquemozaicwidget.h
 
 
 
 FORMS += \
-        mainwindow.ui \
+    mainwindow.ui \
     tableauwidget.ui \
-    pharmaciewidget.ui\
     sncfmozaicwidget.ui \
     museesmozaicwidget.ui \
     museesmainwidget.ui \
@@ -131,7 +134,8 @@ FORMS += \
     vigicruesmosaicwidget.ui \
     pharmaciemozaicwidget.ui\
     satellitemozaicwidget.ui \
-    geolocalisationmozaicwidget.ui
+    geolocmozaicwidget.ui \
+    borneelectriquemozaicwidget.ui
 
 
 

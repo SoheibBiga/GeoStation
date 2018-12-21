@@ -2,17 +2,13 @@
 #define PHARMACIEWIDGET_H
 
 #include "awidget.h"
-
-namespace Ui {
-class PharmacieWidget;
-}
+#include "pharmaciemozaicwidget.h"
 
 class PharmacieWidget : public AWidget
 {
     Q_OBJECT
-
 public:
-    explicit PharmacieWidget(QWidget *parent = nullptr);
+    explicit PharmacieWidget(QWidget *parent = 0);
     ~PharmacieWidget();
 
     virtual bool				contentMap() const;
@@ -21,17 +17,14 @@ public:
     virtual bool				init();
     virtual bool				run();
     virtual bool				end();
-    virtual void				addWidget(QWidget* widget);
+
+    PharmacieMozaicWidget *pharmacie_mozaic_widget;
 
 
-private:
-    Ui::PharmacieWidget *ui;
 
 signals:
     void send_info(QMap<QString,QString>);
-
-private slots:
-    void receive_info(QMap<QString,QString>);
+    void send_info2(QMap<QString,QVariant>);
 };
 
 #endif // PHARMACIEWIDGET_H
