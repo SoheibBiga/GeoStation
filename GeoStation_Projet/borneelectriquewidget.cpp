@@ -1,7 +1,7 @@
 #include "borneelectriquewidget.h"
 
 BorneElectriqueWidget::BorneElectriqueWidget(QWidget* parent)
-	: AWidget()
+	: AWidget(parent)
 {
 
 }
