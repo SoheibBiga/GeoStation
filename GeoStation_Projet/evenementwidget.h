@@ -16,7 +16,7 @@ public:
     virtual bool				init();
     virtual bool				run();
     virtual bool				end();
-    virtual void				addWidget(QWidget* widget);
+//    virtual void				addWidget(QWidget* widget);
 
     EvenementMozaicWidget *evenement_mozaic_widget;
 
