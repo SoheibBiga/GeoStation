@@ -3,7 +3,8 @@
 
 #include <QWidget>
 #include <QMap>
-#include "QDebug"
+#include <QVariant>
+
 
 namespace Ui {
 class PharmacieMozaicWidget;
@@ -14,7 +15,7 @@ class PharmacieMozaicWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit PharmacieMozaicWidget(QWidget *parent = nullptr);
+    explicit PharmacieMozaicWidget(QWidget *parent = 0);
     ~PharmacieMozaicWidget();
 
 private:
