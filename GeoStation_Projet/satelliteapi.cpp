@@ -27,7 +27,7 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
     connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
 
     //Set request URL
-    qint64 t_start = QDateTime::currentSecsSinceEpoch();
+    //qint64 t_start = QDateTime::currentSecsSinceEpoch();
     for(int i=0;i<50;i++)
     {
         Request_Url(fonction,i);
@@ -43,7 +43,7 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
         emit send_info2(map_ameliore);
         finish(1);
     }
-    qint64 t_end = QDateTime::currentSecsSinceEpoch();
+    //qint64 t_end = QDateTime::currentSecsSinceEpoch();
     //qDebug()<< QString::number(t_end- t_start);
 }
 

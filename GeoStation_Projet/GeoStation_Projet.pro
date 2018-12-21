@@ -69,7 +69,8 @@ SOURCES += \
     geolocmozaicwidget.cpp \
     borneelectriquemozaicwidget.cpp \
     pollutionwidget.cpp \
-    pollutionmozaicwidget.cpp
+    pollutionmozaicwidget.cpp \
+    timer.cpp
 
 
 
@@ -120,7 +121,8 @@ HEADERS += \
     geolocmozaicwidget.h \
     borneelectriquemozaicwidget.h \
     pollutionwidget.h \
-    pollutionmozaicwidget.h
+    pollutionmozaicwidget.h \
+    timer.h
 
 
 
