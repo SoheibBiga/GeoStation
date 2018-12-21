@@ -21,6 +21,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QPixmap>
 #include <QEventLoop>
 #include <QDebug>
@@ -32,9 +33,13 @@ class CherchePhotos : public AbstractApi
     Q_OBJECT
 
 public:
-    CherchePhotos(QString, int, ordonnanceur *ord_, QObject *parent = 0);
+    CherchePhotos(QString, int, ordonnanceur *ord_ = nullptr, QObject *parent = nullptr);
     QPixmap* getPhoto() ;
     bool chargementPhotoFini() ;
+
+    // fonction inutile pour cette classe, mais
+    // elle doit être là car notre classe hérite de AbstractApi
+    bool isMap();
 
 private:
     QString texteRecherche ;

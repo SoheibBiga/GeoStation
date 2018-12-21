@@ -53,6 +53,7 @@ protected:
 
     double longitude;
     double latitude;
+    // le rayon est en mètres
     double radius;
 
     QNetworkAccessManager *manager;

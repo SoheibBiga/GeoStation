@@ -37,7 +37,7 @@ class AWidget : public QWidget
 		virtual QLayout*		getMozaicLayout() const;
         virtual bool				contentMap() const = 0;
         virtual bool				hasMozaicLayout() const = 0;
-        virtual bool				refresh() const = 0;
+				virtual bool				refresh() = 0;
         virtual bool				init() = 0;
         virtual bool				run() = 0;
         virtual bool				end() = 0;
