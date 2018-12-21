@@ -4,10 +4,10 @@
 SatelliteWidget::SatelliteWidget(QWidget *parent) :
     AWidget(parent)
 {
-    satellite_mozaic_widget = new SatelliteMozaicWidget(this);
+    /*satellite_mozaic_widget = new SatelliteMozaicWidget(this);
     mozaicLayout_ = new QHBoxLayout(this);
     mozaicLayout_->addWidget(satellite_mozaic_widget);
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),satellite_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
+    connect(this,SIGNAL(send_info(QMap<QString,QString>)),satellite_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));*/
 
 }
 

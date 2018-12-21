@@ -22,7 +22,6 @@ void ordonnanceur::send_request()
     switch(id){
     case IdWidget(Sncf):
         api_index = new SncfApi(this);
-        qDebug() << "refresh";
         sncf_timer->start(10000);
         break;
     case IdWidget(Musee):
@@ -61,7 +60,7 @@ void ordonnanceur::send_request()
 
 void ordonnanceur::run(){
     connect(sncf_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-//    connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request(1)));
+    connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
 //    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request(2)));
 //    connect(vigicrues_timer, SIGNAL(timeout()), this, SLOT(send_request(3)));
 //    connect(avions_timer, SIGNAL(timeout()), this, SLOT(send_request(4)));
@@ -72,7 +71,7 @@ void ordonnanceur::run(){
 //    connect(borneelectrique_timer, SIGNAL(timeout()), this, SLOT(send_request(9)));
 
     sncf_timer->start(1);
-//    satellite_timer->start(1000000);
+    satellite_timer->start(1000);
 //    evenement_timer->start(1000000);
 //    vigicrues_timer->start(1000000);
 //    avions_timer->start(1000000);
