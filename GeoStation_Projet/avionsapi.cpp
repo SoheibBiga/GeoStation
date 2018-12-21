@@ -132,13 +132,6 @@ void avionsapi::replyFinished(QNetworkReply*  reply)
 }
 
 
-void avionsapi::view_airlinecompanies()
-{
-
-
-
-}
-
 void avionsapi::query_singleplane()
 {
 
@@ -557,6 +550,106 @@ void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
 
 
     }
+
+
+
+}
+
+
+
+
+void avionsapi::view_airlinecompanies()
+{
+
+
+    //airline_code = "MNB";
+
+    QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/info_conversions/airline_data");
+    QFile file( filename );
+    if ( file.open(QIODevice::ReadWrite) )
+    {
+        qDebug()<<"AIRLINES FILE OPEN!!"<<endl;
+
+        QTextStream instream(&file);
+        QString line = instream.readLine();
+        //qDebug() << "first line: " << line;
+        int index1 = line.indexOf(" ");
+        int length = line.size()-index1;
+
+        QString subline = line;
+        subline.remove(index1, length);
+
+
+        while(!subline.contains(airline_code))
+        {
+            //qDebug()<<subline<<endl;
+            //                subline.clear();
+            //                subline.toString();
+            line = instream.readLine();
+            if (instream.atEnd())
+            {
+                airline_name = "did not find airline";
+                file.close();
+                return;
+
+            }
+
+            index1 = line.indexOf(" ");
+            length = line.size()-index1;
+
+            subline = line;
+            subline.remove(index1, length);
+
+
+        }
+// bool QTextStream::atEnd() const
+
+
+            if (subline.contains(airline_code))
+            {
+                qDebug()<<"YES it does contains the airport code"<<endl;
+
+                if (airline_code=="")
+                {
+                    airline_name = "Empty data";
+                    file.close();
+                    return;
+
+                }
+
+
+             index1 = line.indexOf(" ");
+
+                int after_space = index1 + 1;
+                 length = line.size()-after_space;
+
+                QStringRef airport_n(&line ,after_space, length);
+
+                airline_name=airport_n.toString() ;
+
+                file.close();
+
+
+            }
+            else
+            {
+                airline_name = "did not find airline";
+                 file.close();
+                 return;
+            }
+
+
+            file.close();
+    }
+
+    else
+    {
+        airline_name = " FAILED TO OPEN  airlines FILE";
+
+        return;
+
+    }
+
 
 
 
