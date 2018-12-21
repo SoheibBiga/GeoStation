@@ -45,7 +45,7 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
         finish(1);
     }
     if(nb>=49){
-        qDebug() << "nb>=49 ok";
+
         add_nb_entree(total);
         add_titre("Satellite à proximité");
         map_ameliore.insert("Tableau",QVariant(tableau));
