@@ -2,6 +2,7 @@
 #define GEOLOCALISATIONWIDGET_H
 
 #include "awidget.h"
+#include "geolocmozaicwidget.h"
 
 class GeolocalisationWidget : public AWidget
 {
@@ -16,7 +17,7 @@ public:
     virtual bool				run();
     virtual bool				end();
 
-    //SncfMozaicWidget *sncf_mozaic_widget;
+    GeoLocMozaicWidget *geolocalisation_mozaic_widget;
 
 
 signals:
