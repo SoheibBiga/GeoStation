@@ -61,8 +61,6 @@ bool				MainWindow::init()
 
 
 
-
-
     ordonnanceur_->run();
 
     mozaic_->show();

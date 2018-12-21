@@ -126,7 +126,8 @@ FORMS += \
     linechartwidget.ui \
     vigicruesmosaicwidget.ui \
     pharmaciemozaicwidget.ui\
-    satellitemozaicwidget.ui
+    satellitemozaicwidget.ui \
+
 
 
 
