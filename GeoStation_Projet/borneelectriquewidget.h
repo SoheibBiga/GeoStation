@@ -7,7 +7,8 @@ class BorneElectriqueWidget : public AWidget
 {
 
 	public:
-		BorneElectriqueWidget();
+		BorneElectriqueWidget(QWidget* parent = 0);
+
 		bool				contentMap() const;
 		bool				hasMozaicLayout() const;
 		bool				refresh();
