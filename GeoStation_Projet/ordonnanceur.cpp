@@ -29,6 +29,7 @@ void ordonnanceur::send_request()
         break;
     case IdWidget(Satellite):
         api_index = new SatelliteApi(this);
+        satellite_timer->start(10000);
         break;
     case IdWidget(Evenement):
         api_index = new EvenementApi(this);
