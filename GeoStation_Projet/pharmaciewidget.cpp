@@ -27,7 +27,7 @@ bool PharmacieWidget::hasMozaicLayout() const
     return(true);
 }
 
-bool PharmacieWidget::refresh() const
+bool PharmacieWidget::refresh()
 {
     return(true);
 }

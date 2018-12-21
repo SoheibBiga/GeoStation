@@ -24,7 +24,7 @@ bool				EvenementWidget::hasMozaicLayout() const
     return (true);
 }
 
-bool				EvenementWidget::refresh() const
+bool				EvenementWidget::refresh()
 {
     return (true);
 }

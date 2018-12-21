@@ -25,7 +25,7 @@ bool				SncfWidget::hasMozaicLayout() const
     return (true);
 }
 
-bool				SncfWidget::refresh() const
+bool				SncfWidget::refresh()
 {
     return (true);
 }

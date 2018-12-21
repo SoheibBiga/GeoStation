@@ -28,11 +28,14 @@ SOURCES += \
     abstractapi.cpp \
     evenementapi.cpp \
     avionsapi.cpp \
+    avionswidget.cpp \
+    avionsmozaicwidget.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
     pollutionapi.cpp \
     satelliteapi.cpp \
     borneelectriqueapi.cpp \
+    borneelectriquewidget.cpp \
     ordonnanceur.cpp \
     vigicruesapi.cpp \
     meteoapi.cpp \
@@ -56,8 +59,6 @@ SOURCES += \
     tableaupanoramicwidget.cpp \
     evenementmainwidget.cpp \
     satellitewidget.cpp \
-    avionswidget.cpp \
-    avionsmozaicwidget.cpp \
     linechartwidget.cpp \
     vigicruesmosaicwidget.cpp \
     vigicrueswidget.cpp \
@@ -65,7 +66,10 @@ SOURCES += \
     satellitemozaicwidget.cpp \
     labeldyn.cpp \
     geolocalisationwidget.cpp \
-    geolocmozaicwidget.cpp
+    geolocmozaicwidget.cpp \
+    borneelectriquemozaicwidget.cpp \
+    pollutionwidget.cpp \
+    pollutionmozaicwidget.cpp
 
 
 
@@ -73,13 +77,16 @@ SOURCES += \
 
 HEADERS += \
     abstractapi.h \
-    evenementapi.h \
     avionsapi.h \
+    avionsmozaicwidget.h \
+    avionswidget.h \
+    evenementapi.h \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
     satelliteapi.h \
     borneelectriqueapi.h \
+    borneelectriquewidget.h \
     ordonnanceur.h \
     vigicruesapi.h \
     meteoapi.h \
@@ -103,8 +110,6 @@ HEADERS += \
     tableaupanoramicwidget.h \
     evenementmainwidget.h \
     satellitewidget.h \
-    avionswidget.h \
-    avionsmozaicwidget.h \
     linechartwidget.h \
     vigicruesmosaicwidget.h \
     vigicrueswidget.h \
@@ -112,25 +117,30 @@ HEADERS += \
     satellitemozaicwidget.h \
     labeldyn.h \
     geolocalisationwidget.h \
-    geolocmozaicwidget.h
+    geolocmozaicwidget.h \
+    borneelectriquemozaicwidget.h \
+    pollutionwidget.h \
+    pollutionmozaicwidget.h
 
 
 
 FORMS += \
-        mainwindow.ui \
+    mainwindow.ui \
     tableauwidget.ui \
+    avionsmozaicwidget.ui \
     sncfmozaicwidget.ui \
     museesmozaicwidget.ui \
     museesmainwidget.ui \
     evenementmozaicwidget.ui \
     tableaupanoramicwidget.ui \
     evenementmainwidget.ui \
-    avionsmozaicwidget.ui \
     linechartwidget.ui \
     vigicruesmosaicwidget.ui \
     pharmaciemozaicwidget.ui\
     satellitemozaicwidget.ui \
-    geolocmozaicwidget.ui
+    geolocmozaicwidget.ui \
+    borneelectriquemozaicwidget.ui \
+    pollutionmozaicwidget.ui
 
 
 

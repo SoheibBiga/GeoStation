@@ -27,17 +27,19 @@ bool				Mozaic::hasMozaicLayout() const
 	return (false);
 }
 
-bool				Mozaic::refresh() const
+
+bool	Mozaic::refresh()
 {
 	return (true);
 }
 
 bool				Mozaic::init()
 {
+	setWindowState(Qt::WindowFullScreen);
 	setLayout(hLayout_);
 	hLayout_->addLayout(vLayout1_);
 	hLayout_->addLayout(vLayout2_);
-   setStyleSheet("background-color : rgb(255, 255, 255);");
+
 	return (true);
 }
 

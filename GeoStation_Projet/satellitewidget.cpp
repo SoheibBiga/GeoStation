@@ -11,8 +11,7 @@ SatelliteWidget::SatelliteWidget(QWidget *parent) :
 }
 
 SatelliteWidget::~SatelliteWidget()
-{
-}
+{}
 
 bool				SatelliteWidget::contentMap() const
 {
@@ -24,7 +23,7 @@ bool				SatelliteWidget::hasMozaicLayout() const
     return (true);
 }
 
-bool				SatelliteWidget::refresh() const
+bool				SatelliteWidget::refresh()
 {
     return (true);
 }

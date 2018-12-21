@@ -25,7 +25,7 @@ bool				AvionsWidget::hasMozaicLayout() const
     return (true);
 }
 
-bool				AvionsWidget::refresh() const
+bool				AvionsWidget::refresh()
 {
     return (true);
 }
