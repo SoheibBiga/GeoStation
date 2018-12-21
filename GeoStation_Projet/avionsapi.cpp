@@ -105,13 +105,27 @@ void avionsapi::replyFinished(QNetworkReply*  reply)
 
      //ui->label_nombreavions->setText(nombreavions);
 
+
+     write_first_requete.append(nombreavions);
+     write_first_requete.append("\n");
+
+     write_first_requete.append(strJson);
+
+
+
+//     QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/"+output_folder+"APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+//     QFile file( filename );
+//     if ( file.open(QIODevice::ReadWrite) )
+//     {
+//         QTextStream stream(&file);
+//         stream << write_first_requete << endl;
+//     }
+
+
     // parseplanelist();        // car fichiers lecture aeroports doivent etre crées dynamiquement
 
 
 
-
-
-     //reply->deleteLater();
 
 
 
