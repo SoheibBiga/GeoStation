@@ -71,6 +71,8 @@ void ordonnanceur::run()
     //api_index = new SatelliteApi(this);
     api_index = new PharmacieApi(this);
     api_index->loop->exec();
+    api_index = new MuseesApi(this);
+    api_index->loop->exec();
 //    api_index = new GeolocalisationApi(this);
 
 //    api_index = new SncfApi(this);
@@ -86,7 +88,7 @@ void ordonnanceur::run()
 //    connect(avions_timer, SIGNAL(timeout()), this, SLOT(send_request(4)));
 //    connect(meteo_timer, SIGNAL(timeout()), this, SLOT(send_request(5)));
 //    connect(pollution_timer, SIGNAL(timeout()), this, SLOT(send_request(6)));
-//    connect(musee_timer, SIGNAL(timeout()), this, SLOT(send_request(7)));   
+    connect(musee_timer, SIGNAL(timeout()), this, SLOT(send_request(7)));
 //    connect(borneelectrique_timer, SIGNAL(timeout()), this, SLOT(send_request(9)));
 
     sncf_timer->start(1);
@@ -99,6 +101,6 @@ void ordonnanceur::run()
 //    avions_timer->start(1000000);
 //    meteo_timer->start(1000000);
 //    pollution_timer->start(1000000);
-//    musee_timer->start(100000);
+    musee_timer->start(100000);
 //    borneelectrique_timer->start(1000000);
 }
