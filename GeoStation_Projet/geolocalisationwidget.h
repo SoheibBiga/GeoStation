@@ -1,16 +1,14 @@
-#ifndef PHARMACIEWIDGET_H
-#define PHARMACIEWIDGET_H
+#ifndef GEOLOCALISATIONWIDGET_H
+#define GEOLOCALISATIONWIDGET_H
 
 #include "awidget.h"
-#include "pharmaciemozaicwidget.h"
+#include "geolocmozaicwidget.h"
 
-class PharmacieWidget : public AWidget
+class GeolocalisationWidget : public AWidget
 {
-    Q_OBJECT
-
 public:
-    explicit PharmacieWidget(QWidget *parent = 0);
-    ~PharmacieWidget();
+    explicit GeolocalisationWidget(QWidget *parent = nullptr);
+    ~GeolocalisationWidget();
 
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
@@ -19,8 +17,7 @@ public:
     virtual bool				run();
     virtual bool				end();
 
-    PharmacieMozaicWidget *pharmacie_mozaic_widget;
-
+    GeoLocMozaicWidget *geolocalisation_mozaic_widget;
 
 
 signals:
@@ -28,4 +25,4 @@ signals:
     void send_info2(QMap<QString,QVariant>);
 };
 
-#endif // PHARMACIEWIDGET_H
+#endif // GEOLOCALISATIONWIDGET_H

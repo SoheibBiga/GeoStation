@@ -1,5 +1,5 @@
 #include "satellitewidget.h"
-//#include "ui_satellitewidget.h"
+
 
 SatelliteWidget::SatelliteWidget(QWidget *parent) :
     AWidget(parent)
@@ -8,7 +8,6 @@ SatelliteWidget::SatelliteWidget(QWidget *parent) :
     mozaicLayout_ = new QHBoxLayout();
     mozaicLayout_->addWidget(satellite_mozaic_widget);
     connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),satellite_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
-
 }
 
 SatelliteWidget::~SatelliteWidget()

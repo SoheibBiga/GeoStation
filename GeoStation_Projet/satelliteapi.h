@@ -47,7 +47,9 @@ private:
     QStringList MyList;
     qint64 CurrentSecSinceRequestStart;
     qint64 CurrentSecSinceRequestStop;
-     QMap<QString,QVariant> element;
+    QMap<QString,QVariant> element;
+    QEventLoop *sat_loop;
+
 
 };
 
