@@ -27,6 +27,9 @@ SOURCES += \
     main.cpp \
     abstractapi.cpp \
     evenementapi.cpp \
+    avionsapi.cpp \
+    avionswidget.cpp \
+    avionsmozaicwidget.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
     pollutionapi.cpp \
@@ -74,6 +77,9 @@ SOURCES += \
 
 HEADERS += \
     abstractapi.h \
+    avionsapi.h \
+    avionsmozaicwidget.h \
+    avionswidget.h \
     evenementapi.h \
     sncfapi.h \
     pharmacieapi.h \
@@ -121,6 +127,7 @@ HEADERS += \
 FORMS += \
     mainwindow.ui \
     tableauwidget.ui \
+    avionsmozaicwidget.ui \
     sncfmozaicwidget.ui \
     museesmozaicwidget.ui \
     museesmainwidget.ui \
