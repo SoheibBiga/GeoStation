@@ -33,7 +33,7 @@ class CherchePhotos : public AbstractApi
     Q_OBJECT
 
 public:
-    CherchePhotos(QString, int, ordonnanceur *ord_, QObject *parent = nullptr);
+    CherchePhotos(QString, int, ordonnanceur *ord_ = nullptr, QObject *parent = nullptr);
     QPixmap* getPhoto() ;
     bool chargementPhotoFini() ;
 

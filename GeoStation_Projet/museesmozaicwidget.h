@@ -9,8 +9,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QTextCodec>
+#include <QMap>
+#include <QVariant>
 //#include <QDebug>
-#include "cherchephotos.h"
 
 namespace Ui {
 class MuseesMozaicWidget;
@@ -22,24 +23,20 @@ class MuseesMozaicWidget : public QWidget
 
 public:
     explicit MuseesMozaicWidget(QWidget *parent = nullptr);
-    ~MuseesMozaicWidget();
+    //~MuseesMozaicWidget();
 
 private:
     Ui::MuseesMozaicWidget *ui;
-    QNetworkReply* reply ;
-    QByteArray response_data ;
-    QPixmap photo ;
-    //QTime time;
+    QPixmap* photo ;
 
     void trtReceptionDonnees () ;
     void ajusteTaillePhoto() ;
-    void resizeEvent ( QResizeEvent *  );
+    //void resizeEvent ( QResizeEvent *  );
 
 
 public slots:
     void receive_info(QMap<QString,QString> map_formulaire);
-    void onFinished(QNetworkReply*);
-    void onReadyRead();
+    void receive_info2(QMap<QString,QVariant> map_ameliore);
 };
 
 #endif // MUSEESMOZAICWIDGET_H

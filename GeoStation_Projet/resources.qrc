@@ -4,5 +4,9 @@
         <file>Icons/date.svg</file>
         <file>Icons/description.svg</file>
         <file>Icons/tarif.svg</file>
+        <file>Icons/fermeture.svg</file>
+        <file>Icons/nocturnes.svg</file>
+        <file>Icons/horaires.svg</file>
+        <file>Icons/Itineraire.jpeg</file>
     </qresource>
 </RCC>
