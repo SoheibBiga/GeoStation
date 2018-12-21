@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network webenginewidgets widgets
+QT       += core gui network widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,41 +24,104 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
+    main.cpp \
     abstractapi.cpp \
     evenementapi.cpp \
-    apiavions.cpp \
+    avionsapi.cpp \
     sncfapi.cpp \
     pharmacieapi.cpp \
     pollutionapi.cpp \
     satelliteapi.cpp \
     borneelectriqueapi.cpp \
     ordonnanceur.cpp \
-    tablewidget.cpp \
-    mainwindowghania.cpp \
     vigicruesapi.cpp \
-    meteoapi.cpp
+    meteoapi.cpp \
+    awidget.cpp \
+    nullapi.cpp \
+    cherchephotos.cpp \
+    mozaic.cpp \
+    tableauwidget.cpp \
+    pharmaciewidget.cpp\
+    geolocalisationapi.cpp \
+    pokemap.cpp \
+    sncfwidget.cpp \
+    sncfmozaicwidget.cpp \
+    mainwindow.cpp \
+    museesapi.cpp \
+    museesmozaicwidget.cpp \
+    museesmainwidget.cpp \
+    museeswidget.cpp \
+    evenementmozaicwidget.cpp \
+    evenementwidget.cpp \
+    tableaupanoramicwidget.cpp \
+    evenementmainwidget.cpp \
+    satellitewidget.cpp \
+    satellitemozaicwidget.cpp \
+    avionswidget.cpp \
+    avionsmozaicwidget.cpp \
+    linechartwidget.cpp \
+    vigicruesmosaicwidget.cpp \
+    vigicrueswidget.cpp
+
+
 
 
 HEADERS += \
-        mainwindow.h \
-    abstractapi.h \    
+    abstractapi.h \
     evenementapi.h \
-    apiavions.h \
+    avionsapi.h \
     sncfapi.h \
     pharmacieapi.h \
     pollutionapi.h \
     satelliteapi.h \
     borneelectriqueapi.h \
     ordonnanceur.h \
-    tablewidget.h \
-    mainwindowghania.h \
     vigicruesapi.h \
-    meteoapi.h
+    meteoapi.h \
+    awidget.h \
+    nullapi.h \
+    cherchephotos.h \
+    mozaic.h \
+    tableauwidget.h \
+    pharmaciewidget.h\
+    geolocalisationapi.h \
+    pokemap.h \
+    sncfwidget.h \
+    sncfmozaicwidget.h \
+    mainwindow.h \
+    museesapi.h \
+    museesmozaicwidget.h \
+    museesmainwidget.h \
+    museeswidget.h \
+    evenementmozaicwidget.h \
+    evenementwidget.h \
+    tableaupanoramicwidget.h \
+    evenementmainwidget.h \
+    satellitewidget.h \
+    satellitemozaicwidget.h \
+    avionswidget.h \
+    avionsmozaicwidget.h \
+    linechartwidget.h \
+    vigicruesmosaicwidget.h \
+    vigicrueswidget.h
 
 
 FORMS += \
         mainwindow.ui \
-    tablewidget.ui \
-    mainwindowghania.ui
+    tableauwidget.ui \
+    pharmaciewidget.ui\
+    sncfmozaicwidget.ui \
+    museesmozaicwidget.ui \
+    museesmainwidget.ui \
+    evenementmozaicwidget.ui \
+    tableaupanoramicwidget.ui \
+    evenementmainwidget.ui \
+    satellitemozaicwidget.ui \
+    avionsmozaicwidget.ui \
+    linechartwidget.ui \
+    vigicruesmosaicwidget.ui
+
+
+
+RESOURCES += \
+    resources.qrc

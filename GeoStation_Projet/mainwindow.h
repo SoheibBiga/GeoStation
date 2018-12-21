@@ -1,26 +1,38 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef			MAINWINDOW_H_
+# define		MAINWINDOW_H_
 
-#include <QMainWindow>
-#include <QBoxLayout>
+# include <QStackedWidget>
+# include <QWidget>
+# include <QTimer>
+# include "mozaic.h"
+# include "ordonnanceur.h"
+# include <QStackedWidget>
+# include "awidget.h"
+# include "sncfwidget.h"
+# include "satellitewidget.h"
+# include "museeswidget.h"
+# include "tableauwidget.h"
+# include <QMap>
+# include "evenementwidget.h"
+# include <sncfapi.h>
 
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public QMainWindow
+class MainWindow : public QWidget
 {
-    Q_OBJECT
+		Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+		QStackedWidget*				widgets_;
+		Mozaic*								mozaic_;
+		QTimer*								timer_;
 
-private:
-    Ui::MainWindow *ui;
+		MainWindow(MainWindow const& other);
+		MainWindow&			operator=(MainWindow const& other);
 
-private slots:
-    void affiche(QBoxLayout* layout);
+	public:
+		explicit MainWindow(QWidget *parent = 0);
+		~MainWindow();
+		bool				init();
+		bool				run();
+		bool				end();
 };
 
-#endif // MAINWINDOW_H
+#endif // MAINWINDOW_H_

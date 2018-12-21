@@ -11,7 +11,7 @@ class MeteoApi : public AbstractApi
     Q_OBJECT
 
 public:
-    MeteoApi(QObject* parent = 0);
+    MeteoApi(ordonnanceur *ord_, QObject* parent = 0);
 
 private:
     QNetworkReply *reply;

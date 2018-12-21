@@ -1,6 +1,6 @@
 #include "meteoapi.h"
 
-MeteoApi::MeteoApi(QObject* parent) : AbstractApi(IdWidget(Meteo),parent)
+MeteoApi::MeteoApi(ordonnanceur *ord_, QObject* parent) : AbstractApi(IdWidget(Meteo), ord_, parent)
 {
 
     manager = new QNetworkAccessManager(this);

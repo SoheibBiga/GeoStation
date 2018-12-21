@@ -3,7 +3,7 @@
 #include <QFile>
 #include <qdatetime.h>
 
-BorneElectriqueApi::BorneElectriqueApi(QObject* parent) : AbstractApi(IdWidget(BorneElectrique),parent)
+BorneElectriqueApi::BorneElectriqueApi(ordonnanceur *ord_, QObject* parent) : AbstractApi(IdWidget(BorneElectrique), ord_, parent)
 {
 
     manager = new QNetworkAccessManager(this);
@@ -31,23 +31,23 @@ void BorneElectriqueApi::replyFinished(QNetworkReply* reply)
     for (int i=0; i<10; ++i){
 
         QString type_charge = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["type_charge"].toString();
-        map_formulaire->insert("type de charge: ",type_charge);
+        map_formulaire.insert("type de charge: ",type_charge);
         QString commune = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["commune"].toString();
-        map_formulaire->insert("commune: ",commune);
+        map_formulaire.insert("commune: ",commune);
         QString type_connecteur = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["type_connecteur"].toString();
-        map_formulaire->insert("type_connecteur: ",type_connecteur);
+        map_formulaire.insert("type_connecteur: ",type_connecteur);
         QString adresse_station = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["adresse_station"].toString();
-        map_formulaire->insert("adresse_station: ",adresse_station);
+        map_formulaire.insert("adresse_station: ",adresse_station);
         QString source = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["source"].toString();
-        map_formulaire ->insert("source : ",source);
+        map_formulaire.insert("source : ",source);
         QString observations = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["observations"].toString();
-        map_formulaire ->insert("observations: ",observations);
+        map_formulaire.insert("observations: ",observations);
         QString id_station = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["id_station"].toString();
-        map_formulaire ->insert("id_station: ",id_station);
+        map_formulaire.insert("id_station: ",id_station);
         QString Xlongitude = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["Xlongitude"].toString();
-        map_formulaire ->insert("Xlongitude: ",Xlongitude);
+        map_formulaire.insert("Xlongitude: ",Xlongitude);
         QString Ylatitude = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["Ylatitude"].toString();
-        map_formulaire->insert("Ylatitude: ",Ylatitude);
+        map_formulaire.insert("Ylatitude: ",Ylatitude);
     }
 
     //stop since epoch

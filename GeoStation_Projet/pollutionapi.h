@@ -7,7 +7,7 @@ class PollutionApi : public AbstractApi
 {
     Q_OBJECT
 public:
-    PollutionApi(QObject *parent = 0);
+    PollutionApi(ordonnanceur *ord_, QObject *parent = 0);
     QNetworkAccessManager *manager;
 
 private:

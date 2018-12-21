@@ -1,27 +1,26 @@
 #include "evenementapi.h"
 
-
-EvenementApi::EvenementApi(QObject *parent): AbstractApi(IdWidget(Evenement),parent)
+EvenementApi::EvenementApi(ordonnanceur *ord_,QObject *parent): AbstractApi(IdWidget(Evenement),ord_,parent)
 {
-  //manager
-  manager = new QNetworkAccessManager (parent);
+    //manager
+    manager = new QNetworkAccessManager (parent);
+    QNetworkReply *m_reply;
+    QNetworkRequest m_request;
 
 
-  latitude = 50.8550625;
-  longitude = 4.3053505;
-  radius = 5000;
+    latitude = 50.8550625;
+    longitude = 4.3053505;
+    radius = 5000;
 
-  QString req("https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&sort=date_start&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&geofilter.distance="+QString::number(latitude)+"%2C+"+QString::number(longitude)+"%2C+"+QString::number(radius));
-  qDebug()<<req;
-  m_request.setUrl(QUrl(req));
-  m_reply = manager->get(m_request);
+    QString req("https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=20&sort=date_start&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&geofilter.distance="+QString::number(latitude)+"%2C+"+QString::number(longitude)+"%2C+"+QString::number(radius));
+    //qDebug()<<req;
+    m_request.setUrl(QUrl(req));
+    m_reply = manager->get(m_request);
 
-  m_request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
-  connect(m_reply,SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotError(QNetworkReply::NetworkError)));
-  connect(m_reply,SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(slotSslErrors(QList<QSslError>)));
-  connect(manager, SIGNAL(finished(QNetworkReply *)), this, SLOT(reponseRecue(QNetworkReply *)));
-
-
+    m_request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
+    connect(m_reply,SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotError(QNetworkReply::NetworkError)));
+    connect(m_reply,SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(slotSslErrors(QList<QSslError>)));
+    connect(manager, SIGNAL(finished(QNetworkReply *)), this, SLOT(reponseRecue(QNetworkReply *)));
 }
 
 EvenementApi::~EvenementApi()
@@ -31,51 +30,81 @@ EvenementApi::~EvenementApi()
 
 void EvenementApi::reponseRecue(QNetworkReply *rep)
 {
-    qDebug()<< "reponseRecue";
-    m_reply={rep};
 
     QByteArray m_response = rep->readAll();
-    qDebug()<< "bytearry" << m_response.isEmpty() <<endl;
 
+    QJsonDocument Myjson;
     Myjson = QJsonDocument::fromJson(m_response);
-    qDebug() << "mon json" << Myjson.isEmpty() <<endl;
 
     QString strJson(Myjson.toJson(QJsonDocument::Compact)); // Indented or Compact
-    qDebug() << "strJson" << strJson.isEmpty() <<endl;
 
-    //ui->textEdit->append(strJson);
+    int total_event = Myjson.object().toVariantMap()["nhits"].toInt();
+    qDebug()<< total_event;
 
-    int i;
+    if(total_event == 0)
+    {
 
-    int count = Myjson.object().toVariantMap()["records"].toJsonArray().count();
+    }
 
-    //ui->textEdit->clear();
+    else
 
-    for (i = 0; i < count; i++)
+    {
+
+        QMap<QString,QVariant> element;
+        //QString city = Myjson.object().toVariantMap()["records"].toJsonArray().["fields"]["date_start"].toString();
+        QString city = Myjson.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["city"].toString();
+
+        //add_titre("Evenement " + city );
+        //add_nb_entree(total_event);
+
+        int i;
+        int count = Myjson.object().toVariantMap()["records"].toJsonArray().count();
+        for (i = 0; i < count; i++)
         {
 
-           QString nhits = Myjson.object().toVariantMap()["nhits"].toString();
-           qDebug()<< "afficher nhits : nbr d'événement" << nhits <<endl;
+            QDate MyDate = QDate::currentDate();
+            QString date_start = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["date_start"].toString();
+            QDate datestart = QDate::fromString(date_start, "yyyy'-'MM'-'dd");
+            QDate datenew = MyDate.addDays(15);
+            QString title;
+            QString description;
+            QString address;
+            QString space_time_info;
+            QString pricing_info;
 
-           qDebug()<< "title de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"]<<endl;
-           QString Titre = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"].toString();
+            if (datestart >= MyDate && datestart <= datenew)
+            {
+                //qDebug()<< "title de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"]<<endl;
+                title= Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"].toString();
 
-           qDebug()<< "address de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"]<<endl;
-           QString Address = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"].toString();
+                //qDebug()<< "description de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["description"]<<endl;
+                description = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["description"].toString();
 
-           qDebug()<< "space time info de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["space_time_info"]<<endl;
-           QString Space_time_info = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["space_time_info"].toString();
+                //qDebug()<< "address de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"]<<endl;
+                address = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["address"].toString();
 
-           qDebug()<< "tarif de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["pricing_info"]<<endl;
-           QString Tarif = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["princing_info"].toString();
+                //qDebug()<< "space time info de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["space_time_info"]<<endl;
+                space_time_info = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["space_time_info"].toString();
 
-           qDebug()<< "image de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["image"]<<endl;
-           QString Image = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["image"].toString();
+                //qDebug()<< "tarif de record: " << i << "=>" << Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["pricing_info"]<<endl;
+                pricing_info = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["princing_info"].toString();
 
-           //ui->textEdit->append ("énvénement => \n" + nhits + "\n" + "Titre => \n"+  title + "\n" + "Addresse => \n"+ address + " \n" + "Date => \n" + space_time_info + " \n" + "Tarif => \n" + pricing_info + "\n " + "Image => \n" + image + "\n");
+            }
+
+//            element.insert("Titre",QVariant(title));
+//            element.insert("Description",QVariant(description));
+//            element.insert("Adresse",QVariant(address));
+//            element.insert("Date",QVariant(space_time_info));
+//            element.insert("Tarif",QVariant(pricing_info));
+//            add_list(element);
+
+        }
+//        map_ameliore.insert("Tableau",QVariant(tableau));
+//        map_ameliore.insert("Titre",QVariant(parametre));
+       // emit send_info2(map_ameliore);
+        finish(0);
     }
 }
-
 //gérer les erreurs
 
 void EvenementApi::slotError(QNetworkReply::NetworkError erreurtype)
@@ -88,5 +117,5 @@ void EvenementApi::slotError(QNetworkReply::NetworkError erreurtype)
 
 void EvenementApi::slotSslErrors(QList<QSslError>)
 {
-     qDebug()<< "slotSslErrors";
+    qDebug()<< "slotSslErrors";
 }

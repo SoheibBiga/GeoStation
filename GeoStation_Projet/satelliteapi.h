@@ -1,12 +1,8 @@
 #ifndef SATELLITEAPI_H
 #define SATELLITEAPI_H
 
-#include <iostream>
-#include <QMainWindow>
-#include <QtNetwork>
-#include <QDebug>
-#include <QJsonArray>
 #include "abstractapi.h"
+#include <QTimer>
 
 class SatelliteApi : public AbstractApi
 {
@@ -14,8 +10,8 @@ class SatelliteApi : public AbstractApi
 
 public:
 
-    SatelliteApi(QObject *parent = 0);
-    ~SatelliteApi();
+    SatelliteApi(ordonnanceur *ord, QObject *parent=0);
+    //~SatelliteApi();
 
     enum enum_function {tle=0,positions=1,visualpasses=2,radiopasses=3,above=4};
     /*enum enum_category {Amateur_radio=18,Beidou_Navigation_System=35,Brightest=1,Celestis=45,CubeSats=32,Disaster_monitoring=8,
@@ -29,22 +25,21 @@ public:
 
     void Request_Url(int pos, int category);
     void RetrieveInfo(QString request, int NumSat);
-    bool isMap();
-    bool hasBigLayout();
 
 public slots:
 
     void replyFinished(QNetworkReply *reply);
-
-
+    void slotError(QNetworkReply::NetworkError RequestNetworkError);
+    void slotSslErrors(QList<QSslError>SslErrors);
+    void NetworkStatus(QNetworkAccessManager::NetworkAccessibility NetStatus);
 
 private:
 
-    float Obs_Latitude, Obs_Longitude, Obs_Altitude;
-    int Seconds,NORAD_ID,Days_Of_Predic,Minimun_Visibility,Minimim_Elevation,Search_Radius,satCount;
-    QString APIKEY,BaseUrl;
+    //float Obs_Latitude, Obs_Longitude,
+    double Obs_Altitude;
+    int Seconds,NORAD_ID,Days_Of_Predic,Minimun_Visibility,Minimim_Elevation,Search_Radius,satCount,total,nb;
+    QString APIKEY,BaseUrl,reply_string,satCatAny;
     QStringList API_Function;
-    QNetworkAccessManager *manager;
     QNetworkRequest request;
     enum_function fonction;
     QJsonDocument MyJsonDoc;
