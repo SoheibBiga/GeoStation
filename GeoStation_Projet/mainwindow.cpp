@@ -101,7 +101,7 @@ bool						MainWindow::init()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 4. Musees Widget
-	wid = new SatelliteWidget(mozaic_);
+    wid = new SncfWidget(mozaic_);
 	wid->init();
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
@@ -117,7 +117,7 @@ bool						MainWindow::init()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 6. Avions Widget
-	wid = new SatelliteWidget(mozaic_);
+    wid = new SncfWidget(mozaic_);
 	wid->init();
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
@@ -133,7 +133,7 @@ bool						MainWindow::init()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 8. LineChart Widget
-	wid = new SatelliteWidget(mozaic_);
+    wid = new SncfWidget(mozaic_);
 	wid->init();
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
