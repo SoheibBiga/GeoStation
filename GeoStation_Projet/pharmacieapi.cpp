@@ -25,6 +25,8 @@ PharmacieApi::~PharmacieApi()
 
 void PharmacieApi::listePharmacie(QNetworkReply *reply)
 {
+    QMap<QString,QVariant> element;
+
     QByteArray tab = reply->readAll();
 
     QJsonDocument doc = QJsonDocument::fromJson(tab);
@@ -38,9 +40,17 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
     QString distance = doc.object().toVariantMap()["records"].toJsonArray().at(i)["fields"].toObject()["dist"].toString();
     QString codePostal = doc.object().toVariantMap()["records"].toJsonArray().at(i)["fields"].toObject()["ligneacheminement"].toString();
 
+    element.insert("Nom",QVariant(nom));
+    element.insert("Adresse",QVariant(adresse));
+    element.insert("CodePostal",QVariant(codePostal));
+    element.insert("Distance",QVariant(distance));
+
+
     //ui->textEdit->insertPlainText(nom + "\n" + adresse + "\n" + codePostal + "\nà " + distance + " mètres\n\n");
     //qDebug() << nom <<"\n" << adresse << "\n" << codePostal << "\nà " <<  distance << " mètres\n\n";
     }
+
+
     emit send_info(map_formulaire);
     finish(0);
 }

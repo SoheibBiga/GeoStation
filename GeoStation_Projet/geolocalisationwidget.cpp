@@ -3,12 +3,12 @@
 GeolocalisationWidget::GeolocalisationWidget(QWidget *parent) :
     AWidget(parent)
 {
-   /* sncf_mozaic_widget = new SncfMozaicWidget();
+    geolocalisation_mozaic_widget = new GeoLocMozaicWidget;
     mozaicLayout_ = new QHBoxLayout();
-    mozaicLayout_->addWidget(sncf_mozaic_widget);
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),sncf_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
-    connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));*/
+    mozaicLayout_->addWidget(geolocalisation_mozaic_widget);
 
+    connect(this, SIGNAL(send_info(QMap<QString,QString>)), geolocalisation_mozaic_widget, SLOT(receive_info(QMap<QString,QString>)));
+    connect(this, SIGNAL(send_info2(QMap<QString,QVariant>)), geolocalisation_mozaic_widget, SLOT(receive_info2(QMap<QString,QVariant>)));
 }
 
 GeolocalisationWidget::~GeolocalisationWidget()

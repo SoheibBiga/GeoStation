@@ -36,7 +36,7 @@ public:
     QTimer *musee_timer;
     QTimer *borneelectrique_timer;
     QTimer *avions_timer;
-    //QTimer geolocalisation_timer;
+    QTimer *geolocalisation_timer;
 
 signals:
     void send_info(QMap<QString,QString>);
