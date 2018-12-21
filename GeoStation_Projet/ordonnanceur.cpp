@@ -14,6 +14,7 @@ ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
     musee_timer = new QTimer();
     borneelectrique_timer = new QTimer();
     avions_timer = new QTimer();
+    geolocalisation_timer = new QTimer();
 }
 
 void ordonnanceur::send_request()
@@ -65,13 +66,14 @@ void ordonnanceur::run()
     api_index = new SncfApi(this);
     api_index = new SatelliteApi(this);
     api_index = new EvenementApi(this);
-//    api_index = new SncfApi(this);
+    api_index = new GeolocalisationApi(this);
 //    api_index = new SncfApi(this);
 //    api_index = new SncfApi(this);
 
     connect(sncf_timer, SIGNAL(timeout()), this, SLOT(send_request()));
     connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
     connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+    connect(geolocalisation_timer, SIGNAL(timeout()), this, SLOT(send_request()));
 //    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request(2)));
 //    connect(vigicrues_timer, SIGNAL(timeout()), this, SLOT(send_request(3)));
 //    connect(avions_timer, SIGNAL(timeout()), this, SLOT(send_request(4)));
@@ -84,6 +86,7 @@ void ordonnanceur::run()
     sncf_timer->start(1);
     satellite_timer->start(1);
     evenement_timer->start(1);
+    geolocalisation_timer->start(1);
 //    evenement_timer->start(1000000);
 //    vigicrues_timer->start(1000000);
 //    avions_timer->start(1000000);
