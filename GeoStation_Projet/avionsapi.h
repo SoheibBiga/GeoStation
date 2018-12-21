@@ -103,6 +103,10 @@ private slots:
     void readplane_type();
 
 
+    void calculatedistance();
+
+
+
 };
 
 
