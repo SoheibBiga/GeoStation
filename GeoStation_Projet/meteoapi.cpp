@@ -60,7 +60,8 @@ void MeteoApi::Read(QNetworkReply *reply)
 //    double maintempmax=doc.toVariant().toHash()["main"].toHash()["temp_max"].toDouble();
 
 
-//    map_formulaire->insert("Temperature",QString::number(maintempmin));
+      map_formulaire->insert("Temperature",QString::number(maintempmin));
+      map_formulaire->insert("Temperature",QString::number(maintempmax));
 
 
     // ui->textEdit->insertPlainText(QString("%1"));
