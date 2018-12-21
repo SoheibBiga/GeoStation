@@ -72,6 +72,5 @@ void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
         item = new QTableWidgetItem(map_ameliore["Tableau"].toList().at(0).toMap().value(map_ameliore["Tableau"].toList().at(0).toMap().keys()[i]).toString());
         ui->tableWidget->setItem(i, 1, item);
     }
-    delete item;
 }
 

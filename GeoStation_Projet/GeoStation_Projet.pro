@@ -61,7 +61,10 @@ SOURCES += \
     linechartwidget.cpp \
     vigicruesmosaicwidget.cpp \
     vigicrueswidget.cpp \
-    satellitemozaicwidget.cpp
+    pharmaciemozaicwidget.cpp\
+    satellitemozaicwidget.cpp \
+    labeldyn.cpp
+
 
 
 
@@ -103,7 +106,10 @@ HEADERS += \
     linechartwidget.h \
     vigicruesmosaicwidget.h \
     vigicrueswidget.h \
-    satellitemozaicwidget.h
+    pharmaciemozaicwidget.h\
+    satellitemozaicwidget.h \
+    labeldyn.h
+
 
 
 FORMS += \
@@ -119,6 +125,7 @@ FORMS += \
     avionsmozaicwidget.ui \
     linechartwidget.ui \
     vigicruesmosaicwidget.ui \
+    pharmaciemozaicwidget.ui\
     satellitemozaicwidget.ui
 
 
@@ -126,3 +133,6 @@ FORMS += \
 
 RESOURCES += \
     resources.qrc
+
+target.path = /home/root
+INSTALLS += target
