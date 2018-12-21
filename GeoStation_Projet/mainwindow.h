@@ -12,10 +12,10 @@ class MainWindow : public QWidget
 {
 		Q_OBJECT
 
-        QStackedWidget*		widgets_;
-				ordonnanceur*     ordonnanceur_;
-				Mozaic*						mozaic_;
-				QTimer*						timer_;
+		QStackedWidget*		widgets_;
+		ordonnanceur*     ordonnanceur_;
+		Mozaic*						mozaic_;
+		QTimer*						timer_;
 
 		MainWindow(MainWindow const& other);
 		MainWindow&			operator=(MainWindow const& other);
