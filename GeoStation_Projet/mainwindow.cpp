@@ -59,6 +59,9 @@ bool				MainWindow::init()
     connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),satellite_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
     mozaic_->addWidget(satellite_widget);
 
+    AWidget *evenement_widget = new SatelliteWidget();
+    connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),evenement_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
+    mozaic_->addWidget(evenement_widget);
 
 
     ordonnanceur_->run();
