@@ -2,7 +2,7 @@
 
 SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdWidget(Satellite),ord,parent)
 {
-    //sat_loop = new QEventLoop();
+    sat_loop = new QEventLoop();
     //request information
     //Obs_Latitude=48.871656;
     //Obs_Longitude= 2.345931;
@@ -32,8 +32,9 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
     {
         Request_Url(fonction,i);
         manager->get(request);
-        //sat_loop->exec();
+        sat_loop->exec();
     }
+
     if(nb>=49){
 
             add_nb_entree(total);
@@ -50,9 +51,9 @@ qint64 t_end = QDateTime::currentSecsSinceEpoch();
 
 void SatelliteApi::replyFinished(QNetworkReply* reply)
 {
-    //qDebug() << "solt replyfinished";
-//    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(slotError(QNetworkReply::NetworkError)));
-//    connect(reply, SIGNAL(sslErrors(QList<QSslError>)),this, SLOT(slotSslErrors(QList<QSslError>)));
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(slotError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(sslErrors(QList<QSslError>)),this, SLOT(slotSslErrors(QList<QSslError>)));
 
     //Read information from reply
     reply_string=QString(reply->readAll());
@@ -71,7 +72,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
     //get satcount and category
     satCount=MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["satcount"].toInt();
     satCatAny=MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["category"].toString();
-
+    nb++;
     //get available satellite
     if (satCount!=0 && satCatAny!="ANY")
     {
@@ -87,9 +88,8 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
         }
 
         //Show infos for each satellite in selected category
-//qDebug() << "before satCount"+QString::number(satCount);
+
         for(int i=0;i<satCount;i++){
-            //qDebug() << "new element";
             element.clear();
             RetrieveInfo("satname",i);
             RetrieveInfo("satid",i);
@@ -97,13 +97,14 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
             RetrieveInfo("satlat",i);
             RetrieveInfo("satlng",i);
             RetrieveInfo("satalt",i);
-            nb+=6;
+
             add_list(element);
         }
-        //sat_loop->exit(1);
+        sat_loop->exit(1);
         total+=satCount;
     }
-    //else sat_loop->exit(1);
+
+    else sat_loop->exit(1);
 }
 void SatelliteApi::Request_Url(int pos,int category)
 {
