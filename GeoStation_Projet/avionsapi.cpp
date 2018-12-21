@@ -97,11 +97,6 @@ void avionsapi::replyFinished(QNetworkReply*  reply)
 
      list_planes_array =states.toArray();
 
-     qDebug()<< "on applique count() sur la QJasonArray liste des avions"<<    list_planes_array.count() <<endl;
-
-
-
-     //ui->textEdit->setText(strJson);
 
      QString num = QString::number(list_planes_array.count() );
      //qDebug()<< "voila num "<<num<<endl;
