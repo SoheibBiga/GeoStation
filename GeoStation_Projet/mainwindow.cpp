@@ -11,8 +11,6 @@ MainWindow::MainWindow(QWidget* parent)
     mozaic_ = new Mozaic();
     ordonnanceur_ = new ordonnanceur();
     timer_ = new QTimer();
-
-    AbstractApi *api= new SncfApi(ordonnanceur_,this);
 }
 
 MainWindow::MainWindow(MainWindow const& other)
@@ -51,11 +49,11 @@ bool				MainWindow::init()
     mozaic_->init();
 
 
-    AWidget *sncf_widget = new SncfWidget(mozaic_);
-    connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
-    mozaic_->addWidget(sncf_widget);
+//    AWidget *sncf_widget = new SncfWidget(mozaic_);
+//    connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
+//    mozaic_->addWidget(sncf_widget);
 
-    AWidget *satellite_widget = new SatelliteWidget();
+    AWidget *satellite_widget = new SatelliteWidget(mozaic_);
     connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),satellite_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
     mozaic_->addWidget(satellite_widget);
 
