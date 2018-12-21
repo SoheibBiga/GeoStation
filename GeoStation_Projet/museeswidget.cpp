@@ -24,7 +24,7 @@ bool				MuseesWidget::hasMozaicLayout() const
     return (true);
 }
 
-bool				MuseesWidget::refresh() const
+bool				MuseesWidget::refresh()
 {
     return (true);
 }

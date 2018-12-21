@@ -15,7 +15,7 @@ public:
     ~MuseesWidget() ;
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
-    virtual bool				refresh() const;
+		virtual bool				refresh();
     virtual bool				init();
     virtual bool				run();
     virtual bool				end();

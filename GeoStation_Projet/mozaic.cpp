@@ -27,7 +27,7 @@ bool				Mozaic::hasMozaicLayout() const
 	return (false);
 }
 
-bool				Mozaic::refresh() const
+bool				Mozaic::refresh()
 {
 	return (true);
 }
