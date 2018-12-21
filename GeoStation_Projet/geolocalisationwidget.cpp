@@ -25,7 +25,7 @@ bool				GeolocalisationWidget::hasMozaicLayout() const
     return (true);
 }
 
-bool				GeolocalisationWidget::refresh() const
+bool				GeolocalisationWidget::refresh()
 {
     return (true);
 }

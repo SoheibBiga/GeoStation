@@ -1,5 +1,6 @@
 #include <QDebug>
 
+#include "borneelectriquewidget.h"
 #include "geolocalisationwidget.h"
 #include "vigicrueswidget.h"
 #include "satellitewidget.h"
@@ -94,7 +95,7 @@ bool						MainWindow::init()
 //	widgets_->addWidget(new LineChartWidget());		// Faire heriter LineChartWidget de AWidget
 	widgets_->addWidget(new MuseesWidget());
 	widgets_->addWidget(new PharmacieWidget());
-	widgets_->addWidget(new SncfWidget());
+	widgets_->addWidget(new BorneElectriqueWidget());
 	widgets_->addWidget(new SncfWidget());
 	widgets_->addWidget(new SncfWidget());
 
