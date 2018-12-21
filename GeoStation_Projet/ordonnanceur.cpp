@@ -22,7 +22,6 @@ void ordonnanceur::send_request()
     switch(id){
     case IdWidget(Sncf):
         api_index = new SncfApi(this);
-        qDebug() << "refresh";
         sncf_timer->start(10000);
         break;
     case IdWidget(Musee):
