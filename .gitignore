@@ -7,5 +7,3 @@ Makefile
 ui_*
 *.pro.user
 *autosave
-main.cpp
-mainwindow.*

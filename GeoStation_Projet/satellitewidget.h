@@ -2,7 +2,7 @@
 #define SATELLITEWIDGET_H
 
 #include "awidget.h"
-//#include "satellitemozaicwidget.h"
+#include "satellitemozaicwidget.h"
 
 namespace Ui {
 class SatelliteWidget;
@@ -24,7 +24,7 @@ public:
     virtual bool				end();
     virtual void				addWidget(QWidget* widget);
 
-    //SatelliteMozaicWidget *satellite_mozaic_widget;
+    SatelliteMozaicWidget *satellite_mozaic_widget;
 
 
 signals:
