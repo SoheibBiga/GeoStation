@@ -1,5 +1,6 @@
 #include "satellitewidget.h"
 
+
 SatelliteWidget::SatelliteWidget(QWidget *parent) :
     AWidget(parent)
 {

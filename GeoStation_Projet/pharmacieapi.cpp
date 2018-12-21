@@ -49,7 +49,8 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
     //ui->textEdit->insertPlainText(nom + "\n" + adresse + "\n" + codePostal + "\nà " + distance + " mètres\n\n");
     //qDebug() << nom <<"\n" << adresse << "\n" << codePostal << "\nà " <<  distance << " mètres\n\n";
     }
-
+    map_ameliore.insert("Tableau",QVariant(tableau));
+    map_ameliore.insert("Titre",QVariant(parametre));
 
     emit send_info(map_formulaire);
     finish(0);

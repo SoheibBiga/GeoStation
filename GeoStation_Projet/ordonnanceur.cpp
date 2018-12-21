@@ -30,7 +30,7 @@ void ordonnanceur::send_request()
         break;
     case IdWidget(Satellite):
         api_index = new SatelliteApi(this);
-        satellite_timer->start(1000000);
+        satellite_timer->start(10000);
         break;
     case IdWidget(Evenement):
         api_index = new EvenementApi(this);
@@ -64,6 +64,7 @@ void ordonnanceur::send_request()
 void ordonnanceur::run()
 {
 
+
     api_index = new SncfApi(this);
 //    api_index = new SatelliteApi(this);
 //    api_index = new EvenementApi(this);
@@ -73,16 +74,16 @@ void ordonnanceur::run()
 //    api_index = new SncfApi(this);
 
     connect(sncf_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-//    connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-//    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-//    connect(geolocalisation_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+    connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+    connect(pharmacie_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+    connect(geolocalisation_timer, SIGNAL(timeout()), this, SLOT(send_request()));
 //    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request(2)));
 //    connect(vigicrues_timer, SIGNAL(timeout()), this, SLOT(send_request(3)));
 //    connect(avions_timer, SIGNAL(timeout()), this, SLOT(send_request(4)));
 //    connect(meteo_timer, SIGNAL(timeout()), this, SLOT(send_request(5)));
 //    connect(pollution_timer, SIGNAL(timeout()), this, SLOT(send_request(6)));
-//    connect(musee_timer, SIGNAL(timeout()), this, SLOT(send_request(7)));
-//    connect(pharmacie_timer, SIGNAL(timeout()), this, SLOT(send_request(8)));
+//    connect(musee_timer, SIGNAL(timeout()), this, SLOT(send_request(7)));   
 //    connect(borneelectrique_timer, SIGNAL(timeout()), this, SLOT(send_request(9)));
 
     sncf_timer->start(1);
@@ -95,6 +96,5 @@ void ordonnanceur::run()
 //    meteo_timer->start(1000000);
 //    pollution_timer->start(1000000);
 //    musee_timer->start(100000);
-//    pharmacie_timer->start(1000000);
 //    borneelectrique_timer->start(1000000);
 }

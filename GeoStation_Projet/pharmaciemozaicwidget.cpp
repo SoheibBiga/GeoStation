@@ -8,9 +8,9 @@ PharmacieMozaicWidget::PharmacieMozaicWidget(QWidget *parent) :
     ui(new Ui::PharmacieMozaicWidget)
 {
     ui->setupUi(this);
-//    CherchePhotos* cherchePhotos = new CherchePhotos("Enseigne de pharmacie", 4);
-//    QPixmap photoPixmap = * (cherchePhotos->getPhoto());
-
+    CherchePhotos* cherchePhotos = new CherchePhotos("Enseigne de pharmacie", 4, nullptr, nullptr);
+    QPixmap photoPixmap = * (cherchePhotos->getPhoto());
+    ui->label_photo->setPixmap(photoPixmap);
     //Ne pas oublier de le metttre
     //delete cherchePhotos;
 }

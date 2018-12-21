@@ -50,6 +50,7 @@ private:
     QMap<QString,QVariant> element;
     QEventLoop *sat_loop;
 
+
 };
 
 #endif // SATELLITEAPI_H
