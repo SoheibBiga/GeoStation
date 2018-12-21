@@ -51,6 +51,7 @@ bool				MainWindow::init()
     mozaic_->init();
 
 
+
     AWidget *sncf_widget = new SncfWidget(mozaic_);
     connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
     mozaic_->addWidget(sncf_widget);
@@ -68,6 +69,7 @@ bool				MainWindow::init()
 
     mozaic_->show();
     mozaic_->setWindowState(Qt::WindowFullScreen);
+
 
 
     return (true);
