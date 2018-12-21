@@ -9,10 +9,12 @@
 # include <QStackedWidget>
 # include "awidget.h"
 # include "sncfwidget.h"
+# include "satellitewidget.h"
 # include "museeswidget.h"
 # include "tableauwidget.h"
 # include <QMap>
 # include "evenementwidget.h"
+# include <sncfapi.h>
 
 class MainWindow : public QWidget
 {

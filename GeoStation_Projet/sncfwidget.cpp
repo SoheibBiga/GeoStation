@@ -3,8 +3,8 @@
 SncfWidget::SncfWidget(QWidget *parent) :
     AWidget(parent)
 {
-    sncf_mozaic_widget = new SncfMozaicWidget(this);
-    mozaicLayout_ = new QHBoxLayout(this);
+    sncf_mozaic_widget = new SncfMozaicWidget();
+    mozaicLayout_ = new QHBoxLayout();
     mozaicLayout_->addWidget(sncf_mozaic_widget);
     connect(this,SIGNAL(send_info(QMap<QString,QString>)),sncf_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
     connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
@@ -46,6 +46,3 @@ bool				SncfWidget::end()
     return (true);
 }
 
-void				SncfWidget::addWidget(QWidget* widget)
-{
-}

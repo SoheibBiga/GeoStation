@@ -6,4 +6,5 @@ moc_*
 Makefile
 ui_*
 *.pro.user
-mainwindow.*
+*autosave
+main.cpp

@@ -16,11 +16,11 @@ SncfMozaicWidget::~SncfMozaicWidget()
 void SncfMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
 {
     ui->tableWidget->refresh(map_formulaire);
+
 }
 
 
 void SncfMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-    qDebug() << "receive_info2";
     ui->tableWidget->refresh_ameliore(map_ameliore);
 }

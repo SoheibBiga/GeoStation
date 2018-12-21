@@ -49,14 +49,6 @@ public:
     QMap<QString,QVariant> map_ameliore;
 
 
-    //return s'il y a la présence d'une map ou non dans la widget
-    virtual bool isMap() = 0;
-
-    //return si votre classe possède en mode plein écran
-    //Tout le monde posède un mode mosaique
-    //bool hasBigLayout();
-
-
 protected:
 
     double longitude;

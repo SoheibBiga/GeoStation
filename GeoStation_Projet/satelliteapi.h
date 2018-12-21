@@ -25,19 +25,20 @@ public:
 
     void Request_Url(int pos, int category);
     void RetrieveInfo(QString request, int NumSat);
-    bool isMap();
-    bool hasBigLayout();
 
 public slots:
 
     void replyFinished(QNetworkReply *reply);
-
+    void slotError(QNetworkReply::NetworkError RequestNetworkError);
+    void slotSslErrors(QList<QSslError>SslErrors);
+    void NetworkStatus(QNetworkAccessManager::NetworkAccessibility NetStatus);
 
 private:
 
-    float Obs_Latitude, Obs_Longitude, Obs_Altitude;
-    int Seconds,NORAD_ID,Days_Of_Predic,Minimun_Visibility,Minimim_Elevation,Search_Radius,satCount;
-    QString APIKEY,BaseUrl;
+    //float Obs_Latitude, Obs_Longitude,
+    double Obs_Altitude;
+    int Seconds,NORAD_ID,Days_Of_Predic,Minimun_Visibility,Minimim_Elevation,Search_Radius,satCount,total,nb;
+    QString APIKEY,BaseUrl,reply_string,satCatAny;
     QStringList API_Function;
     QNetworkRequest request;
     enum_function fonction;

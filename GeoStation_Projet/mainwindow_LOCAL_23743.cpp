@@ -1,28 +1,27 @@
 #include <QDebug>
 
-#include "mmainwindow.h"
+#include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QWidget(parent),
       mozaic_(Q_NULLPTR),
       timer_(Q_NULLPTR)
 {
-    ordonnanceur *ord = new ordonnanceur();;
-    QStackedWidget *widgets = new QStackedWidget(this);
 
-//    //Remplacer les objets sncf par les vtres
-//    sncfwidget *sncf_widget = new sncfwidget(widgets);
+    //Remplacer les objets sncf par les vôtres
 
-//    widgets->addWidget(sncf_widget);
-//    AbstractApi *api= new SncfApi(ord,this);
-//    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),sncf_widget,SIGNAL(send_info(QMap<QString,QString>)));
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    evenementwidget *evenement_widget = new evenementwidget(widgets);
+    //    widgets->addWidget(sncf_widget);
+    //    AbstractApi *api= new SncfApi(ord,this);
+    //    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),sncf_widget,SIGNAL(send_info(QMap<QString,QString>)));
 
-    widgets->addWidget(evenement_widget);
-    AbstractApi *api= new EvenementApi(ord,this);
-    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),evenement_widget,SIGNAL(send_info(QMap<QString,QString>)));
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //new SncfApi(ord,this);
+
+    //    AWidget *musees_widget = new MuseesWidget(widgets);
+    //    widgets->addWidget(musees_widget);
+    //    AbstractApi *api= new MuseesApi(ord,this);
+    //    connect(ord,SIGNAL(send_info(QMap<QString,QString>)),musees_widget,SIGNAL(send_info(QMap<QString,QString>)));
+
+
 
     //this->setla
     //connect(ord,SIGNAL(send_info(QMap<QString,QString>)),list_widget[ord->api_index->Id],SIGNAL(send_info(QMap<QString,QString>)));
@@ -60,7 +59,13 @@ bool				MainWindow::init()
     mozaic_ = new Mozaic();
     mozaic_->init();
     mozaic_->show();
-
+    ordonnanceur *ord = new ordonnanceur();
+    QStackedWidget *widgets = new QStackedWidget(this);
+    widgets->addWidget(mozaic_);
+    AWidget *sncf_widget = new SncfWidget(this);
+    connect(ord,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
+    new SncfApi(ord);
+    mozaic_->addWidget(sncf_widget);
     return (true);
 }
 

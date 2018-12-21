@@ -1,16 +1,16 @@
-#ifndef SNCFWIDGET_H
-#define SNCFWIDGET_H
+#ifndef VIGICRUESWIDGET_H
+#define VIGICRUESWIDGET_H
 
 #include "awidget.h"
-#include "sncfmozaicwidget.h"
+#include "vigicruesmosaicwidget.h"
 
-class SncfWidget : public AWidget
+class Vigicrueswidget : public AWidget
 {
     Q_OBJECT
 
 public:
-    explicit SncfWidget(QWidget *parent = 0);
-    ~SncfWidget();
+    explicit Vigicrueswidget(QWidget *parent = 0);
+    ~Vigicrueswidget();
 
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
@@ -19,13 +19,11 @@ public:
     virtual bool				run();
     virtual bool				end();
 
-    SncfMozaicWidget *sncf_mozaic_widget;
+    Vigicruesmosaicwidget *vigicruesmosaicwidget;
 
 
 signals:
     void send_info(QMap<QString,QString>);
-    void send_info2(QMap<QString,QVariant>);
 };
 
-#endif // SNCFWIDGET_H
-
+#endif // VIGICRUESWIDGET_H

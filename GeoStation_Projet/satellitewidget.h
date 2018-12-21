@@ -1,22 +1,36 @@
 #ifndef SATELLITEWIDGET_H
 #define SATELLITEWIDGET_H
 
-#include <QWidget>
+#include "awidget.h"
+#include "satellitemozaicwidget.h"
 
 namespace Ui {
-class satelliteWidget;
+class SatelliteWidget;
 }
 
-class satelliteWidget : public QWidget
+class SatelliteWidget : public AWidget
 {
     Q_OBJECT
 
 public:
-    explicit satelliteWidget(QWidget *parent = 0);
-    ~satelliteWidget();
+    explicit SatelliteWidget(QWidget *parent = 0);
+    ~SatelliteWidget();
 
-private:
-    Ui::satelliteWidget *ui;
+    virtual bool				contentMap() const;
+    virtual bool				hasMozaicLayout() const;
+    virtual bool				refresh() const;
+    virtual bool				init();
+    virtual bool				run();
+    virtual bool				end();
+    virtual void				addWidget(QWidget* widget);
+
+    SatelliteMozaicWidget *satellite_mozaic_widget;
+
+
+signals:
+    void send_info(QMap<QString,QString>);
+    void send_info2(QMap<QString,QVariant>);
 };
+
 
 #endif // SATELLITEWIDGET_H

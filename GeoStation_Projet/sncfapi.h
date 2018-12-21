@@ -9,9 +9,7 @@ class SncfApi : public AbstractApi
 
 public:
     SncfApi(ordonnanceur *ord_, QObject *parent = 0);
-
-    bool isMap();
-    bool hasBigLayout();
+    ~SncfApi();
 
 private:
     QNetworkAccessManager *manager_prochain_depart;
@@ -27,3 +25,11 @@ private slots:
 };
 
 #endif // APISNCF_H
+
+
+//Taille de la mainwindow quand elle s'ouvre
+//Tout le monde doit faire au moins sa mozaic
+//Mourad carte ?
+//Gary base de donnée ?
+//Charles graphs ?
+// geolocalisation timer ? appelé combien de fois dans une vie ?
