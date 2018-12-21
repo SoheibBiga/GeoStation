@@ -35,7 +35,6 @@ void    PokeMap::addPoint(QString latitude, QString longitude, QColor brush)
     if (differenceX > 0 && differenceY > 0)
     {
         painter.setBrush(brush);
-
         painter.drawEllipse(static_cast<int>(static_cast<double>((differenceX / xMin)) * static_cast<double>(img.width())),
                             static_cast<int>(static_cast<double>((differenceY / yMin)) * static_cast<double>(img.height())),
                             50, 50);

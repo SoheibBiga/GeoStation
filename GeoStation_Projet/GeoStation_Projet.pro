@@ -62,7 +62,8 @@ SOURCES += \
     vigicruesmosaicwidget.cpp \
     vigicrueswidget.cpp \
     pharmaciemozaicwidget.cpp\
-    satellitemozaicwidget.cpp
+    satellitemozaicwidget.cpp \
+    labeldyn.cpp
 
 
 
@@ -106,7 +107,8 @@ HEADERS += \
     vigicruesmosaicwidget.h \
     vigicrueswidget.h \
     pharmaciemozaicwidget.h\
-    satellitemozaicwidget.h
+    satellitemozaicwidget.h \
+    labeldyn.h
 
 
 
