@@ -64,6 +64,9 @@ bool				MainWindow::init()
     connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),evenement_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
     mozaic_->addWidget(evenement_widget);
 
+    AWidget *pharmacie_widget = new PharmacieWidget();
+    connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),pharmacie_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
+    mozaic_->addWidget(pharmacie_widget);
 
     ordonnanceur_->run();
 

@@ -15,6 +15,7 @@
 # include <QMap>
 # include "evenementwidget.h"
 # include <sncfapi.h>
+# include "pharmaciewidget.h"
 
 class MainWindow : public QWidget
 {

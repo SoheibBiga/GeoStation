@@ -119,7 +119,6 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     tableauwidget.ui \
-    pharmaciewidget.ui\
     sncfmozaicwidget.ui \
     museesmozaicwidget.ui \
     museesmainwidget.ui \
