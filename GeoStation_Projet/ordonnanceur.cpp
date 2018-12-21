@@ -56,7 +56,7 @@ void ordonnanceur::send_request()
         api_index = new GeolocalisationApi(this);
         break;
     case IdWidget(Avions):
-        api_index = new avionsapi(this);
+        //api_index = new avionsapi(this);
         break;
     }
     api_index->loop->exec();

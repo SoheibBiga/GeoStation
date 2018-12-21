@@ -9,7 +9,7 @@
 #include "pharmaciewidget.h"
 #include "tableauwidget.h"
 #include "museeswidget.h"
-#include "avionswidget.h"
+//#include "avionswidget.h"
 #include "mainwindow.h"
 #include "sncfwidget.h"
 
@@ -90,7 +90,7 @@ bool						MainWindow::init()
 	widgets_->addWidget(new GeolocalisationWidget());
 	widgets_->addWidget(new SatelliteWidget());
 	widgets_->addWidget(new SncfWidget());
-	widgets_->addWidget(new AvionsWidget());
+//	widgets_->addWidget(new AvionsWidget());
 //	widgets_->addWidget(new EvenementWidget());		// Faire heriter EvenementWidget de AWidget
 //	widgets_->addWidget(new LineChartWidget());		// Faire heriter LineChartWidget de AWidget
 	widgets_->addWidget(new MuseesWidget());
