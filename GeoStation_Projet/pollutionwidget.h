@@ -1,16 +1,15 @@
-#ifndef SNCFWIDGET_H
-#define SNCFWIDGET_H
+#ifndef POLLUTIONWIDGET_H
+#define POLLUTIONWIDGET_H
 
 #include "awidget.h"
-#include "sncfmozaicwidget.h"
+#include "pollutionmozaicwidget.h"
 
-class SncfWidget : public AWidget
+class pollutionwidget : public AWidget
 {
     Q_OBJECT
-
 public:
-    explicit SncfWidget(QWidget *parent = 0);
-    ~SncfWidget();
+    explicit pollutionwidget(QWidget *parent = 0);
+    ~pollutionwidget();
 
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
@@ -19,7 +18,7 @@ public:
     virtual bool				run();
     virtual bool				end();
 
-    SncfMozaicWidget *sncf_mozaic_widget;
+    PollutionMozaicWidget *pollution_mozaic_widget;
 
 
 signals:
@@ -27,5 +26,5 @@ signals:
     void send_info2(QMap<QString,QVariant>);
 };
 
-#endif // SNCFWIDGET_H
+#endif // POLLUTIONWIDGET_H
 
