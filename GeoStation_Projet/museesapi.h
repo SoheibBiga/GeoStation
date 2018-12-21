@@ -2,6 +2,7 @@
 #define MUSEESAPI_H
 
 #include "abstractapi.h"
+#include "cherchephotos.h"
 
 
 class MuseesApi : public AbstractApi
@@ -10,10 +11,17 @@ class MuseesApi : public AbstractApi
 
 public:
     MuseesApi(ordonnanceur *ord_, QObject *parent = nullptr);
-    bool isMap();
+    //~MuseesApi();
 
 private:
-    QNetworkAccessManager *networkManager;
+    QNetworkReply* reply ;
+    QByteArray response_data ;
+
+    void trtReceptionDonnees () ;
+
+private slots:
+    void onFinished(QNetworkReply*);
+    void onReadyRead();
 };
 
 #endif // MUSEESAPI_H

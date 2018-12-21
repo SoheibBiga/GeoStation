@@ -11,9 +11,12 @@
 #include <QDir>
 
 #include <QString>
+#include <QStringRef>
 #include <QValidator>
+#include <QtMath>
 
 #include <QByteArray>
+//#include <QtScript>
 
 #include <QJsonDocument>
 #include <QJsonValue>
@@ -23,8 +26,9 @@
 #include <QFile>
 
 #include <QDateTime>
-//#include <QSqlDatabase>
-//#include <QSqlQuery>
+
+#include <QTextStream>
+
 
 
 #include <QMainWindow>
@@ -46,27 +50,34 @@ private:
     QNetworkAccessManager *manager_singleplane;
     QList<QSslError> list;
 
-    QString lat_min = "43.5";
-    QString lat_max = "44";
-    QString longi_min = "1";
-    QString longi_max = "2";
+    QString lat_min = "48.8";
+    QString lat_max = "49.1";
+    QString longi_min = "2.4";
+    QString longi_max = "2.8";
     QString construct_URL;
     QString URL_singleplane;
     QString ICAO24;
-    QString writesingleplanes;
-    //QString path_file_airports = (QDir::homePath() +  "/Documents/WILLIAM/Embarque/project/icao_world.xls");
+    QString write_Info_APi2;
+    QString requete_singleplane;    // to be written as text file
+    QString write_first_requete;
+    QString write_APi1_info;    //info extracted from APi1
 
-    QDateTime timeBegin;
+    QDateTime timeBegin= QDateTime::currentDateTime();
+    QString time = timeBegin.toString();
+    QString output_folder = ("output/"+time+"/");
+
     QDateTime timeEnd;
     QJsonArray list_planes_array;
+    QJsonArray single_plane_array; //for APi1
 
     QString API_key;
-
 
     QString airport_code;
     QString plane_code;
     QString airport_name;
     QString plane_model_name;
+    QString airline_code;
+    QString airline_name;
 
 
 
@@ -90,6 +101,10 @@ private slots:
 
     void readairports();
     void readplane_type();
+
+
+    void calculatedistance();
+
 
 
 };
