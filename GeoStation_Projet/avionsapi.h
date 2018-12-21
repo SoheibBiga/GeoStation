@@ -11,9 +11,12 @@
 #include <QDir>
 
 #include <QString>
+#include <QStringRef>
 #include <QValidator>
+#include <QtMath>
 
 #include <QByteArray>
+//#include <QtScript>
 
 #include <QJsonDocument>
 #include <QJsonValue>
@@ -23,8 +26,9 @@
 #include <QFile>
 
 #include <QDateTime>
-//#include <QSqlDatabase>
-//#include <QSqlQuery>
+
+#include <QTextStream>
+
 
 
 #include <QMainWindow>
