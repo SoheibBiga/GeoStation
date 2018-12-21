@@ -37,20 +37,30 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
 
     if(nb>=49){
 
-            add_nb_entree(total);
-            add_titre("Satellite à proximité");
-            map_ameliore.insert("Tableau",QVariant(tableau));
-            map_ameliore.insert("Titre",QVariant(parametre));
-            emit send_info2(map_ameliore);
-            finish(1);
+        add_nb_entree(total);
+        add_titre("Satellite à proximité");
+        map_ameliore.insert("Tableau",QVariant(tableau));
+        map_ameliore.insert("Titre",QVariant(parametre));
+        emit send_info2(map_ameliore);
+        finish(1);
     }
-qint64 t_end = QDateTime::currentSecsSinceEpoch();
-//qDebug()<< QString::number(t_end- t_start);
+    if(nb>=49){
+        qDebug() << "nb>=49 ok";
+        add_nb_entree(total);
+        add_titre("Satellite à proximité");
+        map_ameliore.insert("Tableau",QVariant(tableau));
+        map_ameliore.insert("Titre",QVariant(parametre));
+        emit send_info2(map_ameliore);
+        finish(1);
+    }
+    qint64 t_end = QDateTime::currentSecsSinceEpoch();
+    //qDebug()<< QString::number(t_end- t_start);
 }
 
 
 void SatelliteApi::replyFinished(QNetworkReply* reply)
 {
+
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(slotError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(sslErrors(QList<QSslError>)),this, SLOT(slotSslErrors(QList<QSslError>)));
@@ -165,7 +175,7 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     case 5:
         element.insert("Altitude",QVariant(QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toDouble())));
         break;
-   }
+    }
 }
 
 void SatelliteApi::slotError(QNetworkReply::NetworkError RequestNetworkError)
