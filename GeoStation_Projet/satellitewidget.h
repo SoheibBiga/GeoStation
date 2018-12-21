@@ -4,9 +4,6 @@
 #include "awidget.h"
 #include "satellitemozaicwidget.h"
 
-namespace Ui {
-class SatelliteWidget;
-}
 
 class SatelliteWidget : public AWidget
 {

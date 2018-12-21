@@ -6,6 +6,8 @@ SatelliteMozaicWidget::SatelliteMozaicWidget(QWidget *parent) :
     ui(new Ui::SatelliteMozaicWidget)
 {
     ui->setupUi(this);
+    //QPixmap BackgroungPicture("/");
+    //this->setStyleSheet();
 }
 
 SatelliteMozaicWidget::~SatelliteMozaicWidget()
