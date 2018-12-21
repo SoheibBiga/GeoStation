@@ -19,7 +19,7 @@ ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
 
 void ordonnanceur::send_request()
 {
-    int id =IdWidget(Satellite);
+    int id =IdWidget(Pharmacie);
     switch(id){
     case IdWidget(Sncf):
         api_index = new SncfApi(this);
@@ -64,18 +64,20 @@ void ordonnanceur::send_request()
 
 void ordonnanceur::run()
 {
-    api_index = new SncfApi(this);
-    api_index = new SatelliteApi(this);
-    api_index = new EvenementApi(this);
-    api_index = new PharmacieApi(this);
-    api_index = new GeolocalisationApi(this);
 
+
+    api_index = new SncfApi(this);
+    api_index->loop->exec();
+    //api_index = new SatelliteApi(this);
+    api_index = new PharmacieApi(this);
+    api_index->loop->exec();
+//    api_index = new GeolocalisationApi(this);
 
 //    api_index = new SncfApi(this);
 //    api_index = new SncfApi(this);
 
     connect(sncf_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-    connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+   // connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
     connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request()));
     connect(pharmacie_timer, SIGNAL(timeout()), this, SLOT(send_request()));
     connect(geolocalisation_timer, SIGNAL(timeout()), this, SLOT(send_request()));
@@ -88,11 +90,10 @@ void ordonnanceur::run()
 //    connect(borneelectrique_timer, SIGNAL(timeout()), this, SLOT(send_request(9)));
 
     sncf_timer->start(1);
-    satellite_timer->start(1);
-    evenement_timer->start(1);
+    //satellite_timer->start(1);
     pharmacie_timer->start(1);
-    geolocalisation_timer->start(1);
-
+//    evenement_timer->start(1);
+//    geolocalisation_timer->start(1);
 //    evenement_timer->start(1000000);
 //    vigicrues_timer->start(1000000);
 //    avions_timer->start(1000000);
