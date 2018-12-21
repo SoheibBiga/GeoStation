@@ -56,12 +56,12 @@ SOURCES += \
     tableaupanoramicwidget.cpp \
     evenementmainwidget.cpp \
     satellitewidget.cpp \
-    satellitemozaicwidget.cpp \
     avionswidget.cpp \
     avionsmozaicwidget.cpp \
     linechartwidget.cpp \
     vigicruesmosaicwidget.cpp \
-    vigicrueswidget.cpp
+    vigicrueswidget.cpp \
+    satellitemozaicwidget.cpp
 
 
 
@@ -98,12 +98,12 @@ HEADERS += \
     tableaupanoramicwidget.h \
     evenementmainwidget.h \
     satellitewidget.h \
-    satellitemozaicwidget.h \
     avionswidget.h \
     avionsmozaicwidget.h \
     linechartwidget.h \
     vigicruesmosaicwidget.h \
-    vigicrueswidget.h
+    vigicrueswidget.h \
+    satellitemozaicwidget.h
 
 
 FORMS += \
@@ -116,10 +116,11 @@ FORMS += \
     evenementmozaicwidget.ui \
     tableaupanoramicwidget.ui \
     evenementmainwidget.ui \
-    satellitemozaicwidget.ui \
     avionsmozaicwidget.ui \
     linechartwidget.ui \
-    vigicruesmosaicwidget.ui
+    vigicruesmosaicwidget.ui \
+    satellitemozaicwidget.ui
+
 
 
 

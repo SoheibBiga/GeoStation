@@ -58,9 +58,16 @@ void ordonnanceur::send_request()
     api_index->loop->exec();
 }
 
-void ordonnanceur::run(){
+void ordonnanceur::run()
+{
+    api_index = new SncfApi(this);
+//    api_index = new SncfApi(this);
+//    api_index = new SncfApi(this);
+//    api_index = new SncfApi(this);
+//    api_index = new SncfApi(this);
+
     connect(sncf_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-//    connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request(1)));
+    connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
 //    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request(2)));
 //    connect(vigicrues_timer, SIGNAL(timeout()), this, SLOT(send_request(3)));
 //    connect(avions_timer, SIGNAL(timeout()), this, SLOT(send_request(4)));
@@ -71,7 +78,7 @@ void ordonnanceur::run(){
 //    connect(borneelectrique_timer, SIGNAL(timeout()), this, SLOT(send_request(9)));
 
     sncf_timer->start(1);
-//    satellite_timer->start(1000000);
+    satellite_timer->start(1000);
 //    evenement_timer->start(1000000);
 //    vigicrues_timer->start(1000000);
 //    avions_timer->start(1000000);

@@ -13,14 +13,16 @@ SatelliteMozaicWidget::~SatelliteMozaicWidget()
     delete ui;
 }
 
-void SatelliteMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
+/*void SatelliteMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
 {
     //ui->SatelliteMozaicWidget->refresh(map_formulaire);
-}
+}*/
 
 void SatelliteMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
+
     //qDebug() << "receive_info2";
+
     ui->Name->setText(map_ameliore.value("Nom").toString());
     ui->ID->setText(map_ameliore.value("ID").toString());
     ui->DateLancement->setText(map_ameliore.value("Date de lancement").toString());
