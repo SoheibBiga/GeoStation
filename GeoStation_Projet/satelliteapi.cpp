@@ -76,7 +76,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
         }
 
         //Show infos for each satellite in selected category
-
+qDebug() << "before satCount"+QString::number(satCount);
         for(int i=0;i<satCount;i++){
 
             RetrieveInfo("satname",i);
@@ -85,8 +85,8 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
             RetrieveInfo("satlat",i);
             RetrieveInfo("satlng",i);
             RetrieveInfo("satalt",i);
-            //list.push_back(RetrieveInfo("satalt",i));
 
+            add_list(element);
         }
         total+=satCount;
        }
@@ -130,7 +130,7 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     if (request == "satlng"){id=4;};
     if (request == "satalt"){id=5;};
 
-    QMap<QString,QVariant> element;
+
 
     switch (id)
     {
@@ -153,19 +153,21 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
         element.insert("Altitude",QVariant(QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toDouble())));
         break;
     }
-    add_list(element);
 
-    if(nb>=50){
+
+    /*if(nb>=49){
+        qDebug() << "finish";
         add_nb_entree(total);
         add_titre("Satellite à proximité");
         map_ameliore.insert("Tableau",QVariant(tableau));
         map_ameliore.insert("Titre",QVariant(parametre));
         emit send_info2(map_ameliore);
+        finish(1);*/
 
 
-    }
+    //}
     //
-    finish(1);
+
 }
 
 void SatelliteApi::slotError(QNetworkReply::NetworkError RequestNetworkError)
