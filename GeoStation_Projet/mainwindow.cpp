@@ -96,12 +96,12 @@ bool						MainWindow::init()
 //                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 3. SNCF Widget
-//	wid = new SncfWidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+//    wid = new SncfWidget(mozaic_);
+//    wid->init();
+//    widgets_->addWidget(wid);
+//    mozaic_->addWidget(wid);
+//    connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
+//                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 4. Musees Widget
 
