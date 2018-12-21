@@ -2,7 +2,7 @@
 
 SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdWidget(Satellite),ord,parent)
 {
-    sat_loop = new QEventLoop();
+    //sat_loop = new QEventLoop();
     //request information
     //Obs_Latitude=48.871656;
     //Obs_Longitude= 2.345931;
@@ -32,7 +32,7 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
     {
         Request_Url(fonction,i);
         manager->get(request);
-        sat_loop->exec();
+        //sat_loop->exec();
     }
     if(nb>=49){
 
@@ -44,7 +44,7 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
             finish(1);
     }
 qint64 t_end = QDateTime::currentSecsSinceEpoch();
-qDebug()<< QString::number(t_end- t_start);
+//qDebug()<< QString::number(t_end- t_start);
 }
 
 
@@ -89,7 +89,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
         //Show infos for each satellite in selected category
 //qDebug() << "before satCount"+QString::number(satCount);
         for(int i=0;i<satCount;i++){
-            qDebug() << "new element";
+            //qDebug() << "new element";
             element.clear();
             RetrieveInfo("satname",i);
             RetrieveInfo("satid",i);
@@ -97,13 +97,13 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
             RetrieveInfo("satlat",i);
             RetrieveInfo("satlng",i);
             RetrieveInfo("satalt",i);
-            nb++;
+            nb+=6;
             add_list(element);
         }
-        sat_loop->exit(1);
+        //sat_loop->exit(1);
         total+=satCount;
     }
-    else sat_loop->exit(1);
+    //else sat_loop->exit(1);
 }
 void SatelliteApi::Request_Url(int pos,int category)
 {
