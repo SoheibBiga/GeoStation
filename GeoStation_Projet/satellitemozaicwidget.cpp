@@ -6,8 +6,11 @@ SatelliteMozaicWidget::SatelliteMozaicWidget(QWidget *parent) :
     ui(new Ui::SatelliteMozaicWidget)
 {
     ui->setupUi(this);
-    //QPixmap BackgroungPicture("/");
-    //this->setStyleSheet();
+    QPixmap BackgroungPicture(":/Images/EarthView.jpg");
+    BackgroungPicture.scaled(this->size(),Qt::KeepAspectRatio);
+    QPalette pal;
+    pal.setBrush(QPalette::Background,BackgroungPicture);
+   ui->Image->setPalette(pal);
 }
 
 SatelliteMozaicWidget::~SatelliteMozaicWidget()

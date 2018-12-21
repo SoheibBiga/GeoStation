@@ -9,7 +9,7 @@
 #include "pharmaciewidget.h"
 #include "tableauwidget.h"
 #include "museeswidget.h"
-//#include "avionswidget.h"
+#include "avionswidget.h"
 #include "mainwindow.h"
 #include "sncfwidget.h"
 
@@ -146,7 +146,7 @@ bool						MainWindow::init()
 	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-	// 6. Avions Widget
+    // 6. Avions Widget
 	wid = new SatelliteWidget(mozaic_);
 	wid->init();
 	widgets_->addWidget(wid);
