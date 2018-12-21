@@ -20,9 +20,6 @@ SatelliteMozaicWidget::~SatelliteMozaicWidget()
 
 void SatelliteMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-
-    qDebug() << "receive_info2";
-
     ui->Name->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Nom").toString());
     ui->ID->setText(map_ameliore.value("ID").toString());
     ui->DateLancement->setText(map_ameliore.value("Date de lancement").toString());

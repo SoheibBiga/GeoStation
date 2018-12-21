@@ -49,16 +49,10 @@ bool				MainWindow::init()
     mozaic_->init();
 
 
-<<<<<<< HEAD
-//    AWidget *sncf_widget = new SncfWidget(mozaic_);
-//    connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
-//    mozaic_->addWidget(sncf_widget);
-=======
-
     AWidget *sncf_widget = new SncfWidget(mozaic_);
     connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
     mozaic_->addWidget(sncf_widget);
->>>>>>> 2120a6d6f4c26978d08d2478f71548a144c9e2ad
+
 
     AWidget *satellite_widget = new SatelliteWidget(mozaic_);
     connect(ordonnanceur_,SIGNAL(send_info2(QMap<QString,QVariant>)),satellite_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));

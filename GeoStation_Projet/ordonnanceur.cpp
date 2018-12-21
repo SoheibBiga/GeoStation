@@ -19,7 +19,7 @@ ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
 
 void ordonnanceur::send_request()
 {
-    int id =IdWidget(Satellite);
+    int id =IdWidget(Sncf);
     switch(id){
     case IdWidget(Sncf):
         api_index = new SncfApi(this);
@@ -63,23 +63,19 @@ void ordonnanceur::send_request()
 
 void ordonnanceur::run()
 {
-<<<<<<< HEAD
-   // api_index = new SncfApi(this);
-    //api_index = new SatelliteApi(this);
-//    api_index = new SncfApi(this);
-=======
+
     api_index = new SncfApi(this);
-    api_index = new SatelliteApi(this);
-    api_index = new EvenementApi(this);
-    api_index = new GeolocalisationApi(this);
->>>>>>> 2120a6d6f4c26978d08d2478f71548a144c9e2ad
+//    api_index = new SatelliteApi(this);
+//    api_index = new EvenementApi(this);
+//    api_index = new GeolocalisationApi(this);
+
 //    api_index = new SncfApi(this);
 //    api_index = new SncfApi(this);
 
-    //connect(sncf_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-    connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-    connect(geolocalisation_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+    connect(sncf_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+//    connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+//    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+//    connect(geolocalisation_timer, SIGNAL(timeout()), this, SLOT(send_request()));
 //    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request(2)));
 //    connect(vigicrues_timer, SIGNAL(timeout()), this, SLOT(send_request(3)));
 //    connect(avions_timer, SIGNAL(timeout()), this, SLOT(send_request(4)));
@@ -89,10 +85,10 @@ void ordonnanceur::run()
 //    connect(pharmacie_timer, SIGNAL(timeout()), this, SLOT(send_request(8)));
 //    connect(borneelectrique_timer, SIGNAL(timeout()), this, SLOT(send_request(9)));
 
-    //sncf_timer->start(1);
-    satellite_timer->start(1);
-    evenement_timer->start(1);
-    geolocalisation_timer->start(1);
+    sncf_timer->start(1);
+//    satellite_timer->start(1);
+//    evenement_timer->start(1);
+//    geolocalisation_timer->start(1);
 //    evenement_timer->start(1000000);
 //    vigicrues_timer->start(1000000);
 //    avions_timer->start(1000000);
