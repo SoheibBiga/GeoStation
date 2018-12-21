@@ -63,12 +63,12 @@ bool				MainWindow::init()
     QStackedWidget *widgets = new QStackedWidget(this);
     this->setLayout(mozaic_->getMainLayout());
     widgets->addWidget(mozaic_);
-    AWidget *sncf_widget = new SncfWidget(this);
+    AWidget *sncf_widget = new SncfWidget();
     connect(ord,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget,SIGNAL(send_info2(QMap<QString,QVariant>)));
     mozaic_->addWidget(sncf_widget);
     ord->run();
 
-    /*AWidget *sncf_widget2 = new SncfWidget(this);
+    AWidget *sncf_widget2 = new SncfWidget(this);
     connect(ord,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget2,SIGNAL(send_info2(QMap<QString,QVariant>)));
     mozaic_->addWidget(sncf_widget2);*/
     AWidget *satellite_widget = new SatelliteWidget(this);
@@ -106,7 +106,7 @@ bool				MainWindow::init()
     connect(ord,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_widget12,SIGNAL(send_info2(QMap<QString,QVariant>)));
     mozaic_->addWidget(sncf_widget12);
     new SncfApi(ord);
-*/
+
     return (true);
 }
 
