@@ -30,7 +30,7 @@ void ordonnanceur::send_request()
         break;
     case IdWidget(Satellite):
         api_index = new SatelliteApi(this);
-        satellite_timer->start(1000000);
+        satellite_timer->start(10000);
         break;
     case IdWidget(Evenement):
         api_index = new EvenementApi(this);
@@ -71,11 +71,10 @@ void ordonnanceur::run()
 //    api_index = new SncfApi(this);
 //    api_index = new SncfApi(this);
 
-    //connect(sncf_timer, SIGNAL(timeout()), this, SLOT(send_request()));
+    connect(sncf_timer, SIGNAL(timeout()), this, SLOT(send_request()));
     connect(satellite_timer, SIGNAL(timeout()), this, SLOT(send_request()));
     connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request()));
     connect(geolocalisation_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-//    connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request(2)));
 //    connect(vigicrues_timer, SIGNAL(timeout()), this, SLOT(send_request(3)));
 //    connect(avions_timer, SIGNAL(timeout()), this, SLOT(send_request(4)));
 //    connect(meteo_timer, SIGNAL(timeout()), this, SLOT(send_request(5)));
@@ -84,11 +83,10 @@ void ordonnanceur::run()
 //    connect(pharmacie_timer, SIGNAL(timeout()), this, SLOT(send_request(8)));
 //    connect(borneelectrique_timer, SIGNAL(timeout()), this, SLOT(send_request(9)));
 
-    //sncf_timer->start(1);
+    sncf_timer->start(1);
     satellite_timer->start(1);
     evenement_timer->start(1);
     geolocalisation_timer->start(1);
-//    evenement_timer->start(1000000);
 //    vigicrues_timer->start(1000000);
 //    avions_timer->start(1000000);
 //    meteo_timer->start(1000000);

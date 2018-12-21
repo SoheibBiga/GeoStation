@@ -34,6 +34,15 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
         manager->get(request);
         sat_loop->exec();
     }
+    if(nb>=49){
+
+            add_nb_entree(total);
+            add_titre("Satellite à proximité");
+            map_ameliore.insert("Tableau",QVariant(tableau));
+            map_ameliore.insert("Titre",QVariant(parametre));
+            emit send_info2(map_ameliore);
+            finish(1);
+    }
 qint64 t_end = QDateTime::currentSecsSinceEpoch();
 qDebug()<< QString::number(t_end- t_start);
 }
@@ -41,7 +50,7 @@ qDebug()<< QString::number(t_end- t_start);
 
 void SatelliteApi::replyFinished(QNetworkReply* reply)
 {
-    qDebug() << "solt replyfinished";
+    //qDebug() << "solt replyfinished";
 //    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(slotError(QNetworkReply::NetworkError)));
 //    connect(reply, SIGNAL(sslErrors(QList<QSslError>)),this, SLOT(slotSslErrors(QList<QSslError>)));
 
@@ -62,7 +71,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
     //get satcount and category
     satCount=MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["satcount"].toInt();
     satCatAny=MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["category"].toString();
-    nb++;
+
     //get available satellite
     if (satCount!=0 && satCatAny!="ANY")
     {
@@ -78,7 +87,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
         }
 
         //Show infos for each satellite in selected category
-qDebug() << "before satCount"+QString::number(satCount);
+//qDebug() << "before satCount"+QString::number(satCount);
         for(int i=0;i<satCount;i++){
             qDebug() << "new element";
             element.clear();
@@ -88,7 +97,7 @@ qDebug() << "before satCount"+QString::number(satCount);
             RetrieveInfo("satlat",i);
             RetrieveInfo("satlng",i);
             RetrieveInfo("satalt",i);
-
+            nb++;
             add_list(element);
         }
         sat_loop->exit(1);
@@ -155,23 +164,7 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     case 5:
         element.insert("Altitude",QVariant(QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toDouble())));
         break;
-    }
-
-/*
-    if(nb>=49){
-
-        add_nb_entree(total);
-        add_titre("Satellite à proximité");
-        map_ameliore.insert("Tableau",QVariant(tableau));
-        map_ameliore.insert("Titre",QVariant(parametre));
-        emit send_info2(map_ameliore);*/
-
-
-
-        //finish(1);
-
-
-
+   }
 }
 
 void SatelliteApi::slotError(QNetworkReply::NetworkError RequestNetworkError)
