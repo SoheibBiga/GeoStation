@@ -67,15 +67,17 @@ void						MainWindow::initWidgets()
 	qDebug() << "[ DBG ] : A";
 	count = widgets_->count();
 	qDebug() << "[ DBG ] : A ---> " << count ;
-	for (idx = 0; idx < count; idx++)
-		{
-			widget = reinterpret_cast<AWidget*>(widgets_->widget(idx));
-			widget->init();
-			mozaic_->addWidget(widget);
-			connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
-							widget, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-		}
+    for (idx = 0; idx < count; idx++)
+        {
+            widget = reinterpret_cast<AWidget*>(widgets_->widget(idx));
+            widget->init();
+            mozaic_->addWidget(widget);
+            qDebug() << widget;
+            connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
+                            widget, SIGNAL(send_info2(QMap<QString,QVariant>)));
+
+        }
 
 }
 
@@ -87,17 +89,17 @@ bool						MainWindow::init()
 	mozaic_->init();
 
 
-	widgets_->addWidget(new GeolocalisationWidget());
-	widgets_->addWidget(new SatelliteWidget());
-	widgets_->addWidget(new SncfWidget());
+    //widgets_->addWidget(new GeolocalisationWidget());
+    widgets_->addWidget(new SatelliteWidget());
+    widgets_->addWidget(new SncfWidget());
 //	widgets_->addWidget(new AvionsWidget());
-//	widgets_->addWidget(new EvenementWidget());		// Faire heriter EvenementWidget de AWidget
+    widgets_->addWidget(new EvenementWidget());		// Faire heriter EvenementWidget de AWidget
 //	widgets_->addWidget(new LineChartWidget());		// Faire heriter LineChartWidget de AWidget
-	widgets_->addWidget(new MuseesWidget());
-	widgets_->addWidget(new PharmacieWidget());
-	widgets_->addWidget(new BorneElectriqueWidget());
-	widgets_->addWidget(new SncfWidget());
-	widgets_->addWidget(new SncfWidget());
+    //widgets_->addWidget(new MuseesWidget());
+    //widgets_->addWidget(new PharmacieWidget());
+    //widgets_->addWidget(new BorneElectriqueWidget());
+//	widgets_->addWidget(new SncfWidget());
+//	widgets_->addWidget(new SncfWidget());
 
 	initWidgets();
 
@@ -185,13 +187,13 @@ bool						MainWindow::init()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 */
+    ordonnanceur_->run();
 
 	return (true);
 }
 
 bool				MainWindow::run()
 {
-	ordonnanceur_->run();
 
 	return (true);
 }
