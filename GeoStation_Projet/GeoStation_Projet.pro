@@ -61,7 +61,8 @@ SOURCES += \
     avionsmozaicwidget.cpp \
     linechartwidget.cpp \
     vigicruesmosaicwidget.cpp \
-    vigicrueswidget.cpp
+    vigicrueswidget.cpp \
+    pharmaciemozaicwidget.cpp
 
 
 
@@ -103,7 +104,8 @@ HEADERS += \
     avionsmozaicwidget.h \
     linechartwidget.h \
     vigicruesmosaicwidget.h \
-    vigicrueswidget.h
+    vigicrueswidget.h \
+    pharmaciemozaicwidget.h
 
 
 FORMS += \
@@ -119,7 +121,8 @@ FORMS += \
     satellitemozaicwidget.ui \
     avionsmozaicwidget.ui \
     linechartwidget.ui \
-    vigicruesmosaicwidget.ui
+    vigicruesmosaicwidget.ui \
+    pharmaciemozaicwidget.ui
 
 
 
