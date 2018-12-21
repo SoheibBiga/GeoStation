@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "sncfwidget.h"
 #include "satellitewidget.h"
+#include "pharmaciewidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QWidget(parent),
@@ -127,12 +128,12 @@ bool						MainWindow::init()
 	mozaic_->addWidget(wid);
 
 	//  9. Pharmacie Widget
-	wid = new SncfWidget(mozaic_);
+    wid = new PharmacieWidget(mozaic_);
 	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 	mozaic_->addWidget(wid);
 
-	//  10. Pharmacie Widget
+    //  10. Meteo Widget
 	wid = new SncfWidget(mozaic_);
 	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));

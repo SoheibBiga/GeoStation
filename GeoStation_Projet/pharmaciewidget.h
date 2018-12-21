@@ -6,8 +6,6 @@
 
 class PharmacieWidget : public AWidget
 {
-    Q_OBJECT
-
 public:
     explicit PharmacieWidget(QWidget *parent = 0);
     ~PharmacieWidget();

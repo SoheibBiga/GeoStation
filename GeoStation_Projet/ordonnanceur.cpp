@@ -44,6 +44,7 @@ void ordonnanceur::send_request()
         break;
     case IdWidget(Pharmacie):
         api_index = new PharmacieApi(this);
+        pharmacie_timer->start(10000);
         break;
     case IdWidget(Meteo):
         api_index = new MeteoApi(this);
