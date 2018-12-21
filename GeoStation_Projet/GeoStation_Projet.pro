@@ -64,7 +64,9 @@ SOURCES += \
     labeldyn.cpp \
     geolocalisationwidget.cpp \
     geolocmozaicwidget.cpp \
-    borneelectriquemozaicwidget.cpp
+    borneelectriquemozaicwidget.cpp \
+    pollutionwidget.cpp \
+    pollutionmozaicwidget.cpp
 
 
 
@@ -110,7 +112,9 @@ HEADERS += \
     labeldyn.h \
     geolocalisationwidget.h \
     geolocmozaicwidget.h \
-    borneelectriquemozaicwidget.h
+    borneelectriquemozaicwidget.h \
+    pollutionwidget.h \
+    pollutionmozaicwidget.h
 
 
 
@@ -128,7 +132,8 @@ FORMS += \
     pharmaciemozaicwidget.ui\
     satellitemozaicwidget.ui \
     geolocmozaicwidget.ui \
-    borneelectriquemozaicwidget.ui
+    borneelectriquemozaicwidget.ui \
+    pollutionmozaicwidget.ui
 
 
 
