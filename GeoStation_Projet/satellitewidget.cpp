@@ -44,6 +44,3 @@ bool				SatelliteWidget::end()
     return (true);
 }
 
-void				SatelliteWidget::addWidget(QWidget* widget)
-{
-}

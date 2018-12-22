@@ -19,7 +19,7 @@ public:
     virtual bool				init();
     virtual bool				run();
     virtual bool				end();
-    virtual void				addWidget(QWidget* widget);
+
 
     SatelliteMozaicWidget *satellite_mozaic_widget;
 

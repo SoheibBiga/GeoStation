@@ -10,5 +10,27 @@
         <file>Icons/Itineraire.jpeg</file>
         <file>Icons/a_plan.jpeg</file>
         <file>Images/EarthView.jpg</file>
+        <file>Images/Background.jpg</file>
+        <file>Images/Amateur_radio.jpg</file>
+        <file>Images/Beidou_Navigation_System.jpg</file>
+        <file>Images/Brightest.jpg</file>
+        <file>Images/Celestis.jpg</file>
+        <file>Images/CubeSats.jpg</file>
+        <file>Images/Disaster_monitoring.jpg</file>
+        <file>Images/Earth_resources.jpg</file>
+        <file>Images/Education.jpg</file>
+        <file>Images/Engineering.jpg</file>
+        <file>Images/Experimental.jpg</file>
+        <file>Images/Flock.jpg</file>
+        <file>Images/Galileo.jpg</file>
+        <file>Images/Geodetic.jpg</file>
+        <file>Images/Geostationary.jpg</file>
+        <file>Images/GOES.jpg</file>
+        <file>Images/Molniya.jpg</file>
+        <file>Images/Navy_Navigation_Satellite_System.jpg</file>
+        <file>Images/Search_and_rescue.jpg</file>
+        <file>Images/Space_and_Earth_Science.jpg</file>
+        <file>Images/Westford_Needles.jpg</file>
+        <file>Images/Glonass_Operational.jpg</file>
     </qresource>
 </RCC>

@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QMap>
 #include "QDebug"
+#include <QEventLoop>
+#include <QDateTime>
 
 namespace Ui {
 class SatelliteMozaicWidget;
@@ -20,6 +22,14 @@ public:
 
 private:
     Ui::SatelliteMozaicWidget *ui;
+    void TimerFunction(QMap<QString, QVariant> map);
+    QEventLoop *Loop;
+    int map_size,NextSat;
+    QTimer *timing;
+    QMap<QString, QVariant> data_map;
+
+private slots:
+    void Repeat();
 
 public slots:
     //void receive_info(QMap<QString,QString> map_formulaire);

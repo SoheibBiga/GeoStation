@@ -48,6 +48,7 @@ signals:
     void send_info2(QMap<QString,QVariant>);
     void sncf_send_info(QMap<QString, QVariant>);
     void evenement_send_info2(QMap<QString, QVariant>);
+    void satellite_send_info2(QMap<QString, QVariant>);
 
 };
 
