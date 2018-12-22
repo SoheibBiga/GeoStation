@@ -12,7 +12,7 @@ void Timer::send_request()
     switch(Id){
     case IdWidget(Sncf):
         ord->api_index = new SncfApi(ord);
-        this->start(10000);
+        this->start(180000);
         break;
     case IdWidget(Musee):
         ord->api_index = new MuseesApi(ord);
@@ -20,11 +20,11 @@ void Timer::send_request()
         break;
     case IdWidget(Satellite):
         ord->api_index = new SatelliteApi(ord);
-        this->start(10000);
+        this->start(180000);
         break;
     case IdWidget(Evenement):
         ord->api_index = new EvenementApi(ord);
-        this->start(10000);
+        this->start(180000);
         break;
     case IdWidget(Pollution):
         ord->api_index = new PollutionApi(ord);

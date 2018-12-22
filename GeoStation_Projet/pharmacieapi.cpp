@@ -59,7 +59,7 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
     map_ameliore.insert("Tableau",QVariant(tableau));
     map_ameliore.insert("Titre",QVariant(parametre));
 
-    emit send_info2(map_ameliore);
+    emit pharmacie_send_info2(map_ameliore);
     finish(0);
 }
 

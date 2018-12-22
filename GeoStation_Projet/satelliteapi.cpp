@@ -40,7 +40,7 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
         add_titre("Satellite à proximité");
         map_ameliore.insert("Tableau",QVariant(tableau));
         map_ameliore.insert("Titre",QVariant(parametre));
-        emit send_info2(map_ameliore);
+        emit satellite_send_info2(map_ameliore);
         finish(1);
     }
     //qint64 t_end = QDateTime::currentSecsSinceEpoch();
