@@ -126,7 +126,7 @@ bool						MainWindow::init()
     widgets_->addWidget(new SatelliteWidget());
     widgets_->addWidget(new EvenementWidget());
 
-    //widgets_->addWidget(new GeolocalisationWidget());
+    widgets_->addWidget(new GeolocalisationWidget());
     //widgets_->addWidget(new AvionsWidget());
     //widgets_->addWidget(new LineChartWidget());		// Faire heriter LineChartWidget de AWidget
     //widgets_->addWidget(new MuseesWidget());

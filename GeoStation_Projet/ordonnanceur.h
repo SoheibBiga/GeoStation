@@ -43,4 +43,4 @@ signals:
     void satellite_send_info2(QMap<QString, QVariant>);
 };
 
-#endif // ORDONNANCEUR_H
+#endif // ORDONNANCEUR_H1
