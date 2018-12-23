@@ -29,7 +29,7 @@ Les différents index correspondent au maps générés à l'aide d'un point et d
 ## Exemple d'utilisation
 ```cpp
 QPixmap resultat;
-PokeMap *carte = new PokeMap(PokeMap::CENT_M); // CINQ_CENT_M correspond à la carte de rayon 100 mètres.
+PokeMap *carte = new PokeMap(PokeMap::CENT_M); // CENT_M correspond à la carte de rayon 100 mètres.
 	
 //Ajoute les différents points sur la carte
 carte->addPoint("48.871554", "2.346000");
