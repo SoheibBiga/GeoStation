@@ -4,7 +4,7 @@ L'utilisation est exactement la meme qu'un QLabel, voici 2 exemples d'utilisatio
 
 #### ***Exemple 1***<hr>
 Vous pouvez declarer un QLabel dans votre UI et le promouvoir en LabelDyn.
-Vous devrez avoir un résultat similaire à celui la :
+Vous devrez avoir un résultat similaire à l'image.
 
 ![LDUI](ressources/LBUI.png)
 
