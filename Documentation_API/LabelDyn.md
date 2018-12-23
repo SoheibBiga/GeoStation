@@ -11,10 +11,10 @@ Vous devrez avoir un résultat similaire à l'image.
 #### ***Exemple 2***<hr>
 Vous pouvez tout simplement le déclarer dans votre code en dur. 
 Le comportement et et les méthodes de cette classe sont ensuite identique au QLabel.
-
-	// this correspond au QWidget parent.
-	LabelDyn *label = new LabelDyn(this);
-	
+```cpp
+//this correspond au QWidget parent.
+LabelDyn *label = new LabelDyn(this);
+```
 #### <span style="color: green">**Resultat**
 
 ![LDD](ressources/LDDOC.gif)
