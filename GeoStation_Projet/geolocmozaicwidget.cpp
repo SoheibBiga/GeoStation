@@ -39,10 +39,11 @@ void GeoLocMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         QPainter *painter = new QPainter(&pix);
 
 
-        painter->setBrush(Qt::black);
-        painter->fillRect(0, 0, pix.width(), pix.height(), Qt::black);
-
-
+        painter->setPen(QPen(Qt::black, 12));
+        painter->drawLine(0, 0, 0, pix.height());
+        painter->drawLine(0, 0, pix.width(), 0);
+        painter->drawLine(pix.width(), 0, pix.width(), pix.height());
+        painter->drawLine(pix.width(), pix.height(), pix.width(), pix.height());
         painter->end();
 
         ui->label_2->setPixmap(pix.scaled(ui->label->parentWidget()->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
