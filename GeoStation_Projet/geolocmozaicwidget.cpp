@@ -7,12 +7,8 @@ GeoLocMozaicWidget::GeoLocMozaicWidget(QWidget *parent) :
     ui(new Ui::GeoLocMozaicWidget)
 {
     ui->setupUi(this);
-    ui->CP_edit->setEnabled(false);
-    ui->VilleEdit->setEnabled(false);
-    ui->AdresseEdit->setEnabled(false);
-    ui->RegionEdit->setEnabled(false);
+
     this->setFixedSize(400, 500);
-    this->setStyleSheet("background-color:black;");
 }
 
 GeoLocMozaicWidget::~GeoLocMozaicWidget()
@@ -27,12 +23,20 @@ void GeoLocMozaicWidget::receive_info(QMap<QString, QString>)
 
 void GeoLocMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-    if (ui->AdresseEdit->text().size() == 0)
+    if (ui->label_3->text().size() == 0)
     {
-        ui->AdresseEdit->setText(map_ameliore["Tableau"].toList().at(0).toMap()["adresse"].toString());
-        ui->CP_edit->setText(map_ameliore["Tableau"].toList().at(0).toMap()["codePostal"].toString());
-        ui->VilleEdit->setText(map_ameliore["Tableau"].toList().at(0).toMap()["ville"].toString());
-        ui->RegionEdit->setText(map_ameliore["Tableau"].toList().at(0).toMap()["region"].toString());
+        QFont font;
+
+        font.setPointSize(25);
+        font.setBold(true);
+        ui->label_3->setFont(font);
+        ui->label_4->setFont(font);
+        ui->label_5->setFont(font);
+        ui->label_6->setFont(font);
+        ui->label_3->setText(map_ameliore["Tableau"].toList().at(0).toMap()["adresse"].toString());
+        ui->label_4->setText(map_ameliore["Tableau"].toList().at(0).toMap()["codePostal"].toString());
+        ui->label_5->setText(map_ameliore["Tableau"].toList().at(0).toMap()["ville"].toString());
+        ui->label_6->setText(map_ameliore["Tableau"].toList().at(0).toMap()["region"].toString());
     }
     else if (pix.isNull())
     {
