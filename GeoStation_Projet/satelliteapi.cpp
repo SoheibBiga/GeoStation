@@ -16,14 +16,14 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
     Days_Of_Predic=2;
     Minimun_Visibility=10;
     Minimim_Elevation=30;
-    Search_Radius=8;
+    Search_Radius=30;
     API_Function << "tle" << "positions" << "visualpasses" << "radiopasses" << "above";
 
     //set the function needed for the satellite request
     fonction=above;
 
     //connection between Manager which request reply;
-    connect(manager,SIGNAL(networkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility)),this,SLOT(NetworkStatus(QNetworkAccessManager::NetworkAccessibility)));
+   connect(manager,SIGNAL(networkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility)),this,SLOT(NetworkStatus(QNetworkAccessManager::NetworkAccessibility)));
     connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
 
     //Set request URL

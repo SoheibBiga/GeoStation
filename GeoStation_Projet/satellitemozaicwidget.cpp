@@ -6,14 +6,39 @@ SatelliteMozaicWidget::SatelliteMozaicWidget(QWidget *parent) :
     ui(new Ui::SatelliteMozaicWidget)
 {
     ui->setupUi(this);
-    Loop=new QEventLoop(this);
+
     timing=new QTimer(this);
     timing->setInterval(10000);
     NextSat=0;
+    //::setAttribute(Qt::WA_TranslucentBackground);
+    BackgroungPicture=new QPixmap(":/Images/EarthView.jpg");
+    BackgroungPicture->scaled(250,150);
+    QBrush brush(Qt::transparent);
+    QPen Pen(Qt::white);
+    QRect MyRect(0,0,250,150);
+    ui->Image->setPixmap(*BackgroungPicture);
+    ui->Image->setGeometry(MyRect);
+    ui->Image->setScaledContents(true);
 
-    QPixmap BackgroungPicture(":/Images/EarthView.jpg");
-    ui->Image->setPixmap(BackgroungPicture);
-    qDebug() << ui->label_2->backgroundRole();
+    QPalette* pal=new QPalette();
+    pal->setBrush(QPalette::Button,brush);
+    ui->label->setAttribute(Qt::WA_TranslucentBackground);
+    ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
+    ui->Name->setAttribute(Qt::WA_TranslucentBackground);
+    ui->label_3->setAttribute(Qt::WA_TranslucentBackground);
+    ui->label_4->setAttribute(Qt::WA_TranslucentBackground);
+    ui->label_5->setAttribute(Qt::WA_TranslucentBackground);
+    ui->label_6->setAttribute(Qt::WA_TranslucentBackground);
+    ui->Name->setAttribute(Qt::WA_TranslucentBackground);
+    ui->Altitude->setAttribute(Qt::WA_TranslucentBackground);
+    ui->Longitude->setAttribute(Qt::WA_TranslucentBackground);
+    ui->Latitude->setAttribute(Qt::WA_TranslucentBackground);
+    ui->DateLancement->setAttribute(Qt::WA_TranslucentBackground);
+    ui->Satellite_Info->setAttribute(Qt::WA_TranslucentBackground);
+
+
+
+
     connect(timing,SIGNAL(timeout()),this,SLOT(Repeat()));
 
 
@@ -68,29 +93,20 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
 {
     QString cat;
     QStringList Cat_List;
-    Cat_List << "Amateur_radio"<<"Beidou_Navigation_System"<<"Brightest"<<"Celestis"<<"CubeSats"<<"Disaster_monitoring"<<
-                "Earth_resources"<<"Education"<<"Engineering"<<"Experimental"<<"Flock"<<"Galileo"<<"Geodetic"<<"Geostationary"<<
-                "Global_Positioning_System_GPS_Constellation"<<"Global_Positioning_System_GPS_Operational"<<"Globalstar"<<
-                "Glonass_Operational"<<"GOES"<<"Gonets"<<"Gorizont"<<"Intelsat"<<"Iridium"<<"IRNSS"<<"ISS"<<"Lemur"<<"Military"<<
-                "Molniya"<<"Navy_Navigation_Satellite_System"<<"NOAA"<<"O3B_Networks"<<"Orbcomm"<<"Parus"<<"QZSS"<<"Radar_Calibration"<<
-                "Raduga"<<"Russian_LEO_Navigation"<<"Satellite_Based_Augmentation_System"<<"Search_and_rescue"<<"Space_and_Earth_Science"<<
-                "Strela"<<"Tracking_and_Data_Relay_Satellite_System"<<"Tselina"<<"Tsikada"<<"Tsiklon"<<"TV"<<"Weather"<<"Westford_Needles"<<
-                "XM_and_Sirius"<<"Yaogan";
+    Cat_List << "Amateur radio"<<"Beidou Navigation System"<<"Brightest"<<"Celestis"<<"CubeSats"<<"Disaster monitoring"<<
+                "Earth resources"<<"Education"<<"Engineering"<<"Experimental"<<"Flock"<<"Galileo"<<"Geodetic"<<"Geostationary"<<
+                "Global Positioning System (GPS) Constellation"<<"Global Positioning System (GPS) Operational"<<"Globalstar"<<
+                "Glonass Operational"<<"GOES"<<"Gonets"<<"Gorizont"<<"Intelsat"<<"Iridium"<<"IRNSS"<<"ISS"<<"Lemur"<<"Military"<<
+                "Molniya"<<"Navy Navigation Satellite System"<<"NOAA"<<"O3B Networks"<<"Orbcomm"<<"Parus"<<"QZSS"<<"Radar Calibration"<<
+                "Raduga"<<"Russian LEO Navigation"<<"Satellite Based Augmentation System"<<"Search_and_rescue"<<"Space and Earth Science"<<
+                "Strela"<<"Tracking and Data Relay Satellite System"<<"Tselina"<<"Tsikada"<<"Tsiklon"<<"TV"<<"Weather"<<"Westford Needles"<<
+                "XM and Sirius"<<"Yaogan";
 
 
     cat = map["Tableau"].toList().at(NextSat).toMap()["Category"].toString();
 
     qDebug() << cat;
 
-    foreach (QString category, Cat_List) {
-
-        if (cat == category){
-            QPixmap BackgroungPicture(":/Images/"+category+".jpg");
-            qDebug() << ":/Images/"+category+".jpg";
-            ui->Image->setPixmap(BackgroungPicture);
-        }
-
-    }
     ui->Name->setText(map["Tableau"].toList().at(NextSat).toMap()["Nom"].toString());
     ui->ID->setText(map["Tableau"].toList().at(NextSat).toMap()["ID"].toString());
     ui->DateLancement->setText(map["Tableau"].toList().at(NextSat).toMap()["Date de lancement"].toString());
@@ -98,10 +114,32 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
     ui->Latitude->setText(map["Tableau"].toList().at(NextSat).toMap()["Latitude"].toString());
     ui->Longitude->setText(map["Tableau"].toList().at(NextSat).toMap()["Longitude"].toString());
 
+    foreach (QString category, Cat_List) {
+
+        if (cat == category){
+            BackgroungPicture->load(":/Images/"+category+".jpg");
+            BackgroungPicture->scaled(250,150);
+
+            qDebug() << ":/Images/"+category+".jpg";
+            ui->Image->setPixmap(*BackgroungPicture);
+            ui->Image->setScaledContents(true);
+            ui->Image->update();
 
 
-    //    ui->SatelliteMozaicWidget.refresh_ameliore(map_ameliore);
 
+
+        }
+        else
+        {
+
+        }
+
+    }
+
+}
+
+void SatelliteMozaicWidget::paintEvent(QPaintEvent *event)
+{
 
 
 }
