@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>303</width>
-    <height>455</height>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -153,10 +153,74 @@
       <string notr="true">background-image: url(:/Images/Background.jpg);</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
+      <item row="1" column="0">
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="Titre">
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>250</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="palette">
+             <palette>
+              <active>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </active>
+              <inactive>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </inactive>
+              <disabled>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>190</red>
+                  <green>190</green>
+                  <blue>190</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </disabled>
+             </palette>
+            </property>
+            <property name="font">
+             <font>
+              <family>Sawasdee</family>
+              <weight>75</weight>
+              <italic>false</italic>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Loading</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <layout class="QHBoxLayout" name="ImageLayout">
             <item>
@@ -172,6 +236,15 @@
                 <width>250</width>
                 <height>150</height>
                </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>TextLabel</string>
@@ -304,11 +377,11 @@
           </property>
           <property name="font">
            <font>
-            <family>Tibetan Machine Uni</family>
-            <pointsize>11</pointsize>
-            <weight>50</weight>
-            <italic>true</italic>
-            <bold>false</bold>
+            <family>Sawasdee</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <italic>false</italic>
+            <bold>true</bold>
            </font>
           </property>
           <property name="cursor">
@@ -332,6 +405,18 @@ border-color: rgba(255, 255, 255, 128);</string>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
              <widget class="QLabel" name="label">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="palette">
                <palette>
                 <active>
@@ -398,24 +483,24 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
               </property>
               <property name="styleSheet">
                <string notr="true"/>
               </property>
               <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
+               <enum>QFrame::Box</enum>
               </property>
               <property name="frameShadow">
-               <enum>QFrame::Plain</enum>
+               <enum>QFrame::Raised</enum>
               </property>
               <property name="lineWidth">
-               <number>1</number>
+               <number>2</number>
               </property>
               <property name="text">
                <string>Nom </string>
@@ -424,6 +509,18 @@ border-color: rgba(255, 255, 255, 128);</string>
             </item>
             <item>
              <widget class="QLabel" name="label_2">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
               <property name="palette">
                <palette>
                 <active>
@@ -463,12 +560,21 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>N° d'identification</string>
@@ -477,6 +583,18 @@ border-color: rgba(255, 255, 255, 128);</string>
             </item>
             <item>
              <widget class="QLabel" name="label_3">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
               <property name="palette">
                <palette>
                 <active>
@@ -516,12 +634,21 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Date de Lancement</string>
@@ -530,6 +657,18 @@ border-color: rgba(255, 255, 255, 128);</string>
             </item>
             <item>
              <widget class="QLabel" name="label_4">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
               <property name="palette">
                <palette>
                 <active>
@@ -566,6 +705,24 @@ border-color: rgba(255, 255, 255, 128);</string>
                  </colorrole>
                 </disabled>
                </palette>
+              </property>
+              <property name="font">
+               <font>
+                <family>Sawasdee</family>
+                <pointsize>11</pointsize>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Latitude</string>
@@ -574,6 +731,18 @@ border-color: rgba(255, 255, 255, 128);</string>
             </item>
             <item>
              <widget class="QLabel" name="label_5">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
               <property name="palette">
                <palette>
                 <active>
@@ -613,12 +782,21 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Longitude</string>
@@ -627,6 +805,18 @@ border-color: rgba(255, 255, 255, 128);</string>
             </item>
             <item>
              <widget class="QLabel" name="label_6">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>31</height>
+               </size>
+              </property>
               <property name="palette">
                <palette>
                 <active>
@@ -666,12 +856,21 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Altitude</string>
@@ -1113,18 +1312,27 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
               </property>
               <property name="autoFillBackground">
                <bool>false</bool>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgba(255, 255, 255, 128);</string>
+               <string notr="true"/>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Loading</string>
@@ -1187,12 +1395,21 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Loading</string>
@@ -1252,12 +1469,21 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Loading</string>
@@ -1317,12 +1543,21 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Loading</string>
@@ -1382,12 +1617,21 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Loading</string>
@@ -1447,12 +1691,21 @@ border-color: rgba(255, 255, 255, 128);</string>
               </property>
               <property name="font">
                <font>
-                <family>Tibetan Machine Uni</family>
+                <family>Sawasdee</family>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
-                <italic>true</italic>
-                <bold>false</bold>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
                </font>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>2</number>
               </property>
               <property name="text">
                <string>Loading</string>

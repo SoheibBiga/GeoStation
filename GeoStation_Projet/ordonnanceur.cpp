@@ -9,12 +9,12 @@ ordonnanceur::ordonnanceur(QObject *parent) :
     satellite_timer = new Timer(IdWidget(Satellite),this);
     evenement_timer = new Timer(IdWidget(Evenement),this);
     vigicrues_timer = new Timer(IdWidget(Vigicrues),this);
+    avions_timer = new Timer(IdWidget(Avions),this);
     meteo_timer = new Timer(IdWidget(Meteo),this);
     pollution_timer = new Timer(IdWidget(Pollution),this);
-    pharmacie_timer = new Timer(IdWidget(Pharmacie),this);
     musee_timer = new Timer(IdWidget(Musee),this);
+    pharmacie_timer = new Timer(IdWidget(Pharmacie),this);
     borneelectrique_timer = new Timer(IdWidget(BorneElectrique),this);
-    avions_timer = new Timer(IdWidget(Avions),this);
     geolocalisation_timer = new Timer(IdWidget(Geolocalisation),this);
 }
 

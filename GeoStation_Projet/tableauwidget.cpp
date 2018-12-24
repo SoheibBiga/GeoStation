@@ -72,6 +72,7 @@ void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
 
         //vlabels << map_formulaire.keys()[i];
         //item ->setText(map_formulaire.value(map_formulaire.keys()[i]));
+        //ui->label->setText(map_ameliore["parametre"].toMap()["Titre"].toString());
         item = new QTableWidgetItem(map_ameliore["Tableau"].toList().at(0).toMap().keys()[i]);
         ui->tableWidget->setItem(i, 0, item);
         item = new QTableWidgetItem(map_ameliore["Tableau"].toList().at(0).toMap().value(map_ameliore["Tableau"].toList().at(0).toMap().keys()[i]).toString());
