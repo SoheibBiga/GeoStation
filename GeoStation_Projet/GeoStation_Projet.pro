@@ -40,7 +40,6 @@ SOURCES += \
     vigicruesapi.cpp \
     meteoapi.cpp \
     awidget.cpp \
-    nullapi.cpp \
     cherchephotos.cpp \
     mozaic.cpp \
     tableauwidget.cpp \
@@ -70,7 +69,8 @@ SOURCES += \
     pollutionwidget.cpp \
     pollutionmozaicwidget.cpp \
     timer.cpp \
-    satellitemozaicwidget.cpp
+    satellitemozaicwidget.cpp \
+    satellitemainwidget.cpp
 
 
 
@@ -92,7 +92,6 @@ HEADERS += \
     vigicruesapi.h \
     meteoapi.h \
     awidget.h \
-    nullapi.h \
     cherchephotos.h \
     mozaic.h \
     tableauwidget.h \
@@ -122,7 +121,8 @@ HEADERS += \
     pollutionwidget.h \
     pollutionmozaicwidget.h \
     timer.h \
-    satellitemozaicwidget.h
+    satellitemozaicwidget.h \
+    satellitemainwidget.h
 
 
 
@@ -142,7 +142,8 @@ FORMS += \
     geolocmozaicwidget.ui \
     borneelectriquemozaicwidget.ui \
     pollutionmozaicwidget.ui \
-    satellitemozaicwidget.ui
+    satellitemozaicwidget.ui \
+    satellitemainwidget.ui
 
 
 
