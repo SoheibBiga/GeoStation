@@ -123,7 +123,7 @@ void avionsapi::replyFinished(QNetworkReply*  reply)
 //     }
 
 
-    // parseplanelist();        // car fichiers lecture aeroports doivent etre crées dynamiquement
+     parseplanelist();        // car fichiers lecture aeroports doivent etre crées dynamiquement
 
 
 
