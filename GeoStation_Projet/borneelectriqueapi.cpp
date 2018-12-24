@@ -46,10 +46,6 @@ void BorneElectriqueApi::replyFinished(QNetworkReply* reply)
         element.insert("observations: ",observations);
         QString id_station = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["id_station"].toString();
         element.insert("id_station: ",id_station);
-        QString Xlongitude = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["Xlongitude"].toString();
-        element.insert("Xlongitude: ",Xlongitude);
-        QString Ylatitude = doc.toVariant().toMap()["records"].toJsonArray().at(i).toVariant().toMap()["fields"].toMap()["Ylatitude"].toString();
-        element.insert("Ylatitude: ",Ylatitude);
         add_list(element);
     }
 
