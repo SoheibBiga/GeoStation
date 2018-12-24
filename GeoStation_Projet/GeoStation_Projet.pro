@@ -63,7 +63,6 @@ SOURCES += \
     vigicruesmosaicwidget.cpp \
     vigicrueswidget.cpp \
     pharmaciemozaicwidget.cpp\
-    satellitemozaicwidget.cpp \
     labeldyn.cpp \
     geolocalisationwidget.cpp \
     geolocmozaicwidget.cpp \
@@ -115,7 +114,6 @@ HEADERS += \
     vigicruesmosaicwidget.h \
     vigicrueswidget.h \
     pharmaciemozaicwidget.h\
-    satellitemozaicwidget.h \
     labeldyn.h \
     geolocalisationwidget.h \
     geolocmozaicwidget.h \
@@ -139,7 +137,6 @@ FORMS += \
     linechartwidget.ui \
     vigicruesmosaicwidget.ui \
     pharmaciemozaicwidget.ui\
-    satellitemozaicwidget.ui \
     geolocmozaicwidget.ui \
     borneelectriquemozaicwidget.ui \
     pollutionmozaicwidget.ui
