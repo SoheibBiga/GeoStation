@@ -7,6 +7,7 @@
 #include "linechartwidget.h"
 #include "evenementwidget.h"
 #include "pharmaciewidget.h"
+#include "pollutionwidget.h"
 #include "tableauwidget.h"
 #include "museeswidget.h"
 #include "avionswidget.h"
@@ -64,18 +65,25 @@ void						MainWindow::initWidgets()
 bool						MainWindow::init()
 {
 
-
-    AWidget*            wid;
     mozaic_->init();
 
+    initWidgets();
+
+	timer_->setInterval(5000);
+
+    timer_->start();
+    mozaic_->show();
+    ordonnanceur_->run();
+
+    AWidget*            wid;
     // 1. Geolocalisation Widget
 
-    //      wid = new SncfWidget(mozaic_);
-    //      wid->init();
-    //      widgets_->addWidget(wid);
-    //      mozaic_->addWidget(wid);
-    //      connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
-    //                          wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new GeolocalisationWidget(mozaic_);
+    wid->init();
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
     // 2. Satellite Widget
     wid = new SatelliteWidget(mozaic_);
@@ -89,9 +97,9 @@ bool						MainWindow::init()
     wid = new SncfWidget(mozaic_);
     wid->init();
     widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
     connect(ordonnanceur_, SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),
             wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-    mozaic_->addWidget(wid);
 
     // 4. Musees Widget
     //      wid = new SatelliteWidget(mozaic_);
@@ -157,7 +165,7 @@ bool						MainWindow::init()
     //  connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
     //                  wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-    //  11. Pollution Widget
+    //  12. Pollution Widget
     //  wid = new PollutionWidget(mozaic_);
     //  wid->init();
     //  widgets_->addWidget(wid);
@@ -165,7 +173,7 @@ bool						MainWindow::init()
     //  connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
     //                  wid, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)));
 
-    //  12. Borne Electrique Widget
+    //  13. Borne Electrique Widget
     wid = new BorneElectriqueWidget(mozaic_);
     wid->init();
     widgets_->addWidget(wid);

@@ -1,8 +1,6 @@
 #include "pollutionmozaicwidget.h"
 #include "ui_pollutionmozaicwidget.h"
 
-
-
 PollutionMozaicWidget::PollutionMozaicWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PollutionMozaicWidget)

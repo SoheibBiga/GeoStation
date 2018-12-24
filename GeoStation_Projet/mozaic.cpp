@@ -58,11 +58,11 @@ void				Mozaic::addWidget(QWidget* widget)
 {
     AWidget* wid;
     wid = reinterpret_cast<AWidget*>(widget);
-    if(vLayout1_->count() > vLayout2_->count()) vLayout2_->addLayout(wid->getMozaicLayout());
-    else vLayout1_->addLayout(wid->getMozaicLayout());
+		if(vLayout1_->count() > vLayout2_->count())
+			vLayout2_->addLayout(wid->getMozaicLayout());
+		else
+			vLayout1_->addLayout(wid->getMozaicLayout());
 }
 
 void Mozaic::receive_info(QMap<QString, QString>)
-{
-
-}
+{}
