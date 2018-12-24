@@ -6,6 +6,11 @@
 #include "QDebug"
 #include <QEventLoop>
 #include <QDateTime>
+#include <QPen>
+#include <QBrush>
+#include <QPixmap>
+#include <QPalette>
+#include <QLabel>
 
 namespace Ui {
 class SatelliteMozaicWidget;
@@ -20,6 +25,7 @@ public:
     ~SatelliteMozaicWidget();
 
 
+
 private:
     Ui::SatelliteMozaicWidget *ui;
     void TimerFunction(QMap<QString, QVariant> map);
@@ -27,6 +33,9 @@ private:
     int map_size,NextSat;
     QTimer *timing;
     QMap<QString, QVariant> data_map;
+    void paintEvent(QPaintEvent *event);
+    QLabel* Image;
+    QPixmap *BackgroungPicture;
 
 private slots:
     void Repeat();
