@@ -5,6 +5,7 @@
 #include "satellitemozaicwidget.h"
 
 
+
 class SatelliteWidget : public AWidget
 {
     Q_OBJECT
@@ -19,13 +20,13 @@ public:
     virtual bool				init();
     virtual bool				run();
     virtual bool				end();
-    virtual void				addWidget(QWidget* widget);
+
 
     SatelliteMozaicWidget *satellite_mozaic_widget;
 
 
 signals:
-    void send_info(QMap<QString,QString>);
+    //void send_info(QMap<QString,QString>);
     void send_info2(QMap<QString,QVariant>);
 };
 

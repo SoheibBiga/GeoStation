@@ -1,22 +1,9 @@
-#ifndef ORDONNANCEUR_H
-#define ORDONNANCEUR_H
+# ifndef ORDONNANCEUR_H
+# define ORDONNANCEUR_H
 
-#include "abstractapi.h"
-#include "pollutionapi.h"
-#include "pharmacieapi.h"
-#include "evenementapi.h"
-#include "sncfapi.h"
-#include "museesapi.h"
-#include "evenementapi.h"
-#include "borneelectriqueapi.h"
-#include "satelliteapi.h"
-#include "nullapi.h"
-#include "vigicruesapi.h"
-#include "meteoapi.h"
-#include "avionsapi.h"
-#include "geolocalisationapi.h"
 #include <QDebug>
-
+#include "timer.h"
+#include "abstractapi.h"
 
 class ordonnanceur : public QObject
 {
@@ -24,26 +11,36 @@ class ordonnanceur : public QObject
 
 public:
     ordonnanceur(QObject* parent = 0);
-    AbstractApi *api_index;
+    ordonnanceur(ordonnanceur const& other);
+
     void run();
-    QTimer *sncf_timer;
-    QTimer *satellite_timer;
-    QTimer *evenement_timer;
-    QTimer *vigicrues_timer;
-    QTimer *meteo_timer;
-    QTimer *pollution_timer;
-    QTimer *pharmacie_timer;
-    QTimer *musee_timer;
-    QTimer *borneelectrique_timer;
-    QTimer *avions_timer;
-    QTimer *geolocalisation_timer;
+
+    AbstractApi *api_index;
+    Timer *sncf_timer;
+    Timer *satellite_timer;
+    Timer *evenement_timer;
+    Timer *vigicrues_timer;
+    Timer *meteo_timer;
+    Timer *pollution_timer;
+    Timer *pharmacie_timer;
+    Timer *musee_timer;
+    Timer *borneelectrique_timer;
+    Timer *avions_timer;
+    Timer *geolocalisation_timer;
 
 signals:
-    void send_info(QMap<QString,QString>);
-    void send_info2(QMap<QString, QVariant>);
-
-private slots:
-    void send_request();
+    void send_info(QMap<QString, QString>);
+    void sncf_send_info2(QMap<QString, QVariant>);
+    void pollution_send_info2(QMap<QString, QVariant>);
+    void meteo_send_info2(QMap<QString, QVariant>);
+    void pharmacie_send_info2(QMap<QString, QVariant>);
+    void musee_send_info2(QMap<QString, QVariant>);
+    void vigicrues_send_info2(QMap<QString, QVariant>);
+    void geolocalisation_send_info2(QMap<QString, QVariant>);
+    void borneelectrique_send_info2(QMap<QString, QVariant>);
+    void avions_send_info2(QMap<QString, QVariant>);
+    void evenement_send_info2(QMap<QString, QVariant>);
+    void satellite_send_info2(QMap<QString, QVariant>);
 };
 
-#endif // ORDONNANCEUR_H
+#endif // ORDONNANCEUR_H1

@@ -42,7 +42,6 @@ void SncfApi::result_liste_gare(QNetworkReply* reply)
     libelle_gare = jsdoc.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["libelle_gare"].toString();
     //qDebug() << libelle_gare;
     //ui->label_gare->setText(libelle_gare);
-    map_formulaire.insert("Libelle Gare",libelle_gare);
     code_uic_gare = jsdoc.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["code_uic"].toString();
     QString token_sncf = "b9b428ee-3f1c-4c4e-82c0-6448e4c99ed7";
     QString ul_prochain_depart = "https://"+token_sncf+"@api.sncf.com/v1/coverage/sncf/stop_areas/stop_area:OCE:SA:"+code_uic_gare+"/departures?datetime=20181212T174530";
@@ -96,8 +95,8 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
         }
         //emit send_info(*map_formulaire);
         map_ameliore.insert("Tableau",QVariant(tableau));
-        map_ameliore.insert("Titre",QVariant(parametre));
-        emit send_info2(map_ameliore);
+        map_ameliore.insert("Parametre",QVariant(parametre));
+        emit sncf_send_info2(map_ameliore);
         finish(0);
     }
     t2 = QDateTime::currentMSecsSinceEpoch();

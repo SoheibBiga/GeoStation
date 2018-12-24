@@ -26,7 +26,7 @@ int PokeMap::init_data(QStringList list)
     return (EXIT_SUCCESS);
 }
 
-void    PokeMap::addPoint(QString latitude, QString longitude, QColor brush)
+void    PokeMap::addPoint(QString latitude, QString longitude)
 {
     QPainter painter(&img);
     double differenceX = xMax - longitude.toDouble();
@@ -34,7 +34,8 @@ void    PokeMap::addPoint(QString latitude, QString longitude, QColor brush)
 
     if (differenceX > 0 && differenceY > 0)
     {
-        painter.setBrush(brush);
+        painter.setBrush(Qt::blue);
+
         painter.drawEllipse(static_cast<int>(static_cast<double>((differenceX / xMin)) * static_cast<double>(img.width())),
                             static_cast<int>(static_cast<double>((differenceY / yMin)) * static_cast<double>(img.height())),
                             50, 50);
@@ -45,12 +46,16 @@ void    PokeMap::addPoint(QString latitude, QString longitude, QColor brush)
     }
 }
 
-void    PokeMap::addText(int x, int y, QString text, QColor brush)
+void    PokeMap::addText(int x, int y, QString text)
 {
     QPainter painter(&img);
+    QFont font;
 
-    painter.setBrush(brush);
+    font.setPointSize(painter.font().pointSize() * 2);
+    painter.setFont(font);
+    painter.setBrush(Qt::blue);
     painter.drawText(x, y, text);
+
     painter.end();
 }
 

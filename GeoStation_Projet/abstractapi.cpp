@@ -18,7 +18,18 @@ AbstractApi::AbstractApi(int myId, ordonnanceur *ord_, QObject *parent, QString 
     manager = new QNetworkAccessManager(parent);
 
     connect(this,SIGNAL(send_info(QMap<QString,QString>)),ord,SIGNAL(send_info(QMap<QString,QString>)));
-    connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),ord,SIGNAL(send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(evenement_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(evenement_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(avions_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(avions_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(meteo_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(pollution_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(musee_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(musee_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(satellite_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
 
     loop = new QEventLoop(parent);
     QSettings settings_coord;

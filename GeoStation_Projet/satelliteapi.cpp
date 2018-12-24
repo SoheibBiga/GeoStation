@@ -16,18 +16,18 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
     Days_Of_Predic=2;
     Minimun_Visibility=10;
     Minimim_Elevation=30;
-    Search_Radius=8;
+    Search_Radius=30;
     API_Function << "tle" << "positions" << "visualpasses" << "radiopasses" << "above";
 
     //set the function needed for the satellite request
     fonction=above;
 
     //connection between Manager which request reply;
-    connect(manager,SIGNAL(networkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility)),this,SLOT(NetworkStatus(QNetworkAccessManager::NetworkAccessibility)));
+   connect(manager,SIGNAL(networkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility)),this,SLOT(NetworkStatus(QNetworkAccessManager::NetworkAccessibility)));
     connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
 
     //Set request URL
-    qint64 t_start = QDateTime::currentSecsSinceEpoch();
+    //qint64 t_start = QDateTime::currentSecsSinceEpoch();
     for(int i=0;i<50;i++)
     {
         Request_Url(fonction,i);
@@ -39,11 +39,11 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdW
         add_nb_entree(total);
         add_titre("Satellite à proximité");
         map_ameliore.insert("Tableau",QVariant(tableau));
-        map_ameliore.insert("Titre",QVariant(parametre));
-        emit send_info2(map_ameliore);
+        map_ameliore.insert("Parametre",QVariant(parametre));
+        emit satellite_send_info2(map_ameliore);
         finish(1);
     }
-    qint64 t_end = QDateTime::currentSecsSinceEpoch();
+    //qint64 t_end = QDateTime::currentSecsSinceEpoch();
     //qDebug()<< QString::number(t_end- t_start);
 }
 
@@ -97,6 +97,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
             RetrieveInfo("satlat",i);
             RetrieveInfo("satlng",i);
             RetrieveInfo("satalt",i);
+            RetrieveInfo("satcat",i);
 
             add_list(element);
         }
@@ -124,7 +125,7 @@ void SatelliteApi::Request_Url(int pos,int category)
         request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(NORAD_ID)+"/"+QString::number(latitude)+"/"+QString::number(longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Days_Of_Predic)+"/"+QString::number(Minimim_Elevation)+"/&apiKey="+APIKEY));
         break;
     case above:
-        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(latitude)+"/"+QString::number(longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Search_Radius)+"/"+QString::number(category)+"/&apiKey="+APIKEY));
+        request.setUrl(QUrl(BaseUrl+"/"+API_Function.value(fonction)+"/"+QString::number(latitude)+"/"+QString::number(longitude)+"/"+QString::number(Obs_Altitude)+"/"+QString::number(Search_Radius)+"/"+QString::number(category)+"/&apiKey="+APIKEY));//+QString::number(category)+"/&apiKey="+APIKEY));
         break;
 
     }
@@ -142,6 +143,7 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
     if (request == "satlat"){id=3;};
     if (request == "satlng"){id=4;};
     if (request == "satalt"){id=5;};
+    if (request == "satcat"){id=6;};
 
 
 
@@ -164,6 +166,9 @@ void SatelliteApi::RetrieveInfo(QString request, int NumSat)
         break;
     case 5:
         element.insert("Altitude",QVariant(QString::number(Above_Array.at(NumSat).toObject().toVariantMap()["satalt"].toDouble())));
+        break;
+    case 6:
+        element.insert("Category",QVariant(QString(satCatAny)));
         break;
     }
 }

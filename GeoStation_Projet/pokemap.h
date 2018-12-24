@@ -21,8 +21,8 @@ public:
     enum        COULEUR{NOIR = Qt::black, BLANC = Qt::white, BLEU = Qt::blue, ROUGE = Qt::red, GRIS = Qt::gray, VERT = Qt::green, JAUNE = Qt::yellow};
     PokeMap(MAP index);
     virtual     ~PokeMap();
-    void        addPoint(QString latitude, QString longitude, QColor brush = BLEU);
-    void        addText(int x, int y, QString text, QColor brush = BLEU);
+    void        addPoint(QString latitude, QString longitude);
+    void        addText(int x, int y, QString text);
     QPixmap     pixmap();
 private:
     int init_data(QStringList list);

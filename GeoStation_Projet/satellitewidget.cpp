@@ -1,4 +1,5 @@
 #include "satellitewidget.h"
+#include "satellitemozaicwidget.h"
 
 
 SatelliteWidget::SatelliteWidget(QWidget *parent) :
@@ -44,6 +45,3 @@ bool				SatelliteWidget::end()
     return (true);
 }
 
-void				SatelliteWidget::addWidget(QWidget* widget)
-{
-}

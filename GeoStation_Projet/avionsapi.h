@@ -105,6 +105,8 @@ private slots:
 
     void calculatedistance();
 
+    void envoiverswidget();
+
 
 
 };

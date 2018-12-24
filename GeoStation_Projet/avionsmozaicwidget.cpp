@@ -6,6 +6,9 @@ AvionsMozaicWidget::AvionsMozaicWidget(QWidget *parent) :
     ui(new Ui::AvionsMozaicWidget)
 {
     ui->setupUi(this);
+
+    ui->textEdit->setText("JE VEUX VOIR ");
+
 }
 
 AvionsMozaicWidget::~AvionsMozaicWidget()
@@ -16,4 +19,10 @@ AvionsMozaicWidget::~AvionsMozaicWidget()
 void AvionsMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
 {
    // ui->tableWidget->refresh(map_formulaire);
+
+
+}
+
+void AvionsMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
+{
 }
