@@ -335,8 +335,6 @@ void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
         QJsonObject plane_json = plane_array[0].toObject();
 
 
-
-
         QJsonObject departure_obj = plane_json["departure"].toObject();
         QJsonObject arrival_obj = plane_json["arrival"].toObject();
         QJsonObject aircraft_obj = plane_json["aircraft"].toObject();
@@ -798,7 +796,7 @@ void avionsapi::calculatedistance()
 
 void avionsapi::envoiverswidget()
 {
-    //int total_result = 11;
+    int total_result = 11;
 
     QString direction = "J'affiche la direction";
 
