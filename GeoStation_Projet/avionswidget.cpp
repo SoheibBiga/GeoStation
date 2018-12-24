@@ -3,11 +3,11 @@
 AvionsWidget::AvionsWidget(QWidget *parent) :
     AWidget(parent)
 {
-    avions_mozaic_widget = new AvionsMozaicWidget(this);
-    mozaicLayout_ = new QHBoxLayout(this);
+    avions_mozaic_widget = new AvionsMozaicWidget();
+    mozaicLayout_ = new QHBoxLayout();
     mozaicLayout_->addWidget(avions_mozaic_widget);
 //    connect(this,SIGNAL(send_info(QMap<QString,QString>)),avions_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
-//    connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),avions_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
+connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),avions_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
 
 }
 
