@@ -21,7 +21,7 @@ void    GeolocalisationApi::get_response(QNetworkReply *reply)
 
         val = reply->readAll();
         d = QJsonDocument::fromJson(val);
-        qDebug() << d;
+
         base = d.object().toVariantMap()["results"].toJsonArray().at(0)["locations"].toArray().at(0);
         manager->clearConnectionCache();
         manager->clearAccessCache();
@@ -32,6 +32,12 @@ void    GeolocalisationApi::get_response(QNetworkReply *reply)
         element.insert("codePostal", base["postalCode"].toString());
         element.insert("region", base["adminArea3"].toString());
         add_list(element);
+        map_ameliore.insert("Tableau",QVariant(tableau));
+        map_ameliore.insert("Titre",QVariant(parametre));
+
+        emit geolocalisation_send_info2(map_ameliore);
+
+        disconnect(manager, &QNetworkAccessManager::finished, nullptr, nullptr);
         manager->get(QNetworkRequest(QUrl(QString("https://www.mapquestapi.com/staticmap/v5/map?banner=" + base["street"].toString().replace(" ", "+") + "," + base["adminArea5"].toString()+ "+" + base["postalCode"].toString()  + "|sm&locations=" + base["street"].toString().replace(" ", "+") + "," + base["adminArea5"].toString() + "+" + base["postalCode"].toString().mid(0,2) + "&size=800,800@2x&key=iGT3ydQS7XPt0LAjtbfk2LBioZCiUbOB"))));
         connect(manager, &QNetworkAccessManager::finished, this, &GeolocalisationApi::get_map, Qt::UniqueConnection);
 
@@ -44,8 +50,12 @@ void    GeolocalisationApi::get_map(QNetworkReply *rep)
     {
         QByteArray array = rep->readAll();
 
-        element.insert("Map", array);
+        map_ameliore.clear();
+        element.clear();
+        tableau.clear();
+        parametre.clear();
 
+        element.insert("map", QVariant(array));
         add_list(element);
         map_ameliore.insert("Tableau",QVariant(tableau));
         map_ameliore.insert("Titre",QVariant(parametre));
