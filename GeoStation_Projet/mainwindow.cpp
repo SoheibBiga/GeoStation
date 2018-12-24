@@ -60,8 +60,6 @@ MainWindow::~MainWindow()
 
 void						MainWindow::initWidgets()
 {
-<<<<<<< HEAD
-=======
 	AWidget*			wid;
 
 	// 1. Geolocalisation Widget
@@ -151,7 +149,7 @@ void						MainWindow::initWidgets()
 //	mozaic_->addWidget(wid);
 //	connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
 //					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
->>>>>>> c4b44febc898b5913e96b10acf0e48a7426d56db
+
 
 }
 

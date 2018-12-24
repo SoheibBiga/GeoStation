@@ -26,14 +26,10 @@ void ordonnanceur::run()
     connect(evenement_timer, SIGNAL(timeout()), evenement_timer, SLOT(send_request()));
 
     //connect(pharmacie_timer, SIGNAL(timeout()), this, SLOT(send_request()));
-<<<<<<< HEAD
-    //connect(geolocalisation_timer, SIGNAL(timeout()), geolocalisation_timer, SLOT(send_request()));
-    //connect(vigicrues_timer, SIGNAL(timeout()), vigicrues_timer, SLOT(send_request()));
-=======
     connect(geolocalisation_timer, SIGNAL(timeout()), geolocalisation_timer, SLOT(send_request()));
     //connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request(2)));
     //connect(vigicrues_timer, SIGNAL(timeout()), this, SLOT(send_request(3)));
->>>>>>> c4b44febc898b5913e96b10acf0e48a7426d56db
+
     //connect(avions_timer, SIGNAL(timeout()), this, SLOT(send_request(4)));
     //connect(meteo_timer, SIGNAL(timeout()), this, SLOT(send_request(5)));
     //connect(pollution_timer, SIGNAL(timeout()), this, SLOT(send_request(6)));
