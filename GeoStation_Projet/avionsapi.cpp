@@ -11,14 +11,14 @@ avionsapi::avionsapi(ordonnanceur *ord_, QObject *parent) : AbstractApi(IdWidget
     manager = new QNetworkAccessManager(this);
     manager_singleplane = new QNetworkAccessManager(this);
 
-    connect(manager, SIGNAL(finished(QNetworkReply* )), this, SLOT(replyFinished(QNetworkReply* )));
+    connect(manager, SIGNAL(finished(QNetworkReply* )), this, SLOT(replyApi1(QNetworkReply* )));
 
     //connect(ui->pushButton, SIGNAL(pressed() ), this, SLOT(change_coordinates()) );
 
 
     connect(manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this, SLOT(affiche_erreurs(QNetworkReply*,QList<QSslError> ))  );
 
-    connect(manager_singleplane, SIGNAL(finished(QNetworkReply* )), this, SLOT(getsingleplaneinfo(QNetworkReply* )));
+    connect(manager_singleplane, SIGNAL(finished(QNetworkReply* )), this, SLOT(getAPi2info(QNetworkReply* )));
 
 
 
@@ -349,6 +349,8 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         airport_code  = arrival_string_icao;
 
         readairports();
+
+        element.insert(airport_name,"");
 
         write_Info_APi2.append(QString("l'aeroport "+ airport_name +" \n") );
         write_Info_APi2.append(QString("DE plus on verifie que "+ ICAO24 + " C'est bien "+aircraft_icao24+"  \n") );
@@ -783,7 +785,7 @@ void avionsapi::envoiverswidget()
     //add_titre("Prochains Train au depart de " + libelle_gare );
     add_nb_entree(total_result);
 
-        element.insert("Direction",QVariant("write_APi1_info"));
+        element.insert("Direction",QVariant(write_APi1_info));
 
 
         add_list(element);

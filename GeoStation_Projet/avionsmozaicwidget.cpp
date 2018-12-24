@@ -25,6 +25,6 @@ void AvionsMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
 
 void AvionsMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-
-    ui->tableWidget->refresh_ameliore(map_ameliore);
+    map_ameliore["Tableau"].toList().at(0).toMap().size();
+ //   ui->tableWidget->refresh_ameliore(map_ameliore);
 }

@@ -45,13 +45,10 @@ void ordonnanceur::run()
     geolocalisation_timer->start(1);
     //evenement_timer->start(1);
     //vigicrues_timer->start(1);
-<<<<<<< HEAD
+
     avions_timer->start(1);
-    //meteo_timer->start(1);
-=======
-    //avions_timer->start(1);
     meteo_timer->start(1);
->>>>>>> 0fca0fe442e6d1d88fef8fb0b78762708312e37e
+
     //pollution_timer->start(1);
     //musee_timer->start(1);
     borneelectrique_timer->start(1);
