@@ -15,5 +15,4 @@ MeteoMozaicWidget::~MeteoMozaicWidget()
 
 void MeteoMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-
 }
