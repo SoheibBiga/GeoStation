@@ -26,7 +26,6 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
     Myjson = QJsonDocument::fromJson(m_response);
     QString strJson(Myjson.toJson(QJsonDocument::Compact)); // Indented or Compact
     int total_event = Myjson.object().toVariantMap()["nhits"].toInt();
-    qDebug()<< total_event;
     if(total_event == 0) {}
     else
     {

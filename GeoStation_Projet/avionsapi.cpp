@@ -871,3 +871,10 @@ void avionsapi::calculatedistance()
 
 }
 
+
+
+void avionsapi::envoiverswidget()
+{
+
+
+}
