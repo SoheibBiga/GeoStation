@@ -40,7 +40,6 @@ SOURCES += \
     vigicruesapi.cpp \
     meteoapi.cpp \
     awidget.cpp \
-    nullapi.cpp \
     cherchephotos.cpp \
     mozaic.cpp \
     tableauwidget.cpp \
@@ -92,7 +91,6 @@ HEADERS += \
     vigicruesapi.h \
     meteoapi.h \
     awidget.h \
-    nullapi.h \
     cherchephotos.h \
     mozaic.h \
     tableauwidget.h \
