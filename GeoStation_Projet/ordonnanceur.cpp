@@ -32,7 +32,7 @@ void ordonnanceur::run()
     //connect(vigicrues_timer, SIGNAL(timeout()), vigicrues_timer, SLOT(send_request()));
     connect(avions_timer, SIGNAL(timeout()), avions_timer, SLOT(send_request()));
     //connect(meteo_timer, SIGNAL(timeout()), meteo_timer, SLOT(send_request()));
-    //connect(pollution_timer, SIGNAL(timeout()), pollution_timer, SLOT(send_request()));
+    connect(pollution_timer, SIGNAL(timeout()), pollution_timer, SLOT(send_request()));
     //connect(musee_timer, SIGNAL(timeout()), musee_timer, SLOT(send_request()));
 
     connect(borneelectrique_timer, SIGNAL(timeout()), borneelectrique_timer, SLOT(send_request()));
@@ -49,7 +49,7 @@ void ordonnanceur::run()
     avions_timer->start(1);
     meteo_timer->start(1);
 
-    //pollution_timer->start(1);
+    pollution_timer->start(1);
     //musee_timer->start(1);
     borneelectrique_timer->start(1);
     satellite_timer->start(1);

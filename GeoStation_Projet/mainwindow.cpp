@@ -144,12 +144,12 @@ void						MainWindow::initWidgets()
                     wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 //  11. Pollution Widget
-//	wid = new pollutionwidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new pollutionwidget(mozaic_);
+    wid->init();
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 
 }
