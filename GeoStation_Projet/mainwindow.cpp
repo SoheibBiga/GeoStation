@@ -126,7 +126,7 @@ bool						MainWindow::init()
     //widgets_->addWidget(new MuseesWidget());
     //widgets_->addWidget(new PharmacieWidget());
     //widgets_->addWidget(new BorneElectriqueWidget());
-//	widgets_->addWidget(new SncfWidget());
+    widgets_->addWidget(new GeolocalisationWidget());
 //	widgets_->addWidget(new SncfWidget());
 
     initWidgets();
