@@ -79,6 +79,13 @@ private:
     QString airline_code;
     QString airline_name;
 
+    void readairports();
+    void readplane_type();
+
+
+    void calculatedistance();
+
+    void envoiverswidget();
 
 
 private slots:
@@ -99,13 +106,8 @@ private slots:
 
     void parseplanelist();
 
-    void readairports();
-    void readplane_type();
 
 
-    void calculatedistance();
-
-    void envoiverswidget();
 
 
 

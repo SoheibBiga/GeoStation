@@ -52,6 +52,7 @@ void Timer::send_request()
         break;
     case IdWidget(Avions):
         ord->api_index = new avionsapi(ord);
+        this->start(10000);
         break;
     }
     ord->api_index->loop->exec();
