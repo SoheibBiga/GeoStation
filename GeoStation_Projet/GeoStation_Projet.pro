@@ -71,7 +71,8 @@ SOURCES += \
     timer.cpp \
     satellitemozaicwidget.cpp \
     satellitemainwidget.cpp \
-    sncfmainwidget.cpp
+    sncfmainwidget.cpp \
+    customlabels.cpp
 
 
 
@@ -124,7 +125,8 @@ HEADERS += \
     timer.h \
     satellitemozaicwidget.h \
     satellitemainwidget.h \
-    sncfmainwidget.h
+    sncfmainwidget.h \
+    customlabels.h
 
 
 
