@@ -6,32 +6,29 @@ avionsapi::avionsapi(ordonnanceur *ord_, QObject *parent) : AbstractApi(IdWidget
     timeBegin = QDateTime::currentDateTime();
 
 
-    QString API_all("https://opensky-network.org/api/states/all?lamin=45.89&lomin=8.678&lamax=47.8229&lomax=12.5226");
-    QString API_one("https://opensky-network.org/api/states/all?time=1458564121&icao24=3c6444");
-
 
 
     manager = new QNetworkAccessManager(this);
     manager_singleplane = new QNetworkAccessManager(this);
 
-    connect(manager, SIGNAL(finished(QNetworkReply* )), this, SLOT(replyFinished(QNetworkReply* )));
+    connect(manager, SIGNAL(finished(QNetworkReply* )), this, SLOT(replyApi1(QNetworkReply* )));
 
     //connect(ui->pushButton, SIGNAL(pressed() ), this, SLOT(change_coordinates()) );
 
 
     connect(manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this, SLOT(affiche_erreurs(QNetworkReply*,QList<QSslError> ))  );
 
-    connect(manager_singleplane, SIGNAL(finished(QNetworkReply* )), this, SLOT(getsingleplaneinfo(QNetworkReply* )));
+    connect(manager_singleplane, SIGNAL(finished(QNetworkReply* )), this, SLOT(getAPi2info(QNetworkReply* )));
 
 
 
-//    lat_max = ui->lat_max_line->text();
-//    lat_min = ui->lat_min_line->text();
-//    longi_min = ui->longi_min_line->text();
-//    longi_max = ui->longi_max_line->text();
+    //    lat_max = ui->lat_max_line->text();
+    //    lat_min = ui->lat_min_line->text();
+    //    longi_min = ui->longi_min_line->text();
+    //    longi_max = ui->longi_max_line->text();
 
     construct_URL = ("https://opensky-network.org/api/states/all?lamin="+lat_min+"&lomin="+longi_min+"&lamax="+lat_max+"&lomax="+longi_max);
-    qDebug()<<"voila l'URL  "<<construct_URL<<endl;
+
     manager->get(QNetworkRequest(QUrl(construct_URL)));
 
 
@@ -70,90 +67,62 @@ void avionsapi::affiche_erreurs( QNetworkReply* , QList<QSslError> list  )
 
 }
 
-void avionsapi::replyFinished(QNetworkReply*  reply)
+void avionsapi::replyApi1(QNetworkReply*  reply)
 {
-
-
-
-
     QByteArray response_data = reply->readAll();
 
-    //qDebug()<< "pour le bytearray "<< response_data.isEmpty()<<endl;
 
     QJsonDocument json = QJsonDocument::fromJson(response_data);
-
-    //qDebug()<< "pour le jsondoc "<< json.isEmpty()<<endl;
 
 
     QString strJson(json.toJson(QJsonDocument::Indented));  //Compact or Indented for readability
 
 
 
-     QJsonObject jdoc_obj = json.object();
+    QJsonObject jdoc_obj = json.object();
 
-     QJsonValue states = jdoc_obj["states"];
-     //https://www.developpez.net/forums/d1342983/c-cpp/bibliotheques/qt/parser-json-qjsonobject/
+    QJsonValue states = jdoc_obj["states"];
+    //https://www.developpez.net/forums/d1342983/c-cpp/bibliotheques/qt/parser-json-qjsonobject/
 
-     list_planes_array =states.toArray();
-
-
-     QString num = QString::number(list_planes_array.count() );
-     //qDebug()<< "voila num "<<num<<endl;
-
-     QString nombreavions = ("Nous avons détecté "+ num + " avions commerciaux dans cette zone ");
-
-     //ui->label_nombreavions->setText(nombreavions);
+    list_planes_array =states.toArray();
 
 
-     write_first_requete.append(nombreavions);
-     write_first_requete.append("\n");
+    QString num = QString::number(list_planes_array.count() );
+    //qDebug()<< "voila num "<<num<<endl;
 
-     write_first_requete.append(strJson);
+    QString nombreavions = ("Nous avons détecté "+ num + " avions commerciaux dans cette zone ");
 
-    // qDebug()<< QDir("../../")<<endl;
+    //ui->label_nombreavions->setText(nombreavions);
+
+
+    write_first_requete.append(nombreavions);
+    write_first_requete.append("\n");
+
+    write_first_requete.append(strJson);
 
 
 
-//     QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/"+output_folder+"APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-//     QFile file( filename );
-//     if ( file.open(QIODevice::ReadWrite) )
-//     {
-//         QTextStream stream(&file);
-//         stream << write_first_requete << endl;
-//     }
-
-
-     parseplanelist();        // car fichiers lecture aeroports doivent etre crées dynamiquement
-
-
-
-
-
+    parseplanelist();        // car fichiers lecture aeroports doivent etre crées dynamiquement
 
 }
 
 
-void avionsapi::query_singleplane()
+void avionsapi::query_APi2()
 {
 
 
     API_key =  "58f4c4-bf6820";
 
-   URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24="+ICAO24);
+    URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24="+ICAO24);
 
 
-   // URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24=389eb5") ; // pour faire un test sur un avion dont lApi renvoir un JsonObject
 
 
-//   qDebug()<<"voila l'URL POUR L'AVION DONT L'ICAO24 est "<<ICAO24<<endl;
-//   qDebug()<<      URL_singleplane<<endl;
+    write_Info_APi2.append("Au moment de la requete de l'API2 notre ICAO24 est "+ICAO24+"     \n");
 
+    manager_singleplane->get(QNetworkRequest(QUrl(URL_singleplane)));
 
-   write_Info_APi2.append("Au moment de la requete de l'API2 notre ICAO24 est "+ICAO24+"     \n");
-
-   manager_singleplane->get(QNetworkRequest(QUrl(URL_singleplane)));
-
-  // delay(1000);
+    // delay(1000);
 
 
 }
@@ -179,8 +148,8 @@ void avionsapi::parseplanelist()
     int IberiaEx = 0;
     int TransaFra =0;
     int EuroAirTran = 0;
-//    int Tapportugal = 0;
-//    int Vueling = 0;
+    //    int Tapportugal = 0;
+    //    int Vueling = 0;
 
 
 
@@ -202,59 +171,52 @@ void avionsapi::parseplanelist()
         airline_code = single_plane_array[1].toString();    // this is the whole flight number
         airline_code.remove(3,airline_code.size()-3);       // first 3 characters of flight number
 
-        qDebug()<<"this is the ailine code  "<<airline_code<<endl;
-
         view_airlinecompanies();
         write_APi1_info.append("L'avion du vol "+flight_number+ " de companie aerienne "+airline_name+" \n");
+
+
 
         //velocity is index9
         //altitude is index 13
         calculatedistance();
 
 
-        query_singleplane();
+        query_APi2();
 
 
 
-                for (int j = 0; j<single_plane_array.count(); j++)
-                 {
+        for (int j = 0; j<single_plane_array.count(); j++)
+        {
 
 
+            if( single_plane_array[j].type() == 3)
+            {
 
+                QString info = single_plane_array[j].toString();
 
-                     if( single_plane_array[j].type() == 3)
-                     {
-                         qDebug()<< "L' info numero "<<j+1<<"sur l'avion NUMERO "<< i<<"  est    "<< single_plane_array[j]<<" qui est de TYPE QString"<<endl;
-
-                         QString info = single_plane_array[j].toString();
-
-                         if(info.contains("RYR")) RyanAirPlanes ++;
-                         if(info.contains("EZY")) EasyjetPlanes ++;
-                         if(info.contains("EZS")) EasyjetPlanes ++;
-                         if(info.contains("DLH")) LufhansaPlanes ++;
-                         if (info.contains("AFR")) AirFrancePlanes ++;
-                         if (info.contains("UAE")) EmiratesPlanes ++;
-                         if (info.contains("AAL")) Americanair ++;
-                         if (info.contains("BAW")) Britishair ++;
-                         if (info.contains("IBS")) IberiaEx ++;
-                         if (info.contains("TVF")) TransaFra ++;
-                         if (info.contains("BCS")) EuroAirTran ++;
-
+                if(info.contains("RYR")) RyanAirPlanes ++;
+                if(info.contains("EZY")) EasyjetPlanes ++;
+                if(info.contains("EZS")) EasyjetPlanes ++;
+                if(info.contains("DLH")) LufhansaPlanes ++;
+                if (info.contains("AFR")) AirFrancePlanes ++;
+                if (info.contains("UAE")) EmiratesPlanes ++;
+                if (info.contains("AAL")) Americanair ++;
+                if (info.contains("BAW")) Britishair ++;
+                if (info.contains("IBS")) IberiaEx ++;
+                if (info.contains("TVF")) TransaFra ++;
+                if (info.contains("BCS")) EuroAirTran ++;
 
 
 
 
 
-
-
-
-                     }
+            }
 
 
 
 
 
-                 }
+        }
 
 
 
@@ -262,52 +224,52 @@ void avionsapi::parseplanelist()
     }
 
 
-//    QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/"+output_folder+"Info_APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-//    QFile file( filename );
-//    if ( file.open(QIODevice::ReadWrite) )
-//    {
-//        QTextStream stream(&file);
-//        stream << write_APi1_info << endl;
-//    }
+    //    QString filename=( "../"+output_folder+"Info_APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+    //    QFile file( filename );
+    //    if ( file.open(QIODevice::ReadWrite) )
+    //    {
+    //        QTextStream stream(&file);
+    //        stream << write_APi1_info << endl;
+    //    }
 
 
 
-   QString text_for_ailines("Nous avons detecté \n");
+    QString text_for_ailines("Nous avons detecté \n");
 
-   if(AirFrancePlanes>0) text_for_ailines.append( QString::number(AirFrancePlanes) +" avions Air France \n");
+    if(AirFrancePlanes>0) text_for_ailines.append( QString::number(AirFrancePlanes) +" avions Air France \n");
 
-   if(EasyjetPlanes>0)  text_for_ailines.append( QString::number(EasyjetPlanes) +" avions EasyJet \n");
-   if(RyanAirPlanes>0)  text_for_ailines.append( QString::number(RyanAirPlanes) +" avions RyanAir \n");
-   if(EmiratesPlanes>0) text_for_ailines.append( QString::number(EmiratesPlanes) +" avions Emirates Airlines \n");
-   if(LufhansaPlanes>0) text_for_ailines.append( QString::number(LufhansaPlanes) +" avions LuftHansa \n");
-   if(Americanair>0) text_for_ailines.append( QString::number(Americanair) +" avions American Airlines \n");
-   if(Britishair>0) text_for_ailines.append( QString::number(Britishair) +" avions British Airways \n");
-   if(IberiaEx>0) text_for_ailines.append( QString::number(IberiaEx) +" avions Iberia Express \n");
-   if(TransaFra>0) text_for_ailines.append( QString::number(TransaFra) +" avions Transavia France \n");
-   if(EuroAirTran>0) text_for_ailines.append( QString::number(EuroAirTran) +" avions European Air Transport \n");
-
-
-
-
+    if(EasyjetPlanes>0)  text_for_ailines.append( QString::number(EasyjetPlanes) +" avions EasyJet \n");
+    if(RyanAirPlanes>0)  text_for_ailines.append( QString::number(RyanAirPlanes) +" avions RyanAir \n");
+    if(EmiratesPlanes>0) text_for_ailines.append( QString::number(EmiratesPlanes) +" avions Emirates Airlines \n");
+    if(LufhansaPlanes>0) text_for_ailines.append( QString::number(LufhansaPlanes) +" avions LuftHansa \n");
+    if(Americanair>0) text_for_ailines.append( QString::number(Americanair) +" avions American Airlines \n");
+    if(Britishair>0) text_for_ailines.append( QString::number(Britishair) +" avions British Airways \n");
+    if(IberiaEx>0) text_for_ailines.append( QString::number(IberiaEx) +" avions Iberia Express \n");
+    if(TransaFra>0) text_for_ailines.append( QString::number(TransaFra) +" avions Transavia France \n");
+    if(EuroAirTran>0) text_for_ailines.append( QString::number(EuroAirTran) +" avions European Air Transport \n");
 
 
 
 
 
 
-   //ui->label_airlines->setText(text_for_ailines);
-
-   timeEnd = QDateTime::currentDateTime();
-
-//   int bigtime = timeEnd.toMSecsSinceEpoch();
-//   int smalltime = timeBegin.toMSecsSinceEpoch();
-
-   //qDebug()<<"LE TEMPS D'EXECUTION EST DE      "<<bigtime - smalltime <<endl;
 
 
 
 
-     reply->deleteLater();
+    //ui->label_airlines->setText(text_for_ailines);
+
+    timeEnd = QDateTime::currentDateTime();
+
+    //   int bigtime = timeEnd.toMSecsSinceEpoch();
+    //   int smalltime = timeBegin.toMSecsSinceEpoch();
+
+    //qDebug()<<"LE TEMPS D'EXECUTION EST DE      "<<bigtime - smalltime <<endl;
+
+
+
+
+    //delete reply;
 
 
 
@@ -319,7 +281,7 @@ void avionsapi::parseplanelist()
 
 
 
-void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
+void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 {
 
 
@@ -333,17 +295,13 @@ void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
     requete_singleplane.append(strJson);
 
 
-//    QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/"+output_folder+"/APi2"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-//    QFile file( filename );
-//    if ( file.open(QIODevice::ReadWrite) )
-//    {
-//        QTextStream stream(&file);
-//        stream << requete_singleplane << endl;
-//    }
-
-
-
-
+    //    QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/"+output_folder+"/APi2"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+    //    QFile file( filename );
+    //    if ( file.open(QIODevice::ReadWrite) )
+    //    {
+    //        QTextStream stream(&file);
+    //        stream << requete_singleplane << endl;
+    //    }
 
 
     if (json.isArray())
@@ -359,72 +317,45 @@ void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
         QJsonObject plane_json = plane_array[0].toObject();
 
 
-
-
-       QJsonObject departure_obj = plane_json["departure"].toObject();
-       QJsonObject arrival_obj = plane_json["arrival"].toObject();
-       QJsonObject aircraft_obj = plane_json["aircraft"].toObject();
-
-
-
-      QString departure_string_icao = departure_obj["icaoCode"].toString();
-      QString arrival_string_icao = arrival_obj["icaoCode"].toString();
-      QString aircraft_string_icao = aircraft_obj["icaoCode"].toString();
-
-      QString aircraft_icao24 = aircraft_obj["icao24"].toString();      // this could help us check we are working with the same plane as specified by the member ICAO24
-
-//      QString departure_string_iata = departure_obj["iataCode"].toString();
-//      QString arrival_string_iata = arrival_obj["iataCode"].toString();
-//      QString aircraft_string_iata = aircraft_obj["iataCode"].toString();
-
-
-      plane_code = aircraft_string_icao;
-
-      readplane_type();
-
-      write_Info_APi2.append(QString("L'avion de modele "+ plane_model_name +" a pour provenance") );
-
-      airport_code  = departure_string_icao;
-
-      readairports();
-
-      write_Info_APi2.append(QString(" l'aeroport "+ airport_name +" et a pour destination ") );
-
-      airport_code  = arrival_string_icao;
-
-      readairports();
-
-      write_Info_APi2.append(QString("l'aeroport "+ airport_name +" \n") );
-      write_Info_APi2.append(QString("DE plus on verifie que "+ ICAO24 + " C'est bien "+aircraft_icao24+"  \n") );
-
-      write_Info_APi2.append("\n");
+        QJsonObject departure_obj = plane_json["departure"].toObject();
+        QJsonObject arrival_obj = plane_json["arrival"].toObject();
+        QJsonObject aircraft_obj = plane_json["aircraft"].toObject();
 
 
 
+        QString departure_string_icao = departure_obj["icaoCode"].toString();
+        QString arrival_string_icao = arrival_obj["icaoCode"].toString();
+        QString aircraft_string_icao = aircraft_obj["icaoCode"].toString();
 
-//       QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/"+output_folder+"run"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-//       QFile file( filename );
-//       if ( file.open(QIODevice::ReadWrite) )
-//       {
-//           QTextStream stream(&file);
-//           stream << write_Info_APi2 << endl;
-//       }
+        QString aircraft_icao24 = aircraft_obj["icao24"].toString();      // this could help us check we are working with the same plane as specified by the member ICAO24
 
-    //   QJsonValue departure  = jdoc_obj["departure"];
-       //qDebug()<<"on applique type() sur l'element DEPARTURE pour l'avoin "<<ICAO24<< departure.type()<<endl;
-       //qDebug()<<"on applique isObject sur l'element DEPARTURE pour l'avoin "<<ICAO24<< departure.isObject()<<endl;
-
-      // QJsonValue arrival = jdoc_obj["arrival"];
-       //qDebug()<<"on applique type() l'element ARRIVAL pour l'avoin "<<ICAO24<< arrival.type()<<endl;
-       //qDebug()<<"on applique isObject sur l'element ARRIVAL pour l'avoin "<<ICAO24<< arrival.isObject()<<endl;
+        //      QString departure_string_iata = departure_obj["iataCode"].toString();
+        //      QString arrival_string_iata = arrival_obj["iataCode"].toString();
+        //      QString aircraft_string_iata = aircraft_obj["iataCode"].toString();
 
 
+        plane_code = aircraft_string_icao;
 
+        readplane_type();
 
+        write_Info_APi2.append(QString("L'avion de modele "+ plane_model_name +" a pour provenance") );
 
+        airport_code  = departure_string_icao;
 
+        readairports();
 
+        write_Info_APi2.append(QString(" l'aeroport "+ airport_name +" et a pour destination ") );
 
+        airport_code  = arrival_string_icao;
+
+        readairports();
+
+        element.insert(airport_name,"");
+
+        write_Info_APi2.append(QString("l'aeroport "+ airport_name +" \n") );
+        write_Info_APi2.append(QString("DE plus on verifie que "+ ICAO24 + " C'est bien "+aircraft_icao24+"  \n") );
+
+        write_Info_APi2.append("\n");
 
 
 
@@ -437,27 +368,14 @@ void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
 
         QJsonObject plane_object = json.object();
 
-        qDebug() << "L API NOUS DONNE UN JSON OBJET ////////////////////////////////"<<endl;
 
 
-//        qDebug() << "Voici les keys plane_object "<<plane_object.keys()<<endl;
-
-//        qDebug() << "Voici plane_object "<<plane_object<<endl;
-
-
-
-//        QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/output/run"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-//        QFile file( filename );
-//        if ( file.open(QIODevice::ReadWrite) )
-//        {
-//            QTextStream stream(&file);
-//            stream << writesingleplanes << endl;
-//        }
-
+        write_Info_APi2.append(QString("COULD NOT RETRIEVE INFORMATION FOR THIS PLANE///////////////") );
 
 
     }
 
+   envoiverswidget();
 
 
 }
@@ -481,7 +399,7 @@ void avionsapi::view_airlinecompanies()
 
         if ( file.open(QIODevice::ReadWrite) )
         {
-            qDebug()<<"AIRLINES FILE OPEN!!"<<endl;
+
 
             QTextStream instream(&file);
             QString line = instream.readLine();
@@ -495,9 +413,7 @@ void avionsapi::view_airlinecompanies()
 
             while(!subline.contains(airline_code))
             {
-                //qDebug()<<subline<<endl;
-                //                subline.clear();
-                //                subline.toString();
+
                 line = instream.readLine();
                 if (instream.atEnd())
                 {
@@ -515,44 +431,44 @@ void avionsapi::view_airlinecompanies()
 
 
             }
-    // bool QTextStream::atEnd() const
+            // bool QTextStream::atEnd() const
 
 
-                if (subline.contains(airline_code))
+            if (subline.contains(airline_code))
+            {
+
+
+                if (airline_code=="")
                 {
-                    qDebug()<<"YES it does contains the airport code"<<endl;
-
-                    if (airline_code=="")
-                    {
-                        airline_name = "Empty data";
-                        file.close();
-                        return;
-
-                    }
-
-
-                 index1 = line.indexOf(" ");
-
-                    int after_space = index1 + 1;
-                     length = line.size()-after_space;
-
-                    QStringRef airport_n(&line ,after_space, length);
-
-                    airline_name=airport_n.toString() ;
-
+                    airline_name = "Empty data";
                     file.close();
-
+                    return;
 
                 }
-                else
-                {
-                    airline_name = "did not find airline";
-                     file.close();
-                     return;
-                }
 
+
+                index1 = line.indexOf(" ");
+
+                int after_space = index1 + 1;
+                length = line.size()-after_space;
+
+                QStringRef airport_n(&line ,after_space, length);
+
+                airline_name=airport_n.toString() ;
 
                 file.close();
+
+
+            }
+            else
+            {
+                airline_name = "did not find airline";
+                file.close();
+                return;
+            }
+
+
+            file.close();
         }
 
         else
@@ -598,77 +514,73 @@ void avionsapi::readairports()
 
         if ( file.open(QIODevice::ReadWrite) )
         {
-                qDebug()<<"AIRPORTS FILE OPEN!!"<<endl;
 
-                QTextStream instream(&file);
-                QString line = instream.readLine();
-                //qDebug() << "first line: " << line;
 
-                while(!line.contains(airport_code))
+            QTextStream instream(&file);
+            QString line = instream.readLine();
+            //qDebug() << "first line: " << line;
+
+            while(!line.contains(airport_code))
+            {
+                line = instream.readLine();
+
+
+                if (instream.atEnd())
                 {
-                    line = instream.readLine();
-
-
-                    if (instream.atEnd())
-                    {
-                        airport_name = "did not find airport";
-                        file.close();
-                        return;
-
-                    }
-
-                }
-
-
-
-                if (line.contains(airport_code))
-                {
-                    qDebug()<<"YES it does contains the airport code"<<endl;
-
-                    if (airport_code=="")
-                    {
-                        airport_name = "Empty data";
-                        file.close();
-                        return;
-
-                    }
-
-
-                   int index1 = line.indexOf("\t");
-
-                    int after_space = index1 + 1;
-                    int length = line.size()-after_space;
-
-                    QStringRef airport_n(&line ,after_space, length);
-
-                    //QStringRef subString(line);
-                    qDebug()<<"this is the content of "<<line<<"after the space"<<airport_n<<endl;
-                   // qDebug()<<"here is the substring"<<subString<<endl;
-                    //qDebug()<<" the space character is located at position "<<  subString.indexOf("\n", 0)<<endl;
-
-                    airport_name=airport_n.toString() ;
-
-
-
-
-                }
-                else
-                {
-                    //qDebug()<<"did not find airport"<<endl;
                     airport_name = "did not find airport";
                     file.close();
                     return;
+
+                }
+
+            }
+
+
+
+            if (line.contains(airport_code))
+            {
+
+
+                if (airport_code=="")
+                {
+                    airport_name = "Empty data";
+                    file.close();
+                    return;
+
                 }
 
 
+                int index1 = line.indexOf("\t");
+
+                int after_space = index1 + 1;
+                int length = line.size()-after_space;
+
+                QStringRef airport_n(&line ,after_space, length);
+
+
+                airport_name=airport_n.toString() ;
+
+
+
+
+            }
+            else
+            {
+                //qDebug()<<"did not find airport"<<endl;
+                airport_name = "did not find airport";
                 file.close();
+                return;
+            }
+
+
+            file.close();
         }
 
 
 
         else
         {
-            qDebug()<<" FAILED TO OPEN  airports FILE"<<endl;
+
 
             airport_name = " FAILED TO OPEN  airports FILE";
 
@@ -681,7 +593,7 @@ void avionsapi::readairports()
 
     else
     {
-        qDebug()<<" airports FILE not here"<<endl;
+
 
         airport_name = " airports FILE not here";
 
@@ -710,101 +622,94 @@ void avionsapi::readplane_type()
     QString filename=( "../GeoStation_Projet/planetypes");
     QFile file( filename );
 
-   if (file.exists() )
-   {
+    if (file.exists() )
+    {
 
 
-       if ( file.open(QIODevice::ReadWrite) )
-       {
-               qDebug()<<"PLANE MODEL FILE OPEN!!"<<endl;
-
-               QTextStream instream(&file);
-               QString line = instream.readLine();
-               //qDebug() << "first line: " << line;
-
-               while(!line.contains(plane_code))
-               {
-                   line = instream.readLine();
-
-                   if (instream.atEnd())
-                   {
-                       plane_model_name = "model not found";
-                       file.close();
-                       return;
-
-                   }
-
-               }
+        if ( file.open(QIODevice::ReadWrite) )
+        {
 
 
+            QTextStream instream(&file);
+            QString line = instream.readLine();
+            //qDebug() << "first line: " << line;
 
-               if (line.contains(plane_code))
-               {
-                   qDebug()<<"YES it does contains the airport code"<<endl;
-                   if (plane_code=="")
-                   {
-                       plane_model_name = "Empty data";
-                       file.close();
-                       return;
+            while(!line.contains(plane_code))
+            {
+                line = instream.readLine();
 
-                   }
+                if (instream.atEnd())
+                {
+                    plane_model_name = "model not found";
+                    file.close();
+                    return;
 
+                }
 
-                  int index1 = line.indexOf("\t");
-     //                int index1 = line.lastIndexOf("\t");
-     //                qDebug()<<"the space character is located at postion"<<index1<<endl;
-     //                qDebug()<<"the last character is located at postion"<<line.size()  <<endl;
-     //                qDebug()<<"the last character is "<<line[line.size()-1]  <<endl;
-                  //qDebug()<<"the space character is "<<line[index1]  <<endl;  // curious what this returns
-
-                   int after_space = index1 + 1;
-                   int length = line.size()-after_space;
-
-                   QStringRef plane_model(&line ,after_space, length);
-
-                   //QStringRef subString(line);
-                   qDebug()<<"this is the content of "<<line<<"after the space"<<plane_model<<endl;
-                  // qDebug()<<"here is the substring"<<subString<<endl;
-                   //qDebug()<<" the space character is located at position "<<  subString.indexOf("\n", 0)<<endl;
-
-                   plane_model_name = plane_model.toString();
-
-
-               }
-               else
-               {
-                   qDebug()<<"did not find it"<<endl;
-                   plane_model_name = "model not found";
-                   file.close();
-                   return;
-
-               }
-
-
-               file.close();
-       }
-
-       else
-       {
-           qDebug()<<" FAILED TO OPEN FILE Plane TYPES"<<endl;
-           plane_model_name = "FAILED TO OPEN FILE Plane TYPES";
-
-           return;
-
-       }
+            }
 
 
 
-   }
+            if (line.contains(plane_code))
+            {
+                qDebug()<<"YES it does contains the airport code"<<endl;
+                if (plane_code=="")
+                {
+                    plane_model_name = "Empty data";
+                    file.close();
+                    return;
 
-   else
-   {
-       qDebug()<<" FILE Plane TYPES not here"<<endl;
-       plane_model_name = "FILE Plane TYPES not here";
+                }
 
-       return;
 
-   }
+                int index1 = line.indexOf("\t");
+                //                int index1 = line.lastIndexOf("\t");
+                //                qDebug()<<"the space character is located at postion"<<index1<<endl;
+                //                qDebug()<<"the last character is located at postion"<<line.size()  <<endl;
+                //                qDebug()<<"the last character is "<<line[line.size()-1]  <<endl;
+                //qDebug()<<"the space character is "<<line[index1]  <<endl;  // curious what this returns
+
+                int after_space = index1 + 1;
+                int length = line.size()-after_space;
+
+                QStringRef plane_model(&line ,after_space, length);
+
+                //QStringRef subString(line);
+                qDebug()<<"this is the content of "<<line<<"after the space"<<plane_model<<endl;
+                // qDebug()<<"here is the substring"<<subString<<endl;
+                //qDebug()<<" the space character is located at position "<<  subString.indexOf("\n", 0)<<endl;
+
+                plane_model_name = plane_model.toString();
+
+
+            }
+            else
+            {
+                plane_model_name = "model not found";
+                file.close();
+                return;
+            }
+
+
+            file.close();
+        }
+
+        else
+        {
+            plane_model_name = "FAILED TO OPEN FILE Plane TYPES";
+            return;
+        }
+
+
+
+    }
+
+    else
+    {
+        plane_model_name = "FILE Plane TYPES not here";
+        return;
+
+    }
 
 }
 
@@ -815,10 +720,7 @@ void avionsapi::calculatedistance()
     double ref_lati = (lat_max.toDouble() + lat_min.toDouble()  )/2;
 
 
-    qDebug()<<"CALCULATE DISTANCE"<<endl;
-    //    qDebug()<<"voici le type de single_plane_array[5] LONGI"<<single_plane_array[5].type()<<endl;       // revoie 2 pour double
-    //    qDebug()<<"voici le type de single_plane_array[6] LATI"<<single_plane_array[6].type()<<endl;
-    //    qDebug()<<"voici le type de L'altitude  "<<single_plane_array[13].type()<<"et "<<single_plane_array[13] <<endl;
+   // qDebug()<<"CALCULATE DISTANCE"<<endl;
 
 
     double longitude = single_plane_array[5].toDouble();
@@ -873,41 +775,26 @@ void avionsapi::calculatedistance()
 
 void avionsapi::envoiverswidget()
 {
-
-    int total_result = 3;
-
-
-        int i = 0;
-        QString direction = "J'affiche la direction";
-
-
-        QString ligne = "AIr france";
-
-        QString date = "the 10th of never";
-
-        QMap<QString,QVariant> element;
-        add_titre("Avions detectés dans la zone "  );
-        add_nb_entree(total_result);
-        for(i = 0; i < total_result ; i++)
-        {
-
-            element.insert("Direction",QVariant(direction));
-            element.insert("Ligne",QVariant(ligne));
-            element.insert("Date",QVariant(date));
-            add_list(element);
-
-        }
-        //emit send_info(*map_formulaire);
-        map_ameliore.insert("Tableau",QVariant(tableau));
-        map_ameliore.insert("Titre",QVariant(parametre));
-        emit avions_send_info2(map_ameliore);
-        finish(0);
+    int total_result = 11;
 
 
 
-   // t2 = QDateTime::currentMSecsSinceEpoch();
-    //qDebug() << "Time elapsed " << (t2-t1);
 
+    //QMap<QString,QVariant> element;
+    add_titre("Avions detectés dans la zone ");     // titre ne s'aafiche pas
+    //add_titre("Prochains Train au depart de " + libelle_gare );
+    add_nb_entree(total_result);
+
+        element.insert("Direction",QVariant(write_APi1_info));
+
+
+        add_list(element);
+
+
+    map_ameliore.insert("Tableau",QVariant(tableau));
+    map_ameliore.insert("Titre",QVariant(parametre));
+    emit avions_send_info2(map_ameliore);
+    finish(0);
 
 
 }

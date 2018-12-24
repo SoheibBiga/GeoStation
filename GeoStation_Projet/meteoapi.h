@@ -5,6 +5,8 @@
 #include <QMainWindow>
 #include <QList>
 #include <QSslError>
+#include <QDate>
+
 
 class MeteoApi : public AbstractApi
 {
@@ -12,14 +14,15 @@ class MeteoApi : public AbstractApi
 
 public:
     MeteoApi(ordonnanceur *ord_, QObject* parent = 0);
+    ~MeteoApi();
+
+    void jour(QDate jour);
 
 private:
     QNetworkReply *reply;
 
 public slots:
     void Read(QNetworkReply *reply);
-    //void update();
-    //void error();
 };
 
 #endif // METEOAPI_H
