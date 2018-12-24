@@ -44,7 +44,7 @@ void ordonnanceur::run()
     //connect(pollution_timer, SIGNAL(timeout()), pollution_timer, SLOT(send_request()));
     //connect(musee_timer, SIGNAL(timeout()), musee_timer, SLOT(send_request()));
     connect(borneelectrique_timer, SIGNAL(timeout()), borneelectrique_timer, SLOT(send_request()));
->>>>>>> bb7923a931bfc5b957ec7be0f9f575ae68aedf16
+
 
     sncf_timer->start(1);
     evenement_timer->start(1);
