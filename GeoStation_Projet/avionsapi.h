@@ -28,7 +28,7 @@
 #include <QDateTime>
 
 #include <QTextStream>
-
+#include <QTimer>
 
 
 #include <QMainWindow>
