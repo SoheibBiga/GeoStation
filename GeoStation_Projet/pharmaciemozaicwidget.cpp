@@ -23,6 +23,8 @@ void PharmacieMozaicWidget::receive_info(QMap<QString, QString> map_formulare)
 
 void PharmacieMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {    
+    //qDebug() << "ok receive info pharmacie";
+    //qDebug() << map_ameliore["Tableau"].toList().at(0).toMap()["Nom"].toString();
     QPixmap *photoPixmap;
     photoPixmap = new QPixmap(":/Images/enseignePharmacie.png");
 

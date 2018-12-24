@@ -58,7 +58,8 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
                element.insert("Description",QVariant(description));
                element.insert("Adresse",QVariant(address));
                element.insert("Date",QVariant(space_time_info));
-               element.insert("Tarif",QVariant(pricing_info));
+               //element.insert("Tarif",QVariant(pricing_info));
+               if ( pricing_info != "" )element.insert("Tarif",QVariant(pricing_info));
                add_list(element);
             }
         }

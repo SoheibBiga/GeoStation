@@ -38,10 +38,10 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
 
     QJsonDocument doc = QJsonDocument::fromJson(tab);
 
-    QJsonArray tableau = doc.object().value("records").toArray();
+    QJsonArray table = doc.object().value("records").toArray();
 
 
-    for(int i= 0; i < tableau.count(); i++)
+    for(int i= 0; i < table.count(); i++)
     {
     QString nom = doc.object().toVariantMap()["records"].toJsonArray().at(i)["fields"].toObject()["rs"].toString();
     QString adresse = doc.object().toVariantMap()["records"].toJsonArray().at(i)["fields"].toObject()["adresse"].toString();
@@ -55,7 +55,7 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
     add_list(element);
 
     //ui->textEdit->insertPlainText(nom + "\n" + adresse + "\n" + codePostal + "\nà " + distance + " mètres\n\n");
-    qDebug() << nom <<"\n" << adresse << "\n" << codePostal << "\nà " <<  distance << " mètres\n\n";
+    //qDebug() << nom <<"\n" << adresse << "\n" << codePostal << "\nà " <<  distance << " mètres\n\n";
     }
     map_ameliore.insert("Tableau",QVariant(tableau));
     map_ameliore.insert("Parametre",QVariant(parametre));
