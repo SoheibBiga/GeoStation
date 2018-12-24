@@ -119,9 +119,9 @@ bool						MainWindow::init()
 
     mozaic_->init();
     widgets_->addWidget(new SncfWidget());
+    widgets_->addWidget(new SatelliteWidget());
     //widgets_->addWidget(new AvionsWidget());
     widgets_->addWidget(new EvenementWidget());		// Faire heriter EvenementWidget de AWidget
-    //widgets_->addWidget(new SatelliteWidget());
     //	widgets_->addWidget(new LineChartWidget());		// Faire heriter LineChartWidget de AWidget
     //widgets_->addWidget(new MuseesWidget());
     //widgets_->addWidget(new PharmacieWidget());
