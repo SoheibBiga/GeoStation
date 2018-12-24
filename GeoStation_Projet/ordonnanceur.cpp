@@ -22,11 +22,11 @@ ordonnanceur::ordonnanceur(QObject *parent) :
 void ordonnanceur::run()
 {
     connect(sncf_timer, SIGNAL(timeout()), sncf_timer, SLOT(send_request()));
-   //connect(satellite_timer, SIGNAL(timeout()), satellite_timer, SLOT(send_request()));
+   connect(satellite_timer, SIGNAL(timeout()), satellite_timer, SLOT(send_request()));
     connect(evenement_timer, SIGNAL(timeout()), evenement_timer, SLOT(send_request()));
     //connect(pharmacie_timer, SIGNAL(timeout()), pharmacie_timer, SLOT(send_request()));
     //connect(geolocalisation_timer, SIGNAL(timeout()), geolocalisation_timer, SLOT(send_request()));
-    //connect(evenement_timer, SIGNAL(timeout()), evenement_timer, SLOT(send_request()));
+    connect(evenement_timer, SIGNAL(timeout()), evenement_timer, SLOT(send_request()));
     //connect(vigicrues_timer, SIGNAL(timeout()), vigicrues_timer, SLOT(send_request()));
     //connect(avions_timer, SIGNAL(timeout()), avions_timer, SLOT(send_request()));
     //connect(meteo_timer, SIGNAL(timeout()), meteo_timer, SLOT(send_request()));
@@ -36,7 +36,7 @@ void ordonnanceur::run()
 
     sncf_timer->start(1);
     evenement_timer->start(1);
-    //satellite_timer->start(1);
+    satellite_timer->start(1);
     //pharmacie_timer->start(1);
     //geolocalisation_timer->start(1);
     //evenement_timer->start(1);
