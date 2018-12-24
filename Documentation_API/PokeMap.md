@@ -1,5 +1,6 @@
 ## PokeMap
 La classe PokeMap retourne une pixmap avec une carte géographique remplie de marqueurs et de textes.
+Les cartes sont générés lors de la configuration de Geostation.
 
 ## <span style="color: blue">Constructeur</span>
 ```cpp
