@@ -31,7 +31,7 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
     {
         QMap<QString,QVariant> element;
         QString city = Myjson.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["city"].toString();
-        add_titre("Evenements à" + city );
+        add_titre("Evenements à " + city );
         add_nb_entree(total_event);
 
         int i;
