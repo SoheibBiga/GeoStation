@@ -15,17 +15,10 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="tableauwidget" name="tableWidget"/>
+    <widget class="QTableView" name="tableView"/>
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>tableauwidget</class>
-   <extends>QTableWidget</extends>
-   <header>tableauwidget.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

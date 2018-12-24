@@ -304,10 +304,6 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
     //    }
 
 
-
-
-
-
     if (json.isArray())
     {
 
@@ -787,7 +783,7 @@ void avionsapi::envoiverswidget()
     //add_titre("Prochains Train au depart de " + libelle_gare );
     add_nb_entree(total_result);
 
-        element.insert("Direction",QVariant(write_APi1_info));
+        element.insert("Direction",QVariant("write_APi1_info"));
 
 
         add_list(element);
