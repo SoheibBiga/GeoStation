@@ -63,7 +63,8 @@ void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
     ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section {background-color:blue}");
 
     ui->labelTitle->setText ( map_ameliore["Parametre"].toMap()["Titre"].toString());
-    qDebug()<< map_ameliore["Parametre"].toMap()["Titre"].toString();
+    ui->labelTitle->setWordWrap(true);
+    ui->labelTitle->setAlignment(Qt::AlignCenter);
 
     QTableWidgetItem *item = new QTableWidgetItem();
     int i = 0;
