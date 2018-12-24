@@ -22,3 +22,7 @@ void AvionsMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
 
 
 }
+
+void AvionsMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
+{
+}

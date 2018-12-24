@@ -95,7 +95,7 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
         }
         //emit send_info(*map_formulaire);
         map_ameliore.insert("Tableau",QVariant(tableau));
-        map_ameliore.insert("Titre",QVariant(parametre));
+        map_ameliore.insert("Parametre",QVariant(parametre));
         emit sncf_send_info2(map_ameliore);
         finish(0);
     }
