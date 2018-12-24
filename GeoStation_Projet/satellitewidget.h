@@ -2,7 +2,7 @@
 #define SATELLITEWIDGET_H
 
 #include "awidget.h"
-#include "satellitemozaicwidget.h"
+
 
 
 class SatelliteWidget : public AWidget
@@ -21,7 +21,7 @@ public:
     virtual bool				end();
 
 
-    SatelliteMozaicWidget *satellite_mozaic_widget;
+    //SatelliteMozaicWidget *satellite_mozaic_widget;
 
 
 signals:
