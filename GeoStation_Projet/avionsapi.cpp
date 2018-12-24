@@ -67,7 +67,7 @@ void avionsapi::affiche_erreurs( QNetworkReply* , QList<QSslError> list  )
 
 }
 
-void avionsapi::replyFinished(QNetworkReply*  reply)
+void avionsapi::replyApi1(QNetworkReply*  reply)
 {
     QByteArray response_data = reply->readAll();
 
@@ -100,17 +100,6 @@ void avionsapi::replyFinished(QNetworkReply*  reply)
 
     write_first_requete.append(strJson);
 
-    // qDebug()<< QDir("../../")<<endl;
-
-
-
-    //     QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/"+output_folder+"APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-    //     QFile file( filename );
-    //     if ( file.open(QIODevice::ReadWrite) )
-    //     {
-    //         QTextStream stream(&file);
-    //         stream << write_first_requete << endl;
-    //     }
 
 
     parseplanelist();        // car fichiers lecture aeroports doivent etre crées dynamiquement
@@ -118,7 +107,7 @@ void avionsapi::replyFinished(QNetworkReply*  reply)
 }
 
 
-void avionsapi::query_singleplane()
+void avionsapi::query_APi2()
 {
 
 
@@ -127,11 +116,6 @@ void avionsapi::query_singleplane()
     URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24="+ICAO24);
 
 
-    // URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24=389eb5") ; // pour faire un test sur un avion dont lApi renvoir un JsonObject
-
-
-    //   qDebug()<<"voila l'URL POUR L'AVION DONT L'ICAO24 est "<<ICAO24<<endl;
-    //   qDebug()<<      URL_singleplane<<endl;
 
 
     write_Info_APi2.append("Au moment de la requete de l'API2 notre ICAO24 est "+ICAO24+"     \n");
@@ -190,12 +174,14 @@ void avionsapi::parseplanelist()
         view_airlinecompanies();
         write_APi1_info.append("L'avion du vol "+flight_number+ " de companie aerienne "+airline_name+" \n");
 
+
+
         //velocity is index9
         //altitude is index 13
         calculatedistance();
 
 
-        query_singleplane();
+        query_APi2();
 
 
 
@@ -283,7 +269,7 @@ void avionsapi::parseplanelist()
 
 
 
-    reply->deleteLater();
+    //delete reply;
 
 
 
@@ -295,7 +281,7 @@ void avionsapi::parseplanelist()
 
 
 
-void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
+void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 {
 
 
@@ -701,11 +687,9 @@ void avionsapi::readplane_type()
             }
             else
             {
-
                 plane_model_name = "model not found";
                 file.close();
                 return;
-
             }
 
 
@@ -714,11 +698,8 @@ void avionsapi::readplane_type()
 
         else
         {
-
             plane_model_name = "FAILED TO OPEN FILE Plane TYPES";
-
             return;
-
         }
 
 
@@ -798,21 +779,17 @@ void avionsapi::envoiverswidget()
 {
     int total_result = 11;
 
-    QString direction = "J'affiche la direction";
 
 
-    QString ligne = "AIr france";
 
-    QString date = "the 10th of never";
-
-    QMap<QString,QVariant> element;
+    //QMap<QString,QVariant> element;
     add_titre("Avions detectés dans la zone ");     // titre ne s'aafiche pas
     //add_titre("Prochains Train au depart de " + libelle_gare );
     add_nb_entree(total_result);
 
-        element.insert("Direction",QVariant(direction));
-        element.insert("Ligne",QVariant(ligne));
-        element.insert("Date",QVariant(date));
+        element.insert("Direction",QVariant(write_APi1_info));
+
+
         add_list(element);
 
 
@@ -820,4 +797,6 @@ void avionsapi::envoiverswidget()
     map_ameliore.insert("Titre",QVariant(parametre));
     emit avions_send_info2(map_ameliore);
     finish(0);
+
+
 }

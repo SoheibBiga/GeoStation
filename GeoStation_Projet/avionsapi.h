@@ -50,10 +50,10 @@ private:
     QNetworkAccessManager *manager_singleplane;
     QList<QSslError> list;
 
-    QString lat_min = "48.8";
-    QString lat_max = "49.1";
-    QString longi_min = "2.4";
-    QString longi_max = "2.8";
+    QString lat_min = "48.85";
+    QString lat_max = "49.05";
+    QString longi_min = "2.45";
+    QString longi_max = "2.75";
     QString construct_URL;
     QString URL_singleplane;
     QString ICAO24;
@@ -79,6 +79,8 @@ private:
     QString airline_code;
     QString airline_name;
 
+    QMap<QString,QVariant> element;
+
     void readairports();
     void readplane_type();
     void view_airlinecompanies();
@@ -95,15 +97,15 @@ private slots:
 
     void change_coordinates();
 
-    void query_singleplane();
+    void query_APi2();
 
-    void replyFinished(QNetworkReply*);
+    void replyApi1(QNetworkReply*);
 
     void affiche_erreurs( QNetworkReply*,QList<QSslError>  );
 
 
 
-    void getsingleplaneinfo(QNetworkReply*);
+    void getAPi2info(QNetworkReply*);
 
     void parseplanelist();
 
