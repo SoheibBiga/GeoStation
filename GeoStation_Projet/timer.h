@@ -14,7 +14,7 @@
 #include "nullapi.h"
 #include "vigicruesapi.h"
 #include "meteoapi.h"
-//#include "avionsapi.h"
+#include "avionsapi.h"
 #include "geolocalisationapi.h"
 
 class ordonnanceur;
