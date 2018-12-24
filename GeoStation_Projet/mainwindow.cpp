@@ -115,7 +115,7 @@ void						MainWindow::initWidgets()
 
 bool						MainWindow::init()
 {
-    //AWidget*			wid;
+    AWidget*			wid;
 
 
     mozaic_->init();
@@ -123,7 +123,7 @@ bool						MainWindow::init()
 
 
     widgets_->addWidget(new SncfWidget());
-<<<<<<< HEAD
+
     widgets_->addWidget(new AvionsWidget());
     widgets_->addWidget(new EvenementWidget());		// Faire heriter EvenementWidget de AWidget
 //	widgets_->addWidget(new LineChartWidget());		// Faire heriter LineChartWidget de AWidget
