@@ -70,7 +70,8 @@ SOURCES += \
     pollutionwidget.cpp \
     pollutionmozaicwidget.cpp \
     timer.cpp \
-    satellitemozaicwidget.cpp
+    satellitemozaicwidget.cpp \
+    satellitemainwidget.cpp
 
 
 
@@ -122,7 +123,8 @@ HEADERS += \
     pollutionwidget.h \
     pollutionmozaicwidget.h \
     timer.h \
-    satellitemozaicwidget.h
+    satellitemozaicwidget.h \
+    satellitemainwidget.h
 
 
 
@@ -142,7 +144,8 @@ FORMS += \
     geolocmozaicwidget.ui \
     borneelectriquemozaicwidget.ui \
     pollutionmozaicwidget.ui \
-    satellitemozaicwidget.ui
+    satellitemozaicwidget.ui \
+    satellitemainwidget.ui
 
 
 

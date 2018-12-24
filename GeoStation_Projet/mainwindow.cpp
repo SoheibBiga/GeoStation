@@ -108,6 +108,10 @@ void						MainWindow::initWidgets()
             connect(ordonnanceur_, SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),
                     widget, SIGNAL(send_info2(QMap<QString,QVariant>)));
             break;
+        case IdWidget(Vigicrues):
+            connect(ordonnanceur_, SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),
+                    widget, SIGNAL(send_info2(QMap<QString,QVariant>)));
+            break;
         }
     }
 
@@ -120,13 +124,14 @@ bool						MainWindow::init()
     mozaic_->init();
     widgets_->addWidget(new SncfWidget());
     //widgets_->addWidget(new AvionsWidget());
+    widgets_->addWidget(new SatelliteWidget());
     widgets_->addWidget(new EvenementWidget());		// Faire heriter EvenementWidget de AWidget
-    //widgets_->addWidget(new SatelliteWidget());
+
     //	widgets_->addWidget(new LineChartWidget());		// Faire heriter LineChartWidget de AWidget
     //widgets_->addWidget(new MuseesWidget());
     //widgets_->addWidget(new PharmacieWidget());
     //widgets_->addWidget(new BorneElectriqueWidget());
-    widgets_->addWidget(new GeolocalisationWidget());
+    //widgets_->addWidget(new GeolocalisationWidget());
 //	widgets_->addWidget(new SncfWidget());
 
     initWidgets();

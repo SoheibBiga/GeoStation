@@ -62,6 +62,7 @@ void SatelliteMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     map_size = 0;
     map_size = map_ameliore["Parametre"].toMap()["Nb entree"].toInt();
 
+
     if(map_size!=0){
 
         timing->start();
@@ -107,7 +108,8 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
 
     qDebug() << cat;
 
-    ui->Name->setText(map["Tableau"].toList().at(NextSat).toMap()["Nom"].toString());
+    //ui->Name->setText(map["Tableau"].toList().at(NextSat).toMap()["Nom"].toString());
+    ui->Name->setText(map["Parametre"].toMap()["Titre"].toString());
     ui->ID->setText(map["Tableau"].toList().at(NextSat).toMap()["ID"].toString());
     ui->DateLancement->setText(map["Tableau"].toList().at(NextSat).toMap()["Date de lancement"].toString());
     ui->Altitude->setText(map["Tableau"].toList().at(NextSat).toMap()["Altitude"].toString());
