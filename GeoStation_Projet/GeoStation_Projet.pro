@@ -72,9 +72,11 @@ SOURCES += \
     satellitemozaicwidget.cpp \
     satellitemainwidget.cpp \
     sncfmainwidget.cpp \
+    customlabels.cpp \
     meteowidget.cpp \
     meteomozaicwidget.cpp \
     meteomainwidget.cpp
+
 
 
 
@@ -128,9 +130,11 @@ HEADERS += \
     satellitemozaicwidget.h \
     satellitemainwidget.h \
     sncfmainwidget.h \
+    customlabels.h \
     meteowidget.h \
     meteomozaicwidget.h \
     meteomainwidget.h
+
 
 
 

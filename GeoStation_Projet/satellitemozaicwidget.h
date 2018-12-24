@@ -11,6 +11,7 @@
 #include <QPixmap>
 #include <QPalette>
 #include <QLabel>
+#include <QPainter>
 
 namespace Ui {
 class SatelliteMozaicWidget;
@@ -33,7 +34,6 @@ private:
     int map_size,NextSat;
     QTimer *timing;
     QMap<QString, QVariant> data_map;
-    void paintEvent(QPaintEvent *event);
     QLabel* Image;
     QPixmap *BackgroungPicture;
 
