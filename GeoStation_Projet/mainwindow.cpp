@@ -63,12 +63,12 @@ void						MainWindow::initWidgets()
 	AWidget*			wid;
 
 	// 1. Geolocalisation Widget
-	wid = new GeolocalisationWidget(mozaic_);
+    /*wid = new GeolocalisationWidget(mozaic_);
 	wid->init();
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
-					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));*/
 
 	// 2. Satellite Widget
 //	wid = new SatelliteWidget(mozaic_);
@@ -87,12 +87,12 @@ void						MainWindow::initWidgets()
 //	mozaic_->addWidget(wid);
 
 	// 4. Musees Widget
-//	wid = new MuseesWidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new MuseesWidget(mozaic_);
+    wid->init();
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 5. Evenement Widget
 //	wid = new EvenementWidget(mozaic_);

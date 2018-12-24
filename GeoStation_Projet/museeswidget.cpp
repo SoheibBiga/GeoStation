@@ -4,9 +4,10 @@ MuseesWidget::MuseesWidget(QWidget *parent):
     AWidget(parent)
 {
     musees_mozaic_widget = new MuseesMozaicWidget(this);
-    //mozaicLayout_ = new QHBoxLayout(this);
-    //mozaicLayout_->addWidget(sncf_mozaic_widget);
+    mozaicLayout_ = new QHBoxLayout(this);
+    mozaicLayout_->addWidget(musees_mozaic_widget);
     connect(this,SIGNAL(send_info(QMap<QString,QString>)),musees_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
+    connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),musees_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
 
 }
 
