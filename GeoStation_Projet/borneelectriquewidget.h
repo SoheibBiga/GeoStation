@@ -2,6 +2,7 @@
 # define		BORNEELECTRIQUEWIDGET_H
 
 # include "awidget.h"
+# include "borneelectriquemozaicwidget.h"
 
 class BorneElectriqueWidget : public AWidget
 {
@@ -16,6 +17,10 @@ class BorneElectriqueWidget : public AWidget
 		bool				run();
 		bool				end();
 		void				addWidget(QWidget* widget);
+
+        borneelectriquemozaicwidget *borneelectrique_mozaic_widget;
+signals:
+    void send_info2(QMap<QString,QVariant>);
 };
 
 #endif // BORNEELECTRIQUEWIDGET_H

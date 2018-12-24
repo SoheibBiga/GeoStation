@@ -12,3 +12,8 @@ borneelectriquemozaicwidget::~borneelectriquemozaicwidget()
 {
     delete ui;
 }
+
+void borneelectriquemozaicwidget::receive_info2(QMap<QString, QVariant> map_ameliore)
+{
+    ui->tableWidget->refresh_ameliore(map_ameliore);
+}

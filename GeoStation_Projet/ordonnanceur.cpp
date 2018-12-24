@@ -24,6 +24,7 @@ void ordonnanceur::run()
     connect(sncf_timer, SIGNAL(timeout()), sncf_timer, SLOT(send_request()));
    //connect(satellite_timer, SIGNAL(timeout()), satellite_timer, SLOT(send_request()));
     connect(evenement_timer, SIGNAL(timeout()), evenement_timer, SLOT(send_request()));
+
     //connect(pharmacie_timer, SIGNAL(timeout()), this, SLOT(send_request()));
     connect(geolocalisation_timer, SIGNAL(timeout()), geolocalisation_timer, SLOT(send_request()));
     //connect(evenement_timer, SIGNAL(timeout()), this, SLOT(send_request(2)));
@@ -33,6 +34,17 @@ void ordonnanceur::run()
     //connect(pollution_timer, SIGNAL(timeout()), this, SLOT(send_request(6)));
     //connect(musee_timer, SIGNAL(timeout()), this, SLOT(send_request(7)));
     //connect(borneelectrique_timer, SIGNAL(timeout()), this, SLOT(send_request(9)));
+
+    //connect(pharmacie_timer, SIGNAL(timeout()), pharmacie_timer, SLOT(send_request()));
+    //connect(geolocalisation_timer, SIGNAL(timeout()), geolocalisation_timer, SLOT(send_request()));
+    //connect(evenement_timer, SIGNAL(timeout()), evenement_timer, SLOT(send_request()));
+    //connect(vigicrues_timer, SIGNAL(timeout()), vigicrues_timer, SLOT(send_request()));
+    //connect(avions_timer, SIGNAL(timeout()), avions_timer, SLOT(send_request()));
+    //connect(meteo_timer, SIGNAL(timeout()), meteo_timer, SLOT(send_request()));
+    //connect(pollution_timer, SIGNAL(timeout()), pollution_timer, SLOT(send_request()));
+    //connect(musee_timer, SIGNAL(timeout()), musee_timer, SLOT(send_request()));
+    connect(borneelectrique_timer, SIGNAL(timeout()), borneelectrique_timer, SLOT(send_request()));
+>>>>>>> bb7923a931bfc5b957ec7be0f9f575ae68aedf16
 
     sncf_timer->start(1);
     evenement_timer->start(1);
@@ -45,5 +57,5 @@ void ordonnanceur::run()
     //meteo_timer->start(1);
     //pollution_timer->start(1);
     //musee_timer->start(1);
-    //borneelectrique_timer->start(1);
+    borneelectrique_timer->start(1);
 }
