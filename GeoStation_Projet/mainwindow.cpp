@@ -13,6 +13,7 @@
 #include "avionswidget.h"
 #include "mainwindow.h"
 #include "sncfwidget.h"
+#include "meteowidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QWidget(parent),
@@ -135,12 +136,12 @@ void						MainWindow::initWidgets()
 //					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	//  10. Meteo Widget
-//	wid = new SncfWidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new MeteoWidget(mozaic_);
+    wid->init();
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 //  11. Pollution Widget
 //	wid = new pollutionwidget(mozaic_);

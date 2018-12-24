@@ -12,6 +12,7 @@ GeoLocMozaicWidget::GeoLocMozaicWidget(QWidget *parent) :
     ui->AdresseEdit->setEnabled(false);
     ui->RegionEdit->setEnabled(false);
     this->setFixedSize(400, 500);
+    this->setStyleSheet("background-color:black;");
 }
 
 GeoLocMozaicWidget::~GeoLocMozaicWidget()
@@ -36,15 +37,6 @@ void GeoLocMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     else if (pix.isNull())
     {
         pix.loadFromData(map_ameliore["Tableau"].toList().at(0).toMap()["map"].toByteArray());
-        QPainter *painter = new QPainter(&pix);
-
-
-        painter->setBrush(Qt::black);
-        painter->fillRect(0, 0, pix.width(), pix.height(), Qt::black);
-
-
-        painter->end();
-
-        ui->label_2->setPixmap(pix.scaled(ui->label->parentWidget()->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        ui->label_2->setPixmap(pix.scaled(ui->label->parentWidget()->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     }
 }
