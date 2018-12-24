@@ -3,6 +3,7 @@
 
 #include "awidget.h"
 #include "sncfmozaicwidget.h"
+#include "sncfmainwidget.h"
 
 class SncfWidget : public AWidget
 {
@@ -20,8 +21,7 @@ public:
     virtual bool				end();
 
     SncfMozaicWidget *sncf_mozaic_widget;
-
-
+    SncfMainWidget *sncf_main_widget;
 signals:
     void send_info2(QMap<QString,QVariant>);
 };
