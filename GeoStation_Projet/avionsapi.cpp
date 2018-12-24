@@ -187,8 +187,6 @@ void avionsapi::parseplanelist()
         airline_code = single_plane_array[1].toString();    // this is the whole flight number
         airline_code.remove(3,airline_code.size()-3);       // first 3 characters of flight number
 
-        qDebug()<<"this is the ailine code  "<<airline_code<<endl;
-
         view_airlinecompanies();
         write_APi1_info.append("L'avion du vol "+flight_number+ " de companie aerienne "+airline_name+" \n");
 
@@ -205,11 +203,8 @@ void avionsapi::parseplanelist()
         {
 
 
-
-
             if( single_plane_array[j].type() == 3)
             {
-                qDebug()<< "L' info numero "<<j+1<<"sur l'avion NUMERO "<< i<<"  est    "<< single_plane_array[j]<<" qui est de TYPE QString"<<endl;
 
                 QString info = single_plane_array[j].toString();
 
@@ -379,29 +374,6 @@ void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
         write_Info_APi2.append(QString("DE plus on verifie que "+ ICAO24 + " C'est bien "+aircraft_icao24+"  \n") );
 
         write_Info_APi2.append("\n");
-
-
-
-
-        //       QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/"+output_folder+"run"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-        //       QFile file( filename );
-        //       if ( file.open(QIODevice::ReadWrite) )
-        //       {
-        //           QTextStream stream(&file);
-        //           stream << write_Info_APi2 << endl;
-        //       }
-
-        //   QJsonValue departure  = jdoc_obj["departure"];
-        //qDebug()<<"on applique type() sur l'element DEPARTURE pour l'avoin "<<ICAO24<< departure.type()<<endl;
-        //qDebug()<<"on applique isObject sur l'element DEPARTURE pour l'avoin "<<ICAO24<< departure.isObject()<<endl;
-
-        // QJsonValue arrival = jdoc_obj["arrival"];
-        //qDebug()<<"on applique type() l'element ARRIVAL pour l'avoin "<<ICAO24<< arrival.type()<<endl;
-        //qDebug()<<"on applique isObject sur l'element ARRIVAL pour l'avoin "<<ICAO24<< arrival.isObject()<<endl;
-
-
-
-
 
 
 
@@ -757,9 +729,7 @@ void avionsapi::readplane_type()
 
     else
     {
-
         plane_model_name = "FILE Plane TYPES not here";
-
         return;
 
     }
@@ -773,10 +743,7 @@ void avionsapi::calculatedistance()
     double ref_lati = (lat_max.toDouble() + lat_min.toDouble()  )/2;
 
 
-    qDebug()<<"CALCULATE DISTANCE"<<endl;
-    //    qDebug()<<"voici le type de single_plane_array[5] LONGI"<<single_plane_array[5].type()<<endl;       // revoie 2 pour double
-    //    qDebug()<<"voici le type de single_plane_array[6] LATI"<<single_plane_array[6].type()<<endl;
-    //    qDebug()<<"voici le type de L'altitude  "<<single_plane_array[13].type()<<"et "<<single_plane_array[13] <<endl;
+   // qDebug()<<"CALCULATE DISTANCE"<<endl;
 
 
     double longitude = single_plane_array[5].toDouble();
@@ -831,8 +798,8 @@ void avionsapi::calculatedistance()
 
 void avionsapi::envoiverswidget()
 {
-    int total_result = 3;
-    int i = 0;
+    //int total_result = 11;
+
     QString direction = "J'affiche la direction";
 
 
@@ -841,17 +808,16 @@ void avionsapi::envoiverswidget()
     QString date = "the 10th of never";
 
     QMap<QString,QVariant> element;
-    add_titre("Avions detectés dans la zone "  );
+    add_titre("Avions detectés dans la zone ");     // titre ne s'aafiche pas
+    //add_titre("Prochains Train au depart de " + libelle_gare );
     add_nb_entree(total_result);
-    for(i = 0; i < total_result ; i++)
-    {
 
         element.insert("Direction",QVariant(direction));
         element.insert("Ligne",QVariant(ligne));
         element.insert("Date",QVariant(date));
         add_list(element);
 
-    }
+
     map_ameliore.insert("Tableau",QVariant(tableau));
     map_ameliore.insert("Titre",QVariant(parametre));
     emit avions_send_info2(map_ameliore);

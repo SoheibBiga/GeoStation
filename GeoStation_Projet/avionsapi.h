@@ -81,6 +81,7 @@ private:
 
     void readairports();
     void readplane_type();
+    void view_airlinecompanies();
 
 
     void calculatedistance();
@@ -100,7 +101,7 @@ private slots:
 
     void affiche_erreurs( QNetworkReply*,QList<QSslError>  );
 
-    void view_airlinecompanies();
+
 
     void getsingleplaneinfo(QNetworkReply*);
 

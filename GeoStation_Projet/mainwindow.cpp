@@ -150,6 +150,7 @@ void						MainWindow::initWidgets()
 //	connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
 //					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
+
 }
 
 bool						MainWindow::init()
