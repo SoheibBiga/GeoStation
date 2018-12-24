@@ -124,7 +124,7 @@ bool						MainWindow::init()
     // Faire heriter EvenementWidget de AWidget
 
     //	widgets_->addWidget(new LineChartWidget());		// Faire heriter LineChartWidget de AWidget
-    //widgets_->addWidget(new MuseesWidget());
+    widgets_->addWidget(new MuseesWidget());
     //widgets_->addWidget(new PharmacieWidget());
     //widgets_->addWidget(new BorneElectriqueWidget());
     widgets_->addWidget(new GeolocalisationWidget());
