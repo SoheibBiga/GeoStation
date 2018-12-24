@@ -63,12 +63,12 @@ void						MainWindow::initWidgets()
 	AWidget*			wid;
 
 	// 1. Geolocalisation Widget
-	wid = new GeolocalisationWidget(mozaic_);
-	wid->init();
-	widgets_->addWidget(wid);
-	mozaic_->addWidget(wid);
-	connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
-					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+//    wid = new GeolocalisationWidget(mozaic_);
+//    wid->init();
+//    widgets_->addWidget(wid);
+//    mozaic_->addWidget(wid);
+//    connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
+//                                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 2. Satellite Widget
 //	wid = new SatelliteWidget(mozaic_);
@@ -127,12 +127,12 @@ void						MainWindow::initWidgets()
 //					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	//  9. Pharmacie Widget
-//	wid = new PharmacieWidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new PharmacieWidget(mozaic_);
+    wid->init();
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	//  10. Meteo Widget
 //	wid = new SncfWidget(mozaic_);
