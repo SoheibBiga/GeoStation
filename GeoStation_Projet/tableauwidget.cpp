@@ -61,6 +61,10 @@ void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section {background-color:blue}");
+
+    ui->labelTitle->setText ( map_ameliore["Parametre"].toMap()["Titre"].toString());
+    qDebug()<< map_ameliore["Parametre"].toMap()["Titre"].toString();
+
     QTableWidgetItem *item = new QTableWidgetItem();
     int i = 0;
     for(i = 0; i < nb_row; i++){

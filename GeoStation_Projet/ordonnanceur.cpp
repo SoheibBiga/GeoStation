@@ -1,10 +1,10 @@
 
 #include "ordonnanceur.h"
 
-ordonnanceur::ordonnanceur(QObject *parent) : QObject(parent)
+ordonnanceur::ordonnanceur(QObject *parent) :
+    QObject(parent),
+    api_index(Q_NULLPTR)
 {
-    api_index = new nullapi(this);
-    qDebug() << IdWidget(Sncf);
     sncf_timer = new Timer(IdWidget(Sncf),this);
     satellite_timer = new Timer(IdWidget(Satellite),this);
     evenement_timer = new Timer(IdWidget(Evenement),this);

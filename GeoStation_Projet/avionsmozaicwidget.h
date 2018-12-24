@@ -5,6 +5,7 @@
 
 #include <QWidget>
 #include <QMap>
+#include <QVariant>
 
 namespace Ui {
 class AvionsMozaicWidget;
@@ -23,8 +24,8 @@ private:
 
 
 public slots:
-    void receive_info(QMap<QString,QString> map_formulaire);
-
+    void receive_info(QMap<QString,QString> map_formulaire);  
+    void receive_info2(QMap<QString, QVariant> map_ameliore);
 };
 
 
