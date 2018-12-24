@@ -7,7 +7,10 @@ GeoLocMozaicWidget::GeoLocMozaicWidget(QWidget *parent) :
     ui(new Ui::GeoLocMozaicWidget)
 {
     ui->setupUi(this);
-
+    ui->CP_edit->setEnabled(false);
+    ui->VilleEdit->setEnabled(false);
+    ui->AdresseEdit->setEnabled(false);
+    ui->RegionEdit->setEnabled(false);
 }
 
 GeoLocMozaicWidget::~GeoLocMozaicWidget()
@@ -22,5 +25,8 @@ void GeoLocMozaicWidget::receive_info(QMap<QString, QString> map_formulaire)
 
 void GeoLocMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-    //ui->tableWidget->refresh_ameliore(map_ameliore);
+   ui->AdresseEdit->setText(map_ameliore["Tableau"].toList().at(0).toMap()["adresse"].toString());
+   ui->CP_edit->setText(map_ameliore["Tableau"].toList().at(0).toMap()["codePostal"].toString());
+   ui->VilleEdit->setText(map_ameliore["Tableau"].toList().at(0).toMap()["ville"].toString());
+   ui->RegionEdit->setText(map_ameliore["Tableau"].toList().at(0).toMap()["region"].toString());
 }

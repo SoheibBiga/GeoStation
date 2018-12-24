@@ -2,6 +2,8 @@
 #define BORNEELECTRIQUEMOZAICWIDGET_H
 
 #include <QWidget>
+#include <QMap>
+#include "QDebug"
 
 namespace Ui {
 class borneelectriquemozaicwidget;
@@ -17,6 +19,8 @@ public:
 
 private:
     Ui::borneelectriquemozaicwidget *ui;
+public slots:
+    void receive_info2(QMap<QString,QVariant> map_ameliore);
 };
 
 #endif // BORNEELECTRIQUEMOZAICWIDGET_H

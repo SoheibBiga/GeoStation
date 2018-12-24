@@ -440,9 +440,9 @@ void avionsapi::getsingleplaneinfo(QNetworkReply* reply_singleplane)
         qDebug() << "L API NOUS DONNE UN JSON OBJET ////////////////////////////////"<<endl;
 
 
-        qDebug() << "Voici les keys plane_object "<<plane_object.keys()<<endl;
+//        qDebug() << "Voici les keys plane_object "<<plane_object.keys()<<endl;
 
-        qDebug() << "Voici plane_object "<<plane_object<<endl;
+//        qDebug() << "Voici plane_object "<<plane_object<<endl;
 
 
 
@@ -585,8 +585,6 @@ void avionsapi::view_airlinecompanies()
 
 void avionsapi::readairports()
 {
-
-
 
     //airport_code = "ZYMD";
 
@@ -875,6 +873,41 @@ void avionsapi::calculatedistance()
 
 void avionsapi::envoiverswidget()
 {
+
+    int total_result = 3;
+
+
+        int i = 0;
+        QString direction = "J'affiche la direction";
+
+
+        QString ligne = "AIr france";
+
+        QString date = "the 10th of never";
+
+        QMap<QString,QVariant> element;
+        add_titre("Avions detectés dans la zone "  );
+        add_nb_entree(total_result);
+        for(i = 0; i < total_result ; i++)
+        {
+
+            element.insert("Direction",QVariant(direction));
+            element.insert("Ligne",QVariant(ligne));
+            element.insert("Date",QVariant(date));
+            add_list(element);
+
+        }
+        //emit send_info(*map_formulaire);
+        map_ameliore.insert("Tableau",QVariant(tableau));
+        map_ameliore.insert("Titre",QVariant(parametre));
+        emit avions_send_info2(map_ameliore);
+        finish(0);
+
+
+
+   // t2 = QDateTime::currentMSecsSinceEpoch();
+    //qDebug() << "Time elapsed " << (t2-t1);
+
 
 
 }
