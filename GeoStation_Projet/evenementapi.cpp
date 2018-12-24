@@ -65,7 +65,7 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
         }
         map_ameliore.insert("Tableau",QVariant(tableau));
         map_ameliore.insert("Titre",QVariant(parametre));
-        emit send_info2(map_ameliore);
+        emit evenement_send_info2(map_ameliore);
         finish(0);
     }
 }

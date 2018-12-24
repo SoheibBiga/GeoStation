@@ -9,7 +9,7 @@ PharmacieWidget::PharmacieWidget(QWidget *parent) :
     mozaicLayout_->addWidget(pharmacie_mozaic_widget);
     connect(this,SIGNAL(send_info(QMap<QString,QString>)),pharmacie_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
     connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),pharmacie_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
-    qDebug() << "ok cons";
+
 }
 
 PharmacieWidget::~PharmacieWidget()

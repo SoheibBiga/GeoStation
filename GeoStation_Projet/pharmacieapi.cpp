@@ -5,12 +5,14 @@ PharmacieApi::PharmacieApi(ordonnanceur *ord_, QObject *parent): AbstractApi(IdW
 {
     manager = new QNetworkAccessManager(parent);
 
-    request.setUrl(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=finess-etablissements&q=Pharmacie+d%27Officine&geofilter.distance="
-                        + QString::number(latitude) + "%2C+" + QString::number(longitude) + "%2C+" + QString::number(radius)));
-
     latitude = 48.871671;
     longitude = 2.346106;
     radius = 500;
+
+    request.setUrl(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=finess-etablissements&q=Pharmacie+d%27Officine&geofilter.distance="
+                        + QString::number(latitude) + "%2C+" + QString::number(longitude) + "%2C+" + QString::number(radius)));
+
+
 
     reply = manager->get(request);
 
@@ -37,6 +39,7 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
 
     QJsonArray tableau = doc.object().value("records").toArray();
 
+
     for(int i= 0; i < tableau.count(); i++)
     {
     QString nom = doc.object().toVariantMap()["records"].toJsonArray().at(i)["fields"].toObject()["rs"].toString();
@@ -56,7 +59,7 @@ void PharmacieApi::listePharmacie(QNetworkReply *reply)
     map_ameliore.insert("Tableau",QVariant(tableau));
     map_ameliore.insert("Titre",QVariant(parametre));
 
-    emit send_info2(map_ameliore);
+    emit pharmacie_send_info2(map_ameliore);
     finish(0);
 }
 

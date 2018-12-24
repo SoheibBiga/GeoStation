@@ -63,13 +63,13 @@ SOURCES += \
     vigicruesmosaicwidget.cpp \
     vigicrueswidget.cpp \
     pharmaciemozaicwidget.cpp\
-    satellitemozaicwidget.cpp \
     labeldyn.cpp \
     geolocalisationwidget.cpp \
     geolocmozaicwidget.cpp \
     borneelectriquemozaicwidget.cpp \
     pollutionwidget.cpp \
-    pollutionmozaicwidget.cpp
+    pollutionmozaicwidget.cpp \
+    timer.cpp
 
 
 
@@ -114,13 +114,13 @@ HEADERS += \
     vigicruesmosaicwidget.h \
     vigicrueswidget.h \
     pharmaciemozaicwidget.h\
-    satellitemozaicwidget.h \
     labeldyn.h \
     geolocalisationwidget.h \
     geolocmozaicwidget.h \
     borneelectriquemozaicwidget.h \
     pollutionwidget.h \
-    pollutionmozaicwidget.h
+    pollutionmozaicwidget.h \
+    timer.h
 
 
 
@@ -137,7 +137,6 @@ FORMS += \
     linechartwidget.ui \
     vigicruesmosaicwidget.ui \
     pharmaciemozaicwidget.ui\
-    satellitemozaicwidget.ui \
     geolocmozaicwidget.ui \
     borneelectriquemozaicwidget.ui \
     pollutionmozaicwidget.ui

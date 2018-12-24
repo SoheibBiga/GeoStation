@@ -9,6 +9,28 @@
         <file>Icons/horaires.svg</file>
         <file>Icons/Itineraire.jpeg</file>
         <file>Icons/a_plan.jpeg</file>
+        <file>Images/Amateur radio.jpg</file>
+        <file>Images/Background.jpg</file>
+        <file>Images/Beidou Navigation System.jpg</file>
+        <file>Images/Brightest.jpg</file>
+        <file>Images/Celestis.jpg</file>
+        <file>Images/CubeSats.jpg</file>
+        <file>Images/Disaster monitoring.jpg</file>
+        <file>Images/Earth resources.jpg</file>
         <file>Images/EarthView.jpg</file>
+        <file>Images/Education.jpg</file>
+        <file>Images/Engineering.jpg</file>
+        <file>Images/Experimental.jpg</file>
+        <file>Images/Flock.jpg</file>
+        <file>Images/Galileo.jpg</file>
+        <file>Images/Geodetic.jpg</file>
+        <file>Images/Geostationary.jpg</file>
+        <file>Images/Glonass Operational.jpg</file>
+        <file>Images/GOES.jpg</file>
+        <file>Images/Molniya.jpg</file>
+        <file>Images/Navy Navigation Satellite System.jpg</file>
+        <file>Images/Search and rescue.jpg</file>
+        <file>Images/Space and Earth Science.jpg</file>
+        <file>Images/Westford Needles.jpg</file>
     </qresource>
 </RCC>

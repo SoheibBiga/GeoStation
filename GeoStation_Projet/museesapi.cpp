@@ -94,7 +94,7 @@ void MuseesApi::onFinished(QNetworkReply* )
         double doublePhoto =  * (double*) photo ;
         //map_ameliore.insert("photo",* (cherchePhotos->getPhoto()) );
         map_ameliore.insert("photo",  doublePhoto );
-        emit send_info2(map_ameliore);
+        emit musee_send_info2(map_ameliore);
         finish(0);
 
     }

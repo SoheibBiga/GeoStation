@@ -16,6 +16,7 @@ private:
     int margin = 0;
     int indent = 0;
     QTimer *timer = new QTimer(this);
+
 private slots:
     void    update_lab();
 };

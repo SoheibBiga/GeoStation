@@ -26,7 +26,7 @@ bool				Vigicrueswidget::hasMozaicLayout() const
     return (true);
 }
 
-bool				Vigicrueswidget::refresh() const
+bool				Vigicrueswidget::refresh()
 {
     return (true);
 }
