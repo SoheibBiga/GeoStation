@@ -1,5 +1,6 @@
 #include "meteomozaicwidget.h"
 #include "ui_meteomozaicwidget.h"
+#include <QDebug>
 
 MeteoMozaicWidget::MeteoMozaicWidget(QWidget *parent) :
     QWidget(parent),
@@ -15,4 +16,5 @@ MeteoMozaicWidget::~MeteoMozaicWidget()
 
 void MeteoMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
+    ui->lineEdit_3->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Temperature Maximale").toString());
 }
