@@ -1,7 +1,7 @@
 #include "pharmacieapi.h"
 
 
-PharmacieApi::PharmacieApi(ordonnanceur *ord_, QObject *parent): AbstractApi(IdWidget(Pharmacie), ord_, parent)
+PharmacieApi::PharmacieApi(ordonnanceur *ord_, QObject *parent): AbstractApi(ord_, parent)
 {
     manager = new QNetworkAccessManager(parent);
 

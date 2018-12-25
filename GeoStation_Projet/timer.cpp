@@ -7,6 +7,9 @@ Timer::Timer(int Id_,ordonnanceur *ord_) :
 {
 }
 
+Timer::~Timer()
+{}
+
 void Timer::send_request()
 {
     switch(Id){
@@ -28,7 +31,7 @@ void Timer::send_request()
         break;
     case IdWidget(Pollution):
         ord->api_index = new PollutionApi(ord);
-        this->start(10000);
+        this->start(7200000);
         break;
     case IdWidget(BorneElectrique):
         ord->api_index = new BorneElectriqueApi(ord);
