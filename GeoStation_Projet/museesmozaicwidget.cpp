@@ -66,7 +66,7 @@ void MuseesMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         }
 
         // Affichage de la photo :
-        long long doublePhoto = map_ameliore["photo"] . toLongLong();
+        long long doublePhoto = map_ameliore["photo1"] . toLongLong();
         photo = reinterpret_cast <QPixmap*> (doublePhoto) ;
 
         ui->label_photo->setPixmap(*photo);
