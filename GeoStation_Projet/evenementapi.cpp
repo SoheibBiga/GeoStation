@@ -16,10 +16,10 @@ EvenementApi::EvenementApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_
 
     QDate dateDuJour = QDate::currentDate();
     QString dateAffichee = dateDuJour.toString("yyyy");
-    qDebug() << dateDuJour;
-    qDebug() << dateAffichee;
+//    qDebug() << dateDuJour;
+//    qDebug() << dateAffichee;
     QString req("https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=20&sort=date_start&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.date_start="+QString(dateAffichee)+"&geofilter.distance="+QString::number(latitude)+"%2C+"+QString::number(longitude)+"%2C+"+QString::number(radius));
-    qDebug()<<req;
+//    qDebug()<<req;
     m_request.setUrl(QUrl(req));
     m_reply = manager->get(m_request);
     m_request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
@@ -35,7 +35,7 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
     Myjson = QJsonDocument::fromJson(m_response);
     QString strJson(Myjson.toJson(QJsonDocument::Compact)); // Indented or Compact
     int total_event = Myjson.object().toVariantMap()["nhits"].toInt();
-    qDebug() << total_event;
+//    qDebug() << total_event;
     if(total_event == 0) {}
     else
     {
@@ -57,8 +57,8 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
             QString address;
             QString space_time_info;
             QString pricing_info;
-            bool exp1=datestart >= MyDate;
-            bool exp2= datestart <= datenew;
+//            bool exp1=datestart >= MyDate;
+//            bool exp2= datestart <= datenew;
 
             if (datestart >= MyDate && datestart <= datenew)
             {
