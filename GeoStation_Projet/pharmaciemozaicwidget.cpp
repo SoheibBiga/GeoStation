@@ -29,7 +29,7 @@ void PharmacieMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     int w =ui->label_photo->width();
     int h = ui->label_photo->height();
 
-    ui->label_photo->setPixmap(photoPixmap->scaled(w,h, Qt::KeepAspectRatio));
+    //ui->label_photo->setPixmap(photoPixmap->scaled(w,h, Qt::KeepAspectRatio));
     ui->label_photo->setAlignment(Qt::AlignCenter);
 
     ui->tableWidget->refresh_ameliore(map_ameliore);

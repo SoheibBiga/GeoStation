@@ -6,6 +6,7 @@ MuseesMozaicWidget::MuseesMozaicWidget(QWidget *parent) :
     ui(new Ui::MuseesMozaicWidget)
 {
     ui->setupUi(this);
+    //setLayout(ui->)
 }
 
 /*MuseesMozaicWidget::~MuseesMozaicWidget()
@@ -24,22 +25,22 @@ void MuseesMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         ui->label_nomMusee->setWordWrap(true);
         ui->label_nomMusee->setAlignment(Qt::AlignCenter);
 
-        if ( ! map_ameliore.contains("adresse")  ){
+        if ( map_ameliore.contains("adresse")  ){
             ui->gauche_adresse->setPixmap(QPixmap(QString::fromUtf8(":/Icons/adresse.svg")));
             ui->droite_adresse->setText ( map_ameliore["adresse"].toString());
             ui->droite_adresse->setWordWrap(true);
         }
-        if ( ! map_ameliore.contains("horaires") ){
+        if ( map_ameliore.contains("horaires") ){
             ui->gauche_horaires->setPixmap(QPixmap(QString::fromUtf8(":/Icons/horaires.svg")));
             ui->droite_horaires->setText ( map_ameliore["horaires"].toString());
             ui->droite_horaires->setWordWrap(true);
         }
-        if ( ! map_ameliore.contains("fermeture") ){
+        if ( map_ameliore.contains("fermeture") ){
             ui->gauche_fermeture->setPixmap(QPixmap(QString::fromUtf8(":/Icons/fermeture.svg")));
             ui->droite_fermeture->setText ( map_ameliore["fermeture"].toString());
             ui->droite_fermeture->setWordWrap(true);
         }
-        if ( ! map_ameliore.contains("nocturnes") ){
+        if ( map_ameliore.contains("nocturnes") ){
             ui->gauche_nocturnes->setPixmap(QPixmap(QString::fromUtf8(":/Icons/nocturnes.svg")));
             ui->droite_nocturnes->setText ( map_ameliore["nocturnes"].toString());
             ui->droite_nocturnes->setWordWrap(true);

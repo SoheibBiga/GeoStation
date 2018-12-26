@@ -3,17 +3,17 @@
 MuseesWidget::MuseesWidget(QWidget *parent):
     AWidget(parent)
 {
-    musees_mozaic_widget = new MuseesMozaicWidget(this);
-    mozaicLayout_ = new QHBoxLayout(this);
+    musees_mozaic_widget = new MuseesMozaicWidget(/*this*/);
+    mozaicLayout_ = new QHBoxLayout(/*this*/);
     mozaicLayout_->addWidget(musees_mozaic_widget);
     connect(this,SIGNAL(send_info(QMap<QString,QString>)),musees_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
     connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),musees_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
 
 }
 
-MuseesWidget::~MuseesWidget()
+/*MuseesWidget::~MuseesWidget()
 {
-}
+}*/
 
 bool				MuseesWidget::contentMap() const
 {
@@ -46,6 +46,6 @@ bool				MuseesWidget::end()
     return (true);
 }
 
-void				MuseesWidget::addWidget(QWidget* )
+/*void				MuseesWidget::addWidget(QWidget* )
 {
-}
+}*/

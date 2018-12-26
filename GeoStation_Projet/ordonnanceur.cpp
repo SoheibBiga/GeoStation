@@ -45,7 +45,7 @@ void ordonnanceur::run()
     //avions_timer->start(1);
     meteo_timer->start(1);
     pollution_timer->start(1);
-    //musee_timer->start(1);
+    musee_timer->start(1);
     borneelectrique_timer->start(1);
     satellite_timer->start(1);
 }
