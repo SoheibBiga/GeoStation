@@ -13,6 +13,7 @@
 #include "avionswidget.h"
 #include "mainwindow.h"
 #include "sncfwidget.h"
+#include "meteowidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QWidget(parent),
@@ -63,12 +64,12 @@ void						MainWindow::initWidgets()
 	AWidget*			wid;
 
 	// 1. Geolocalisation Widget
-    /*wid = new GeolocalisationWidget(mozaic_);
-	wid->init();
-	widgets_->addWidget(wid);
-	mozaic_->addWidget(wid);
-	connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));*/
+//    wid = new GeolocalisationWidget(mozaic_);
+//    wid->init();
+//    widgets_->addWidget(wid);
+//    mozaic_->addWidget(wid);
+//    connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
+//                                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 2. Satellite Widget
 	wid = new SatelliteWidget(mozaic_);
@@ -103,19 +104,19 @@ void						MainWindow::initWidgets()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 		// 6. Avions Widget
-//	wid = new AvionsWidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+//    wid = new AvionsWidget(mozaic_);
+//    wid->init();
+//    widgets_->addWidget(wid);
+//    mozaic_->addWidget(wid);
+//    connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
+//                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 7. Vigicrue Widget
 //	wid = new Vigicrueswidget(mozaic_);
 //	wid->init();
 //	widgets_->addWidget(wid);
 //	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
+//	connect(ordonnanceur_, SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),
 //					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 8. BorneElectrique Widget
@@ -127,28 +128,28 @@ void						MainWindow::initWidgets()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	//  9. Pharmacie Widget
-//	wid = new PharmacieWidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new PharmacieWidget(mozaic_);
+    wid->init();
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	//  10. Meteo Widget
-//	wid = new SncfWidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new MeteoWidget(mozaic_);
+    wid->init();
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 //  11. Pollution Widget
-//	wid = new pollutionwidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new pollutionwidget(mozaic_);
+    wid->init();
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 
 }

@@ -19,32 +19,23 @@ SatelliteMozaicWidget::SatelliteMozaicWidget(QWidget *parent) :
     ui->Image->setPixmap(*BackgroungPicture);
     ui->Image->setGeometry(MyRect);
     ui->Image->setScaledContents(true);
-
-
-    QPalette* pal=new QPalette();
-    pal->setBrush(QPalette::Window,brush);
-    pal->setColor(ui->Satellite_Info->backgroundRole(), Qt::yellow);
-//    ui->label->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->Name->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->label_3->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->label_4->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->label_5->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->label_6->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->Altitude->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->Longitude->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->Latitude->setAttribute(Qt::WA_TranslucentBackground);
-//    ui->DateLancement->setAttribute(Qt::WA_TranslucentBackground);
+    ui->Image->setStyleSheet("border-radius: 10px;");
+    //    ui->label->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->Name->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_3->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_4->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_5->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_6->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->Altitude->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->Longitude->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->Latitude->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->DateLancement->setAttribute(Qt::WA_TranslucentBackground);
     ui->Titre->setAttribute(Qt::WA_TranslucentBackground);
 
     ui->Satellite_Info->setAutoFillBackground(true);
-    ui->Satellite_Info->setPalette(*pal);
-
-
-
 
     connect(timing,SIGNAL(timeout()),this,SLOT(Repeat()));
-
 
 
 }
@@ -80,14 +71,14 @@ void SatelliteMozaicWidget::Repeat()
 {
     TimerFunction(data_map);
     if(map_size>1){
-    if(NextSat < map_size-1)
-    {
-        NextSat++;
-    }
-    else
-    {
-       NextSat=0;
-    }
+        if(NextSat < map_size-1)
+        {
+            NextSat++;
+        }
+        else
+        {
+            NextSat=0;
+        }
     }
 
 
@@ -141,11 +132,5 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
         }
 
     }
-
-}
-
-void SatelliteMozaicWidget::paintEvent(QPaintEvent *event)
-{
-
 
 }

@@ -71,7 +71,12 @@ SOURCES += \
     timer.cpp \
     satellitemozaicwidget.cpp \
     satellitemainwidget.cpp \
-    sncfmainwidget.cpp
+    sncfmainwidget.cpp \
+    customlabels.cpp \
+    meteowidget.cpp \
+    meteomozaicwidget.cpp \
+    meteomainwidget.cpp
+
 
 
 
@@ -124,7 +129,12 @@ HEADERS += \
     timer.h \
     satellitemozaicwidget.h \
     satellitemainwidget.h \
-    sncfmainwidget.h
+    sncfmainwidget.h \
+    customlabels.h \
+    meteowidget.h \
+    meteomozaicwidget.h \
+    meteomainwidget.h
+
 
 
 
@@ -146,7 +156,9 @@ FORMS += \
     pollutionmozaicwidget.ui \
     satellitemozaicwidget.ui \
     satellitemainwidget.ui \
-    sncfmainwidget.ui
+    sncfmainwidget.ui \
+    meteomozaicwidget.ui \
+    meteomainwidget.ui
 
 
 
