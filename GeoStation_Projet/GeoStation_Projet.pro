@@ -55,7 +55,6 @@ SOURCES += \
     museeswidget.cpp \
     evenementmozaicwidget.cpp \
     evenementwidget.cpp \
-    tableaupanoramicwidget.cpp \
     evenementmainwidget.cpp \
     satellitewidget.cpp \
     linechartwidget.cpp \
@@ -114,7 +113,6 @@ HEADERS += \
     museeswidget.h \
     evenementmozaicwidget.h \
     evenementwidget.h \
-    tableaupanoramicwidget.h \
     evenementmainwidget.h \
     satellitewidget.h \
     linechartwidget.h \
@@ -148,7 +146,6 @@ FORMS += \
     museesmozaicwidget.ui \
     museesmainwidget.ui \
     evenementmozaicwidget.ui \
-    tableaupanoramicwidget.ui \
     evenementmainwidget.ui \
     linechartwidget.ui \
     vigicruesmosaicwidget.ui \
