@@ -68,7 +68,7 @@ MainWindow::~MainWindow()
  */
 void						MainWindow::initWidgets()
 {
-	AWidget*			wid;
+    AWidget*			wid;
 
 	// 1. Geolocalisation Widget
 	wid = new GeolocalisationWidget();

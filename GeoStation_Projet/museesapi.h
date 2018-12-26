@@ -3,6 +3,7 @@
 
 #include "abstractapi.h"
 #include "cherchephotos.h"
+#include "pokemap.h"
 
 
 class MuseesApi : public AbstractApi
@@ -16,6 +17,7 @@ public:
 private:
     QNetworkReply* reply ;
     QByteArray response_data ;
+    static int rangMusee ;
 
     void trtReceptionDonnees () ;
 

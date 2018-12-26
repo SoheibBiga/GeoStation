@@ -1,5 +1,7 @@
 #include "museesapi.h"
 
+int MuseesApi::rangMusee = -1 ;
+
 MuseesApi::MuseesApi(ordonnanceur *ord_, QObject *parent)
     : AbstractApi(ord_, parent)
 {
@@ -16,6 +18,8 @@ MuseesApi::MuseesApi(ordonnanceur *ord_, QObject *parent)
     QUrl url = QUrl(strURL );
 
     reply = networkManager->get(QNetworkRequest(url)) ;
+
+    rangMusee ++ ;
 
     connect(
                 reply,
@@ -54,7 +58,7 @@ void MuseesApi::onFinished(QNetworkReply* )
     QJsonArray musees = jsonObject["records"].toArray() ;
     QString labelAdresse ;
 
-    QJsonValue musee = musees[0] ;
+    QJsonValue musee = musees[rangMusee] ;
     // On ne traite que les musées dont le nom apparaît dans le JSON
     if ( ! musee["fields"]["nom_du_musee"].isNull()
     &&   ! musee["fields"]["nom_du_musee"].isUndefined()) {
@@ -124,6 +128,17 @@ void MuseesApi::onFinished(QNetworkReply* )
         double* doublePhoto4 =  reinterpret_cast < double* > (photo4) ;
         QVariant ptr4 =  reinterpret_cast < qint64> (doublePhoto4);
         map_ameliore.insert("photo4",  ptr4 );
+
+
+        PokeMap *carte = new PokeMap(PokeMap::CINQ_CENT_M);
+        //Ajoute les différents points sur la carte
+        carte->addPoint("48.871554", "2.346300");
+        //Ajoute du texte sur la carte au coordonnées x, y de la pixmap
+        //carte->addText(100, 200, "Documentation PokeMap");
+        QPixmap photoMap = carte->pixmap() ;
+        double* doublePhotoMap =  reinterpret_cast < double* > (&photoMap) ;
+        QVariant ptrMap =  reinterpret_cast < qint64> (doublePhotoMap);
+        map_ameliore.insert("photoMap",  ptrMap );
 
         emit musee_send_info2(map_ameliore);
         finish(0);
