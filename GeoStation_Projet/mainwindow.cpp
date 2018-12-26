@@ -1,6 +1,9 @@
 #include <QDebug>
-#include <QPushButton>
 
+
+
+#include <QDesktopWidget>
+#include <QRect>
 #include <stdlib.h>
 #include <time.h>
 #include "borneelectriquewidget.h"
@@ -68,7 +71,7 @@ MainWindow::~MainWindow()
  */
 void						MainWindow::initWidgets()
 {
-    AWidget*			wid;
+	AWidget*			wid;
 
 	// 1. Geolocalisation Widget
 	wid = new GeolocalisationWidget();
@@ -181,6 +184,21 @@ void						MainWindow::initLayout()
 	layout()->addWidget(widgets_);
 }
 
+void						MainWindow::initScreen()
+{
+/*
+	QDesktopWidget*		dw;
+	QRect							screen;
+
+	dw = new QDesktopWidget();
+	//screen = dw->screenGeometry();
+
+	QDesktopWidget::;
+
+	delete (dw);
+*/
+}
+
 bool						MainWindow::init()
 {
 	setWindowState(Qt::WindowFullScreen);
@@ -189,6 +207,7 @@ bool						MainWindow::init()
 	initWidgets();
 	mozaic_->init();
 	initLayout();
+	initScreen();
 
 //	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
 
