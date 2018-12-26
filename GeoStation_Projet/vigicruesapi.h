@@ -26,6 +26,8 @@ public:
     QDateTime dateTimeDerniereMAJ;
     bool boolUnSeulAppelALafois;
     void definitionAppelRequete();
+protected :
+    QMap<QString, QString> map_formulaire;
 
     ~VigicruesApi();
 private :
