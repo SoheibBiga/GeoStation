@@ -72,10 +72,10 @@ MainWindow::~MainWindow()
 void						MainWindow::initWidgets()
 {
 	AWidget*			wid;
-
+/*
 	// 1. Geolocalisation Widget
-	wid = new GeolocalisationWidget();
-	wid->init();
+    wid = new GeolocalisationWidget();
+    wid->init();
 //	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
@@ -135,7 +135,7 @@ void						MainWindow::initWidgets()
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
+*/
 	// 8. Pharmacie Widget
 	wid = new PharmacieWidget();
 	wid->init();

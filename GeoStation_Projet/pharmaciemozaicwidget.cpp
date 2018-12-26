@@ -35,9 +35,12 @@ void PharmacieMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 
     //ui->tableWidget->refresh_ameliore(map_ameliore);
 
+    //ui->label_nom->setVisible(true);
     ui->label_nom2->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Nom").toString());
+    //ui->label_nom->setPixmap(QPixmap(QString::fromUtf8(":/Icons/pharmacie.png")));
     ui->label_adresse2->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Adresse").toString());
     //ui->label_adresse->setPixmap(QPixmap(QString::fromUtf8(":/Icons/adresse.svg")));
     ui->label_codePostal->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("CodePostal").toString());
+    //ui->label_distance->setPixmap(QPixmap(QString::fromUtf8(":/Icons/distance.jpeg")));
     ui->label_distance_2->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Distance").toString());
 }

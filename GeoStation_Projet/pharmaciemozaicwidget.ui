@@ -25,9 +25,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <item>
        <widget class="WidgetStyleSheet" name="widget" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
@@ -131,9 +131,13 @@
                 <widget class="QLabel" name="label_nom">
                  <property name="maximumSize">
                   <size>
-                   <width>16777215</width>
-                   <height>30</height>
+                   <width>80</width>
+                   <height>16777215</height>
                   </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: url(none);
+border-color: rgba(255, 255, 255, 0);</string>
                  </property>
                  <property name="text">
                   <string>Nom</string>
@@ -144,9 +148,13 @@
                 <widget class="QLabel" name="label_adresse">
                  <property name="maximumSize">
                   <size>
-                   <width>16777215</width>
-                   <height>30</height>
+                   <width>80</width>
+                   <height>16777215</height>
                   </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: url(none);
+border-color: rgba(255, 255, 255, 0);</string>
                  </property>
                  <property name="text">
                   <string>Adresse</string>
@@ -154,28 +162,33 @@
                 </widget>
                </item>
                <item>
-                <spacer name="horizontalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Fixed</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
+                <widget class="QLabel" name="label_2">
+                 <property name="maximumSize">
                   <size>
-                   <width>20</width>
-                   <height>20</height>
+                   <width>80</width>
+                   <height>30</height>
                   </size>
                  </property>
-                </spacer>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: url(none);
+border-color: rgba(255, 255, 255, 0);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
                </item>
                <item>
                 <widget class="QLabel" name="label_distance">
                  <property name="maximumSize">
                   <size>
-                   <width>16777215</width>
-                   <height>30</height>
+                   <width>80</width>
+                   <height>16777215</height>
                   </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: url(none);
+border-color: rgba(255, 255, 255, 0);</string>
                  </property>
                  <property name="text">
                   <string>Distance</string>
