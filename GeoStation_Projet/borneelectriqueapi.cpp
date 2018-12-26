@@ -15,8 +15,6 @@ BorneElectriqueApi::BorneElectriqueApi(ordonnanceur *ord_, QObject* parent) : Ab
     QString Latitude = QString::number(latitude)+"%2C";
     QString Longitude = QString::number(longitude)+"%2C";
 
-    qDebug() << Latitude;
-    qDebug() << "https://public.opendatasoft.com/api/records/1.0/search/?dataset=fichier-consolide-des-bornes-de-recharge-pour-vehicules-electriques-irve&sort=-date_maj&geofilter.distance="+Latitude+"+"+Longitude+"+"+QString::number(radius);
     manager->get(QNetworkRequest(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=fichier-consolide-des-bornes-de-recharge-pour-vehicules-electriques-irve&sort=-date_maj&geofilter.distance="+Latitude+"+"+Longitude+"+"+QString::number(radius))));
 }
 
