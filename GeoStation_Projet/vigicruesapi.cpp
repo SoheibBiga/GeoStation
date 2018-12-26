@@ -20,11 +20,10 @@ VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_
 
   //manager
   manager = new QNetworkAccessManager (parent);
-  connect(m_reply,SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotError(QNetworkReply::NetworkError)));
-  connect(m_reply,SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(slotSslErrors(QList<QSslError>)));
-  connect(m_reply2,SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotError(QNetworkReply::NetworkError)));
-  connect(m_reply2,SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(slotSslErrors(QList<QSslError>)));
   connect(manager, SIGNAL(finished(QNetworkReply *)), this, SLOT(reponseRecue(QNetworkReply *)));
+
+
+
 
   definitionAppelRequete();
 
@@ -158,6 +157,8 @@ void VigicruesApi::definitionAppelRequete()
         qDebug()<<req;
         m_request.setUrl(QUrl(req));
         m_reply = manager->get(m_request);
+        connect(m_reply,SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotError(QNetworkReply::NetworkError)));
+        connect(m_reply,SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(slotSslErrors(QList<QSslError>)));
         dateTimeDerniereMAJ= temps_init.addYears(-10);
       }
     else{
@@ -178,6 +179,9 @@ void VigicruesApi::definitionAppelRequete()
 
 
         m_reply2 = manager->get(m_request2);
+        connect(m_reply2,SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotError(QNetworkReply::NetworkError)));
+        connect(m_reply2,SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(slotSslErrors(QList<QSslError>)));
+
     }}
     else{
         qDebug()<<"ERROR : Une requête est déjà en cours de traitement. Celle-ci ne sera pas traitée.";

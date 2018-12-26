@@ -6,7 +6,6 @@ EvenementWidget::EvenementWidget(QWidget *parent) :
     evenement_mozaic_widget = new EvenementMozaicWidget();
     mozaicLayout_ = new QHBoxLayout();
     mozaicLayout_->addWidget(evenement_mozaic_widget);
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),evenement_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
     connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),evenement_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
 }
 
