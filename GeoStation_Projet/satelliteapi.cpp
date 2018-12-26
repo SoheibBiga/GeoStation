@@ -16,7 +16,7 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(ord
     Days_Of_Predic=2;
     Minimun_Visibility=10;
     Minimim_Elevation=30;
-    Search_Radius=30;
+    Search_Radius=8;
     API_Function << "tle" << "positions" << "visualpasses" << "radiopasses" << "above";
 
     //set the function needed for the satellite request
@@ -65,7 +65,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
     //Check for error at json parsing
     if (jsonError.error != QJsonParseError::NoError)
     {
-        finish(0);
+        finish(1);
         return;
     }
 
@@ -83,7 +83,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
         if (Above_Array.isEmpty())
         {
             //qDebug()  << QString("%1 JSON Array is empty.").arg(MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["category"].toString());
-            finish(0);
+            finish(1);
             return;
         }
 
@@ -177,7 +177,7 @@ void SatelliteApi::slotError(QNetworkReply::NetworkError RequestNetworkError)
 {
     if (RequestNetworkError!=0)
     {
-        finish(0);
+        finish(1);
         //qDebug() << "RequestNetwork error" << "\t" << RequestNetworkError;
         return;
     }
@@ -188,7 +188,7 @@ void SatelliteApi::slotSslErrors(QList<QSslError>SslErrors)
     for(int i=0;i<SslErrors.count();i++)
     {
         if (SslErrors.at(i).error()!=0){
-            finish(0);
+            finish(1);
             //qDebug() << "SSL error" << "\t" << SslErrors.at(i).errorString();
             return;
         }
@@ -198,7 +198,7 @@ void SatelliteApi::NetworkStatus(QNetworkAccessManager::NetworkAccessibility Net
 {
     if (NetStatus!=1)
     {
-        finish(0);
+        finish(1);
         //qDebug() << "Network Status" << "\t" << NetStatus;
         return;
     }
