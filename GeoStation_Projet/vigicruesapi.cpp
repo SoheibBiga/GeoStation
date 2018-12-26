@@ -1,7 +1,7 @@
 #include "vigicruesapi.h"
 
 
-VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_, parent)
+VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_,parent)
 {
 
   // initialisation param
@@ -121,9 +121,9 @@ void VigicruesApi::traitementRequeteEnregistrements(QNetworkReply *rep)
         qDebug()<<MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("coordonneeswgs84")).toArray()[1].toDouble();
         qDebug()<<MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("hauteur")).toDouble();
         qDebug()<<MonJSonArray[i].toObject().value(QString("geometry")).toObject().value(QString("type")).toString();
-        //map_formulaire.insert(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("timestamp")).toString(), QString::number(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("hauteur")).toDouble()) );
+        map_formulaire.insert(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("timestamp")).toString(), QString::number(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("hauteur")).toDouble()) );
      }
-    //emit send_info(map_formulaire);
+    emit send_info(map_formulaire);
     finish(0);
     }
     else{
