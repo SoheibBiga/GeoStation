@@ -21,12 +21,6 @@ avionsapi::avionsapi(ordonnanceur *ord_, QObject *parent) : AbstractApi(ord_, pa
     connect(manager_singleplane, SIGNAL(finished(QNetworkReply* )), this, SLOT(getAPi2info(QNetworkReply* )));
 
 
-
-    //    lat_max = ui->lat_max_line->text();
-    //    lat_min = ui->lat_min_line->text();
-    //    longi_min = ui->longi_min_line->text();
-    //    longi_max = ui->longi_max_line->text();
-
     construct_URL = ("https://opensky-network.org/api/states/all?lamin="+lat_min+"&lomin="+longi_min+"&lamax="+lat_max+"&lomax="+longi_max);
 
     manager->get(QNetworkRequest(QUrl(construct_URL)));
@@ -52,7 +46,7 @@ void avionsapi::query_APi2()
 {
 
 
-    API_key =  "58f4c4-bf6820";
+    API_key =  "dbc7d9-8adc6e";
 
     URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24="+ICAO24);
 
@@ -63,7 +57,7 @@ void avionsapi::query_APi2()
 
     manager_singleplane->get(QNetworkRequest(QUrl(URL_singleplane)));
 
-    // delay(1000);
+    delay(1000);
 
 
 }
@@ -138,18 +132,7 @@ void avionsapi::parseplanelist()
 {
 
 
-    int RyanAirPlanes= 0;
-    int EasyjetPlanes=0;
-    int LufhansaPlanes=0;
-    int AirFrancePlanes=0;
-    int EmiratesPlanes=0;
-    int Americanair = 0;
-    int Britishair = 0;
-    int IberiaEx = 0;
-    int TransaFra =0;
-    int EuroAirTran = 0;
-    //    int Tapportugal = 0;
-    //    int Vueling = 0;
+
 
 
     for (int i = 0; i< list_planes_array.count(); i++)
@@ -175,46 +158,21 @@ void avionsapi::parseplanelist()
         //altitude is index 13
         //calculatedistance();
 
-        info_APi1 << airline_name ;  //<<calculatedistance();
-        element.insert(flight_number, QVariant(airline_name));
+        add_titre(QString("Vol "+airline_name+ " "+ flight_number ));
+
+        //parametre.insert(QString("Vol "+airline_name), flight_number);
+
+        //info_APi1 << airline_name ;  //<<calculatedistance();
+        QString dist = calculatedistance();
+        if (dist != "")
+        {
+            element.insert("Distance", QVariant(calculatedistance()));
+        }
+
         //element.insert("Flight Number",QVariant(calculatedistance()));
 
         query_APi2();
 
-
-
-        for (int j = 0; j<single_plane_array.count(); j++)
-        {
-
-
-            if( single_plane_array[j].type() == 3)
-            {
-
-                QString info = single_plane_array[j].toString();
-
-                if(info.contains("RYR")) RyanAirPlanes ++;
-                if(info.contains("EZY")) EasyjetPlanes ++;
-                if(info.contains("EZS")) EasyjetPlanes ++;
-                if(info.contains("DLH")) LufhansaPlanes ++;
-                if (info.contains("AFR")) AirFrancePlanes ++;
-                if (info.contains("UAE")) EmiratesPlanes ++;
-                if (info.contains("AAL")) Americanair ++;
-                if (info.contains("BAW")) Britishair ++;
-                if (info.contains("IBS")) IberiaEx ++;
-                if (info.contains("TVF")) TransaFra ++;
-                if (info.contains("BCS")) EuroAirTran ++;
-
-
-
-
-
-            }
-
-
-
-
-
-        }
 
 
 
@@ -230,21 +188,6 @@ void avionsapi::parseplanelist()
     //        stream << write_APi1_info << endl;
     //    }
 
-
-
-    QString text_for_ailines("Nous avons detecté \n");
-
-    if(AirFrancePlanes>0) text_for_ailines.append( QString::number(AirFrancePlanes) +" avions Air France \n");
-
-    if(EasyjetPlanes>0)  text_for_ailines.append( QString::number(EasyjetPlanes) +" avions EasyJet \n");
-    if(RyanAirPlanes>0)  text_for_ailines.append( QString::number(RyanAirPlanes) +" avions RyanAir \n");
-    if(EmiratesPlanes>0) text_for_ailines.append( QString::number(EmiratesPlanes) +" avions Emirates Airlines \n");
-    if(LufhansaPlanes>0) text_for_ailines.append( QString::number(LufhansaPlanes) +" avions LuftHansa \n");
-    if(Americanair>0) text_for_ailines.append( QString::number(Americanair) +" avions American Airlines \n");
-    if(Britishair>0) text_for_ailines.append( QString::number(Britishair) +" avions British Airways \n");
-    if(IberiaEx>0) text_for_ailines.append( QString::number(IberiaEx) +" avions Iberia Express \n");
-    if(TransaFra>0) text_for_ailines.append( QString::number(TransaFra) +" avions Transavia France \n");
-    if(EuroAirTran>0) text_for_ailines.append( QString::number(EuroAirTran) +" avions European Air Transport \n");
 
 
 
@@ -330,16 +273,21 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         readplane_type();
 
         write_Info_APi2.append(QString("L'avion de modele "+ plane_model_name +" a pour provenance") );
+        element.insert("Modele", plane_model_name);
 
         airport_code  = departure_string_icao;
 
         readairports();
+        element.insert("Provenance", airport_name);
+
 
         write_Info_APi2.append(QString(" l'aeroport "+ airport_name +" et a pour destination ") );
 
         airport_code  = arrival_string_icao;
 
         readairports();
+        element.insert("Destination", airport_name);
+
 
         //element.insert(airport_name,"");
 
@@ -362,6 +310,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 
 
         write_Info_APi2.append(QString("COULD NOT RETRIEVE INFORMATION FOR THIS PLANE///////////////") );
+        element.insert("Modele", QString("COULD NOT RETRIEVE INFORMATION FOR THIS PLANE///////////////") );
 
 
     }
@@ -757,7 +706,7 @@ void avionsapi::envoiverswidget()
 
 
     //QMap<QString,QVariant> element;
-    add_titre("Avions detectés dans la zone ");     // titre ne s'aafiche pas
+    //add_titre("Avions detectés dans la zone ");     // titre ne s'aafiche pas
     //add_titre("Prochains Train au depart de " + libelle_gare );
     add_nb_entree(total_result);
 
