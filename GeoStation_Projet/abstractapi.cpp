@@ -53,7 +53,7 @@ AbstractApi::AbstractApi(ordonnanceur *ord_, QObject *parent, QString longitude_
     connect(this,SIGNAL(musee_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(musee_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(satellite_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)));
-    connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
+    //connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
 
     loop = new QEventLoop(parent);
     QSettings settings_coord;
