@@ -43,7 +43,7 @@
                 <bool>true</bool>
                </property>
                <property name="text">
-                <string>Station : brgqrfo q r roqrg  rgqr gqrg qrg </string>
+                <string>Station :</string>
                </property>
               </widget>
              </item>
@@ -85,15 +85,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>WidgetStyleSheet</class>
-   <extends>QWidget</extends>
-   <header>widgetstylesheet.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LineChartWidget</class>
    <extends>QWidget</extends>
    <header>linechartwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WidgetStyleSheet</class>
+   <extends>QWidget</extends>
+   <header>widgetstylesheet.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
