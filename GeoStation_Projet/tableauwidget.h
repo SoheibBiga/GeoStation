@@ -15,12 +15,18 @@ class tableauwidget : public QWidget
 public:
     explicit tableauwidget(QWidget *parent = 0);
     ~tableauwidget();
-
-    bool refresh(QMap<QString, QString> map_formulaire);
-    void refresh_ameliore(QMap<QString,QVariant> map_ameliore,bool mozaic = true);
+    void refresh_ameliore(QMap<QString,QVariant> map_ameliore);
 
 private:
     Ui::tableauwidget *ui;
+    QTimer *timer;
+    int map_size,NextEvent;
+    QMap<QString, QVariant> data_map;
+    void TimerFunction(QMap<QString, QVariant> map, int index=0);
+
+private slots:
+   void repeat();
+
 };
 
 #endif // TABLEAUWIDGET_H
