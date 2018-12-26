@@ -68,7 +68,6 @@ MainWindow::~MainWindow()
  */
 void						MainWindow::initWidgets()
 {
-<<<<<<< HEAD
     AWidget*			wid;
 
 	// 1. Geolocalisation Widget
@@ -176,11 +175,6 @@ void						MainWindow::initTimer()
 	timer_->start();
 }
 
-void						MainWindow::initTimer()
-{
-	timer_->setInterval(1000);
-	timer_->start();
-}
 
 void						MainWindow::initLayout()
 {
