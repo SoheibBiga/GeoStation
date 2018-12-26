@@ -3,14 +3,14 @@
 
 int								main(int argc, char *argv[])
 {
-    QApplication		a(argc, argv);
-    MainWindow			w;
-    int							ret;
+	QApplication		a(argc, argv);
+	MainWindow			w;
+	int							ret;
 
     w.init();
-    w.show();
-    ret = a.exec();
-    w.end();
+		w.show();
+		ret = a.exec();
+		w.end();
 
-    return (ret);
+		return (ret);
 }

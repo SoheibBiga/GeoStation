@@ -644,6 +644,7 @@ void avionsapi::readplane_type()
 
 QString avionsapi::calculatedistance()
 {
+	/*
     double ref_longi =   (longi_max.toDouble() +longi_min.toDouble() )/2 ;
     double ref_lati = (lat_max.toDouble() + lat_min.toDouble()  )/2;
 
@@ -682,7 +683,7 @@ QString avionsapi::calculatedistance()
     return (distance);
 
 
-
+*/
 
 
 
