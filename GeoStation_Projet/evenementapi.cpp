@@ -6,11 +6,20 @@ EvenementApi::EvenementApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_
     manager = new QNetworkAccessManager (parent);
     QNetworkReply *m_reply;
     QNetworkRequest m_request;
-    latitude = 50.8550625;
-    longitude = 4.3053505;
+//    latitude = 50.8550625;
+//    longitude = 4.3053505;
+//    radius = 5000;
+
+    latitude = 48.871680;
+    longitude = 2.346126;
     radius = 5000;
-    QString req("https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=20&sort=date_start&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&geofilter.distance="+QString::number(latitude)+"%2C+"+QString::number(longitude)+"%2C+"+QString::number(radius));
-    //qDebug()<<req;
+
+    QDate dateDuJour = QDate::currentDate();
+    QString dateAffichee = dateDuJour.toString("yyyy");
+    qDebug() << dateDuJour;
+    qDebug() << dateAffichee;
+    QString req("https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=20&sort=date_start&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.date_start="+QString(dateAffichee)+"&geofilter.distance="+QString::number(latitude)+"%2C+"+QString::number(longitude)+"%2C+"+QString::number(radius));
+    qDebug()<<req;
     m_request.setUrl(QUrl(req));
     m_reply = manager->get(m_request);
     m_request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
@@ -26,6 +35,7 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
     Myjson = QJsonDocument::fromJson(m_response);
     QString strJson(Myjson.toJson(QJsonDocument::Compact)); // Indented or Compact
     int total_event = Myjson.object().toVariantMap()["nhits"].toInt();
+    qDebug() << total_event;
     if(total_event == 0) {}
     else
     {
@@ -41,12 +51,15 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
             QDate MyDate = QDate::currentDate();
             QString date_start = Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["date_start"].toString();
             QDate datestart = QDate::fromString(date_start, "yyyy'-'MM'-'dd");
-            QDate datenew = MyDate.addDays(15);
+            QDate datenew = MyDate.addDays(30);
             QString title;
             QString description;
             QString address;
             QString space_time_info;
             QString pricing_info;
+            bool exp1=datestart >= MyDate;
+            bool exp2= datestart <= datenew;
+
             if (datestart >= MyDate && datestart <= datenew)
             {
                title= Myjson.object().toVariantMap()["records"].toJsonArray().at(i)["fields"]["title"].toString();
@@ -68,6 +81,7 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
         emit evenement_send_info2(map_ameliore);
         finish(0);
     }
+
 }
 
 //gérer les erreurs

@@ -47,4 +47,6 @@ void GeoLocMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
             ui->label_2->setPixmap(pix.scaled(ui->label->parentWidget()->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
         }
     }
+
+
 }

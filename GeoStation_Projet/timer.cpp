@@ -23,7 +23,7 @@ void Timer::send_request()
         break;
     case IdWidget(Satellite):
         ord->api_index = new SatelliteApi(ord);
-        this->start(180000);
+        this->start(300000);
         break;
     case IdWidget(Evenement):
         ord->api_index = new EvenementApi(ord);

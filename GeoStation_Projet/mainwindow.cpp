@@ -24,9 +24,9 @@ MainWindow::MainWindow(QWidget* parent)
       mozaic_(Q_NULLPTR),
       timer_(Q_NULLPTR)
 {
-		widgets_ = new QStackedWidget(this);
+    widgets_ = new QStackedWidget(this);
     ordonnanceur_ = new ordonnanceur();
-		mozaic_ = new Mozaic();
+    mozaic_ = new Mozaic();
     timer_ = new QTimer();
 }
 
@@ -63,6 +63,7 @@ MainWindow::~MainWindow()
 
 void						MainWindow::initWidgets()
 {
+
 	AWidget*			wid;
 
 	// 1. Geolocalisation Widget
@@ -173,35 +174,35 @@ void						MainWindow::initWidgets()
 
 bool						MainWindow::init()
 {
-//	setWindowState(Qt::WindowFullScreen);
-	mozaic_->init();
-	timer_->setInterval(1000);
-	timer_->start();
-	initWidgets();
+    //setWindowState(Qt::WindowFullScreen);
+    mozaic_->init();
+    timer_->setInterval(1000);
+    timer_->start();
+    initWidgets();
 
-	srand(time(NULL));
+    srand(time(NULL));
 
-	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
+    connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
 
-	setLayout(new QHBoxLayout(this));
+    setLayout(new QHBoxLayout(this));
 
-//	layout()->addWidget(mozaic_);
-	layout()->addWidget(widgets_);
+    //	layout()->addWidget(mozaic_);
+    layout()->addWidget(widgets_);
 
 
 
-	return (true);
+    return (true);
 }
 
 bool				MainWindow::show()
 {
-	QWidget::show();
+    QWidget::show();
 
-	widgets_->show();
-	mozaic_->show();
-	ordonnanceur_->run();
+    widgets_->show();
+    mozaic_->show();
+    ordonnanceur_->run();
 
-	return (true);
+    return (true);
 }
 
 bool				MainWindow::run()
@@ -217,27 +218,27 @@ bool				MainWindow::end()
 
 void				MainWindow::changeWidget()
 {
-	int				nbWidgets;
-	int				idx;
+    int				nbWidgets;
+    int				idx;
 
-	nbWidgets = widgets_->count();
-	idx = rand() % nbWidgets;
+    nbWidgets = widgets_->count();
+    idx = rand() % nbWidgets;
 
-/*
-	if (idx == nbWidgets)
-		{
-			hide();
-			mozaic_->show();
-		}
-	else
-		{
-			widgets_->setCurrentIndex(idx);
-			show();
-			mozaic_->hide();
-		}
+    /*
+    if (idx == nbWidgets)
+        {
+            hide();
+            mozaic_->show();
+        }
+    else
+        {
+            widgets_->setCurrentIndex(idx);
+            show();
+            mozaic_->hide();
+        }
 */
 
-//	qDebug() << "ChangeWidget() ---> nbWidgets = " << nbWidgets << "idx = " << idx;
-	widgets_->setCurrentIndex(idx);
+    //	qDebug() << "ChangeWidget() ---> nbWidgets = " << nbWidgets << "idx = " << idx;
+    widgets_->setCurrentIndex(2);
 
 }
