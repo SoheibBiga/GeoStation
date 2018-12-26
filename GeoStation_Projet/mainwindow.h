@@ -27,8 +27,12 @@ class MainWindow : public QWidget
 		explicit MainWindow(QWidget *parent = 0);
 		~MainWindow();
 		bool				init();
+		bool				show();
 		bool				run();
 		bool				end();
+
+	public slots:
+		void				changeWidget();
 };
 
 #endif // MAINWINDOW_H_
