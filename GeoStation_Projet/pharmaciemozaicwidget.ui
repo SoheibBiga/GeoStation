@@ -6,42 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>375</width>
-    <height>337</height>
+    <width>279</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>20</y>
-     <width>258</width>
-     <height>240</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_photo">
-      <property name="text">
-       <string>Photo</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Pharmacie la plus proche</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="tableauwidget" name="tableWidget"/>
-    </item>
-   </layout>
-  </widget>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label_photo">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>150</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Photo</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="tableauwidget" name="tableWidget"/>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <customwidgets>
   <customwidget>

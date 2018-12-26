@@ -3,7 +3,9 @@
 
 
 SatelliteWidget::SatelliteWidget(QWidget *parent) :
-    AWidget(parent)
+    AWidget(parent),
+    satellite_mozaic_widget(Q_NULLPTR)
+
 {
     satellite_mozaic_widget = new SatelliteMozaicWidget();
     mozaicLayout_ = new QHBoxLayout();

@@ -1,6 +1,6 @@
 #include "geolocalisationapi.h"
 
-GeolocalisationApi::GeolocalisationApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdWidget(Geolocalisation), ord, parent)
+GeolocalisationApi::GeolocalisationApi(ordonnanceur *ord, QObject *parent) : AbstractApi(ord, parent)
 {
     manager = new QNetworkAccessManager(this);
 

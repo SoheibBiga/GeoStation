@@ -1,6 +1,6 @@
 #include "satelliteapi.h"
 
-SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdWidget(Satellite),ord,parent)
+SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(ord,parent)
 {
     sat_loop = new QEventLoop();
     //request information

@@ -6,9 +6,7 @@ pollutionwidget::pollutionwidget(QWidget *parent) :
     pollution_mozaic_widget = new PollutionMozaicWidget();
     mozaicLayout_ = new QHBoxLayout();
     mozaicLayout_->addWidget(pollution_mozaic_widget);
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),pollution_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
     connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),pollution_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
-
 }
 
 pollutionwidget::~pollutionwidget()

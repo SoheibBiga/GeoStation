@@ -1,6 +1,6 @@
 #include "meteoapi.h"
 
-MeteoApi::MeteoApi(ordonnanceur *ord_, QObject* parent) : AbstractApi(IdWidget(Meteo), ord_, parent)
+MeteoApi::MeteoApi(ordonnanceur *ord_, QObject* parent) : AbstractApi( ord_, parent)
 {
     manager = new QNetworkAccessManager(this);
     QNetworkRequest request;
@@ -62,7 +62,7 @@ void MeteoApi::Read(QNetworkReply *reply)
     QString weathericon=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["icon"].toString();
 
     QString weatherbase=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["base"].toString();
-    double mainhum=doc.toVariant().toHash()["main"].toHash()["humidity"].toDouble();
+    //double mainhum=doc.toVariant().toHash()["main"].toHash()["humidity"].toDouble();
 
     double maintempmin=doc.toVariant().toHash()["main"].toHash()["temp_min"].toDouble();
     double maintempmax=doc.toVariant().toHash()["main"].toHash()["temp_max"].toDouble();
