@@ -46,7 +46,7 @@ void avionsapi::query_APi2()
 {
 
 
-    API_key =  "dbc7d9-8adc6e";
+    API_key =  "26fe8c-b14861";
 
     URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24="+ICAO24);
 
@@ -153,12 +153,10 @@ void avionsapi::parseplanelist()
         write_APi1_info.append("L'avion du vol "+flight_number+ " de companie aerienne "+airline_name+" \n");
 
 
-
+        add_titre(QString("Vol "+ flight_number));
         //velocity is index9
         //altitude is index 13
         //calculatedistance();
-
-        add_titre(QString("Vol "+airline_name+ " "+ flight_number ));
 
         //parametre.insert(QString("Vol "+airline_name), flight_number);
 
@@ -289,7 +287,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         element.insert("Destination", airport_name);
 
 
-        //element.insert(airport_name,"");
+
 
         write_Info_APi2.append(QString("l'aeroport "+ airport_name +" \n") );
         write_Info_APi2.append(QString("DE plus on verifie que "+ ICAO24 + " C'est bien "+aircraft_icao24+"  \n") );
@@ -499,9 +497,6 @@ void avionsapi::readairports()
 
 
                 airport_name=airport_n.toString() ;
-
-
-
 
             }
             else
@@ -715,11 +710,10 @@ void avionsapi::envoiverswidget()
 
     add_list(element);
 
-
+   // qDebug() << "insert tab + para ok";
     map_ameliore.insert("Tableau",QVariant(tableau));
-    map_ameliore.insert("Titre",QVariant(parametre));
+    map_ameliore.insert("Parametre",QVariant(parametre));
     emit avions_send_info2(map_ameliore);
     finish(0);
-
 
 }

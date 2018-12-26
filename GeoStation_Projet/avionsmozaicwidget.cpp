@@ -17,7 +17,6 @@ AvionsMozaicWidget::~AvionsMozaicWidget()
 }
 
 
-
 void AvionsMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
    // map_ameliore["Tableau"].toList().at(0).toMap().size();
