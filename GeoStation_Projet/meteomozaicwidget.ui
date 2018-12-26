@@ -6,8 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
+<<<<<<< HEAD
     <width>300</width>
     <height>496</height>
+=======
+    <width>328</width>
+    <height>495</height>
+>>>>>>> 85f4e1a6ea35a97e921675aa0b54bc4e8527adea
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,7 +24,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="maximumSize">
@@ -30,89 +35,81 @@
      </property>
      <property name="styleSheet">
       <string notr="true">
-QGroupBox{
+#groupBox{
 background-color: rgb(106, 231, 36);
-
+      border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: blue;
+     font: bold 14px;
+     min-width: 10em;
+     padding: 6px;
 }</string>
      </property>
      <property name="title">
-      <string>Mètèo</string>
+      <string>Météo</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="10" column="0">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>Temperature Min :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="Line" name="line_6">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labDate_4">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(211, 215, 207);
-background-color: rgb(237, 212, 0);
-</string>
+         <string notr="true">
+
+#labDate_4 {
+ background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: blue;
+     font: bold 14px;
+     min-width: 10em;
+     padding: 6px;
+}</string>
         </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="label">
         <property name="text">
-         <string>Temperature Max :</string>
+         <string>TextLabel</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
-       <widget class="Line" name="line">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(211, 215, 207);
-background-color: rgb(237, 212, 0);
-</string>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_7">
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_15">
         <property name="text">
          <string> Prevision :</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLineEdit" name="lineEdit_2"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLineEdit" name="lineEdit_3"/>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_5">
+      <item row="2" column="0">
+       <widget class="LabelDyn" name="labePre_4">
         <property name="styleSheet">
-         <string notr="true">
-
-
-QVBoxLayout {
-background-color: #00b300 ; 
+         <string notr="true">#labePre_4{
+ background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: blue;
+     font: bold 14px;
+     min-width: 10em;
+     padding: 6px;
 }</string>
         </property>
         <property name="text">
-         <string>Jour :</string>
+         <string>Prévisions Météo : Nuageux - orageux - ciel voilé - Ensoleillé  </string>
         </property>
        </widget>
       </item>
-      <item row="11" column="0">
-       <widget class="QLineEdit" name="lineEdit_5"/>
+      <item row="3" column="0">
+       <widget class="Line" name="line_4">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(211, 215, 207);
+</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
       </item>
-      <item row="9" column="0">
-       <widget class="QLineEdit" name="lineEdit_tempmax"/>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_4">
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_16">
         <property name="text">
          <string/>
         </property>
@@ -121,11 +118,82 @@ background-color: #00b300 ;
         </property>
        </widget>
       </item>
+      <item row="5" column="0">
+       <widget class="Line" name="line_9">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(211, 215, 207);
+
+</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Temperature Max :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="labTmax_4">
+        <property name="styleSheet">
+         <string notr="true">#labTmax_4{
+ background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: blue;
+     font: bold 14px;
+     min-width: 10em;
+     padding: 6px;
+}</string>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Temperature Min :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="labeTmin_4">
+        <property name="styleSheet">
+         <string notr="true">#labeTmin_4{
+ background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: blue;
+     font: bold 14px;
+     min-width: 10em;
+     padding: 6px;
+}</string>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LabelDyn</class>
+   <extends>QLabel</extends>
+   <header location="global">labeldyn.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

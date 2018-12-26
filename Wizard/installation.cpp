@@ -96,9 +96,6 @@ void   Installation::finished_req(QNetworkReply *reply)
                 progBar->setValue(100);
                 progBar->setFormat("Téléchargement effectué : 100%");
                 dll = true;
-
-                settings.setValue("coordonnee/map_name", list);
-                settings.setValue("coordonnee/map_rayon", list_value);
                 settings.setValue("coordonnee/map_coordonnee", coord_map);
                 emit download_finish();
             }

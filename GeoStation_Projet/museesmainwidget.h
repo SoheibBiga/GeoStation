@@ -26,10 +26,10 @@ public:
 
 private:
     Ui::MuseesMainWidget *ui;
-    QPixmap* photo_1 ;
-    QPixmap* photo_2 ;
-    QPixmap* photo_3 ;
-    QPixmap* photo_4 ;
+    QPixmap* photo1 ;
+    QPixmap* photo2 ;
+    QPixmap* photo3 ;
+    QPixmap* photo4 ;
 
     void trtReceptionDonnees () ;
     void ajusteTaillesPhoto() ;

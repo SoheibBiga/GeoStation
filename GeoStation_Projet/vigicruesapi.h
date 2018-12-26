@@ -25,6 +25,7 @@ public:
     QString Nb_rows;
     QDateTime dateTimeDerniereMAJ;
     bool boolUnSeulAppelALafois;
+    bool boolAlternance;
     void definitionAppelRequete();
 protected :
     QMap<QString, QString> map_formulaire;
