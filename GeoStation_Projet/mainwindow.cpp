@@ -68,7 +68,8 @@ MainWindow::~MainWindow()
  */
 void						MainWindow::initWidgets()
 {
-	AWidget*			wid;
+<<<<<<< HEAD
+    AWidget*			wid;
 
 	// 1. Geolocalisation Widget
 	wid = new GeolocalisationWidget();
@@ -167,6 +168,12 @@ void						MainWindow::initWidgets()
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+}
+
+void						MainWindow::initTimer()
+{
+	timer_->setInterval(1000);
+	timer_->start();
 }
 
 void						MainWindow::initTimer()
