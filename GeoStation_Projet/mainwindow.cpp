@@ -174,7 +174,7 @@ bool						MainWindow::init()
 
 	srand(time(NULL));
 
-	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
+	//	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
 
 	setLayout(new QHBoxLayout(this));
 
@@ -192,7 +192,7 @@ bool				MainWindow::show()
 //	ordonnanceur_->run();
 
 //	widgets_->show();
-//	mozaic_->show();
+	mozaic_->show();
 
 	return (true);
 }
