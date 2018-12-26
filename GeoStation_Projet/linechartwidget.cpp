@@ -151,7 +151,7 @@ painter.drawText(QPoint(0,hauteurwidget),datedebut.toString(formatdateaxe));
 painter.drawText(QPoint(largeurgraphique*0.93,hauteurwidget),datefin.toString(formatdateaxe));
 QString hauteur;
 hauteur.setNum(hauteurMax,'g',6);
-painter.drawText(QPoint(largeurgraphique*0.12,hauteurwidget*0.14),hauteur);
+painter.drawText(QPoint(largeurgraphique*0.12,hauteurwidget*0.14),hauteur.append(QString(" m")));
 
 }
 
