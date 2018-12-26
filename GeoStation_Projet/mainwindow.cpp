@@ -104,12 +104,12 @@ void						MainWindow::initWidgets()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 		// 6. Avions Widget
-//    wid = new AvionsWidget(mozaic_);
-//    wid->init();
-//    widgets_->addWidget(wid);
-//    mozaic_->addWidget(wid);
-//    connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
-//                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new AvionsWidget(mozaic_);
+    wid->init();
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 7. Vigicrue Widget
 //	wid = new Vigicrueswidget(mozaic_);
