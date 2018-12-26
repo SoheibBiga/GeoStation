@@ -19,7 +19,8 @@ SatelliteMozaicWidget::SatelliteMozaicWidget(QWidget *parent) :
     ui->Image->setPixmap(*BackgroungPicture);
     ui->Image->setGeometry(MyRect);
     ui->Image->setScaledContents(true);
-    ui->Image->setStyleSheet("border-radius: 10px;");
+    QTimer::singleShot(10,[=]{ui->Image->setStyleSheet("border-radius: 10px;border: 2 plain");});
+
     //    ui->label->setAttribute(Qt::WA_TranslucentBackground);
     //    ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
     //    ui->Name->setAttribute(Qt::WA_TranslucentBackground);

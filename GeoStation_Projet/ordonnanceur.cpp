@@ -39,6 +39,7 @@ void ordonnanceur::run()
 
 
     sncf_timer->start(1);
+    satellite_timer->start(1);
     evenement_timer->start(1);
 
     //pharmacie_timer->start(1);
@@ -52,5 +53,5 @@ void ordonnanceur::run()
     pollution_timer->start(1);
     //musee_timer->start(1);
     borneelectrique_timer->start(1);
-    satellite_timer->start(1);
+
 }

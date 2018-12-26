@@ -65,7 +65,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
     //Check for error at json parsing
     if (jsonError.error != QJsonParseError::NoError)
     {
-        finish(1);
+        finish(0);
         return;
     }
 
@@ -83,7 +83,7 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
         if (Above_Array.isEmpty())
         {
             //qDebug()  << QString("%1 JSON Array is empty.").arg(MyJsonDoc.toVariant().toMap()["info"].toJsonObject().toVariantMap()["category"].toString());
-            finish(1);
+            finish(0);
             return;
         }
 
