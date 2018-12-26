@@ -24,9 +24,11 @@ void PharmacieMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 //    QPixmap photoPixmap = * (cherchePhotos->getPhoto());
 
     QPixmap *photoPixmap;
-    photoPixmap= new QPixmap(":/Images/enseignePharmacie.png");
+    photoPixmap= new QPixmap(":/Images/enseignePharmacie2.png");
     int w =ui->label_photo->width();
     int h = ui->label_photo->height();
+    //photoPixmap->scaled(200,100);
+    ui->label_photo->setPixmap(*photoPixmap);
 
     ui->label_photo->setPixmap(photoPixmap->scaled(w,h, Qt::KeepAspectRatio));
     ui->label_photo->setAlignment(Qt::AlignCenter);
