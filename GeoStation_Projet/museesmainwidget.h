@@ -30,6 +30,7 @@ private:
     QPixmap* photo2 ;
     QPixmap* photo3 ;
     QPixmap* photo4 ;
+    QPixmap* photoMap ;
 
     void trtReceptionDonnees () ;
     void ajusteTaillesPhoto() ;
