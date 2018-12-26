@@ -23,7 +23,7 @@ void GeoLocMozaicWidget::receive_info(QMap<QString, QString>)
 
 void GeoLocMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-    if (ui->label_3->text().size() == 0)
+    if (ui->label_5->text().size() == 0)
     {
         QFont font;
 
