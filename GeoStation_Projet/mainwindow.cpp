@@ -221,7 +221,7 @@ bool				MainWindow::show()
 	QWidget::show();
 
 
-//	ordonnanceur_->run();
+	ordonnanceur_->run();
 
 //	widgets_->show();
 	mozaic_->show();
