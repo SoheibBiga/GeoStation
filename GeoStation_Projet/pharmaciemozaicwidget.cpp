@@ -20,13 +20,15 @@ PharmacieMozaicWidget::~PharmacieMozaicWidget()
 
 void PharmacieMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-    CherchePhotos* cherchePhotos = new CherchePhotos("Musée du Louvre", 4/*, nullptr, nullptr*/);
-    QPixmap photoPixmap = * (cherchePhotos->getPhoto());
+//    CherchePhotos* cherchePhotos = new CherchePhotos("Musée du Louvre", 4/*, nullptr, nullptr*/);
+//    QPixmap photoPixmap = * (cherchePhotos->getPhoto());
 
+    QPixmap *photoPixmap;
+    photoPixmap= new QPixmap(":/Images/enseignePharmacie.png");
     int w =ui->label_photo->width();
     int h = ui->label_photo->height();
 
-    //ui->label_photo->setPixmap(photoPixmap->scaled(w,h, Qt::KeepAspectRatio));
+    ui->label_photo->setPixmap(photoPixmap->scaled(w,h, Qt::KeepAspectRatio));
     ui->label_photo->setAlignment(Qt::AlignCenter);
 
     //ui->tableWidget->refresh_ameliore(map_ameliore);
