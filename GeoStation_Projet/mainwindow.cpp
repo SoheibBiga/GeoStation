@@ -51,13 +51,13 @@ MainWindow::~MainWindow()
 {
     if (mozaic_)
     {
-        delete (mozaic_);
-        mozaic_ = Q_NULLPTR;
+				delete (mozaic_);
+				mozaic_ = Q_NULLPTR;
     }
     if (timer_)
     {
-        delete (timer_);
-        timer_ = Q_NULLPTR;
+				delete (timer_);
+				timer_ = Q_NULLPTR;
     }
 }
 
@@ -68,7 +68,7 @@ void						MainWindow::initWidgets()
 	// 1. Geolocalisation Widget
 	wid = new GeolocalisationWidget();
 	wid->init();
-	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
@@ -77,7 +77,7 @@ void						MainWindow::initWidgets()
 	// 2. BorneElectrique Widget
 	wid = new BorneElectriqueWidget();
 	wid->init();
-	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)),
@@ -86,7 +86,7 @@ void						MainWindow::initWidgets()
 	// 3. Satellite Widget
 	wid = new SatelliteWidget();
 	wid->init();
-	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),
@@ -95,16 +95,16 @@ void						MainWindow::initWidgets()
 	// 4. Avions Widget
 	wid = new AvionsWidget();
 	wid->init();
-	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
-	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
+	connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 5. Meteo Widget
 	wid = new SncfWidget();
 	wid->init();
-	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),
@@ -114,7 +114,6 @@ void						MainWindow::initWidgets()
 	wid = new SncfWidget();
 	wid->init();
 	wid->setLayout(wid->getMainLayout());
-//	wid->setLayout(wid->getMozaicLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),
@@ -123,7 +122,7 @@ void						MainWindow::initWidgets()
 	// 7. Pollution Widget
 	wid = new pollutionwidget();
 	wid->init();
-	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
@@ -132,7 +131,7 @@ void						MainWindow::initWidgets()
 	// 8. Pharmacie Widget
 	wid = new PharmacieWidget();
 	wid->init();
-	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),
@@ -141,7 +140,7 @@ void						MainWindow::initWidgets()
 	// 9. Evenement Widget
 	wid = new EvenementWidget();
 	wid->init();
-	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(evenement_send_info2(QMap<QString,QVariant>)),
@@ -150,45 +149,36 @@ void						MainWindow::initWidgets()
 	// 10. Vigicrue Widget
  wid = new Vigicrueswidget();
  wid->init();
- wid->setLayout(wid->getMainLayout());
+// wid->setLayout(wid->getMainLayout());
  widgets_->addWidget(wid);
  mozaic_->addWidget(wid);
- connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
+ connect(ordonnanceur_, SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),
 				 wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
  // 11. Musees Widget
 	wid = new MuseesWidget();
 	wid->init();
-	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMainLayout());
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
-
-
-
-
-
-
 }
 
 bool						MainWindow::init()
 {
 	setWindowState(Qt::WindowFullScreen);
 	mozaic_->init();
-	timer_->setInterval(10000);
+	timer_->setInterval(1000);
 	timer_->start();
 	initWidgets();
 
 	srand(time(NULL));
 
-//	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
+	//	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
 
 	setLayout(new QHBoxLayout(this));
 
 	layout()->addWidget(widgets_);
-
-
 
 	return (true);
 }
@@ -199,7 +189,7 @@ bool				MainWindow::show()
 	QWidget::show();
 
 
-	ordonnanceur_->run();
+//	ordonnanceur_->run();
 
 //	widgets_->show();
 	mozaic_->show();
@@ -215,7 +205,9 @@ bool				MainWindow::run()
 
 bool				MainWindow::end()
 {
-    return (true);
+	mozaic_->end();
+
+	return (true);
 }
 
 void						MainWindow::changeWidget()
@@ -226,20 +218,19 @@ void						MainWindow::changeWidget()
 	nbWidgets = widgets_->count();
 //	idx = rand() % nbWidgets;
 
-
 	idx++;
 	if (idx < nbWidgets)
 		widgets_->setCurrentIndex(idx);
 	else if (idx == nbWidgets)
 		{
-			hide();
 			mozaic_->show();
+			hide();
 		}
 	else
 		{
 			idx = 0;
 			widgets_->setCurrentIndex(idx);
-			mozaic_->hide();
 			show();
+			mozaic_->hide();
 		}
 }
