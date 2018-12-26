@@ -1,5 +1,8 @@
 #include <QDebug>
+#include <QPushButton>
 
+#include <stdlib.h>
+#include <time.h>
 #include "borneelectriquewidget.h"
 #include "geolocalisationwidget.h"
 #include "vigicrueswidget.h"
@@ -13,7 +16,6 @@
 #include "avionswidget.h"
 #include "mainwindow.h"
 #include "sncfwidget.h"
-#include "meteowidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QWidget(parent),
@@ -22,9 +24,9 @@ MainWindow::MainWindow(QWidget* parent)
       mozaic_(Q_NULLPTR),
       timer_(Q_NULLPTR)
 {
-    widgets_ = new QStackedWidget(this);
+		widgets_ = new QStackedWidget(this);
     ordonnanceur_ = new ordonnanceur();
-    mozaic_ = new Mozaic();
+		mozaic_ = new Mozaic();
     timer_ = new QTimer();
 }
 
@@ -64,105 +66,138 @@ void						MainWindow::initWidgets()
 	AWidget*			wid;
 
 	// 1. Geolocalisation Widget
-    wid = new GeolocalisationWidget(mozaic_);
-    wid->init();
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
-                                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+	wid = new GeolocalisationWidget();
+	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMozaicLayout());
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 2. Satellite Widget
-    wid = new SatelliteWidget(mozaic_);
-    wid->init();
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+	wid = new SatelliteWidget();
+	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMozaicLayout());
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-//	// 3. SNCF Widget
-    wid = new SncfWidget(mozaic_);
-    wid->init();
-    widgets_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-    mozaic_->addWidget(wid);
+	// 3. SNCF Widget
+	wid = new SncfWidget();
+	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMozaicLayout());
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 4. Musees Widget
-    wid = new MuseesWidget(mozaic_);
-    wid->init();
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+//	wid = new MuseesWidget();
+//	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	widgets_->addWidget(wid);
+//	mozaic_->addWidget(wid);
+//	connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
+//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 5. Evenement Widget
-	wid = new EvenementWidget(mozaic_);
+	wid = new EvenementWidget();
 	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMozaicLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(evenement_send_info2(QMap<QString,QVariant>)),
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 		// 6. Avions Widget
-    wid = new AvionsWidget(mozaic_);
-    wid->init();
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+//	wid = new AvionsWidget();
+//	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	widgets_->addWidget(wid);
+//	mozaic_->addWidget(wid);
+//	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
+//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-    // 7. Vigicrue Widget
-    wid = new Vigicrueswidget(mozaic_);
-    wid->init();
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),
+	// 7. Vigicrue Widget
+//	wid = new Vigicrueswidget();
+//	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	widgets_->addWidget(wid);
+//	mozaic_->addWidget(wid);
+//	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
 //					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 8. BorneElectrique Widget
-//	wid = new BorneElectriqueWidget(mozaic_);
-//	wid->init();
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+	wid = new BorneElectriqueWidget();
+	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	wid->setLayout(wid->getMozaicLayout());
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	//  9. Pharmacie Widget
-    wid = new PharmacieWidget(mozaic_);
-    wid->init();
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+//	wid = new PharmacieWidget();
+//	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	widgets_->addWidget(wid);
+//	mozaic_->addWidget(wid);
+//	connect(ordonnanceur_, SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),
+//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	//  10. Meteo Widget
-    wid = new MeteoWidget(mozaic_);
-    wid->init();
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+//	wid = new SncfWidget();
+//	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	widgets_->addWidget(wid);
+//	mozaic_->addWidget(wid);
+//	connect(ordonnanceur_, SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),
+//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 //  11. Pollution Widget
-    wid = new pollutionwidget(mozaic_);
-    wid->init();
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
+//	wid = new pollutionwidget();
+//	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+//	widgets_->addWidget(wid);
+//	mozaic_->addWidget(wid);
+//	connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
+//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 }
 
 bool						MainWindow::init()
 {
+//	setWindowState(Qt::WindowFullScreen);
 	mozaic_->init();
+	timer_->setInterval(1000);
+	timer_->start();
 	initWidgets();
 
-	timer_->setInterval(5000);
+	srand(time(NULL));
+
+	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
+
+	setLayout(new QHBoxLayout(this));
+
+//	layout()->addWidget(mozaic_);
+	layout()->addWidget(widgets_);
 
 
-	timer_->start();
+
+	return (true);
+}
+
+bool				MainWindow::show()
+{
+	QWidget::show();
+
+	widgets_->show();
 	mozaic_->show();
 	ordonnanceur_->run();
 
@@ -178,4 +213,31 @@ bool				MainWindow::run()
 bool				MainWindow::end()
 {
     return (true);
+}
+
+void				MainWindow::changeWidget()
+{
+	int				nbWidgets;
+	int				idx;
+
+	nbWidgets = widgets_->count();
+	idx = rand() % nbWidgets;
+
+/*
+	if (idx == nbWidgets)
+		{
+			hide();
+			mozaic_->show();
+		}
+	else
+		{
+			widgets_->setCurrentIndex(idx);
+			show();
+			mozaic_->hide();
+		}
+*/
+
+	qDebug() << "ChangeWidget() ---> nbWidgets = " << nbWidgets << "idx = " << idx;
+	widgets_->setCurrentIndex(idx);
+
 }
