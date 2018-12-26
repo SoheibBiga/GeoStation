@@ -23,7 +23,7 @@ void PharmacieMozaicWidget::receive_info(QMap<QString, QString> map_formulare)
 
 void PharmacieMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-    CherchePhotos* cherchePhotos = new CherchePhotos("Musée du Louvre", 4, nullptr, nullptr);
+    CherchePhotos* cherchePhotos = new CherchePhotos("Musée du Louvre", 4/*, nullptr, nullptr*/);
     QPixmap photoPixmap = * (cherchePhotos->getPhoto());
 
     int w =ui->label_photo->width();

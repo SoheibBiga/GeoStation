@@ -2,12 +2,12 @@
 
 // Le mode d'emploi de la classe se trouve dans cherchephotos.h
 
-CherchePhotos::CherchePhotos(QString texteRecherche, int combientieme, ordonnanceur *ord_, QObject *parent)
-    : AbstractApi(IdWidget(Photo), ord_, parent)
-    , texteRecherche(texteRecherche)
+CherchePhotos::CherchePhotos(QString texteRecherche, int combientieme/*, ordonnanceur *ord_, QObject *parent*/)
+    : /*AbstractApi(IdWidget(Photo), ord_, parent)
+    , */texteRecherche(texteRecherche)
     , combientieme(combientieme)
 {
-    manager_json = new QNetworkAccessManager(this);
+    manager_json = new QNetworkAccessManager(/*this*/);
 
     //url_json = QUrl("https://serpapi.com/search?q=" + texteRecherche + "&tbm=isch");
     //QString strURL = "https://api.qwant.com/egp/search/images?q=" + texteRecherche + "&start=" + QString::number(combientieme) ;
@@ -43,7 +43,7 @@ void CherchePhotos::jsonFinished(QNetworkReply* )
                     .toObject() ["result"]
                         .toObject() ["items"] ;
 
-    manager_photo = new QNetworkAccessManager(this);
+    manager_photo = new QNetworkAccessManager(/*this*/);
     QString strUrl = images[0]["media"].toString() ;
     loop_json.exit() ;
 
@@ -120,6 +120,6 @@ QPixmap* CherchePhotos::getPhoto()
 
 
 
-bool CherchePhotos::isMap(){
+/*bool CherchePhotos::isMap(){
     return true;
-}
+}*/

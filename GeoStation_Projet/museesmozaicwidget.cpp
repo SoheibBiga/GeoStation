@@ -55,8 +55,9 @@ void MuseesMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         //photo = var.value<QPixmap*>() ;
         //photo = map_ameliore["photo"].value<QPixmap*>() ;
         //photo = map_ameliore["photo"].value<"qpixmap">() ;
-        ui->label_photo->setPixmap(*photo);
-        ajusteTaillePhoto() ;
+
+        //ui->label_photo->setPixmap(*photo);
+        //ajusteTaillePhoto() ;
 }
 
 
