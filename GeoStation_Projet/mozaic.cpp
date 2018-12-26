@@ -22,9 +22,14 @@ bool				Mozaic::contentMap() const
 	return (false);
 }
 
-bool				Mozaic::hasMozaicLayout() const
+bool				Mozaic::hasMainLayout() const
 {
 	return (false);
+}
+
+bool				Mozaic::hasMozaicLayout() const
+{
+	return (true);
 }
 
 
@@ -43,9 +48,16 @@ bool				Mozaic::init()
 	return (true);
 }
 
+bool				Mozaic::show()
+{
+	QWidget::show();
+	setWindowState(Qt::WindowFullScreen);
+
+	return (true);
+}
+
 bool				Mozaic::run()
 {
-	qDebug() << "[ DBG ] : run";
 	return (true);
 }
 
@@ -54,9 +66,10 @@ bool				Mozaic::end()
 	return (true);
 }
 
-void				Mozaic::addWidget(QWidget* widget)
+void					Mozaic::addWidget(QWidget* widget)
 {
-    AWidget* wid;
+		AWidget*	wid;
+
     wid = reinterpret_cast<AWidget*>(widget);
 		if(vLayout1_->count() > vLayout2_->count())
 			vLayout2_->addLayout(wid->getMozaicLayout());
