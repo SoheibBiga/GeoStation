@@ -148,6 +148,12 @@ painter.drawPoints(pointsSurLesAxes,i1+3);
 painter.setPen(penText);
 
 painter.drawText(QPoint(0,hauteurwidget),datedebut.toString(formatdateaxe));
+
+QRect rectangle = QRect(0, 0, hauteurwidget, largeurwidget);
+//painter.drawText(rect, Qt::AlignRight|Qt::AlignBottom, datefin.toString(formatdateaxe)));
+//painter.drawText(rect, Qt::AlignRight, "datefin.toString(formatdateaxe)");
+//painter.drawText(rect(),Qt::AlignRight|Qt::AlignBottom,tr(datefin.toString(formatdateaxe).to()));
+
 painter.drawText(QPoint(largeurgraphique*0.93,hauteurwidget),datefin.toString(formatdateaxe));
 QString hauteur;
 hauteur.setNum(hauteurMax,'g',6);
