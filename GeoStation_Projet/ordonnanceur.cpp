@@ -39,7 +39,7 @@ void ordonnanceur::run()
     sncf_timer->start(1);
     evenement_timer->start(1);
     pharmacie_timer->start(1);
-    //geolocalisation_timer->start(1);
+    geolocalisation_timer->start(1);
     //evenement_timer->start(1);
     //vigicrues_timer->start(1);
     //avions_timer->start(1);
