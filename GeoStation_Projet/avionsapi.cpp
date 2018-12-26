@@ -652,7 +652,7 @@ void avionsapi::readplane_type()
 
             if (line.contains(plane_code))
             {
-                qDebug()<<"YES it does contains the airport code"<<endl;
+
                 if (plane_code=="")
                 {
                     plane_model_name = "Empty data";
@@ -664,10 +664,6 @@ void avionsapi::readplane_type()
 
                 int index1 = line.indexOf("\t");
                 //                int index1 = line.lastIndexOf("\t");
-                //                qDebug()<<"the space character is located at postion"<<index1<<endl;
-                //                qDebug()<<"the last character is located at postion"<<line.size()  <<endl;
-                //                qDebug()<<"the last character is "<<line[line.size()-1]  <<endl;
-                //qDebug()<<"the space character is "<<line[index1]  <<endl;  // curious what this returns
 
                 int after_space = index1 + 1;
                 int length = line.size()-after_space;
@@ -675,9 +671,6 @@ void avionsapi::readplane_type()
                 QStringRef plane_model(&line ,after_space, length);
 
                 //QStringRef subString(line);
-                qDebug()<<"this is the content of "<<line<<"after the space"<<plane_model<<endl;
-                // qDebug()<<"here is the substring"<<subString<<endl;
-                //qDebug()<<" the space character is located at position "<<  subString.indexOf("\n", 0)<<endl;
 
                 plane_model_name = plane_model.toString();
 
@@ -720,9 +713,6 @@ void avionsapi::calculatedistance()
     double ref_lati = (lat_max.toDouble() + lat_min.toDouble()  )/2;
 
 
-   // qDebug()<<"CALCULATE DISTANCE"<<endl;
-
-
     double longitude = single_plane_array[5].toDouble();
     double latitude = single_plane_array[6].toDouble();
 
@@ -747,13 +737,6 @@ void avionsapi::calculatedistance()
 
     QString string_alti = QString::number(altitude);
 
-
-    //    qDebug()<<"pour l'avion dont l'ICAO est"<<ICAO24<<endl;
-    //    qDebug()<<"l'angle est de"<<angle_distance<<endl;
-    //    qDebug()<<"la distance en chiffre"<<km_dist<<endl;
-
-    //    qDebug()<<"la distance en string "<<distance<<endl;
-    //    qDebug()<<"l'altitude "<<altitude<<endl;
 
 
     write_APi1_info.append("pour l'avion dont l'ICAO est "+ICAO24+"   \n");
