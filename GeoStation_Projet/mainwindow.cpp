@@ -71,6 +71,7 @@ MainWindow::~MainWindow()
  */
 void						MainWindow::initWidgets()
 {
+
 	AWidget*			wid;
 /*
 	// 1. Geolocalisation Widget
@@ -160,8 +161,8 @@ void						MainWindow::initWidgets()
 // wid->setLayout(wid->getMainLayout());
  widgets_->addWidget(wid);
  mozaic_->addWidget(wid);
- connect(ordonnanceur_, SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),
-				 wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+ connect(ordonnanceur_, SIGNAL(vigicrues_send_info(QMap<QString,QString>)),
+                 wid, SIGNAL(send_info(QMap<QString,QString>)));
 
  // 11. Musees Widget
 	wid = new MuseesWidget();

@@ -44,11 +44,11 @@ void tableauwidget::repeat()
     timer->start(10000);
 }
 
-void tableauwidget::TimerFunction(QMap<QString, QVariant> map, int index)
+void tableauwidget::TimerFunction(QMap<QString, QVariant> map, bool mozaic, int index)
 {
 
-    //   if(mozaic)
-    //   {
+//  if(mozaic)
+//   {
 
     QStringList vlabels;
     int nb_row = map["Tableau"].toList().at(0).toMap().keys().size();
@@ -81,8 +81,12 @@ void tableauwidget::TimerFunction(QMap<QString, QVariant> map, int index)
         ui->tableWidget->setItem(i, 1, item);
 
     }
+//  }
+//  else
+//  {
+
+//  }
+
+
 }
-
-
-//}
 
