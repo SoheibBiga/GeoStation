@@ -19,12 +19,12 @@ PharmacieMozaicWidget::~PharmacieMozaicWidget()
 
 
 void PharmacieMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
-{    
-    //qDebug() << "ok receive info pharmacie";
-    //qDebug() << map_ameliore["Tableau"].toList().at(0).toMap()["Nom"].toString();
-    QPixmap *photoPixmap;
-    photoPixmap = new QPixmap(":/Images/enseignePharmacie.png");
+{
+//    CherchePhotos* cherchePhotos = new CherchePhotos("Musée du Louvre", 4/*, nullptr, nullptr*/);
+//    QPixmap photoPixmap = * (cherchePhotos->getPhoto());
 
+    QPixmap *photoPixmap;
+    photoPixmap= new QPixmap(":/Images/enseignePharmacie.png");
     int w =ui->label_photo->width();
     int h = ui->label_photo->height();
 

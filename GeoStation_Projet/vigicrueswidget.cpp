@@ -1,14 +1,13 @@
 #include "vigicrueswidget.h"
 
-
-
 Vigicrueswidget::Vigicrueswidget(QWidget *parent) :
     AWidget(parent)
 {
     vigicruesmosaicwidget = new Vigicruesmosaicwidget();
     mozaicLayout_ = new QHBoxLayout();
     mozaicLayout_->addWidget(vigicruesmosaicwidget);
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),vigicruesmosaicwidget,SLOT(receive_info(QMap<QString,QString>)));
+    connect(this,SIGNAL(send_info(QMap<QString,QString>)),vigicruesmosaicwidget,
+            SLOT(receive_info(QMap<QString,QString>)));
 }
 
 Vigicrueswidget::~Vigicrueswidget()
