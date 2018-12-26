@@ -13,7 +13,8 @@ MuseesApi::MuseesApi(ordonnanceur *ord_, QObject *parent)
             + "+%2C+"
             + QString::number(longitude)
             + "%2C+"
-            + QString::number(radius)
+            //+ QString::number(radius)
+            + "5000"
             + "&rows=100" ;
     QUrl url = QUrl(strURL );
 
