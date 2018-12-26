@@ -22,7 +22,7 @@ private:
     QTimer *timer;
     int map_size,NextEvent;
     QMap<QString, QVariant> data_map;
-    void TimerFunction(QMap<QString, QVariant> map, int index=0);
+    void TimerFunction(QMap<QString, QVariant> map, bool mozaic = true, int index=0);
 
 private slots:
    void repeat();
