@@ -1,0 +1,47 @@
+{
+    "error": "No Record Found or Flight not currently detected by receivers. "
+}
+[
+    {
+        "aircraft": {
+            "iataCode": "B738",
+            "icao24": "4CA8E8",
+            "icaoCode": "B738",
+            "regNumber": "EIENW"
+        },
+        "airline": {
+            "iataCode": "FR",
+            "icaoCode": "RYR"
+        },
+        "arrival": {
+            "iataCode": "AGP",
+            "icaoCode": "LEMG"
+        },
+        "departure": {
+            "iataCode": "TRF",
+            "icaoCode": "ENTO"
+        },
+        "flight": {
+            "iataNumber": "FR2564",
+            "icaoNumber": "RYR2564",
+            "number": "2564"
+        },
+        "geography": {
+            "altitude": 11270,
+            "direction": 206,
+            "latitude": 49.8653,
+            "longitude": 3.1621
+        },
+        "speed": {
+            "horizontal": 800.064,
+            "isGround": 0,
+            "vertical": 0
+        },
+        "status": "en-route",
+        "system": {
+            "squawk": "730",
+            "updated": "1545836352"
+        }
+    }
+]
+

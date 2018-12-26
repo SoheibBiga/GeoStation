@@ -1,0 +1,44 @@
+[
+    {
+        "aircraft": {
+            "iataCode": "A319",
+            "icao24": "4CA8F0",
+            "icaoCode": "A319",
+            "regNumber": "EIIMO"
+        },
+        "airline": {
+            "iataCode": "AZ",
+            "icaoCode": "AZA"
+        },
+        "arrival": {
+            "iataCode": "CDG",
+            "icaoCode": "LFPG"
+        },
+        "departure": {
+            "iataCode": "LIN",
+            "icaoCode": "LIML"
+        },
+        "flight": {
+            "iataNumber": "AZ312",
+            "icaoNumber": "AZA312",
+            "number": "312"
+        },
+        "geography": {
+            "altitude": 0,
+            "direction": 85.56,
+            "latitude": 48.9926,
+            "longitude": 2.559
+        },
+        "speed": {
+            "horizontal": 215.46,
+            "isGround": 0,
+            "vertical": -11.7
+        },
+        "status": "en-route",
+        "system": {
+            "squawk": "730",
+            "updated": "1545836560"
+        }
+    }
+]
+

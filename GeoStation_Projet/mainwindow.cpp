@@ -115,13 +115,13 @@ void						MainWindow::initWidgets()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 		// 6. Avions Widget
-//	wid = new AvionsWidget();
-//	wid->init();
-//	wid->setLayout(wid->getMainLayout());
-//	widgets_->addWidget(wid);
-//	mozaic_->addWidget(wid);
-//	connect(ordonnanceur_, SIGNAL(send_info2(QMap<QString,QVariant>)),
-//					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new AvionsWidget();
+    wid->init();
+    wid->setLayout(wid->getMainLayout());
+    widgets_->addWidget(wid);
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 7. Vigicrue Widget
 //	wid = new Vigicrueswidget();
@@ -181,7 +181,7 @@ bool						MainWindow::init()
 
 	srand(time(NULL));
 
-	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
+    //connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
 
 	setLayout(new QHBoxLayout(this));
 
@@ -200,7 +200,7 @@ bool				MainWindow::show()
 	ordonnanceur_->run();
 
 //	widgets_->show();
-//	mozaic_->show();
+    mozaic_->show();
 
 	return (true);
 }

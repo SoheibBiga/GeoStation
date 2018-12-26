@@ -25,6 +25,7 @@ avionsapi::avionsapi(ordonnanceur *ord_, QObject *parent) : AbstractApi(ord_, pa
 
     manager->get(QNetworkRequest(QUrl(construct_URL)));
 
+    QDir().mkdir("../" +output_folder);
 
 }
 
@@ -37,27 +38,6 @@ void avionsapi::change_coordinates()
 {
     //contenu placé dans le constructeur
 
-
-
-}
-
-
-void avionsapi::query_APi2()
-{
-
-
-    API_key =  "26fe8c-b14861";
-
-    URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24="+ICAO24);
-
-
-
-
-    write_Info_APi2.append("Au moment de la requete de l'API2 notre ICAO24 est "+ICAO24+"     \n");
-
-    manager_singleplane->get(QNetworkRequest(QUrl(URL_singleplane)));
-
-    delay(1000);
 
 
 }
@@ -81,6 +61,26 @@ void avionsapi::affiche_erreurs( QNetworkReply* , QList<QSslError> list  )
 
 }
 
+void avionsapi::query_APi2()
+{
+
+
+    API_key =  "26fe8c-b14861";
+
+    URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24="+ICAO24);
+
+    write_Info_APi2.append("Au moment de la requete de l'API2 notre ICAO24 est "+ICAO24+"     \n");
+
+    manager_singleplane->get(QNetworkRequest(QUrl(URL_singleplane)));
+
+    delay(1000);
+
+
+}
+
+
+
+
 void avionsapi::replyApi1(QNetworkReply*  reply)
 {
     QByteArray response_data = reply->readAll();
@@ -102,7 +102,8 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
 
 
     QString num = QString::number(list_planes_array.count() );
-    //qDebug()<< "voila num "<<num<<endl;
+
+
 
     QString nombreavions = ("Nous avons détecté "+ num + " avions commerciaux dans cette zone ");
 
@@ -113,6 +114,24 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
     write_first_requete.append("\n");
 
     write_first_requete.append(strJson);
+
+    QString filename=( "../"+output_folder+"APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+    QFile file( filename );
+    if ( file.open(QIODevice::ReadWrite) )
+    {
+        QTextStream stream(&file);
+        stream << write_first_requete << endl;
+    }
+
+
+    if (list_planes_array.count()==0)
+    {
+        add_titre("Vols");
+        element.insert("pas d'avions", "première requete vide");
+        envoiverswidget();
+        //return;
+
+    }
 
 
 
@@ -137,10 +156,6 @@ void avionsapi::parseplanelist()
 
     for (int i = 0; i< list_planes_array.count(); i++)
     {
-        //qDebug()<<"VOICI UN ELEMENT DE LA QJSONARRAY"<<endl;
-        qDebug()<<"                                     "<<endl;
-        //qDebug()<<list_planes_array[i]<<endl;
-
 
         single_plane_array  = list_planes_array[i].toArray();
 
@@ -152,8 +167,10 @@ void avionsapi::parseplanelist()
         view_airlinecompanies();
         write_APi1_info.append("L'avion du vol "+flight_number+ " de companie aerienne "+airline_name+" \n");
 
+        add_titre(QString("Vol " +flight_number));
 
-        add_titre(QString("Vol "+ flight_number));
+
+
         //velocity is index9
         //altitude is index 13
         //calculatedistance();
@@ -178,18 +195,15 @@ void avionsapi::parseplanelist()
     }
 
 
-    //    QString filename=( "../"+output_folder+"Info_APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-    //    QFile file( filename );
-    //    if ( file.open(QIODevice::ReadWrite) )
-    //    {
-    //        QTextStream stream(&file);
-    //        stream << write_APi1_info << endl;
-    //    }
+        QString filename=( "../"+output_folder+"Info_APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+        QFile file( filename );
+        if ( file.open(QIODevice::ReadWrite) )
+        {
+            QTextStream stream(&file);
+            stream << write_APi1_info << endl;
+        }
+        else qDebug() <<" ON a pa ecrit API1"<<endl;
 
-
-
-
-    //ui->label_airlines->setText(text_for_ailines);
 
     timeEnd = QDateTime::currentDateTime();
 
@@ -227,14 +241,6 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
     requete_singleplane.append(strJson);
 
 
-    //    QString filename=( QDir::homePath()+ "/Documents/WILLIAM/Embarque/project/"+output_folder+"/APi2"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-    //    QFile file( filename );
-    //    if ( file.open(QIODevice::ReadWrite) )
-    //    {
-    //        QTextStream stream(&file);
-    //        stream << requete_singleplane << endl;
-    //    }
-
 
     if (json.isArray())
     {
@@ -271,12 +277,20 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         readplane_type();
 
         write_Info_APi2.append(QString("L'avion de modele "+ plane_model_name +" a pour provenance") );
-        element.insert("Modele", plane_model_name);
+
+        if(plane_model_name != "")
+        {
+            element.insert("Modele", plane_model_name);
+
+        }
 
         airport_code  = departure_string_icao;
 
         readairports();
-        element.insert("Provenance", airport_name);
+        if (airport_name != "")
+        {
+            element.insert("Provenance", airport_name);
+        }
 
 
         write_Info_APi2.append(QString(" l'aeroport "+ airport_name +" et a pour destination ") );
@@ -284,17 +298,17 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         airport_code  = arrival_string_icao;
 
         readairports();
-        element.insert("Destination", airport_name);
 
-
+        if (airport_name != "")
+        {
+            element.insert("Destination", airport_name);
+        }
 
 
         write_Info_APi2.append(QString("l'aeroport "+ airport_name +" \n") );
         write_Info_APi2.append(QString("DE plus on verifie que "+ ICAO24 + " C'est bien "+aircraft_icao24+"  \n") );
 
         write_Info_APi2.append("\n");
-
-
 
 
     }
@@ -305,12 +319,27 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 
         QJsonObject plane_object = json.object();
 
-
-
         write_Info_APi2.append(QString("COULD NOT RETRIEVE INFORMATION FOR THIS PLANE///////////////") );
         element.insert("Modele", QString("COULD NOT RETRIEVE INFORMATION FOR THIS PLANE///////////////") );
 
 
+    }
+
+
+    QString filename=( "../"+output_folder+"/APi_2"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+    QFile file( filename );
+    if ( file.open(QIODevice::ReadWrite) )
+    {
+        QTextStream stream(&file);
+        stream << requete_singleplane << endl;
+    }
+
+    filename=( "../"+output_folder+"/INfosAPi_2"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+    QFile file2( filename );
+    if ( file.open(QIODevice::ReadWrite) )
+    {
+        QTextStream stream(&file);
+        stream << write_Info_APi2 << endl;
     }
 
     envoiverswidget();
@@ -644,7 +673,7 @@ void avionsapi::readplane_type()
 
 QString avionsapi::calculatedistance()
 {
-	/*
+
     double ref_longi =   (longi_max.toDouble() +longi_min.toDouble() )/2 ;
     double ref_lati = (lat_max.toDouble() + lat_min.toDouble()  )/2;
 
@@ -683,9 +712,6 @@ QString avionsapi::calculatedistance()
     return (distance);
 
 
-*/
-
-
 
 
 
@@ -711,10 +737,10 @@ void avionsapi::envoiverswidget()
 
     add_list(element);
 
-   // qDebug() << "insert tab + para ok";
+    // qDebug() << "insert tab + para ok";
     map_ameliore.insert("Tableau",QVariant(tableau));
     map_ameliore.insert("Parametre",QVariant(parametre));
     emit avions_send_info2(map_ameliore);
-    finish(0);
+    finish(1);
 
 }

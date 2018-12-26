@@ -52,7 +52,7 @@ private:
 
     QString lat_min = "48.9";
     QString lat_max = "49";
-    QString longi_min = "2.5";
+    QString longi_min = "2.55";
     QString longi_max = "2.75";
     QString construct_URL;
     QString URL_singleplane;
