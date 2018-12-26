@@ -50,9 +50,9 @@ private:
     QNetworkAccessManager *manager_singleplane;
     QList<QSslError> list;
 
-    QString lat_min = "48.85";
-    QString lat_max = "49.05";
-    QString longi_min = "2.45";
+    QString lat_min = "48.9";
+    QString lat_max = "49";
+    QString longi_min = "2.5";
     QString longi_max = "2.75";
     QString construct_URL;
     QString URL_singleplane;
@@ -80,13 +80,18 @@ private:
     QString airline_name;
 
     QMap<QString,QVariant> element;
+//    QMap<QString,QVariant> info_APi1;
+//    QMap<QString,QVariant> info_APi2;
+
+   QList<QString> info_APi1;
+
 
     void readairports();
     void readplane_type();
     void view_airlinecompanies();
 
 
-    void calculatedistance();
+    QString calculatedistance();
 
     void envoiverswidget();
 
