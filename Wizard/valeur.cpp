@@ -93,15 +93,14 @@ bool    Valeur::checkValue() const
     double latitude = latitude_edit->text().toDouble();
     double longitude = longitude_edit->text().toDouble();
     double rayon = rayon_edit->text().toDouble();
+
     error->setText("");
     if (rayon > 1000000)
-        error->setText(error->text().append("Votre rayon est beaucoup trop grand. Il doit etre inferieur à 50.\n"));
+        error->setText(error->text().append("Votre rayon est beaucoup trop grand. Il doit etre inferieur à 1 000 000.\n"));
     if (latitude < -90 || latitude > 90)
         error->setText(error->text().append("La latitude doit etre comprise entre -90 et 90.\n"));
     if (longitude < -180 || longitude > 180)
         error->setText(error->text().append("La longitude doit etre comprise entre -180 et 180.\n"));
-    //else {
-      //  error->setText("");
-    //}
+
     return (true);
 }
