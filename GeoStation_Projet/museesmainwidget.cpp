@@ -24,43 +24,56 @@ void MuseesMainWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         ui->label_nomMusee->setWordWrap(true);
         ui->label_nomMusee->setAlignment(Qt::AlignCenter);
 
-        if ( ! map_ameliore.contains("adresse")  ){
+        if ( map_ameliore.contains("adresse")  ){
             ui->gauche_adresse->setPixmap(QPixmap(QString::fromUtf8(":/Icons/adresse.svg")));
             ui->droite_adresse->setText ( map_ameliore["adresse"].toString());
             ui->droite_adresse->setWordWrap(true);
         }
-        if ( ! map_ameliore.contains("horaires") ){
+        else {
+            ui->gauche_adresse->hide() ;
+            ui->droite_adresse->hide() ;
+        }
+
+        if ( map_ameliore.contains("horaires") ){
             ui->gauche_horaires->setPixmap(QPixmap(QString::fromUtf8(":/Icons/horaires.svg")));
             ui->droite_horaires->setText ( map_ameliore["horaires"].toString());
             ui->droite_horaires->setWordWrap(true);
         }
-        if ( ! map_ameliore.contains("fermeture") ){
+        else {
+            ui->gauche_horaires->hide() ;
+            ui->droite_horaires->hide() ;
+        }
+
+        if ( map_ameliore.contains("fermeture") ){
             ui->gauche_fermeture->setPixmap(QPixmap(QString::fromUtf8(":/Icons/fermeture.svg")));
             ui->droite_fermeture->setText ( map_ameliore["fermeture"].toString());
             ui->droite_fermeture->setWordWrap(true);
         }
-        if ( ! map_ameliore.contains("nocturnes") ){
+        else {
+            ui->gauche_fermeture->hide() ;
+            ui->droite_fermeture->hide() ;
+        }
+
+        if ( map_ameliore.contains("nocturnes") ){
             ui->gauche_nocturnes->setPixmap(QPixmap(QString::fromUtf8(":/Icons/nocturnes.svg")));
             ui->droite_nocturnes->setText ( map_ameliore["nocturnes"].toString());
             ui->droite_nocturnes->setWordWrap(true);
         }
+        else {
+            ui->gauche_nocturnes->hide() ;
+            ui->droite_nocturnes->hide() ;
+        }
 
-        // Affichage de la photo :
-        //double doublePhoto = map_ameliore["photo"] . toDouble();
-        long long doublePhoto = map_ameliore["photo1"] . toLongLong();
-        photo_1 = (QPixmap*) doublePhoto ;
-        //qRegisterMetaType<QPixmap*>("qpixmap") ;
-        //QVariant var = map_ameliore["photo"] ;
-        //bool b = var.canConvert<QPixmap>() ;
-        //photo = var.value<QPixmap*>() ;
-        //photo = map_ameliore["photo"].value<QPixmap*>() ;
-        //photo = map_ameliore["photo"].value<"qpixmap">() ;
-        doublePhoto = map_ameliore["photo2"] . toLongLong();
-        photo_2 = (QPixmap*) doublePhoto ;
-        doublePhoto = map_ameliore["photo3"] . toLongLong();
-        photo_3 = (QPixmap*) doublePhoto ;
-        doublePhoto = map_ameliore["photo4"] . toLongLong();
-        photo_4 = (QPixmap*) doublePhoto ;
+
+        // Affichage des photos :
+        long long doublePhoto1 = map_ameliore["photo1"] . toLongLong();
+        photo1 = reinterpret_cast <QPixmap*> (doublePhoto1) ;
+        long long doublePhoto2 = map_ameliore["photo2"] . toLongLong();
+        photo2 = reinterpret_cast <QPixmap*> (doublePhoto2) ;
+        long long doublePhoto3 = map_ameliore["photo3"] . toLongLong();
+        photo3 = reinterpret_cast <QPixmap*> (doublePhoto3) ;
+        long long doublePhoto4 = map_ameliore["photo4"] . toLongLong();
+        photo4 = reinterpret_cast <QPixmap*> (doublePhoto4) ;
 
         ajusteTaillesPhoto() ;
 }
@@ -71,25 +84,25 @@ void MuseesMainWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 void MuseesMainWidget::ajusteTaillesPhoto()
 {
     // get label dimensions
-    int w1 = ui->photo1->width();
-    int h1 = ui->photo1->height();
-    int w2 = ui->photo2->width();
-    int h2 = ui->photo2->height();
-    int w3 = ui->photo3->width();
-    int h3 = ui->photo3->height();
-    int w4 = ui->photo4->width();
-    int h4 = ui->photo4->height();
+    int w1 = ui->label_photo1->width();
+    int h1 = ui->label_photo1->height();
+    int w2 = ui->label_photo2->width();
+    int h2 = ui->label_photo2->height();
+    int w3 = ui->label_photo3->width();
+    int h3 = ui->label_photo3->height();
+    int w4 = ui->label_photo4->width();
+    int h4 = ui->label_photo4->height();
 
     // set a scaled pixmap to a w x h window keeping its aspect ratio
-    ui->photo1->setPixmap((*photo_1).scaled(w1,h1,Qt::KeepAspectRatio));
-    ui->photo2->setPixmap((*photo_2).scaled(w2,h2,Qt::KeepAspectRatio));
-    ui->photo3->setPixmap((*photo_3).scaled(w3,h3,Qt::KeepAspectRatio));
-    ui->photo4->setPixmap((*photo_4).scaled(w4,h4,Qt::KeepAspectRatio));
+    ui->label_photo1->setPixmap((*photo1).scaled(w1,h1,Qt::KeepAspectRatio));
+    ui->label_photo2->setPixmap((*photo2).scaled(w2,h2,Qt::KeepAspectRatio));
+    ui->label_photo3->setPixmap((*photo3).scaled(w3,h3,Qt::KeepAspectRatio));
+    ui->label_photo4->setPixmap((*photo4).scaled(w4,h4,Qt::KeepAspectRatio));
 
-    ui->photo1->setAlignment(Qt::AlignCenter);
-    ui->photo2->setAlignment(Qt::AlignCenter);
-    ui->photo3->setAlignment(Qt::AlignCenter);
-    ui->photo4->setAlignment(Qt::AlignCenter);
+    ui->label_photo1->setAlignment(Qt::AlignCenter);
+    ui->label_photo2->setAlignment(Qt::AlignCenter);
+    ui->label_photo3->setAlignment(Qt::AlignCenter);
+    ui->label_photo4->setAlignment(Qt::AlignCenter);
 }
 
 

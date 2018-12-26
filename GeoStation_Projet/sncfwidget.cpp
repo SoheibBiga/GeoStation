@@ -6,14 +6,17 @@ SncfWidget::SncfWidget(QWidget *parent) :
     sncf_mozaic_widget = new SncfMozaicWidget();
     mozaicLayout_ = new QHBoxLayout();
     mozaicLayout_->addWidget(sncf_mozaic_widget);
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),sncf_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
-    connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
+
     sncf_main_widget = new SncfMainWidget();
     mainLayout_ = new QHBoxLayout();
+    mainLayout_->addWidget(sncf_main_widget);
+    connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
 }
 
 SncfWidget::~SncfWidget()
 {
+    delete sncf_mozaic_widget;
+    delete sncf_main_widget;
 }
 
 bool				SncfWidget::contentMap() const

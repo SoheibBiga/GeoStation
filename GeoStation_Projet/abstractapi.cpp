@@ -1,24 +1,42 @@
 #include "abstractapi.h"
 #include "ordonnanceur.h"
 
-/*AbstractApi::AbstractApi(QObject *parent) : QObject(parent)
+
+AbstractApi::AbstractApi()
+    : QObject(),
+      ord(Q_NULLPTR),
+      loop(Q_NULLPTR),
+      manager(Q_NULLPTR)
+{}
+
+AbstractApi::AbstractApi(AbstractApi const& other)
+    : QObject(),
+      ord(other.ord),
+      loop(other.loop),
+      longitude(other.longitude),
+      latitude(other.latitude),
+      radius(other.radius),
+      manager(other.manager)
+{}
+
+AbstractApi& AbstractApi::operator=(AbstractApi const& other)
 {
+    ord = other.ord;
+    loop = other.loop;
+    longitude = other.longitude;
+    latitude = other.latitude;
+    radius = other.radius;
+    manager = other.manager;
+    return (*this);
+}
 
-}*/
-
-
-AbstractApi::AbstractApi(int myId, ordonnanceur *ord_, QObject *parent, QString longitude_, QString latitude_, QString radius_)
+AbstractApi::AbstractApi(ordonnanceur *ord_, QObject *parent, QString longitude_, QString latitude_, QString radius_)
     : QObject(parent),
       ord(ord_),
-      Id(myId),
-      longitude(longitude_.toDouble()),
-      latitude(latitude_.toDouble()),
-      radius(radius_.toDouble())
+      loop(Q_NULLPTR),
+      manager(Q_NULLPTR)
 {
     manager = new QNetworkAccessManager(parent);
-
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),ord,SIGNAL(send_info(QMap<QString,QString>)));
-    connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(evenement_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(evenement_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(avions_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(avions_send_info2(QMap<QString,QVariant>)));
@@ -32,18 +50,30 @@ AbstractApi::AbstractApi(int myId, ordonnanceur *ord_, QObject *parent, QString 
     connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
 
     loop = new QEventLoop(parent);
-    QSettings settings_coord;
-    if(settings_coord.value("Coord/Longitude")=="" || settings_coord.value("Coord/Latitude")=="" || settings_coord.value("Coord/Radius")=="")
+    QSettings settings_coord ("Geostation", "Geostation");
+    if(settings_coord.value("coordonnee/longitude").toString().isEmpty())
     {
-        settings_coord.setValue("Coord/Longitude",longitude_);
-        settings_coord.setValue("Coord/Latitude",latitude_);
-        settings_coord.setValue("Coord/Radius",radius_);
+        longitude = longitude_.toDouble();
+        latitude = latitude_.toDouble();
+        radius = radius_.toDouble();
+    }
+    else {
+        longitude = settings_coord.value("coordonnee/longitude").toDouble();
+        latitude = settings_coord.value("coordonnee/latitude").toDouble();
+        radius = settings_coord.value("coordonnee/rayon").toDouble();
     }
 }
 
-void AbstractApi::finish(bool work)
+AbstractApi::~AbstractApi()
 {
-    loop->exit(work);
+    delete loop;
+    delete manager;
+    delete ord;
+}
+
+void AbstractApi::finish(bool error)
+{
+    loop->exit(error);
 }
 
 void AbstractApi::add_list(QMap<QString, QVariant> element)

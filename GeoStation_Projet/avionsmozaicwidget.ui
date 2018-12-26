@@ -13,23 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QTextEdit" name="textEdit"/>
-     </item>
-     <item>
-      <widget class="tableauwidget" name="tableWidget"/>
-     </item>
-    </layout>
+    <widget class="tableauwidget" name="tableWidget"/>
    </item>
   </layout>
  </widget>
@@ -37,7 +23,7 @@
   <customwidget>
    <class>tableauwidget</class>
    <extends>QTableWidget</extends>
-   <header>tableauwidget.h</header>
+   <header location="global">tableauwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

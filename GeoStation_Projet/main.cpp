@@ -1,16 +1,19 @@
 #include "mainwindow.h"
 #include <QApplication>
-//#include <QMap>
-//#include <QVariant>
-//#include <QVariantMap>
-#include "pharmaciewidget.h"
-#include "sncfwidget.h"
-#include "awidget.h"
-int main(int argc, char *argv[])
+
+int								main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
+	QApplication		a(argc, argv);
+    QApplication::setOrganizationName("Geostation");
+    QApplication::setOrganizationDomain("Geostation");
+    QApplication::setApplicationName("Geostation");
+	MainWindow			w;
+	int							ret;
+
     w.init();
-    //w.show();
-    return a.exec();
+		w.show();
+		ret = a.exec();
+		w.end();
+
+		return (ret);
 }

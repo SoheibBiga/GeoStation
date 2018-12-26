@@ -19,6 +19,9 @@ public:
 
 private:
     Ui::Vigicruesmosaicwidget *ui;
+  /*  void paintEvent(QPaintEvent *p) {
+        //qDebug()<<"paint evet VIGIMO";
+    }*/
 
 
 public slots:

@@ -17,7 +17,7 @@ public:
     ~tableauwidget();
 
     bool refresh(QMap<QString, QString> map_formulaire);
-    void refresh_ameliore(QMap<QString,QVariant> map_ameliore);
+    void refresh_ameliore(QMap<QString,QVariant> map_ameliore,bool mozaic = true);
 
 private:
     Ui::tableauwidget *ui;

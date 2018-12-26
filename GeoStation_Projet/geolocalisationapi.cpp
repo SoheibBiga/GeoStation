@@ -1,12 +1,11 @@
 #include "geolocalisationapi.h"
 
-GeolocalisationApi::GeolocalisationApi(ordonnanceur *ord, QObject *parent) : AbstractApi(IdWidget(Geolocalisation), ord, parent)
+GeolocalisationApi::GeolocalisationApi(ordonnanceur *ord, QObject *parent) : AbstractApi(ord, parent)
 {
     manager = new QNetworkAccessManager(this);
 
     connect(manager, &QNetworkAccessManager::finished, this, &GeolocalisationApi::get_response, Qt::UniqueConnection);
-    manager->get(QNetworkRequest(QUrl(QString("https://www.mapquestapi.com/geocoding/v1/reverse?key=iGT3ydQS7XPt0LAjtbfk2LBioZCiUbOB&location=" + QString::number(latitude) + "," + QString::number(longitude) + "&outFormat=json&thumbMaps=false"))));
-
+    manager->get(QNetworkRequest(QUrl(QString("https://www.mapquestapi.com/geocoding/v1/reverse?key=DODjLAEshjEPsa3cTQmzMUVmv4g4zacn&location=" + QString::number(latitude) + "," + QString::number(longitude) + "&outFormat=json&thumbMaps=false"))));
     add_titre("Informations de Geolocalisation");
     add_nb_entree(1);
 }
@@ -38,7 +37,7 @@ void    GeolocalisationApi::get_response(QNetworkReply *reply)
         emit geolocalisation_send_info2(map_ameliore);
 
         disconnect(manager, &QNetworkAccessManager::finished, nullptr, nullptr);
-        manager->get(QNetworkRequest(QUrl(QString("https://www.mapquestapi.com/staticmap/v5/map?banner=" + base["street"].toString().replace(" ", "+") + "," + base["adminArea5"].toString()+ "+" + base["postalCode"].toString()  + "|sm&locations=" + base["street"].toString().replace(" ", "+") + "," + base["adminArea5"].toString() + "+" + base["postalCode"].toString().mid(0,2) + "&size=800,800@2x&key=iGT3ydQS7XPt0LAjtbfk2LBioZCiUbOB"))));
+        manager->get(QNetworkRequest(QUrl(QString("https://www.mapquestapi.com/staticmap/v5/map?banner=" + base["street"].toString().replace(" ", "+") + "," + base["adminArea5"].toString()+ "+" + base["postalCode"].toString()  + "|sm&locations=" + base["street"].toString().replace(" ", "+") + "," + base["adminArea5"].toString() + "+" + base["postalCode"].toString().mid(0,2) + "&size=800,800@2x&key=DODjLAEshjEPsa3cTQmzMUVmv4g4zacn"))));
         connect(manager, &QNetworkAccessManager::finished, this, &GeolocalisationApi::get_map, Qt::UniqueConnection);
 
     }
@@ -61,6 +60,7 @@ void    GeolocalisationApi::get_map(QNetworkReply *rep)
         map_ameliore.insert("Titre",QVariant(parametre));
         emit geolocalisation_send_info2(map_ameliore);
         finish(1);
+
     }
 }
 

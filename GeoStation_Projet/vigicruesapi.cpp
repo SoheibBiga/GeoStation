@@ -1,7 +1,7 @@
 #include "vigicruesapi.h"
 
 
-VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(IdWidget(Vigicrues), ord_, parent)
+VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_,parent)
 {
 
   // initialisation param
@@ -16,7 +16,7 @@ VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(IdWi
   elementsRequete[3] = "&geofilter.distance=";
   elementsRequete[4] = "&refine.station_id=";
   boolUnSeulAppelALafois = true;
-
+  boolAlternance = true;
 
   //manager
   manager = new QNetworkAccessManager (parent);
@@ -111,6 +111,14 @@ void VigicruesApi::traitementRequeteEnregistrements(QNetworkReply *rep)
 
      for(int i=0;i<MonJSonArray.size();i++)
       {
+
+         if(i==0){
+             map_formulaire.insert(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("lbstationhydro")).toString(), MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("lbstationhydro")).toString() );
+             map_formulaire.insert(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("dist")).toString(), MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("dist")).toString() );
+             map_formulaire.insert(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("cdcommune")).toString(), MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("cdcommune")).toString() );
+             map_formulaire.insert(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("période")).toString(), QString("hebdomadaire") );
+         }
+         /*
         qDebug()<<MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("dist")).toString();
         qDebug()<<MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("lbstationhydro")).toString();
         qDebug()<<MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("cdcommune")).toString();
@@ -121,6 +129,7 @@ void VigicruesApi::traitementRequeteEnregistrements(QNetworkReply *rep)
         qDebug()<<MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("coordonneeswgs84")).toArray()[1].toDouble();
         qDebug()<<MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("hauteur")).toDouble();
         qDebug()<<MonJSonArray[i].toObject().value(QString("geometry")).toObject().value(QString("type")).toString();
+        */
         map_formulaire.insert(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("timestamp")).toString(), QString::number(MonJSonArray[i].toObject().value(QString("fields")).toObject().value(QString("hauteur")).toDouble()) );
      }
     emit send_info(map_formulaire);
@@ -155,7 +164,19 @@ void VigicruesApi::definitionAppelRequete()
         QString req(elementsRequete[0]+elementsRequete[1]+dateTimeDerniereMAJ.toString(QString("yyyy-MM-ddTHH%3'A'mm%3'A'00%2B00%3'A'00"))+elementsRequete[2]+elementsRequete[4]+station_id);
         qDebug()<<req;
         m_request2.setUrl(QUrl(req));
-        dateTimeDerniereMAJ=QDateTime::currentDateTime();
+
+        //dateTimeDerniereMAJ=QDateTime::currentDateTime();
+        if(boolAlternance){
+            dateTimeDerniereMAJ=QDateTime::currentDateTime();
+            dateTimeDerniereMAJ=dateTimeDerniereMAJ.addDays(-7);
+            boolAlternance=false;
+        }else{
+            dateTimeDerniereMAJ=QDateTime::currentDateTime();
+            dateTimeDerniereMAJ=dateTimeDerniereMAJ.addDays(-1);
+            boolAlternance=true;
+        }
+
+
         m_reply2 = manager->get(m_request2);
     }}
     else{

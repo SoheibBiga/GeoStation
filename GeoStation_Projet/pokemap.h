@@ -44,7 +44,7 @@ private:
         {6, configDef + "map300km.png"},
         {7, configDef + "map800km.png"}
     };
-    int p = 0;
+    //int p = 0;
 };
 
 #endif // POKEMAP_H

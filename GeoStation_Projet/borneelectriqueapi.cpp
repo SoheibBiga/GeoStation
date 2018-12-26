@@ -4,7 +4,7 @@
 #include <qdatetime.h>
 
 
-BorneElectriqueApi::BorneElectriqueApi(ordonnanceur *ord_, QObject* parent) : AbstractApi(IdWidget(BorneElectrique), ord_, parent)
+BorneElectriqueApi::BorneElectriqueApi(ordonnanceur *ord_, QObject* parent) : AbstractApi(ord_, parent)
 {
 
     manager = new QNetworkAccessManager(this);
@@ -12,7 +12,10 @@ BorneElectriqueApi::BorneElectriqueApi(ordonnanceur *ord_, QObject* parent) : Ab
     //+§connect(ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(Request()));
 
     //start since epoch
-    manager->get(QNetworkRequest(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=fichier-consolide-des-bornes-de-recharge-pour-vehicules-electriques-irve&sort=-date_maj")));
+    QString Latitude = QString::number(latitude)+"%2C";
+    QString Longitude = QString::number(longitude)+"%2C";
+
+    manager->get(QNetworkRequest(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=fichier-consolide-des-bornes-de-recharge-pour-vehicules-electriques-irve&sort=-date_maj&geofilter.distance="+Latitude+"+"+Longitude+"+"+QString::number(radius))));
 }
 
 BorneElectriqueApi::~BorneElectriqueApi()
