@@ -34,9 +34,6 @@ AbstractApi::AbstractApi(ordonnanceur *ord_, QObject *parent, QString longitude_
     : QObject(parent),
       ord(ord_),
       loop(Q_NULLPTR),
-      longitude(longitude_.toDouble()),
-      latitude(latitude_.toDouble()),
-      radius(radius_.toDouble()),
       manager(Q_NULLPTR)
 {
     manager = new QNetworkAccessManager(parent);
@@ -53,12 +50,17 @@ AbstractApi::AbstractApi(ordonnanceur *ord_, QObject *parent, QString longitude_
     connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
 
     loop = new QEventLoop(parent);
-    QSettings settings_coord;
-    if(settings_coord.value("Coord/Longitude")=="" || settings_coord.value("Coord/Latitude")=="" || settings_coord.value("Coord/Radius")=="")
+    QSettings settings_coord ("Geostation", "Geostation");
+    if(settings_coord.value("coordonnee/longitude").toString().isEmpty())
     {
-        settings_coord.setValue("Coord/Longitude",longitude_);
-        settings_coord.setValue("Coord/Latitude",latitude_);
-        settings_coord.setValue("Coord/Radius",radius_);
+        longitude = longitude_.toDouble();
+        latitude = latitude_.toDouble();
+        radius = radius_.toDouble();
+    }
+    else {
+        longitude = settings_coord.value("coordonnee/longitude").toDouble();
+        latitude = settings_coord.value("coordonnee/latitude").toDouble();
+        radius = settings_coord.value("coordonnee/rayon").toDouble();
     }
 }
 
