@@ -326,21 +326,21 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
     }
 
 
-    QString filename=( "../"+output_folder+"/APi_2"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-    QFile file( filename );
-    if ( file.open(QIODevice::ReadWrite) )
-    {
-        QTextStream stream(&file);
-        stream << requete_singleplane << endl;
-    }
+//    QString filename=( "../"+output_folder+"/APi_2"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+//    QFile file( filename );
+//    if ( file.open(QIODevice::ReadWrite) )
+//    {
+//        QTextStream stream(&file);
+//        stream << requete_singleplane << endl;
+//    }
 
-    filename=( "../"+output_folder+"/INfosAPi_2"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-    QFile file2( filename );
-    if ( file.open(QIODevice::ReadWrite) )
-    {
-        QTextStream stream(&file);
-        stream << write_Info_APi2 << endl;
-    }
+//    filename=( "../"+output_folder+"/INfosAPi_2"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+//    QFile file2( filename );
+//    if ( file.open(QIODevice::ReadWrite) )
+//    {
+//        QTextStream stream(&file);
+//        stream << write_Info_APi2 << endl;
+//    }
 
     envoiverswidget();
 
