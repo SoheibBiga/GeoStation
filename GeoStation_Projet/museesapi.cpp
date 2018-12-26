@@ -91,11 +91,9 @@ void MuseesApi::onFinished(QNetworkReply* )
                     , 1
                 ) ;
         QPixmap* photo = cherchePhotos->getPhoto() ;
-        long long doublePhoto =  * (long long *) photo ;
-        //double doublePhoto =  * (double*) photo ;
-        //dynamic_cast < double* > ( photo ) ;
-        //map_ameliore.insert("photo",* (cherchePhotos->getPhoto()) );
-        map_ameliore.insert("photo",  doublePhoto );
+        double* doublePhoto =  reinterpret_cast < double* > (photo) ;
+        QVariant ptr=  reinterpret_cast < qint64> (doublePhoto);
+        map_ameliore.insert("photo",  ptr );
         emit musee_send_info2(map_ameliore);
         finish(0);
 
