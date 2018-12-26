@@ -11,7 +11,6 @@
 #include "evenementapi.h"
 #include "borneelectriqueapi.h"
 #include "satelliteapi.h"
-#include "nullapi.h"
 #include "vigicruesapi.h"
 #include "meteoapi.h"
 #include "avionsapi.h"
@@ -24,10 +23,13 @@ class Timer : public QTimer
 
     Q_OBJECT
 
-public:
-    Timer(int Id_, ordonnanceur *ord_);
     int Id;
     ordonnanceur *ord;
+
+public:
+    Timer(int Id_, ordonnanceur *ord_);
+    ~Timer();
+
 
 public slots:
     void send_request();

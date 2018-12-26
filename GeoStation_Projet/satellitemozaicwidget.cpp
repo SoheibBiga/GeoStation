@@ -13,34 +13,29 @@ SatelliteMozaicWidget::SatelliteMozaicWidget(QWidget *parent) :
     //::setAttribute(Qt::WA_TranslucentBackground);
     BackgroungPicture=new QPixmap(":/Images/EarthView.jpg");
     BackgroungPicture->scaled(250,150);
-    QBrush brush(Qt::transparent);
+    QBrush brush(Qt::blue);
     QPen Pen(Qt::white);
     QRect MyRect(0,0,250,150);
     ui->Image->setPixmap(*BackgroungPicture);
     ui->Image->setGeometry(MyRect);
     ui->Image->setScaledContents(true);
+    ui->Image->setStyleSheet("border-radius: 10px;");
+    //    ui->label->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->Name->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_3->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_4->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_5->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->label_6->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->Altitude->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->Longitude->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->Latitude->setAttribute(Qt::WA_TranslucentBackground);
+    //    ui->DateLancement->setAttribute(Qt::WA_TranslucentBackground);
+    ui->Titre->setAttribute(Qt::WA_TranslucentBackground);
 
-    QPalette* pal=new QPalette();
-    pal->setBrush(QPalette::Button,brush);
-    ui->label->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
-    ui->Name->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_3->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_4->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_5->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_6->setAttribute(Qt::WA_TranslucentBackground);
-    ui->Name->setAttribute(Qt::WA_TranslucentBackground);
-    ui->Altitude->setAttribute(Qt::WA_TranslucentBackground);
-    ui->Longitude->setAttribute(Qt::WA_TranslucentBackground);
-    ui->Latitude->setAttribute(Qt::WA_TranslucentBackground);
-    ui->DateLancement->setAttribute(Qt::WA_TranslucentBackground);
-    ui->Satellite_Info->setAttribute(Qt::WA_TranslucentBackground);
-
-
-
+    ui->Satellite_Info->setAutoFillBackground(true);
 
     connect(timing,SIGNAL(timeout()),this,SLOT(Repeat()));
-
 
 
 }
@@ -62,6 +57,7 @@ void SatelliteMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     map_size = 0;
     map_size = map_ameliore["Parametre"].toMap()["Nb entree"].toInt();
 
+
     if(map_size!=0){
 
         timing->start();
@@ -75,14 +71,14 @@ void SatelliteMozaicWidget::Repeat()
 {
     TimerFunction(data_map);
     if(map_size>1){
-    if(NextSat < map_size-1)
-    {
-        NextSat++;
-    }
-    else
-    {
-       NextSat=0;
-    }
+        if(NextSat < map_size-1)
+        {
+            NextSat++;
+        }
+        else
+        {
+            NextSat=0;
+        }
     }
 
 
@@ -105,9 +101,10 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
 
     cat = map["Tableau"].toList().at(NextSat).toMap()["Category"].toString();
 
-    qDebug() << cat;
+    //qDebug() << cat;
 
     ui->Name->setText(map["Tableau"].toList().at(NextSat).toMap()["Nom"].toString());
+    ui->Titre->setText(map["Parametre"].toMap()["Titre"].toString());
     ui->ID->setText(map["Tableau"].toList().at(NextSat).toMap()["ID"].toString());
     ui->DateLancement->setText(map["Tableau"].toList().at(NextSat).toMap()["Date de lancement"].toString());
     ui->Altitude->setText(map["Tableau"].toList().at(NextSat).toMap()["Altitude"].toString());
@@ -120,7 +117,7 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
             BackgroungPicture->load(":/Images/"+category+".jpg");
             BackgroungPicture->scaled(250,150);
 
-            qDebug() << ":/Images/"+category+".jpg";
+            //qDebug() << ":/Images/"+category+".jpg";
             ui->Image->setPixmap(*BackgroungPicture);
             ui->Image->setScaledContents(true);
             ui->Image->update();
@@ -135,11 +132,5 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
         }
 
     }
-
-}
-
-void SatelliteMozaicWidget::paintEvent(QPaintEvent *event)
-{
-
 
 }

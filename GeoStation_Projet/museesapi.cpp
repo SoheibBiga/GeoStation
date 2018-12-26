@@ -1,7 +1,7 @@
 #include "museesapi.h"
 
 MuseesApi::MuseesApi(ordonnanceur *ord_, QObject *parent)
-    : AbstractApi(IdWidget(Musee), ord_, parent)
+    : AbstractApi(ord_, parent)
 {
     QNetworkAccessManager* networkManager = new QNetworkAccessManager(parent);
 
@@ -91,7 +91,9 @@ void MuseesApi::onFinished(QNetworkReply* )
                     , 1
                 ) ;
         QPixmap* photo = cherchePhotos->getPhoto() ;
-        double doublePhoto =  * (double*) photo ;
+        long long doublePhoto =  * (long long *) photo ;
+        //double doublePhoto =  * (double*) photo ;
+        //dynamic_cast < double* > ( photo ) ;
         //map_ameliore.insert("photo",* (cherchePhotos->getPhoto()) );
         map_ameliore.insert("photo",  doublePhoto );
         emit musee_send_info2(map_ameliore);

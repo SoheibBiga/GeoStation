@@ -1,7 +1,7 @@
 #include "vigicruesapi.h"
 
 
-VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(IdWidget(Vigicrues), ord_, parent)
+VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_,parent)
 {
 
   // initialisation param

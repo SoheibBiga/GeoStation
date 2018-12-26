@@ -4,7 +4,7 @@
 #include <qdatetime.h>
 
 
-BorneElectriqueApi::BorneElectriqueApi(ordonnanceur *ord_, QObject* parent) : AbstractApi(IdWidget(BorneElectrique), ord_, parent)
+BorneElectriqueApi::BorneElectriqueApi(ordonnanceur *ord_, QObject* parent) : AbstractApi(ord_, parent)
 {
 
     manager = new QNetworkAccessManager(this);
