@@ -237,7 +237,7 @@ void				MainWindow::changeWidget()
 		}
 */
 
-	qDebug() << "ChangeWidget() ---> nbWidgets = " << nbWidgets << "idx = " << idx;
+//	qDebug() << "ChangeWidget() ---> nbWidgets = " << nbWidgets << "idx = " << idx;
 	widgets_->setCurrentIndex(idx);
 
 }
