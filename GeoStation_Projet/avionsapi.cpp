@@ -85,13 +85,9 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
 {
     QByteArray response_data = reply->readAll();
 
-
     QJsonDocument json = QJsonDocument::fromJson(response_data);
 
-
     QString strJson(json.toJson(QJsonDocument::Indented));  //Compact or Indented for readability
-
-
 
     QJsonObject jdoc_obj = json.object();
 
@@ -99,11 +95,9 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
 
     list_planes_array =states.toArray();
 
-
     QString num = QString::number(list_planes_array.count() );
 
     QString nombreavions = ("Nous avons détecté "+ num + " avions commerciaux dans cette zone ");
-
 
     write_first_requete.append(nombreavions);
     write_first_requete.append("\n");
@@ -159,7 +153,7 @@ void avionsapi::parseplanelist()
         view_airlinecompanies();
         write_APi1_info.append("L'avion du vol "+flight_number+ " de companie aerienne "+airline_name+" \n");
 
-        add_titre(QString("Vol " +flight_number));
+        add_titre(QString("Vol "));
 
         QString dist = calculatedistance();
         if (dist != "")
