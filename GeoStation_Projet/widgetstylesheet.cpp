@@ -19,8 +19,9 @@ void WidgetStyleSheet::InitQwidgets()
                 "border-style: groove;"
                 "border-radius: 12px;");
 
-    this->setStyleSheet("QLabel{background-color:grey;}");
 
+    this->setStyleSheet("QLabel{background-color:grey;}");
+    this->setFixedSize(300,477);
 
 
 }
