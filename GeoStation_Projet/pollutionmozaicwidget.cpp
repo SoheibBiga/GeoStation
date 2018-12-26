@@ -50,7 +50,7 @@ void PollutionMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         ui->textEdit->setText(QString(" Indice de qualité de l'air :\t\n%1\nDangereux!!").arg(QString::number(n)));
      }
     //ui->label2->setFont(t_font);
-    ui->label2->setStyleSheet("background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 228, 0, 1), stop:0.166 rgba(255, 255, 0, 1), stop:0.333 rgba(255, 126, 0, 1), stop:0.5 rgba(255, 0, 0, 1), stop:0.666 rgba(153, 0, 76, 1), stop:0.833 rgba(126, 0, 35, 1));color:#c7bead;font-size:30px;font-weight: bold");
+    ui->label2->setStyleSheet("background:#434345;color:#c7bead;font-size:30px;font-weight: bold");
     ui->label2->setFixedHeight(50);
     ui->textEdit->setFixedHeight(200);
 
