@@ -16,7 +16,7 @@ VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_
   elementsRequete[3] = "&geofilter.distance=";
   elementsRequete[4] = "&refine.station_id=";
   boolUnSeulAppelALafois = true;
-
+  boolAlternance = true;
 
   //manager
   manager = new QNetworkAccessManager (parent);
@@ -164,7 +164,19 @@ void VigicruesApi::definitionAppelRequete()
         QString req(elementsRequete[0]+elementsRequete[1]+dateTimeDerniereMAJ.toString(QString("yyyy-MM-ddTHH%3'A'mm%3'A'00%2B00%3'A'00"))+elementsRequete[2]+elementsRequete[4]+station_id);
         qDebug()<<req;
         m_request2.setUrl(QUrl(req));
-        dateTimeDerniereMAJ=QDateTime::currentDateTime();
+
+        //dateTimeDerniereMAJ=QDateTime::currentDateTime();
+        if(boolAlternance){
+            dateTimeDerniereMAJ=QDateTime::currentDateTime();
+            dateTimeDerniereMAJ=dateTimeDerniereMAJ.addDays(-7);
+            boolAlternance=false;
+        }else{
+            dateTimeDerniereMAJ=QDateTime::currentDateTime();
+            dateTimeDerniereMAJ=dateTimeDerniereMAJ.addDays(-1);
+            boolAlternance=true;
+        }
+
+
         m_reply2 = manager->get(m_request2);
     }}
     else{

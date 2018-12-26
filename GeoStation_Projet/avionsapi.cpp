@@ -115,13 +115,13 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
 
     write_first_requete.append(strJson);
 
-    QString filename=( "../"+output_folder+"APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-    QFile file( filename );
-    if ( file.open(QIODevice::ReadWrite) )
-    {
-        QTextStream stream(&file);
-        stream << write_first_requete << endl;
-    }
+//    QString filename=( "../"+output_folder+"APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+//    QFile file( filename );
+//    if ( file.open(QIODevice::ReadWrite) )
+//    {
+//        QTextStream stream(&file);
+//        stream << write_first_requete << endl;
+//    }
 
 
     if (list_planes_array.count()==0)
@@ -195,14 +195,14 @@ void avionsapi::parseplanelist()
     }
 
 
-        QString filename=( "../"+output_folder+"Info_APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
-        QFile file( filename );
-        if ( file.open(QIODevice::ReadWrite) )
-        {
-            QTextStream stream(&file);
-            stream << write_APi1_info << endl;
-        }
-        else qDebug() <<" ON a pa ecrit API1"<<endl;
+//        QString filename=( "../"+output_folder+"Info_APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
+//        QFile file( filename );
+//        if ( file.open(QIODevice::ReadWrite) )
+//        {
+//            QTextStream stream(&file);
+//            stream << write_APi1_info << endl;
+//        }
+//        else qDebug() <<" ON a pa ecrit API1"<<endl;
 
 
     timeEnd = QDateTime::currentDateTime();
