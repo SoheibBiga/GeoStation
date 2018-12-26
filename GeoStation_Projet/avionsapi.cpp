@@ -85,30 +85,19 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
 {
     QByteArray response_data = reply->readAll();
 
-
     QJsonDocument json = QJsonDocument::fromJson(response_data);
 
-
     QString strJson(json.toJson(QJsonDocument::Indented));  //Compact or Indented for readability
-
-
 
     QJsonObject jdoc_obj = json.object();
 
     QJsonValue states = jdoc_obj["states"];
-    //https://www.developpez.net/forums/d1342983/c-cpp/bibliotheques/qt/parser-json-qjsonobject/
 
     list_planes_array =states.toArray();
 
-
     QString num = QString::number(list_planes_array.count() );
 
-
-
     QString nombreavions = ("Nous avons détecté "+ num + " avions commerciaux dans cette zone ");
-
-    //ui->label_nombreavions->setText(nombreavions);
-
 
     write_first_requete.append(nombreavions);
     write_first_requete.append("\n");
@@ -151,9 +140,6 @@ void avionsapi::parseplanelist()
 {
 
 
-
-
-
     for (int i = 0; i< list_planes_array.count(); i++)
     {
 
@@ -167,29 +153,15 @@ void avionsapi::parseplanelist()
         view_airlinecompanies();
         write_APi1_info.append("L'avion du vol "+flight_number+ " de companie aerienne "+airline_name+" \n");
 
-        add_titre(QString("Vol " +flight_number));
+        add_titre(QString("Vol "));
 
-
-
-        //velocity is index9
-        //altitude is index 13
-        //calculatedistance();
-
-        //parametre.insert(QString("Vol "+airline_name), flight_number);
-
-        //info_APi1 << airline_name ;  //<<calculatedistance();
         QString dist = calculatedistance();
         if (dist != "")
         {
             element.insert("Distance", QVariant(calculatedistance()));
         }
 
-        //element.insert("Flight Number",QVariant(calculatedistance()));
-
         query_APi2();
-
-
-
 
 
     }
@@ -204,20 +176,7 @@ void avionsapi::parseplanelist()
 //        }
 //        else qDebug() <<" ON a pa ecrit API1"<<endl;
 
-
-    timeEnd = QDateTime::currentDateTime();
-
-    //   int bigtime = timeEnd.toMSecsSinceEpoch();
-    //   int smalltime = timeBegin.toMSecsSinceEpoch();
-
-    //qDebug()<<"LE TEMPS D'EXECUTION EST DE      "<<bigtime - smalltime <<endl;
-
-
-
-
     //delete reply;
-
-
 
 
 
@@ -225,52 +184,29 @@ void avionsapi::parseplanelist()
 }
 
 
-
-
 void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 {
-
-
     QByteArray response_data = reply_singleplane->readAll();
-
-
     QJsonDocument json = QJsonDocument::fromJson(response_data);
-
 
     QString strJson(json.toJson(QJsonDocument::Indented));  //Compact or Indented for readability
     requete_singleplane.append(strJson);
 
-
-
     if (json.isArray())
     {
-
-
         QJsonArray plane_array = json.array();
 
-
-        //qDebug()<<"On applique isObject sur l'element du plane_array pour l'avoin "<<ICAO24<< plane_array[0].isObject()<<endl; //returns TRUE
-
-
         QJsonObject plane_json = plane_array[0].toObject();
-
 
         QJsonObject departure_obj = plane_json["departure"].toObject();
         QJsonObject arrival_obj = plane_json["arrival"].toObject();
         QJsonObject aircraft_obj = plane_json["aircraft"].toObject();
-
-
 
         QString departure_string_icao = departure_obj["icaoCode"].toString();
         QString arrival_string_icao = arrival_obj["icaoCode"].toString();
         QString aircraft_string_icao = aircraft_obj["icaoCode"].toString();
 
         QString aircraft_icao24 = aircraft_obj["icao24"].toString();      // this could help us check we are working with the same plane as specified by the member ICAO24
-
-        //      QString departure_string_iata = departure_obj["iataCode"].toString();
-        //      QString arrival_string_iata = arrival_obj["iataCode"].toString();
-        //      QString aircraft_string_iata = aircraft_obj["iataCode"].toString();
-
 
         plane_code = aircraft_string_icao;
 
@@ -292,7 +228,6 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
             element.insert("Provenance", airport_name);
         }
 
-
         write_Info_APi2.append(QString(" l'aeroport "+ airport_name +" et a pour destination ") );
 
         airport_code  = arrival_string_icao;
@@ -304,10 +239,8 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
             element.insert("Destination", airport_name);
         }
 
-
         write_Info_APi2.append(QString("l'aeroport "+ airport_name +" \n") );
         write_Info_APi2.append(QString("DE plus on verifie que "+ ICAO24 + " C'est bien "+aircraft_icao24+"  \n") );
-
         write_Info_APi2.append("\n");
 
 
@@ -318,7 +251,6 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
     {
 
         QJsonObject plane_object = json.object();
-
         write_Info_APi2.append(QString("COULD NOT RETRIEVE INFORMATION FOR THIS PLANE///////////////") );
         element.insert("Modele", QString("COULD NOT RETRIEVE INFORMATION FOR THIS PLANE///////////////") );
 
@@ -353,34 +285,23 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 void avionsapi::view_airlinecompanies()
 {
 
-
-    //airline_code = "MNB";
-
     QString filename=( "../GeoStation_Projet/airline_data");
     QFile file( filename );
 
-
     if (file.exists() )
-
     {
-
         if ( file.open(QIODevice::ReadWrite) )
         {
-
-
             QTextStream instream(&file);
-            QString line = instream.readLine();
-            //qDebug() << "first line: " << line;
+            QString line = instream.readLine();            
             int index1 = line.indexOf(" ");
             int length = line.size()-index1;
 
             QString subline = line;
             subline.remove(index1, length);
 
-
             while(!subline.contains(airline_code))
             {
-
                 line = instream.readLine();
                 if (instream.atEnd())
                 {
@@ -389,7 +310,6 @@ void avionsapi::view_airlinecompanies()
                     return;
 
                 }
-
                 index1 = line.indexOf(" ");
                 length = line.size()-index1;
 
@@ -398,13 +318,9 @@ void avionsapi::view_airlinecompanies()
 
 
             }
-            // bool QTextStream::atEnd() const
-
 
             if (subline.contains(airline_code))
             {
-
-
                 if (airline_code=="")
                 {
                     airline_name = "Empty data";
@@ -412,19 +328,13 @@ void avionsapi::view_airlinecompanies()
                     return;
 
                 }
-
-
                 index1 = line.indexOf(" ");
-
                 int after_space = index1 + 1;
                 length = line.size()-after_space;
-
                 QStringRef airport_n(&line ,after_space, length);
-
                 airline_name=airport_n.toString() ;
 
                 file.close();
-
 
             }
             else
@@ -434,31 +344,22 @@ void avionsapi::view_airlinecompanies()
                 return;
             }
 
-
             file.close();
         }
 
         else
         { airline_name = " FAILED TO OPEN  airlines FILE";
-
             return;
 
         }
-
-
 
     }
 
     else
     {
         airline_name = " airlines FILE not here";
-
         return;
-
-
     }
-
-
 
 
 }
@@ -469,29 +370,18 @@ void avionsapi::view_airlinecompanies()
 void avionsapi::readairports()
 {
 
-    //airport_code = "ZYMD";
-
-
     QString filename=( "../GeoStation_Projet/airports");
     QFile file( filename );
 
     if ( file.exists())
     {
-
-
         if ( file.open(QIODevice::ReadWrite) )
         {
-
-
             QTextStream instream(&file);
-            QString line = instream.readLine();
-            //qDebug() << "first line: " << line;
-
+            QString line = instream.readLine();           
             while(!line.contains(airport_code))
             {
                 line = instream.readLine();
-
-
                 if (instream.atEnd())
                 {
                     airport_name = "did not find airport";
@@ -501,53 +391,36 @@ void avionsapi::readairports()
                 }
 
             }
-
-
-
             if (line.contains(airport_code))
             {
-
-
-                if (airport_code=="")
+               if (airport_code=="")
                 {
                     airport_name = "Empty data";
                     file.close();
                     return;
 
                 }
-
-
                 int index1 = line.indexOf("\t");
-
-                int after_space = index1 + 1;
+               int after_space = index1 + 1;
                 int length = line.size()-after_space;
-
                 QStringRef airport_n(&line ,after_space, length);
-
 
                 airport_name=airport_n.toString() ;
 
             }
             else
-            {
-                //qDebug()<<"did not find airport"<<endl;
-                airport_name = "did not find airport";
+            {               
+               airport_name = "did not find airport";
                 file.close();
                 return;
             }
 
-
             file.close();
         }
 
-
-
         else
         {
-
-
             airport_name = " FAILED TO OPEN  airports FILE";
-
             return;
 
         }
@@ -557,15 +430,10 @@ void avionsapi::readairports()
 
     else
     {
-
-
         airport_name = " airports FILE not here";
-
         return;
 
     }
-
-
 
 
 }
@@ -576,48 +444,31 @@ void avionsapi::readairports()
 void avionsapi::readplane_type()
 {
 
-
-
-
-    //plane_code = "CL60";
-
-
-
     QString filename=( "../GeoStation_Projet/planetypes");
     QFile file( filename );
 
     if (file.exists() )
     {
 
-
         if ( file.open(QIODevice::ReadWrite) )
         {
-
-
             QTextStream instream(&file);
-            QString line = instream.readLine();
-            //qDebug() << "first line: " << line;
-
+            QString line = instream.readLine();         
             while(!line.contains(plane_code))
             {
                 line = instream.readLine();
-
                 if (instream.atEnd())
                 {
                     plane_model_name = "model not found";
                     file.close();
                     return;
-
                 }
 
             }
 
-
-
             if (line.contains(plane_code))
             {
-
-                if (plane_code=="")
+               if (plane_code=="")
                 {
                     plane_model_name = "Empty data";
                     file.close();
@@ -625,19 +476,12 @@ void avionsapi::readplane_type()
 
                 }
 
-
-                int index1 = line.indexOf("\t");
-                //                int index1 = line.lastIndexOf("\t");
-
+               int index1 = line.indexOf("\t");
                 int after_space = index1 + 1;
                 int length = line.size()-after_space;
 
-                QStringRef plane_model(&line ,after_space, length);
-
-                //QStringRef subString(line);
-
+                QStringRef plane_model(&line ,after_space, length);               
                 plane_model_name = plane_model.toString();
-
 
             }
             else
@@ -656,8 +500,6 @@ void avionsapi::readplane_type()
             plane_model_name = "FAILED TO OPEN FILE Plane TYPES";
             return;
         }
-
-
 
     }
 
@@ -692,8 +534,6 @@ QString avionsapi::calculatedistance()
     double altitude = single_plane_array[13].toDouble();     // if NULL!! in metres
     km_dist = qSqrt(qPow(km_dist, 2)+qPow( (altitude/1000), 2)  );
 
-    //QString QString::number(double n, char format = 'g', int precision = 6)
-
     QString angle;
     angle = QString::number(angle_distance);
 
@@ -701,8 +541,6 @@ QString avionsapi::calculatedistance()
     distance= (QString::number(km_dist)+" km ");
 
     QString string_alti = QString::number(altitude);
-
-
 
     write_APi1_info.append("pour l'avion dont l'ICAO est "+ICAO24+"   \n");
     write_APi1_info.append("l'angle est de "+angle+"   \n");
@@ -712,10 +550,6 @@ QString avionsapi::calculatedistance()
     return (distance);
 
 
-
-
-
-
 }
 
 
@@ -723,8 +557,6 @@ QString avionsapi::calculatedistance()
 void avionsapi::envoiverswidget()
 {
     int total_result = 11;
-
-
 
 
     //QMap<QString,QVariant> element;
@@ -741,6 +573,14 @@ void avionsapi::envoiverswidget()
     map_ameliore.insert("Tableau",QVariant(tableau));
     map_ameliore.insert("Parametre",QVariant(parametre));
     emit avions_send_info2(map_ameliore);
+
+    timeEnd = QDateTime::currentDateTime();
+
+    //   int bigtime = timeEnd.toMSecsSinceEpoch();
+    //   int smalltime = timeBegin.toMSecsSinceEpoch();
+
+    //qDebug()<<"LE TEMPS D'EXECUTION EST DE      "<<bigtime - smalltime <<endl;
+
     finish(1);
 
 }

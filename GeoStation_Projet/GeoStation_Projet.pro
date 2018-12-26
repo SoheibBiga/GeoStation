@@ -75,7 +75,8 @@ SOURCES += \
     customlabels.cpp \
     meteowidget.cpp \
     meteomozaicwidget.cpp \
-    meteomainwidget.cpp
+    meteomainwidget.cpp \
+    widgetstylesheet.cpp
 
 
 
@@ -133,7 +134,8 @@ HEADERS += \
     customlabels.h \
     meteowidget.h \
     meteomozaicwidget.h \
-    meteomainwidget.h
+    meteomainwidget.h \
+    widgetstylesheet.h
 
 
 

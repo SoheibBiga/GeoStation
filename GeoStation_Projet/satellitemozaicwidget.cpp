@@ -19,7 +19,8 @@ SatelliteMozaicWidget::SatelliteMozaicWidget(QWidget *parent) :
     ui->Image->setPixmap(*BackgroungPicture);
     ui->Image->setGeometry(MyRect);
     ui->Image->setScaledContents(true);
-    ui->Image->setStyleSheet("border-radius: 10px;");
+    QTimer::singleShot(10,[=]{ui->Image->setStyleSheet("border-radius: 10px;border: 2 plain");});
+
     //    ui->label->setAttribute(Qt::WA_TranslucentBackground);
     //    ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
     //    ui->Name->setAttribute(Qt::WA_TranslucentBackground);
@@ -107,7 +108,7 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
     ui->Titre->setText(map["Parametre"].toMap()["Titre"].toString());
     ui->ID->setText(map["Tableau"].toList().at(NextSat).toMap()["ID"].toString());
     ui->DateLancement->setText(map["Tableau"].toList().at(NextSat).toMap()["Date de lancement"].toString());
-    ui->Altitude->setText(map["Tableau"].toList().at(NextSat).toMap()["Altitude"].toString());
+    ui->Altitude->setText(map["Tableau"].toList().at(NextSat).toMap()["Altitude"].toString()+" KM");
     ui->Latitude->setText(map["Tableau"].toList().at(NextSat).toMap()["Latitude"].toString());
     ui->Longitude->setText(map["Tableau"].toList().at(NextSat).toMap()["Longitude"].toString());
 
@@ -117,13 +118,10 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
             BackgroungPicture->load(":/Images/"+category+".jpg");
             BackgroungPicture->scaled(250,150);
 
-            //qDebug() << ":/Images/"+category+".jpg";
+            qDebug() << ":/Images/"+category+".jpg";
             ui->Image->setPixmap(*BackgroungPicture);
             ui->Image->setScaledContents(true);
             ui->Image->update();
-
-
-
 
         }
         else

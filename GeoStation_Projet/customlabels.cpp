@@ -15,7 +15,9 @@ CustomLabels::~CustomLabels()
 
 void CustomLabels::InitLabels()
 {
-    this->setStyleSheet("border: 2px solid green 4px;"
-                         "border-radius: 10px;"
-                         "border-width: 2px");
+    this->setStyleSheet("background-image: url(none);"
+                        "background-color: rgba(255,255,255,0.5);"
+                        "border: 2px solid;"
+                        "border-width: 2px;"
+                        "color: rgba(5, 143, 81, 1);");
 }
