@@ -8,7 +8,7 @@ GeoLocMozaicWidget::GeoLocMozaicWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->setFixedSize(this->width() / 6, this->height() / 2);
+    this->setFixedSize(300, 477);
 }
 
 GeoLocMozaicWidget::~GeoLocMozaicWidget()
