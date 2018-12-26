@@ -15,9 +15,9 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QPushButton" name="pushButton">
      <property name="text">
-      <string>En Cours</string>
+      <string>PushButton</string>
      </property>
     </widget>
    </item>

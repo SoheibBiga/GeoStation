@@ -87,7 +87,6 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
         map_ameliore.insert("Parametre",QVariant(parametre));
         //Envoi l'information vers l'ordonnancer
         emit sncf_send_info2(map_ameliore);
-        qDebug() << "signal send";
         //Fin des requêtes (=perte de la main)
         finish(0);
     }

@@ -14,9 +14,8 @@ void Timer::send_request()
 {
     switch(Id){
     case IdWidget(Sncf):
-        qDebug() << "new sncf api";
         ord->api_index = new SncfApi(ord);
-        this->start(10000);
+        this->start(180000);
         break;
     case IdWidget(Musee):
         ord->api_index = new MuseesApi(ord);
@@ -24,7 +23,7 @@ void Timer::send_request()
         break;
     case IdWidget(Satellite):
         ord->api_index = new SatelliteApi(ord);
-        this->start(180000);
+        this->start(300000);
         break;
     case IdWidget(Evenement):
         ord->api_index = new EvenementApi(ord);
@@ -59,7 +58,5 @@ void Timer::send_request()
         this->start(10000);
         break;
     }
-    qDebug() << "debut exec";
     ord->api_index->loop->exec();
-    qDebug() << "fin exec";
 }

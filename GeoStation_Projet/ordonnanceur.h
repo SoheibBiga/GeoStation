@@ -29,7 +29,6 @@ public:
     Timer *geolocalisation_timer;
 
 signals:
-    void send_info(QMap<QString, QString>);
     void sncf_send_info2(QMap<QString, QVariant>);
     void pollution_send_info2(QMap<QString, QVariant>);
     void meteo_send_info2(QMap<QString, QVariant>);

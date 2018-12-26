@@ -15,6 +15,5 @@ SncfMozaicWidget::~SncfMozaicWidget()
 
 void SncfMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-    qDebug() << "refresh ok";
     ui->tableWidget->refresh_ameliore(map_ameliore);
 }
