@@ -23,6 +23,7 @@ private:
 
 public slots:
     void Read(QNetworkReply *reply);
+
 };
 
 #endif // METEOAPI_H
