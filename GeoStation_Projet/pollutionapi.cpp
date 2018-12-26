@@ -17,14 +17,11 @@ void PollutionApi::replyFinished(QNetworkReply *Reply)
         QJsonDocument jsonResponse = QJsonDocument::fromJson(Reply->readAll());
         //qDebug() << jsonResponse.isObject();  //true
 
-
         add_titre("Pollution du jour");
 
 
         QString aqi = jsonResponse.object().toVariantMap()["data"].toMap()["aqi"].toString();
         int n = aqi.toInt();
-
-
 
         QMap<QString,QVariant> element;
         element.insert("AQI",QVariant(n));

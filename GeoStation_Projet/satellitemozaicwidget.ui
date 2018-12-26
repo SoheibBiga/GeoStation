@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>318</width>
-    <height>495</height>
+    <height>499</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@ border: 2px solid grey;
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <widget class="QWidget" name="widget" native="true">
+       <widget class="WidgetStyleSheet" name="widget" native="true">
         <property name="palette">
          <palette>
           <active>
@@ -194,9 +194,7 @@ border: 2px solid grey;
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-image: url(none);
-background-color: rgba(0,0,0,1);
-border: 2px solid rgba(34,195,182,0.8) 4px;
+         <string notr="true">
 
 
 </string>
@@ -354,7 +352,7 @@ border: 2px solid rgba(34,195,182,0.8) 4px;
              <item>
               <layout class="QHBoxLayout" name="ImageLayout">
                <item>
-                <widget class="CustomLabels" name="Image">
+                <widget class="QLabel" name="Image">
                  <property name="minimumSize">
                   <size>
                    <width>250</width>
@@ -524,8 +522,7 @@ border: 2px solid rgba(34,195,182,0.8) 4px;
               <bool>false</bool>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgba(255, 255, 255, 128);
-border-color: rgba(255, 255, 255, 128);</string>
+              <string notr="true">border-color: rgba(255, 255, 255, 128);</string>
              </property>
              <property name="text">
               <string>Satellite Info</string>
@@ -625,7 +622,8 @@ border-color: rgba(255, 255, 255, 128);</string>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: url(none);
-border-color: rgba(255, 255, 255, 128);</string>
+border-color: rgba(255, 255, 255, 0);
+b</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -703,7 +701,8 @@ border-color: rgba(255, 255, 255, 128);</string>
                  </property>
                  <property name="styleSheet">
                   <string>background-color: url(none);
-border-color: rgba(255, 255, 255, 128);</string>
+border-color: rgba(255, 255, 255, 0);
+b</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -781,7 +780,8 @@ border-color: rgba(255, 255, 255, 128);</string>
                  </property>
                  <property name="styleSheet">
                   <string>background-color: url(none);
-border-color: rgba(255, 255, 255, 128);</string>
+border-color: rgba(255, 255, 255, 0);
+b</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -859,7 +859,8 @@ border-color: rgba(255, 255, 255, 128);</string>
                  </property>
                  <property name="styleSheet">
                   <string>background-color: url(none);
-border-color: rgba(255, 255, 255, 128);</string>
+border-color: rgba(255, 255, 255, 0);
+b</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -937,7 +938,8 @@ border-color: rgba(255, 255, 255, 128);</string>
                  </property>
                  <property name="styleSheet">
                   <string>background-color: url(none);
-border-color: rgba(255, 255, 255, 128);</string>
+border-color: rgba(255, 255, 255, 0);
+b</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -1015,7 +1017,8 @@ border-color: rgba(255, 255, 255, 128);</string>
                  </property>
                  <property name="styleSheet">
                   <string>background-color: url(none);
-border-color: rgba(255, 255, 255, 128);</string>
+border-color: rgba(255, 255, 255, 0);
+b</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -1036,7 +1039,7 @@ border-color: rgba(255, 255, 255, 128);</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_2">
                <item>
-                <widget class="CustomLabels" name="Name">
+                <widget class="QLabel" name="Name">
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
@@ -1497,7 +1500,7 @@ border-color: rgba(255, 255, 255, 128);</string>
                 </widget>
                </item>
                <item>
-                <widget class="CustomLabels" name="ID">
+                <widget class="QLabel" name="ID">
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
@@ -1652,7 +1655,7 @@ border-color: rgba(255, 255, 255, 128);</string>
                 </widget>
                </item>
                <item>
-                <widget class="CustomLabels" name="DateLancement">
+                <widget class="QLabel" name="DateLancement">
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
@@ -1807,7 +1810,7 @@ border-color: rgba(255, 255, 255, 128);</string>
                 </widget>
                </item>
                <item>
-                <widget class="CustomLabels" name="Latitude">
+                <widget class="QLabel" name="Latitude">
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
@@ -1962,7 +1965,7 @@ border-color: rgba(255, 255, 255, 128);</string>
                 </widget>
                </item>
                <item>
-                <widget class="CustomLabels" name="Longitude">
+                <widget class="QLabel" name="Longitude">
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
@@ -2117,7 +2120,7 @@ border-color: rgba(255, 255, 255, 128);</string>
                 </widget>
                </item>
                <item>
-                <widget class="CustomLabels" name="Altitude">
+                <widget class="QLabel" name="Altitude">
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
@@ -2287,9 +2290,10 @@ border-color: rgba(255, 255, 255, 128);</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>CustomLabels</class>
-   <extends>QLabel</extends>
-   <header>customlabels.h</header>
+   <class>WidgetStyleSheet</class>
+   <extends>QWidget</extends>
+   <header>widgetstylesheet.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

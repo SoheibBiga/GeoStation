@@ -2,6 +2,8 @@
 #define WIDGETSTYLESHEET_H
 
 #include <QWidget>
+#include <QTableView>
+#include <QTimer>
 
 class WidgetStyleSheet : public QWidget
 {
@@ -12,6 +14,7 @@ public:
 signals:
 
 public slots:
+    void InitQwidgets();
 };
 
 #endif // WIDGETSTYLESHEET_H

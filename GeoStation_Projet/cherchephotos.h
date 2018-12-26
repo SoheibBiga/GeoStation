@@ -28,18 +28,18 @@
 
 #include "abstractapi.h"
 
-class CherchePhotos : public AbstractApi
+class CherchePhotos : public QObject// AbstractApi
 {
     Q_OBJECT
 
 public:
-    CherchePhotos(QString, int, ordonnanceur *ord_ = nullptr, QObject *parent = nullptr);
+    CherchePhotos(QString, int/*, ordonnanceur *ord_ = nullptr, QObject *parent = nullptr*/);
     QPixmap* getPhoto() ;
     bool chargementPhotoFini() ;
 
     // fonction inutile pour cette classe, mais
     // elle doit être là car notre classe hérite de AbstractApi
-    bool isMap();
+    //bool isMap();
 
 private:
     QString texteRecherche ;

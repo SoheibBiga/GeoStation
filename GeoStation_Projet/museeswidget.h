@@ -12,14 +12,14 @@ class MuseesWidget : public AWidget
 
 public:
     explicit MuseesWidget(QWidget *parent = nullptr);
-    ~MuseesWidget() ;
+    //~MuseesWidget() ;
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
 		virtual bool				refresh();
     virtual bool				init();
     virtual bool				run();
     virtual bool				end();
-    virtual void				addWidget(QWidget* widget);
+    //virtual void				addWidget(QWidget* widget);
 
     MuseesMozaicWidget *musees_mozaic_widget;
     MuseesMainWidget *musees_main_widget;
