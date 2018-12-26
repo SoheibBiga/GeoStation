@@ -92,12 +92,8 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
     QStringList Cat_List;
     Cat_List << "Amateur radio"<<"Beidou Navigation System"<<"Brightest"<<"Celestis"<<"CubeSats"<<"Disaster monitoring"<<
                 "Earth resources"<<"Education"<<"Engineering"<<"Experimental"<<"Flock"<<"Galileo"<<"Geodetic"<<"Geostationary"<<
-                "Global Positioning System (GPS) Constellation"<<"Global Positioning System (GPS) Operational"<<"Globalstar"<<
-                "Glonass Operational"<<"GOES"<<"Gonets"<<"Gorizont"<<"Intelsat"<<"Iridium"<<"IRNSS"<<"ISS"<<"Lemur"<<"Military"<<
-                "Molniya"<<"Navy Navigation Satellite System"<<"NOAA"<<"O3B Networks"<<"Orbcomm"<<"Parus"<<"QZSS"<<"Radar Calibration"<<
-                "Raduga"<<"Russian LEO Navigation"<<"Satellite Based Augmentation System"<<"Search_and_rescue"<<"Space and Earth Science"<<
-                "Strela"<<"Tracking and Data Relay Satellite System"<<"Tselina"<<"Tsikada"<<"Tsiklon"<<"TV"<<"Weather"<<"Westford Needles"<<
-                "XM and Sirius"<<"Yaogan";
+                "Glonass Operational"<<"GOES"<<"Military"<<"Molniya"<<"Navy Navigation Satellite System"<<"NOAA"<<"O3B Networks"<<
+                "Search_and_rescue"<<"Space and Earth Science"<<"Strela"<<"Westford Needles";
 
 
     cat = map["Tableau"].toList().at(NextSat).toMap()["Category"].toString();
@@ -118,7 +114,7 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
             BackgroungPicture->load(":/Images/"+category+".jpg");
             BackgroungPicture->scaled(250,150);
 
-            qDebug() << ":/Images/"+category+".jpg";
+            //qDebug() << ":/Images/"+category+".jpg";
             ui->Image->setPixmap(*BackgroungPicture);
             ui->Image->setScaledContents(true);
             ui->Image->update();
@@ -126,6 +122,7 @@ void SatelliteMozaicWidget::TimerFunction(QMap<QString, QVariant> map)
         }
         else
         {
+
 
         }
 

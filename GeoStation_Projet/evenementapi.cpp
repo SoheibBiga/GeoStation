@@ -7,10 +7,6 @@ EvenementApi::EvenementApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_
     QNetworkReply *m_reply;
     QNetworkRequest m_request;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 85f4e1a6ea35a97e921675aa0b54bc4e8527adea
     radius = 5000;
 
     QDate dateDuJour = QDate::currentDate();
