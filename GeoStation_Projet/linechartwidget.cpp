@@ -4,7 +4,7 @@ LineChartWidget::LineChartWidget(QWidget *parent) :
     QWidget(parent)
 {
 
-
+nb_row=0;
 
 }
 
@@ -54,7 +54,7 @@ QPoint LineChartWidget::TransformationCoordonnees(QPoint point)
 
 void LineChartWidget::paintEvent(QPaintEvent *)
 {
-
+if(nb_row!=0){
     couleurTexte = Qt::black;
     couleurAxes = Qt::darkGray;
     couleurCourbe = Qt::darkBlue;
@@ -150,7 +150,7 @@ QString hauteur;
 hauteur.setNum(hauteurMax,'g',6);
 painter.drawText(QPoint(largeurgraphique*0.12,hauteurwidget*0.14),hauteur);
 
-
+}
 
 
 
