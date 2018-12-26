@@ -48,6 +48,26 @@ void avionsapi::change_coordinates()
 }
 
 
+void avionsapi::query_APi2()
+{
+
+
+    API_key =  "58f4c4-bf6820";
+
+    URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24="+ICAO24);
+
+
+
+
+    write_Info_APi2.append("Au moment de la requete de l'API2 notre ICAO24 est "+ICAO24+"     \n");
+
+    manager_singleplane->get(QNetworkRequest(QUrl(URL_singleplane)));
+
+    // delay(1000);
+
+
+}
+
 
 
 void avionsapi::affiche_erreurs( QNetworkReply* , QList<QSslError> list  )
@@ -107,26 +127,6 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
 }
 
 
-void avionsapi::query_APi2()
-{
-
-
-    API_key =  "58f4c4-bf6820";
-
-    URL_singleplane = ("http://aviation-edge.com/v2/public/flights?key="+API_key+ "&limit=30000&aircraftIcao24="+ICAO24);
-
-
-
-
-    write_Info_APi2.append("Au moment de la requete de l'API2 notre ICAO24 est "+ICAO24+"     \n");
-
-    manager_singleplane->get(QNetworkRequest(QUrl(URL_singleplane)));
-
-    // delay(1000);
-
-
-}
-
 void avionsapi::delay(int i)
 {
     QTime dieTime= QTime::currentTime().addMSecs(i);
@@ -152,11 +152,6 @@ void avionsapi::parseplanelist()
     //    int Vueling = 0;
 
 
-
-
-
-
-
     for (int i = 0; i< list_planes_array.count(); i++)
     {
         //qDebug()<<"VOICI UN ELEMENT DE LA QJSONARRAY"<<endl;
@@ -178,8 +173,11 @@ void avionsapi::parseplanelist()
 
         //velocity is index9
         //altitude is index 13
-        calculatedistance();
+        //calculatedistance();
 
+        info_APi1 << airline_name ;  //<<calculatedistance();
+        element.insert(flight_number, QVariant(airline_name));
+        //element.insert("Flight Number",QVariant(calculatedistance()));
 
         query_APi2();
 
@@ -247,13 +245,6 @@ void avionsapi::parseplanelist()
     if(IberiaEx>0) text_for_ailines.append( QString::number(IberiaEx) +" avions Iberia Express \n");
     if(TransaFra>0) text_for_ailines.append( QString::number(TransaFra) +" avions Transavia France \n");
     if(EuroAirTran>0) text_for_ailines.append( QString::number(EuroAirTran) +" avions European Air Transport \n");
-
-
-
-
-
-
-
 
 
 
@@ -350,7 +341,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 
         readairports();
 
-        element.insert(airport_name,"");
+        //element.insert(airport_name,"");
 
         write_Info_APi2.append(QString("l'aeroport "+ airport_name +" \n") );
         write_Info_APi2.append(QString("DE plus on verifie que "+ ICAO24 + " C'est bien "+aircraft_icao24+"  \n") );
@@ -375,7 +366,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 
     }
 
-   envoiverswidget();
+    envoiverswidget();
 
 
 }
@@ -652,7 +643,7 @@ void avionsapi::readplane_type()
 
             if (line.contains(plane_code))
             {
-                qDebug()<<"YES it does contains the airport code"<<endl;
+
                 if (plane_code=="")
                 {
                     plane_model_name = "Empty data";
@@ -664,10 +655,6 @@ void avionsapi::readplane_type()
 
                 int index1 = line.indexOf("\t");
                 //                int index1 = line.lastIndexOf("\t");
-                //                qDebug()<<"the space character is located at postion"<<index1<<endl;
-                //                qDebug()<<"the last character is located at postion"<<line.size()  <<endl;
-                //                qDebug()<<"the last character is "<<line[line.size()-1]  <<endl;
-                //qDebug()<<"the space character is "<<line[index1]  <<endl;  // curious what this returns
 
                 int after_space = index1 + 1;
                 int length = line.size()-after_space;
@@ -675,9 +662,6 @@ void avionsapi::readplane_type()
                 QStringRef plane_model(&line ,after_space, length);
 
                 //QStringRef subString(line);
-                qDebug()<<"this is the content of "<<line<<"after the space"<<plane_model<<endl;
-                // qDebug()<<"here is the substring"<<subString<<endl;
-                //qDebug()<<" the space character is located at position "<<  subString.indexOf("\n", 0)<<endl;
 
                 plane_model_name = plane_model.toString();
 
@@ -714,13 +698,10 @@ void avionsapi::readplane_type()
 }
 
 
-void avionsapi::calculatedistance()
+QString avionsapi::calculatedistance()
 {
     double ref_longi =   (longi_max.toDouble() +longi_min.toDouble() )/2 ;
     double ref_lati = (lat_max.toDouble() + lat_min.toDouble()  )/2;
-
-
-   // qDebug()<<"CALCULATE DISTANCE"<<endl;
 
 
     double longitude = single_plane_array[5].toDouble();
@@ -748,18 +729,13 @@ void avionsapi::calculatedistance()
     QString string_alti = QString::number(altitude);
 
 
-    //    qDebug()<<"pour l'avion dont l'ICAO est"<<ICAO24<<endl;
-    //    qDebug()<<"l'angle est de"<<angle_distance<<endl;
-    //    qDebug()<<"la distance en chiffre"<<km_dist<<endl;
-
-    //    qDebug()<<"la distance en string "<<distance<<endl;
-    //    qDebug()<<"l'altitude "<<altitude<<endl;
-
 
     write_APi1_info.append("pour l'avion dont l'ICAO est "+ICAO24+"   \n");
     write_APi1_info.append("l'angle est de "+angle+"   \n");
     write_APi1_info.append("la distance est de "+distance+"   \n");
     write_APi1_info.append("l'altitude en metre st de "+string_alti+"   \n");
+
+    return (distance);
 
 
 
@@ -785,10 +761,10 @@ void avionsapi::envoiverswidget()
     //add_titre("Prochains Train au depart de " + libelle_gare );
     add_nb_entree(total_result);
 
-        element.insert("Direction",QVariant(write_APi1_info));
+    //element.insert("Direction",QVariant(write_APi1_info));
 
 
-        add_list(element);
+    add_list(element);
 
 
     map_ameliore.insert("Tableau",QVariant(tableau));

@@ -23,7 +23,7 @@
   <customwidget>
    <class>tableauwidget</class>
    <extends>QTableWidget</extends>
-   <header>tableauwidget.h</header>
+   <header location="global">tableauwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

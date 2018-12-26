@@ -41,8 +41,6 @@ AbstractApi::AbstractApi(ordonnanceur *ord_, QObject *parent, QString longitude_
 {
     manager = new QNetworkAccessManager(parent);
 
-    connect(this,SIGNAL(send_info(QMap<QString,QString>)),ord,SIGNAL(send_info(QMap<QString,QString>)));
-    connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(evenement_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(evenement_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(avions_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(avions_send_info2(QMap<QString,QVariant>)));
@@ -53,7 +51,7 @@ AbstractApi::AbstractApi(ordonnanceur *ord_, QObject *parent, QString longitude_
     connect(this,SIGNAL(musee_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(musee_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(satellite_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)));
-    //connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(sncf_send_info2(QMap<QString,QVariant>)));
 
     loop = new QEventLoop(parent);
     QSettings settings_coord;
