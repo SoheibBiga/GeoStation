@@ -52,7 +52,7 @@ QPoint LineChartWidget::TransformationCoordonnees(QPoint point)
     return pointRetourne;
 }
 
-void LineChartWidget::paintEvent(QPaintEvent *event)
+void LineChartWidget::paintEvent(QPaintEvent *)
 {
 
     couleurTexte = Qt::black;
@@ -108,7 +108,7 @@ painter.drawLine(TransformationCoordonnees(QPoint(0,0)),TransformationCoordonnee
 //Pour avoir une taille suffisante
 int N = static_cast<int>(24+hauteurMax+2);
 QPoint pointsSurLesAxes[N];
-int i,i0,i1;
+int i0,i1;
 for(int i=0;i<=hauteurMax;i++)
 {
     pointsSurLesAxes[i]=TransformationCoordonnees(QPoint(0,(hauteurgraphique*1.0)*(static_cast<float>(i))/(hauteurMax*1.0)));

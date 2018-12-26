@@ -53,9 +53,9 @@ private:
 
 
 protected : void paintEvent(QPaintEvent *event) override;
-    void resizeEvent( QResizeEvent *p)
+    /*void resizeEvent( QResizeEvent *p)
     { //qDebug()<<this->size();
-    }
+    }*/
 };
 
 #endif // LINECHARTWIDGET_H
