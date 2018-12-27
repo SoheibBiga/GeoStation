@@ -51,6 +51,9 @@
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="1">
            <widget class="QLabel" name="droite_adresse">
+            <property name="styleSheet">
+             <string notr="true">background-color: none;</string>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -65,6 +68,9 @@
           </item>
           <item row="2" column="1">
            <widget class="QLabel" name="droite_fermeture">
+            <property name="styleSheet">
+             <string notr="true">background-color: none;</string>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -72,6 +78,9 @@
           </item>
           <item row="1" column="1">
            <widget class="QLabel" name="droite_horaires">
+            <property name="styleSheet">
+             <string notr="true">background-color: none;</string>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -100,6 +109,9 @@
           </item>
           <item row="3" column="1">
            <widget class="QLabel" name="droite_nocturnes">
+            <property name="styleSheet">
+             <string notr="true">background-color: none;</string>
+            </property>
             <property name="text">
              <string/>
             </property>
