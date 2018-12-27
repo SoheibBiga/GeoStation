@@ -178,13 +178,13 @@
               <widget class="QLabel" name="label_distance">
                <property name="minimumSize">
                 <size>
-                 <width>0</width>
+                 <width>120</width>
                  <height>20</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>120</width>
                  <height>30</height>
                 </size>
                </property>
@@ -201,13 +201,13 @@ border-color: rgba(255, 255, 255, 0);</string>
               <widget class="QLabel" name="label_adresse">
                <property name="minimumSize">
                 <size>
-                 <width>0</width>
+                 <width>120</width>
                  <height>20</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>120</width>
                  <height>30</height>
                 </size>
                </property>
@@ -224,13 +224,13 @@ border-color: rgba(255, 255, 255, 0);</string>
               <widget class="QLabel" name="label_nom">
                <property name="minimumSize">
                 <size>
-                 <width>0</width>
+                 <width>120</width>
                  <height>20</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>120</width>
                  <height>30</height>
                 </size>
                </property>

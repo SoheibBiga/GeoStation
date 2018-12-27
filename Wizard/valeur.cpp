@@ -16,11 +16,11 @@ Valeur::Valeur(QWidget *parent) :
     setTitle("Données");
     setSubTitle("Veuillez inserez vos coordonnées dans les champs suivants.");
 
-    latitude_edit->setPlaceholderText("46.546854");
+    latitude_edit->setText("48.871576");
 
-    longitude_edit->setPlaceholderText("2.84652");
+    longitude_edit->setText("2.346015");
 
-    rayon_edit->setPlaceholderText("100");
+    rayon_edit->setPlaceholderText("5000");
     rayon_edit->setValidator(new QIntValidator);
     error->setWordWrap(true);
 

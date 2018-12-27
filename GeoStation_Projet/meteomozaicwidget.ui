@@ -6,14 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>328</width>
-    <height>495</height>
+    <width>274</width>
+    <height>622</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>300</width>
+    <width>0</width>
     <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>274</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -23,8 +29,14 @@
    <item row="0" column="0">
     <widget class="WidgetStyleSheet" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
+      <item row="1" column="0">
        <widget class="QGroupBox" name="groupBox">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>16777192</width>
@@ -32,28 +44,105 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">
-#groupBox{
-background-color: rgb(106, 231, 36);
-      border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: blue;
-     font: bold 14px;
-     min-width: 10em;
-     padding: 6px;
-}</string>
+         <string notr="true"/>
         </property>
         <property name="title">
-         <string>Météo</string>
+         <string/>
         </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <widget class="QLabel" name="labDate_4">
-           <property name="styleSheet">
-            <string notr="true">
-
-#labDate_4 {
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QLabel" name="label_14">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>130</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+background-color: none;</string>
+               </property>
+               <property name="text">
+                <string>T° Max</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_13">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>130</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+background-color: none;</string>
+               </property>
+               <property name="text">
+                <string>T° Min</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="labTmax_6">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>130</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+background-color: none;</string>
+               </property>
+               <property name="text">
+                <string>Humidite</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="1" column="0">
+              <widget class="QLabel" name="Max">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#labTmax_4{
  background-color: white;
      border-style: outset;
      border-width: 2px;
@@ -63,127 +152,196 @@ background-color: rgb(106, 231, 36);
      min-width: 10em;
      padding: 6px;
 }</string>
-           </property>
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-          </widget>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="Min">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#labTmax_4{
+ background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: blue;
+     font: bold 14px;
+     min-width: 10em;
+     padding: 6px;
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="Humidite">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#labTmax_4{
+ background-color: white;
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: blue;
+     font: bold 14px;
+     min-width: 10em;
+     padding: 6px;
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="0">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_15">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>130</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border: none;
+background-color: none;</string>
+             </property>
+             <property name="text">
+              <string>Pression</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="prev">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_15">
-           <property name="text">
-            <string> Prevision :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="LabelDyn" name="labePre_4">
-           <property name="styleSheet">
-            <string notr="true">#labePre_4{
- background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: blue;
-     font: bold 14px;
-     min-width: 10em;
-     padding: 6px;
-}</string>
-           </property>
-           <property name="text">
-            <string>Prévisions Météo : Nuageux - orageux - ciel voilé - Ensoleillé  </string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="Line" name="line_4">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(211, 215, 207);
-</string>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="Line" name="line_9">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(211, 215, 207);
-
-</string>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_14">
-           <property name="text">
-            <string>Temperature Max :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="labTmax_4">
-           <property name="styleSheet">
-            <string notr="true">#labTmax_4{
- background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: blue;
-     font: bold 14px;
-     min-width: 10em;
-     padding: 6px;
-}</string>
-           </property>
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="0">
-          <widget class="QLabel" name="label_13">
-           <property name="text">
-            <string>Temperature Min :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0">
-          <widget class="QLabel" name="labeTmin_4">
-           <property name="styleSheet">
-            <string notr="true">#labeTmin_4{
- background-color: white;
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: blue;
-     font: bold 14px;
-     min-width: 10em;
-     padding: 6px;
-}</string>
-           </property>
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="Image">
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resources.qrc">:/Images/icons8-rain-cloud-200.svg</pixmap>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </item>
         </layout>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="labDate_4">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Meteo</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
      </layout>
@@ -198,13 +356,9 @@ background-color: rgb(106, 231, 36);
    <header>widgetstylesheet.h</header>
    <container>1</container>
   </customwidget>
-  <customwidget>
-   <class>LabelDyn</class>
-   <extends>QLabel</extends>
-   <header>labeldyn.h</header>
-  </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
-

@@ -4,8 +4,6 @@
 #include <QWidget>
 #include <QMap>
 
-#include <QMap>
-
 namespace Ui {
 class VigicruesMainWidget;
 }
