@@ -194,10 +194,7 @@ border: 2px solid grey;
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">
-
-
-</string>
+         <string notr="true"/>
         </property>
         <layout class="QGridLayout" name="gridLayout">
          <item row="1" column="0">
@@ -623,7 +620,7 @@ border: 2px solid grey;
                  <property name="styleSheet">
                   <string notr="true">background-color: url(none);
 border-color: rgba(255, 255, 255, 0);
-b</string>
+</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>

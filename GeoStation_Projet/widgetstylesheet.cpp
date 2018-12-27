@@ -20,8 +20,8 @@ void WidgetStyleSheet::InitQwidgets()
                 "border-radius: 12px;");
 
 
-    this->setStyleSheet("QLabel{background-color:grey;}");
-    this->setFixedSize(300,477);
+    this->setStyleSheet("QLabel{background-color:rgba(48, 166, 109, 0.8);}");
+    this->setMinimumSize(250,477);
 
 
 }

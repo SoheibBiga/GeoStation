@@ -24,18 +24,23 @@ void PharmacieMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 //    QPixmap photoPixmap = * (cherchePhotos->getPhoto());
 
     QPixmap *photoPixmap;
-    photoPixmap= new QPixmap(":/Images/enseignePharmacie.png");
+    photoPixmap= new QPixmap(":/Images/enseignePharmacie2.png");
     int w =ui->label_photo->width();
     int h = ui->label_photo->height();
+    //photoPixmap->scaled(200,100);
+    ui->label_photo->setPixmap(*photoPixmap);
 
     ui->label_photo->setPixmap(photoPixmap->scaled(w,h, Qt::KeepAspectRatio));
     ui->label_photo->setAlignment(Qt::AlignCenter);
 
     //ui->tableWidget->refresh_ameliore(map_ameliore);
 
+    //ui->label_nom->setVisible(true);
     ui->label_nom2->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Nom").toString());
+    //ui->label_nom->setPixmap(QPixmap(QString::fromUtf8(":/Icons/pharmacie.png")));
     ui->label_adresse2->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Adresse").toString());
     //ui->label_adresse->setPixmap(QPixmap(QString::fromUtf8(":/Icons/adresse.svg")));
     ui->label_codePostal->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("CodePostal").toString());
+    //ui->label_distance->setPixmap(QPixmap(QString::fromUtf8(":/Icons/distance.jpeg")));
     ui->label_distance_2->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Distance").toString());
 }

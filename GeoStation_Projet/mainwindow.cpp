@@ -1,6 +1,9 @@
 #include <QDebug>
-#include <QPushButton>
 
+
+
+#include <QDesktopWidget>
+#include <QRect>
 #include <stdlib.h>
 #include <time.h>
 #include "borneelectriquewidget.h"
@@ -68,11 +71,12 @@ MainWindow::~MainWindow()
  */
 void						MainWindow::initWidgets()
 {
-    AWidget*			wid;
+
+	AWidget*			wid;
 
 	// 1. Geolocalisation Widget
-	wid = new GeolocalisationWidget();
-	wid->init();
+    wid = new GeolocalisationWidget();
+    wid->init();
 //	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
@@ -157,8 +161,8 @@ void						MainWindow::initWidgets()
 // wid->setLayout(wid->getMainLayout());
  widgets_->addWidget(wid);
  mozaic_->addWidget(wid);
- connect(ordonnanceur_, SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),
-				 wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+ connect(ordonnanceur_, SIGNAL(vigicrues_send_info(QMap<QString,QString>)),
+                 wid, SIGNAL(send_info(QMap<QString,QString>)));
 
  // 11. Musees Widget
 	wid = new MuseesWidget();
@@ -181,6 +185,21 @@ void						MainWindow::initLayout()
 	layout()->addWidget(widgets_);
 }
 
+void						MainWindow::initScreen()
+{
+/*
+	QDesktopWidget*		dw;
+	QRect							screen;
+
+	dw = new QDesktopWidget();
+	//screen = dw->screenGeometry();
+
+	QDesktopWidget::;
+
+	delete (dw);
+*/
+}
+
 bool						MainWindow::init()
 {
 	setWindowState(Qt::WindowFullScreen);
@@ -189,6 +208,7 @@ bool						MainWindow::init()
 	initWidgets();
 	mozaic_->init();
 	initLayout();
+	initScreen();
 
 //	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
 

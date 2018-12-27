@@ -73,7 +73,7 @@ signals:
     void meteo_send_info2(QMap<QString, QVariant>);
     void pharmacie_send_info2(QMap<QString, QVariant>);
     void musee_send_info2(QMap<QString, QVariant>);
-    void vigicrues_send_info2(QMap<QString, QVariant>);
+    void vigicrues_send_info(QMap<QString, QString>);
     void geolocalisation_send_info2(QMap<QString, QVariant>);
     void borneelectrique_send_info2(QMap<QString, QVariant>);
     void avions_send_info2(QMap<QString, QVariant>);

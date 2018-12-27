@@ -23,6 +23,7 @@ class MainWindow : public QWidget
 		void				initTimer();
 		void				initWidgets();
 		void				initLayout();
+		void				initScreen();
 
 	public:
 		explicit MainWindow(QWidget *parent = 0);

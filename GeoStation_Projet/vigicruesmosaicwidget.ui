@@ -19,55 +19,67 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Vigicrues - Hauteurs et débits des cours d’eau</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="text">
-          <string>Station : brgqrfo q r roqrg  rgqr gqrg qrg </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Distance :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Code commune :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Période :</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="LineChartWidget" name="graphique" native="true"/>
-     </item>
-    </layout>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="WidgetStyleSheet" name="widget_2" native="true">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QWidget" name="widget" native="true">
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>Vigicrues - Hauteurs et débits des cours d’eau</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="text">
+                <string>Station :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>Distance :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>Code commune :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>Période :</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="LineChartWidget" name="graphique" native="true"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -76,6 +88,12 @@
    <class>LineChartWidget</class>
    <extends>QWidget</extends>
    <header>linechartwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WidgetStyleSheet</class>
+   <extends>QWidget</extends>
+   <header>widgetstylesheet.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
