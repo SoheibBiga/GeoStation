@@ -15,7 +15,7 @@ class Mozaic : public AWidget
 		QHBoxLayout*				vLayout2_;
 
 	public:
-		explicit Mozaic(QWidget* parent = 0);
+		explicit Mozaic(QWidget* parent = Q_NULLPTR);
 		virtual ~Mozaic();
 
 
@@ -29,7 +29,7 @@ class Mozaic : public AWidget
 		virtual bool				end();
 		virtual void				addWidget(QWidget* widget);
 
-private slots:
+	private slots:
     void receive_info(QMap<QString,QString>);
 };
 

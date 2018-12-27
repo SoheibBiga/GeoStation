@@ -1,6 +1,8 @@
 #include <QDebug>
 
-
+#include <QApplication>
+#include <QScreen>
+#include <QPoint>
 
 #include <QDesktopWidget>
 #include <QRect>
@@ -19,7 +21,6 @@
 #include "avionswidget.h"
 #include "mainwindow.h"
 #include "sncfwidget.h"
-#include "meteowidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QWidget(parent),
@@ -74,6 +75,33 @@ void						MainWindow::initWidgets()
 {
 	AWidget*			wid;
 
+	// 1. Geolocalisation Widget
+	wid = new GeolocalisationWidget();
+	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+
+	// 2. BorneElectrique Widget
+	wid = new BorneElectriqueWidget();
+	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+
+	// 3. Satellite Widget
+	wid = new SatelliteWidget();
+	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+
 	// 4. Avions Widget
 	wid = new AvionsWidget();
 	wid->init();
@@ -84,7 +112,7 @@ void						MainWindow::initWidgets()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 5. Meteo Widget
-    wid = new MeteoWidget();
+	wid = new SncfWidget();
 	wid->init();
 //	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
@@ -134,8 +162,8 @@ void						MainWindow::initWidgets()
 // wid->setLayout(wid->getMainLayout());
  widgets_->addWidget(wid);
  mozaic_->addWidget(wid);
- connect(ordonnanceur_, SIGNAL(vigicrues_send_info(QMap<QString,QString>)),
-                 wid, SIGNAL(send_info(QMap<QString,QString>)));
+ connect(ordonnanceur_, SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),
+				 wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
  // 11. Musees Widget
 	wid = new MuseesWidget();
@@ -148,8 +176,8 @@ void						MainWindow::initWidgets()
 
 void						MainWindow::initTimer()
 {
-    timer_->setInterval(1000);
-    timer_->start();
+	timer_->setInterval(1000);
+	timer_->start();
 }
 
 void						MainWindow::initLayout()
@@ -160,30 +188,38 @@ void						MainWindow::initLayout()
 
 void						MainWindow::initScreen()
 {
-/*
 	QDesktopWidget*		dw;
-	QRect							screen;
+//	QScreen*					screen;
+	QPoint*						point;
+	QRect							rect;
 
-	dw = new QDesktopWidget();
-	//screen = dw->screenGeometry();
+	dw = QApplication::desktop();
+	rect = dw->screenGeometry(0);
+//	screen = QGuiApplication::screens().at(0);
 
-	QDesktopWidget::;
+	point = new QPoint(rect.x(), rect.y());
+	mozaic_->move(*point);
+	move(*point);
 
-	delete (dw);
-*/
+
+	delete (point);
 }
 
 bool						MainWindow::init()
 {
 	setWindowState(Qt::WindowFullScreen);
-	srand(time(NULL));
+
+	//	srand(time(NULL));
+
 	initTimer();
 	initWidgets();
 	mozaic_->init();
 	initLayout();
 	initScreen();
 
+
    // connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
+
 
 
 	return (true);
@@ -198,6 +234,7 @@ bool				MainWindow::show()
 	ordonnanceur_->run();
 
 //	widgets_->show();
+
     mozaic_->show();
 
 	return (true);

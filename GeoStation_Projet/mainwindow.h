@@ -26,7 +26,7 @@ class MainWindow : public QWidget
 		void				initScreen();
 
 	public:
-		explicit MainWindow(QWidget *parent = 0);
+		explicit MainWindow(QWidget *parent = Q_NULLPTR);
 		~MainWindow();
 		bool				init();
 		bool				show();

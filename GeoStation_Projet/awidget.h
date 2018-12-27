@@ -29,7 +29,7 @@ class AWidget : public QWidget
 
 	public:
 
-		explicit AWidget(QWidget* parent = 0);
+		explicit AWidget(QWidget* parent = Q_NULLPTR);
 		virtual ~AWidget();
 
 		virtual int					getId() const;
@@ -44,9 +44,13 @@ class AWidget : public QWidget
 		virtual bool				end() = 0;
 		virtual void				addWidget(QWidget* widget);
 
-signals:
+	signals:
     void send_info(QMap<QString,QString>);
     void send_info2(QMap<QString,QVariant>);
+    void sncf_send_info(QMap<QString, QVariant>);
+    void evenement_send_info2(QMap<QString, QVariant>);
+    void satellite_send_info2(QMap<QString, QVariant>);
+    void geolocalisation_send_info2(QMap<QString, QVariant>);
 };
 
 #endif // AWIDGET_H_

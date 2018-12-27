@@ -27,4 +27,5 @@ void MeteoMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     ui->Min->setText(QString::number(min)+ "°");
     ui->Humidite->setText(QString::number(humidite)+ "%");
     ui->prev->setText(QString::number(pression)+ " HPa");
+
 }
