@@ -38,5 +38,7 @@
         <file>Images/enseignePharmacie2.png</file>
         <file>Icons/pharmacie.png</file>
         <file>Icons/distance.jpeg</file>
+        <file>Images/icons8-rain-cloud-200.svg</file>
+        <file>Blis.gif</file>
     </qresource>
 </RCC>
