@@ -18,6 +18,7 @@ public:
 
 private:
     Ui::SncfMainWidget *ui;
+    PokeMap *map;
 
 public slots:
     void receive_info2(QMap<QString,QVariant> map_ameliore);

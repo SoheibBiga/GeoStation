@@ -6,7 +6,7 @@ SncfMainWidget::SncfMainWidget(QWidget *parent) :
     ui(new Ui::SncfMainWidget)
 {
     ui->setupUi(this);
-    PokeMap *map = new PokeMap(PokeMap::CINQ_CENT_M);
+    map = new PokeMap(PokeMap::CINQ_CENT_M);
     ui->label->setPixmap(map->pixmap().scaled(ui->label->parentWidget()->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
 }
 
@@ -18,4 +18,9 @@ SncfMainWidget::~SncfMainWidget()
 void SncfMainWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
     ui->tableWidget->refresh_ameliore(map_ameliore,false);
+    QString lat = map_ameliore["Parametre"].toMap()["lat"].toString();
+    QString lon = map_ameliore["Parametre"].toMap()["long"].toString();
+    map->addPoint(lat,lon);
+    //ui->label->setPixmap(map->pixmap().scaled(ui->label->parentWidget()->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+
 }

@@ -53,7 +53,7 @@ bool PharmacieWidget::end()
 
 bool				PharmacieWidget::hasMainLayout() const
 {
-    return true;
+    return false;
 }
 
 

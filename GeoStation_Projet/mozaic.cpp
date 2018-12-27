@@ -68,6 +68,9 @@ bool				Mozaic::run()
 
 bool				Mozaic::end()
 {
+    delete (vLayout2_);
+    delete (vLayout1_);
+    delete (hLayout_);
 	return (true);
 }
 
