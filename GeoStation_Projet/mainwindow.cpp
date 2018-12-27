@@ -205,7 +205,7 @@ bool				MainWindow::show()
     ordonnanceur_->run();
 
 //	widgets_->show();
-//	mozaic_->show();
+//    mozaic_->show();
 
     return (true);
 }

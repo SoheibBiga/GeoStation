@@ -7,7 +7,7 @@ SncfMainWidget::SncfMainWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     PokeMap *map = new PokeMap(PokeMap::CINQ_CENT_M);
-    ui->label->setPixmap(map->pixmap().scaled(ui->label->parentWidget()->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    ui->label->setPixmap(map->pixmap().scaled(ui->label->parentWidget()->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
 }
 
 SncfMainWidget::~SncfMainWidget()

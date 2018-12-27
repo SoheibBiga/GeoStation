@@ -47,8 +47,8 @@ void tableauwidget::repeat()
 void tableauwidget::TimerFunction(QMap<QString, QVariant> map, bool mozaic, int index)
 {
 
-//  if(mozaic)
-//   {
+  if(mozaic)
+   {
 
     QStringList vlabels;
     int nb_row = map["Tableau"].toList().at(0).toMap().keys().size();
@@ -81,12 +81,42 @@ void tableauwidget::TimerFunction(QMap<QString, QVariant> map, bool mozaic, int 
         ui->tableWidget->setItem(i, 1, item);
 
     }
-//  }
-//  else
-//  {
+  }
+  else
+  {
+    QStringList vlabels;
 
-//  }
+    int nb_row = map["Tableau"].toList().size();
+    ui->tableWidget->setRowCount(nb_row);
 
+    int nb_Column = map["Tableau"].toList().at(0).toMap().keys().size();
+    ui->tableWidget->setColumnCount(nb_row);
+    qDebug() << nb_Column;
+    qDebug() << nb_row;
 
+    ui->tableWidget->horizontalHeader()->setVisible(false);
+    ui->tableWidget->verticalHeader()->setVisible(false);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section {background-color:blue}");
+
+    ui->labelTitle->setText ( map["Parametre"].toMap()["Titre"].toString());
+    ui->labelTitle->setWordWrap(true);
+    ui->labelTitle->setAlignment(Qt::AlignCenter);
+
+    QTableWidgetItem *item = new QTableWidgetItem();
+
+//    item = new QTableWidgetItem(map_ameliore["Tableau"].toList().at(0).toMap().keys()[i]);
+//    ui->tableWidget->setItem(0, i, item);
+
+    for(int i = 0; i < nb_row; i++)
+    {
+      for(int j = 0; j < nb_Column; j++)
+      {
+        item = new QTableWidgetItem(map["Tableau"].toList().at(index).toMap().value(map["Tableau"].toList().at(index).toMap().keys()[j]).toString());
+        ui->tableWidget->setItem(i, j, item);
+      }
+    }
+  }
 }
 
