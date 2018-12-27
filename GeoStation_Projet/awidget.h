@@ -44,10 +44,8 @@ class AWidget : public QWidget
         virtual void				addWidget(QWidget* widget);
 
 signals:
-
     void send_info2(QMap<QString,QVariant>);
-
-
+    void send_info2(QMap<QString,QString>);
 };
 
 #endif // AWIDGET_H_

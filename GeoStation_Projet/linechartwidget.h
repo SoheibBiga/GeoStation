@@ -24,6 +24,7 @@ public:
 
     bool refresh(QMap<QString, QString> map_formulaire);
     QString typePeriode;
+    void setUniteAbscisses(QString unite);
 
 
 
@@ -50,6 +51,7 @@ private:
     int nb_row;
     QFont fonte;
     int taillefonte;
+    QString uniteAbscisses;
 
 
 protected : void paintEvent(QPaintEvent *event) override;
