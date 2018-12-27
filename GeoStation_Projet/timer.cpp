@@ -22,7 +22,6 @@ void Timer::send_request()
         this->start(10000);
         break;
     case IdWidget(Satellite):
-        qDebug() << "ok sat new";
         ord->api_index = new SatelliteApi(ord);
         this->start(300000);
         break;

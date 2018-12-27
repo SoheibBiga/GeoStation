@@ -17,5 +17,5 @@ SncfMainWidget::~SncfMainWidget()
 
 void SncfMainWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-    ui->tableWidget->refresh_ameliore(map_ameliore);
+    ui->tableWidget->refresh_ameliore(map_ameliore,false);
 }

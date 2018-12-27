@@ -21,10 +21,10 @@ tableauwidget::~tableauwidget()
 }
 
 
-void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
+void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore, bool mozaic_)
 {
-    
-    data_map=map_ameliore;
+    mozaic = mozaic_;
+    data_map = map_ameliore;
     map_size = data_map["Tableau"].toList().size();
     NextEvent = 0;
     
@@ -44,7 +44,7 @@ void tableauwidget::repeat()
     timer->start(10000);
 }
 
-void tableauwidget::TimerFunction(QMap<QString, QVariant> map, bool mozaic, int index)
+void tableauwidget::TimerFunction(QMap<QString, QVariant> map, int index)
 {
     
     if(mozaic)
@@ -89,7 +89,7 @@ void tableauwidget::TimerFunction(QMap<QString, QVariant> map, bool mozaic, int 
         ui->tableWidget->setRowCount(nb_row);
         
         int nb_Column = map["Tableau"].toList().at(0).toMap().keys().size();
-        ui->tableWidget->setColumnCount(nb_row);
+        ui->tableWidget->setColumnCount(nb_Column);
         
         ui->tableWidget->horizontalHeader()->setVisible(false);
         ui->tableWidget->verticalHeader()->setVisible(false);
