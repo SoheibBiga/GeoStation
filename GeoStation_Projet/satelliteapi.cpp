@@ -40,7 +40,6 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(ord
         add_titre("Satellite à proximité");
         map_ameliore.insert("Tableau",QVariant(tableau));
         map_ameliore.insert("Parametre",QVariant(parametre));
-        qDebug() << "emit ok";
         emit satellite_send_info2(map_ameliore);
         finish(0);
     }
