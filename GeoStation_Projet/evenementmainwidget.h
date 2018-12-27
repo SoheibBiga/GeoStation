@@ -2,6 +2,7 @@
 #define EVENEMENTMAINWIDGET_H
 
 #include <QWidget>
+#include "pokemap.h"
 
 namespace Ui {
 class EvenementMainWidget;

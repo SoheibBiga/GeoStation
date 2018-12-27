@@ -110,9 +110,9 @@ void tableauwidget::TimerFunction(QMap<QString, QVariant> map, int index)
         {
             for(int j = 0; j < nb_Column; j++)
             {
-                //      item = new QTableWidgetItem(map["Tableau"].toList().at(index).toMap().keys()[i]);
-                //      ui->tableWidget->setItem(i, 0, item);
-                item = new QTableWidgetItem(map["Tableau"].toList().at(index).toMap().value(map["Tableau"].toList().at(index).toMap().keys()[j]).toString());
+//                item = new QTableWidgetItem(map["Tableau"].toList().at(index).toMap().keys()[i]);
+//                 ui->tableWidget->setItem(0, j, item);
+                item = new QTableWidgetItem(map["Tableau"].toList().at(i).toMap().value(map["Tableau"].toList().at(i).toMap().keys()[j]).toString());
                 ui->tableWidget->setItem(i, j, item);
             }
         }
