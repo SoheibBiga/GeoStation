@@ -20,9 +20,9 @@ void MeteoMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     ui->labeTmin_4->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Temperature Minimale").toString());
 
         // alignement centre
-        ui->labePre_4->setAlignment(Qt::AlignHCenter);
-        ui->labeTmin_4->setAlignment(Qt::AlignHCenter);
-        ui->labTmax_4->setAlignment(Qt::AlignHCenter);
-//        ui->label_16->setAlignment(Qt::AlignHCenter);
-        ui->labDate_4->setAlignment(Qt::AlignHCenter);
+    //        ui->labePre_4->setAlignment(Qt::AlignHCenter);
+    //        ui->labeTmin_4->setAlignment(Qt::AlignHCenter);
+    //        ui->labTmax_4->setAlignment(Qt::AlignHCenter);
+    //        ui->label_16->setAlignment(Qt::AlignHCenter);
+    //        ui->labDate_4->setAlignment(Qt::AlignHCenter);
 }
