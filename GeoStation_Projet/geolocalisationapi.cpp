@@ -40,7 +40,7 @@ void    GeolocalisationApi::get_response(QNetworkReply *reply)
         manager->get(QNetworkRequest(QUrl(QString(url_map + base["street"].toString().replace(" ", "+") + "," + base["adminArea5"].toString()+ "+" + base["postalCode"].toString()  + "|sm&locations=" + QString::number(latitude) + "," + QString::number(longitude) + "&size=800,800@2x&key=SokFIBhCH80wtXJaHxq1mVnmsdzKgkAQ"))));
         url_map.clear();
         connect(manager, &QNetworkAccessManager::finished, this, &GeolocalisationApi::get_map, Qt::UniqueConnection);
-        qDebug() << "Entry";
+        //qDebug() << "Entry";
     }
     else {
         finish(0);

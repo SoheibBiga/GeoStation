@@ -39,12 +39,12 @@ void ordonnanceur::run()
     evenement_timer->start(3);
     pharmacie_timer->start(4);
     geolocalisation_timer->start(5);
-//    vigicrues_timer->start(6);
-//    avions_timer->start(7);
-//    meteo_timer->start(8);
-    //pollution_timer->start(9);
+    vigicrues_timer->start(6);
+    avions_timer->start(7);
+    meteo_timer->start(8);
+    pollution_timer->start(9);
     musee_timer->start(10);
-    //borneelectrique_timer->start(11);
+    borneelectrique_timer->start(11);
     satellite_timer->start(12);
 
 
