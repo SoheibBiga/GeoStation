@@ -19,8 +19,12 @@ void MeteoMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
     double max = map_ameliore["Tableau"].toList().at(0).toMap().value("Temperature Maximale").toDouble() - 273.15;
     double min = map_ameliore["Tableau"].toList().at(0).toMap().value("Temperature Minimale").toDouble() - 273.15;
+    QString temps = map_ameliore["Tableau"].toList().at(0).toMap().value("Temps").toString();
+    double humidite = map_ameliore["Tableau"].toList().at(0).toMap().value("Humidite").toDouble();
+    double pression = map_ameliore["Tableau"].toList().at(0).toMap().value("Pression").toDouble();
 
-    ui->labTmax_4->setText(QString::number(max)+ "°");
-    ui->labeTmin_4->setText(QString::number(min)+ "°");
-
+    ui->Max->setText(QString::number(max)+ "°");
+    ui->Min->setText(QString::number(min)+ "°");
+    ui->Humidite->setText(QString::number(humidite)+ "%");
+    ui->prev->setText(QString::number(pression)+ " HPa");
 }
