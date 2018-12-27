@@ -23,38 +23,4 @@ void MeteoMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     ui->labTmax_4->setText(QString::number(max)+ "°");
     ui->labeTmin_4->setText(QString::number(min)+ "°");
 
-        // alignement centre
-<<<<<<< HEAD
-    //        ui->labePre_4->setAlignment(Qt::AlignHCenter);
-    //        ui->labeTmin_4->setAlignment(Qt::AlignHCenter);
-    //        ui->labTmax_4->setAlignment(Qt::AlignHCenter);
-    //        ui->label_16->setAlignment(Qt::AlignHCenter);
-    //        ui->labDate_4->setAlignment(Qt::AlignHCenter);
-=======
-        //ui->labePre_4->setAlignment(Qt::AlignHCenter);
-        ui->labeTmin_4->setAlignment(Qt::AlignHCenter);
-        ui->labTmax_4->setAlignment(Qt::AlignHCenter);
-<<<<<<< HEAD
-        ui->label_16->setAlignment(Qt::AlignHCenter);
-       // ui->labDate_4->setAlignment(Qt::AlignHCenter);
-
-
-
-
-    QLabel w;
-
-    // On crée une vidéo. Ici, c'est un GIF
-    QMovie movie("/home/stef18/Images/beta/BlissfulJoyousFanworms-size_restricted.gif");
-    // On l'associe à un label
-    w.setMovie (&movie);
-    // On lance la vidéo
-    movie.start ();
-
-    w.show();
-
-=======
-//        ui->label_16->setAlignment(Qt::AlignHCenter);
-        ui->labDate_4->setAlignment(Qt::AlignHCenter);
->>>>>>> a0a309de0884c38ca990e639af123d01eb698518
->>>>>>> f68d43ba35b56bed9ec976b6befa62b98c7ed7c2
 }
