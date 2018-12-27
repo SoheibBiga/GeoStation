@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::VigicruesMainWidget *ui;
+
+public slots:
+    void receive_info(QMap<QString,QString> map_formulaire);
 };
 
 #endif // VIGICRUESMAINWIDGET_H

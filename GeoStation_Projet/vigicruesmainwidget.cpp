@@ -12,3 +12,8 @@ VigicruesMainWidget::~VigicruesMainWidget()
 {
     delete ui;
 }
+
+void VigicruesMainWidget::receive_info(QMap<QString, QString> map_formulaire)
+{
+
+}
