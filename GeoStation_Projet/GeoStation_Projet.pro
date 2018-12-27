@@ -75,7 +75,8 @@ SOURCES += \
     meteowidget.cpp \
     meteomozaicwidget.cpp \
     meteomainwidget.cpp \
-    widgetstylesheet.cpp
+    widgetstylesheet.cpp \
+    avionsmainwidget.cpp
 
 
 
@@ -133,7 +134,8 @@ HEADERS += \
     meteowidget.h \
     meteomozaicwidget.h \
     meteomainwidget.h \
-    widgetstylesheet.h
+    widgetstylesheet.h \
+    avionsmainwidget.h
 
 
 
@@ -157,7 +159,8 @@ FORMS += \
     satellitemainwidget.ui \
     sncfmainwidget.ui \
     meteomozaicwidget.ui \
-    meteomainwidget.ui
+    meteomainwidget.ui \
+    avionsmainwidget.ui
 
 
 
