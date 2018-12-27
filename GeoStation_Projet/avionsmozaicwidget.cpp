@@ -7,7 +7,6 @@ AvionsMozaicWidget::AvionsMozaicWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //ui->textEdit->setText("JE VEUX VOIR ");
 
 }
 

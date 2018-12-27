@@ -5,6 +5,7 @@
 
 #include "awidget.h"
 #include "avionsmozaicwidget.h"
+#include "avionsmainwidget.h"
 
 class AvionsWidget : public AWidget
 {
@@ -16,14 +17,14 @@ public:
 
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
-		virtual bool				refresh();
+    virtual bool				refresh();
     virtual bool				init();
     virtual bool				run();
     virtual bool				end();
     virtual void				addWidget(QWidget* widget);
 
     AvionsMozaicWidget *avions_mozaic_widget;
-
+    AvionsMainWidget *avions_main_widget;
 
 signals:
     void send_info2(QMap<QString,QString>);

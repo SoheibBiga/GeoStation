@@ -96,12 +96,21 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
     list_planes_array =states.toArray();
 
     QString num = QString::number(list_planes_array.count() );
+    QString nombreavions;
+    if (list_planes_array.count()==1)
+    {
+         nombreavions = (num + " avion commercial");
 
-    QString nombreavions = ("Nous avons détecté "+ num + " avions commerciaux dans cette zone ");
+    }
+    if (list_planes_array.count() > 1)
+    {
+        nombreavions = (num + " avions commerciaux");
 
+    }
+
+   // add_titre(nombreavions);
     write_first_requete.append(nombreavions);
     write_first_requete.append("\n");
-
     write_first_requete.append(strJson);
 
 //    QString filename=( "../"+output_folder+"APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
@@ -115,7 +124,7 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
 
     if (list_planes_array.count()==0)
     {
-        add_titre("Vols");
+        add_titre(num+ "avions detectes");
         element.insert("pas d'avions", "première requete vide");
         envoiverswidget();
         //return;
@@ -124,7 +133,9 @@ void avionsapi::replyApi1(QNetworkReply*  reply)
 
 
 
-    parseplanelist();        // car fichiers lecture aeroports doivent etre crées dynamiquement
+    id_plane = 0;
+
+    parseplanelist(id_plane);        // car fichiers lecture aeroports doivent etre crées dynamiquement
 
 }
 
@@ -136,36 +147,41 @@ void avionsapi::delay(int i)
 }
 
 
-void avionsapi::parseplanelist()
+void avionsapi::parseplanelist( int i)
 {
-
-
-    for (int i = 0; i< list_planes_array.count(); i++)
+    if (i-1 > list_planes_array.count() )
     {
+        element.insert("vol", "nous avons parcouru tous les avions detectes");
+        return;
 
-        single_plane_array  = list_planes_array[i].toArray();
+    }
+
+    QString cle;
+
+
+ //   for (int i = 0; i< list_planes_array.count(); i++)
+
+
+        single_plane_array  = list_planes_array[i].toArray();       // ATTENTION SI BOUCLE
 
         ICAO24 = single_plane_array[0].toString();
-        QString flight_number = single_plane_array[1].toString();
+         flight_number = single_plane_array[1].toString();
         airline_code = single_plane_array[1].toString();    // this is the whole flight number
         airline_code.remove(3,airline_code.size()-3);       // first 3 characters of flight number
 
         view_airlinecompanies();
         write_APi1_info.append("L'avion du vol "+flight_number+ " de companie aerienne "+airline_name+" \n");
 
-        add_titre(QString("Vol "));
+        add_titre(QString("Vol " +airline_name+" "+ flight_number));
 
         QString dist = calculatedistance();
         if (dist != "")
         {
-            element.insert("Distance", QVariant(calculatedistance()));
+            cle = ("Distance " );
+            element.insert(cle, QVariant(calculatedistance()));
         }
 
         query_APi2();
-
-
-    }
-
 
 //        QString filename=( "../"+output_folder+"Info_APi1"+time);   // j'ai juste envie d'ecrire ça sur unfichier quelque part
 //        QFile file( filename );
@@ -208,6 +224,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 
         QString aircraft_icao24 = aircraft_obj["icao24"].toString();      // this could help us check we are working with the same plane as specified by the member ICAO24
 
+        QString cle;
         plane_code = aircraft_string_icao;
 
         readplane_type();
@@ -216,7 +233,9 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 
         if(plane_model_name != "")
         {
-            element.insert("Modele", plane_model_name);
+            //cle = "Modele \n";
+            cle = ("Modele " );
+            element.insert(cle, plane_model_name);
 
         }
 
@@ -225,7 +244,10 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         readairports();
         if (airport_name != "")
         {
-            element.insert("Provenance", airport_name);
+            //cle = "Provenance ";
+            cle = ("Provenance " );
+
+            element.insert(cle, airport_name);
         }
 
         write_Info_APi2.append(QString(" l'aeroport "+ airport_name +" et a pour destination ") );
@@ -236,7 +258,10 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 
         if (airport_name != "")
         {
-            element.insert("Destination", airport_name);
+            //cle= "Destination \n ";
+            cle = ("Destination " );
+
+            element.insert(cle , airport_name);
         }
 
         write_Info_APi2.append(QString("l'aeroport "+ airport_name +" \n") );
@@ -246,13 +271,28 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
 
     }
 
-
     if (json.isObject())
     {
+        ////
+        /// \brief plane_object
+        ///lorsque les recepteurs ne detectent pas l'avion en question, le contenu
+        /// du JsonDocument est le suivant
+        /// "error": "No Record Found or Flight not currently detected by receivers. "
+        /// Dans ce cas, ce message est reçu sous la forme d'un QJsonObjet.
+        /// Il est judicieux de passer à l'avion suivant de la première APi
+        ///
+        ///
+        ///
+        ///
+
 
         QJsonObject plane_object = json.object();
         write_Info_APi2.append(QString("COULD NOT RETRIEVE INFORMATION FOR THIS PLANE///////////////") );
         element.insert("Modele", QString("COULD NOT RETRIEVE INFORMATION FOR THIS PLANE///////////////") );
+
+        id_plane++;
+
+        parseplanelist(id_plane);
 
 
     }
@@ -525,8 +565,8 @@ QString avionsapi::calculatedistance()
 
     double eath_radius = 6371;
 
-    double diff_lat = abs(ref_longi-longitude);
-    double diff_longi =  abs(ref_lati-latitude);
+    double diff_lat = qFabs(ref_longi-longitude);
+    double diff_longi =  qFabs(ref_lati-latitude);
 
     qreal angle_distance = qSqrt(qPow(diff_lat, 2)+qPow(diff_longi, 2)  );
 
@@ -559,13 +599,7 @@ void avionsapi::envoiverswidget()
     int total_result = 11;
 
 
-    //QMap<QString,QVariant> element;
-    //add_titre("Avions detectés dans la zone ");     // titre ne s'aafiche pas
-    //add_titre("Prochains Train au depart de " + libelle_gare );
-    add_nb_entree(total_result);
-
-    //element.insert("Direction",QVariant(write_APi1_info));
-
+    //add_nb_entree(total_result);
 
     add_list(element);
 
@@ -581,6 +615,27 @@ void avionsapi::envoiverswidget()
 
     //qDebug()<<"LE TEMPS D'EXECUTION EST DE      "<<bigtime - smalltime <<endl;
 
-    finish(1);
+    finish(0);
 
+}
+
+
+
+QPixmap avionsapi::generer_carte()
+{
+
+
+    QPixmap resultat;
+    PokeMap *carte = new PokeMap(PokeMap::CINQ_MILLE_M); // CENT_M correspond à la carte de rayon 100 mètres.
+
+    //Ajoute les différents points sur la carte
+    carte->addPoint("48.871554", "2.346000");
+    carte->addPoint("48.871554", "2.346300");
+
+    //Ajoute du texte sur la carte au coordonnées x, y de la pixmap
+    carte->addText(100, 200, "Documentation PokeMap");
+
+    resultat = carte->pixmap(); // Retourne la carte final;
+
+    return resultat;
 }
