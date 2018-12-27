@@ -7,7 +7,7 @@ Intro::Intro(QWidget *parent)
 
     label = new QLabel(tr("Bienvenue dans l'interface de configuration du logiciel."
                           "Suivez les différentes étapes afin d'installer les modules "
-                          "nécessaire au déploiement de l'application. "));
+                          "nécessaires au déploiement de l'application. "));
     label->setWordWrap(true);
 
     layout = new QVBoxLayout;
