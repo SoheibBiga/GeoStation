@@ -22,7 +22,7 @@ public:
     EvenementMozaicWidget *evenement_mozaic_widget;
 
 signals:
-    void send_info(QMap<QString,QString>);
+
     void send_info2(QMap<QString,QVariant>);
 };
 

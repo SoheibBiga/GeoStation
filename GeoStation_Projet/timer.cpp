@@ -47,7 +47,7 @@ void Timer::send_request()
         break;
     case IdWidget(Vigicrues):
         ord->api_index = new VigicruesApi(ord);
-        this->start(10000);
+        this->start(600000);
         break;
     case IdWidget(Geolocalisation):
         ord->api_index = new GeolocalisationApi(ord);
@@ -55,7 +55,7 @@ void Timer::send_request()
         break;
     case IdWidget(Avions):
         ord->api_index = new avionsapi(ord);
-        this->start(10000);
+        this->start(600000);
         break;
     }
     ord->api_index->loop->exec();

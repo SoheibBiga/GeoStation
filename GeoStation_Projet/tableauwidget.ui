@@ -7,39 +7,68 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>436</height>
+    <height>477</height>
    </rect>
   </property>
-  <property name="maximumSize">
+  <property name="minimumSize">
    <size>
     <width>300</width>
     <height>477</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>1000</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 italic 11pt &quot;Tibetan Machine Uni&quot;;
-border-image: url(:/Icons/a_plan.jpeg);</string>
+   <string notr="true">background-image: url(:/Icons/a_plan.jpeg);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="labelTitle">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QTableWidget" name="tableWidget"/>
-     </item>
-    </layout>
+    <widget class="WidgetStyleSheet" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="labelTitle">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTableWidget" name="tableWidget">
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WidgetStyleSheet</class>
+   <extends>QWidget</extends>
+   <header>widgetstylesheet.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -15,15 +15,15 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="TableauPanoramicWidget" name="tableWidget"/>
+    <widget class="tableauwidget" name="tableWidget"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableauPanoramicWidget</class>
+   <class>tableauwidget</class>
    <extends>QTableWidget</extends>
-   <header location="global">tableaupanoramicwidget.h</header>
+   <header>tableauwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

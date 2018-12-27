@@ -1,65 +1,72 @@
 #include "tableauwidget.h"
 #include "ui_tableauwidget.h"
 #include <QDebug>
+#include <QTimer>
 
 tableauwidget::tableauwidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::tableauwidget)
 {
     ui->setupUi(this);
+    timer=new QTimer(this);
+    NextEvent=0;
+    connect(timer, SIGNAL(timeout()),this, SLOT(repeat()));
 }
 
 tableauwidget::~tableauwidget()
 {
     delete ui;
+    timer->stop();
+    delete  timer;
 }
 
-bool tableauwidget::refresh(QMap<QString, QString> map_formulaire)
+
+void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore)
 {
-    if(map_formulaire.keys().size() == 0) return false;
 
+    data_map=map_ameliore;
+    map_size = data_map["Tableau"].toList().size();
+    NextEvent = 0;
 
-    QStringList vlabels;
-    int nb_row = map_formulaire.keys().size();
-    ui->tableWidget->setRowCount(nb_row);
-
-    ui->tableWidget->setColumnCount(1);
-
-    ui->tableWidget->horizontalHeader()->setVisible(false);
-    ui->tableWidget->verticalHeader()->setVisible(false);
-    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section {background-color:blue}");
-
-    int i = 0;
-    for(i = 0; i < nb_row; i++){
-
-        QTableWidgetItem *item =new QTableWidgetItem();
-        vlabels << map_formulaire.keys()[i];
-        item ->setText(map_formulaire.value(map_formulaire.keys()[i]));
-        ui->tableWidget->setItem(0, i, item);
+    if(map_size!=0){
+        timer->start(1);
     }
-    return true;
+    else TimerFunction(data_map);
 }
 
-void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore,bool mozaic)
+void tableauwidget::repeat()
 {
-   if(mozaic)
-   {
+    TimerFunction(data_map,NextEvent);
+    if(map_size >= 1){
+        if(NextEvent < map_size-1) NextEvent++;
+        else NextEvent = 0;
+    }
+    timer->start(10000);
+}
+
+void tableauwidget::TimerFunction(QMap<QString, QVariant> map, bool mozaic, int index)
+{
+
+//  if(mozaic)
+//   {
 
     QStringList vlabels;
-    int nb_row = map_ameliore["Tableau"].toList().at(0).toMap().keys().size();
+    int nb_row = map["Tableau"].toList().at(0).toMap().keys().size();
     ui->tableWidget->setRowCount(nb_row);
 
     ui->tableWidget->setColumnCount(2);
 
     ui->tableWidget->horizontalHeader()->setVisible(false);
     ui->tableWidget->verticalHeader()->setVisible(false);
-    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section {background-color:blue}");
 
-    ui->labelTitle->setText ( map_ameliore["Parametre"].toMap()["Titre"].toString());
+    ui->tableWidget->resizeColumnsToContents();
+
+   ui->tableWidget->horizontalHeader()->setStretchLastSection(1);
+
+    ui->labelTitle->setText ( map["Parametre"].toMap()["Titre"].toString());
     ui->labelTitle->setWordWrap(true);
     ui->labelTitle->setAlignment(Qt::AlignCenter);
 
@@ -67,54 +74,19 @@ void tableauwidget::refresh_ameliore(QMap<QString,QVariant> map_ameliore,bool mo
     int i = 0;
     for(i = 0; i < nb_row; i++)
     {
-        item = new QTableWidgetItem(map_ameliore["Tableau"].toList().at(0).toMap().keys()[i]);
+        item = new QTableWidgetItem(map["Tableau"].toList().at(index).toMap().keys()[i]);
         ui->tableWidget->setItem(i, 0, item);
-        item = new QTableWidgetItem(map_ameliore["Tableau"].toList().at(0).toMap().value(map_ameliore["Tableau"].toList().at(0).toMap().keys()[i]).toString());
+
+        item = new QTableWidgetItem(map["Tableau"].toList().at(index).toMap().value(map["Tableau"].toList().at(index).toMap().keys()[i]).toString());
         ui->tableWidget->setItem(i, 1, item);
 
     }
-   }
-   else
-   {
-       QStringList vlabels;
-       QTableWidgetItem *item = new QTableWidgetItem();
+//  }
+//  else
+//  {
 
-       QTableWidgetItem *icon_item = new QTableWidgetItem;
+//  }
 
-       int nb_row = map_ameliore["Tableau"].toList().size();
-       ui->tableWidget->setRowCount(nb_row);
-
-       int nb_Column = map_ameliore["Tableau"].toList().at(1).toMap().keys().size();
-       ui->tableWidget->setColumnCount(nb_Column);
-       qDebug() << nb_Column;
-       qDebug() << nb_row;
-
-      // ui->tableWidget->horizontalHeader()->setVisible(false);
-       ui->tableWidget->verticalHeader()->setVisible(false);
-       ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-       ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-       ui->tableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color:green}");
-
-       ui->labelTitle->setText ( map_ameliore["Parametre"].toMap()["Titre"].toString());
-       ui->labelTitle->setWordWrap(true);
-       ui->labelTitle->setAlignment(Qt::AlignCenter);
-
-       QIcon icon("/home/ghania/Bureau/projet/GeoStation_old_7/GeoStation_Projet/Icons/adresse.svg");
-       QIcon icon2("/home/ghania/Bureau/projet/GeoStation_old_7/GeoStation_Projet/Icons/Date.svg");
-
-       for(int i = 0; i < nb_row; i++)
-       {
-         for(int j = 0; j < nb_Column; j++)
-         {
-
-          // item = new QTableWidgetItem(map_ameliore["Tableau"].toList().at(0).toMap().keys()[i]);
-           //ui->tableWidget->setItem(0, i, item);
-
-           item = new QTableWidgetItem(map_ameliore["Tableau"].toList().at(i).toMap().value(map_ameliore["Tableau"].toList().at(i).toMap().keys()[j]).toString());
-           ui->tableWidget->setItem(i, j, item);
-          }
-       }
-     }
 
 }
 

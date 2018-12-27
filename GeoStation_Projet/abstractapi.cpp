@@ -38,7 +38,7 @@ AbstractApi::AbstractApi(ordonnanceur *ord_, QObject *parent, QString longitude_
 {
     manager = new QNetworkAccessManager(parent);
     connect(this,SIGNAL(evenement_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(evenement_send_info2(QMap<QString,QVariant>)));
-    connect(this,SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(vigicrues_send_info(QMap<QString,QString>)),ord,SIGNAL(vigicrues_send_info(QMap<QString,QString>)));
     connect(this,SIGNAL(avions_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(avions_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)));
     connect(this,SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),ord,SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)));

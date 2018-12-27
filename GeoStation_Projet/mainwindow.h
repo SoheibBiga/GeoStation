@@ -20,8 +20,10 @@ class MainWindow : public QWidget
 		MainWindow(MainWindow const& other);
 		MainWindow&			operator=(MainWindow const& other);
 
-		void				initMozaic();
+		void				initTimer();
 		void				initWidgets();
+		void				initLayout();
+		void				initScreen();
 
 	public:
 		explicit MainWindow(QWidget *parent = 0);

@@ -7,6 +7,7 @@ Vigicruesmosaicwidget::Vigicruesmosaicwidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+/*Pour tester le linechart
     QMap<QString,QString> mp;
     mp.insert("2018-12-20T20:00:00+00:00","4.1");
     mp.insert("2018-12-20T20:30:00+00:00","3");
@@ -20,6 +21,7 @@ Vigicruesmosaicwidget::Vigicruesmosaicwidget(QWidget *parent) :
     mp.insert("période","journalière");
 
     this->receive_info(mp);
+*/
 }
 
 Vigicruesmosaicwidget::~Vigicruesmosaicwidget()
@@ -29,6 +31,7 @@ Vigicruesmosaicwidget::~Vigicruesmosaicwidget()
 
 void Vigicruesmosaicwidget::receive_info(QMap<QString, QString> map_formulaire)
 {
+
     ui->label->setText(QString("Station : "+map_formulaire.value("lbstationhydro")));
     map_formulaire.remove("lbstationhydro");
     ui->label_5->setText(QString("Distance (mètres) : "+map_formulaire.value("dist")));

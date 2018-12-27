@@ -33,10 +33,11 @@ void EvenementApi::reponseRecue(QNetworkReply *rep)
         QMap<QString,QVariant> element;
         QString department = Myjson.toVariant().toMap()["records"].toJsonArray().at(0).toVariant().toMap()["fields"].toMap()["department"].toString();
         add_titre("Evenements à " + department );
-        add_nb_entree(total_event);
+
 
         int i;
         int count = Myjson.object().toVariantMap()["records"].toJsonArray().count();
+        add_nb_entree(count);
         for (i = 0; i < count; i++)
         {
             QDate MyDate = QDate::currentDate();
