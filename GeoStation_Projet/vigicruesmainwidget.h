@@ -2,6 +2,7 @@
 #define VIGICRUESMAINWIDGET_H
 
 #include <QWidget>
+#include <QMap>
 
 namespace Ui {
 class VigicruesMainWidget;
