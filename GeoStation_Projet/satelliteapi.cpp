@@ -23,7 +23,7 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(ord
     fonction=above;
 
     //connection between Manager which request reply;
-   connect(manager,SIGNAL(networkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility)),this,SLOT(NetworkStatus(QNetworkAccessManager::NetworkAccessibility)));
+    connect(manager,SIGNAL(networkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility)),this,SLOT(NetworkStatus(QNetworkAccessManager::NetworkAccessibility)));
     connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
 
     //Set request URL
@@ -40,8 +40,9 @@ SatelliteApi::SatelliteApi(ordonnanceur *ord, QObject *parent) : AbstractApi(ord
         add_titre("Satellite à proximité");
         map_ameliore.insert("Tableau",QVariant(tableau));
         map_ameliore.insert("Parametre",QVariant(parametre));
+        qDebug() << "emit ok";
         emit satellite_send_info2(map_ameliore);
-        finish(1);
+        finish(0);
     }
     //qint64 t_end = QDateTime::currentSecsSinceEpoch();
     //qDebug()<< QString::number(t_end- t_start);
@@ -101,11 +102,11 @@ void SatelliteApi::replyFinished(QNetworkReply* reply)
 
             add_list(element);
         }
-        sat_loop->exit(1);
+        sat_loop->exit(0);
         total+=satCount;
     }
 
-    else sat_loop->exit(1);
+    else sat_loop->exit(0);
 }
 void SatelliteApi::Request_Url(int pos,int category)
 {
