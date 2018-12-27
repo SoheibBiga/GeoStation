@@ -45,6 +45,7 @@ class AWidget : public QWidget
 
 signals:
     void send_info2(QMap<QString,QVariant>);
+    void send_info2(QMap<QString,QString>);
 };
 
 #endif // AWIDGET_H_

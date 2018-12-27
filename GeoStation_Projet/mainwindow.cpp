@@ -16,6 +16,7 @@
 #include "avionswidget.h"
 #include "mainwindow.h"
 #include "sncfwidget.h"
+#include "meteowidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QWidget(parent),
@@ -107,7 +108,7 @@ void						MainWindow::initWidgets()
                     wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
     // 5. Meteo Widget
-    wid = new SncfWidget();
+    wid = new MeteoWidget();
     wid->init();
 //	wid->setLayout(wid->getMainLayout());
     widgets_->addWidget(wid);
@@ -157,8 +158,8 @@ void						MainWindow::initWidgets()
 // wid->setLayout(wid->getMainLayout());
  widgets_->addWidget(wid);
  mozaic_->addWidget(wid);
- connect(ordonnanceur_, SIGNAL(vigicrues_send_info2(QMap<QString,QVariant>)),
-                 wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+ connect(ordonnanceur_, SIGNAL(vigicrues_send_info(QMap<QString,QString>)),
+                 wid, SIGNAL(send_info2(QMap<QString,QString>)));
 
  // 11. Musees Widget
     wid = new MuseesWidget();
@@ -171,7 +172,7 @@ void						MainWindow::initWidgets()
 
 void						MainWindow::initTimer()
 {
-    timer_->setInterval(1000);
+    timer_->setInterval(10000);
     timer_->start();
 }
 
