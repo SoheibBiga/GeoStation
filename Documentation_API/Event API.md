@@ -1,19 +1,32 @@
+Jeudi, 27. décembre 2018 02:33 
+**For any information contact Ghania BARA**
+
 #Event API
 This documentation describes how to use event API.
 The purpose of its API is to list all public events happening around a circle of a given distance.
 It concerns either current events from the current day of the request/search either upcoming ones in a fortnight.
 
+###Description
+Event API to broadcast a streaming transmission of public events wich take place in a specific area.
+Event  API is embedded in software  implemented in C++ programing language and consequently allows to list all public events taking place in the current geographical location for a period of time.
+API result are continously display on a screen when C++ program is launched.
 
 ###Functional presentation
 Event API calls a webservice which requests a network server in order to gather expected events. 
 
 ### Type of events
 Event API enables to search different type of events:
- - concerts
- - sport events
-  - drama 
-  - lectures
-  ....
+ - Concerts
+ - Sport events
+ - Drama 
+ - Lectures
+ - Exhibition
+ - Show 
+ - Demonstration
+ - Competition
+ - Meeting
+ - Art
+
   There is no filter on event type but they are filtered by current date +15 days.
 
 ###Place of event
