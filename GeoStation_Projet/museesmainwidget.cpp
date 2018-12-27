@@ -74,16 +74,26 @@ void MuseesMainWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 
 
         // Affichage des photos :
-        long long doublePhoto1 = map_ameliore["photo1"] . toLongLong();
-        photo1 = reinterpret_cast <QPixmap*> (doublePhoto1) ;
-        long long doublePhoto2 = map_ameliore["photo2"] . toLongLong();
-        photo2 = reinterpret_cast <QPixmap*> (doublePhoto2) ;
-        long long doublePhoto3 = map_ameliore["photo3"] . toLongLong();
-        photo3 = reinterpret_cast <QPixmap*> (doublePhoto3) ;
-        long long doublePhoto4 = map_ameliore["photo4"] . toLongLong();
-        photo4 = reinterpret_cast <QPixmap*> (doublePhoto4) ;
-        long long doublePhotoMap = map_ameliore["photoMap"] . toLongLong();
-        photoMap = reinterpret_cast <QPixmap*> (doublePhotoMap) ;
+        if ( map_ameliore.contains("photo1") ){
+            long long doublePhoto1 = map_ameliore["photo1"] . toLongLong();
+            photo1 = reinterpret_cast <QPixmap*> (doublePhoto1) ;
+        }
+        if ( map_ameliore.contains("photo1") ){
+            long long doublePhoto2 = map_ameliore["photo2"] . toLongLong();
+            photo2 = reinterpret_cast <QPixmap*> (doublePhoto2) ;
+        }
+        if ( map_ameliore.contains("photo1") ){
+            long long doublePhoto3 = map_ameliore["photo3"] . toLongLong();
+            photo3 = reinterpret_cast <QPixmap*> (doublePhoto3) ;
+        }
+        if ( map_ameliore.contains("photo1") ){
+            long long doublePhoto4 = map_ameliore["photo4"] . toLongLong();
+            photo4 = reinterpret_cast <QPixmap*> (doublePhoto4) ;
+        }
+        if ( map_ameliore.contains("photo1") ){
+            long long doublePhotoMap = map_ameliore["photoMap"] . toLongLong();
+            photoMap = reinterpret_cast <QPixmap*> (doublePhotoMap) ;
+        }
 
         ajusteTaillesPhoto() ;
 }

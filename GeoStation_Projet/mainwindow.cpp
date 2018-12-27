@@ -165,12 +165,12 @@ void						MainWindow::initWidgets()
                  wid, SIGNAL(send_info(QMap<QString,QString>)));
 
  // 11. Musees Widget
-	wid = new MuseesWidget();
-	wid->init();
-//	wid->setLayout(wid->getMainLayout());
-	mozaic_->addWidget(wid);
-	connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
-					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+    wid = new MuseesWidget();
+    wid->init();
+    wid->setLayout(wid->getMainLayout());
+    mozaic_->addWidget(wid);
+    connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
+                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 }
 
 void						MainWindow::initTimer()
@@ -210,7 +210,7 @@ bool						MainWindow::init()
 	initLayout();
 	initScreen();
 
-//	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
+    connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
 
 
 	return (true);
@@ -225,7 +225,7 @@ bool				MainWindow::show()
 	ordonnanceur_->run();
 
 //	widgets_->show();
-	mozaic_->show();
+//	mozaic_->show();
 
 	return (true);
 }
