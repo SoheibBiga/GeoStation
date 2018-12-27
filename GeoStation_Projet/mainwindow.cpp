@@ -101,11 +101,10 @@ void						MainWindow::initWidgets()
     // 4. Avions Widget
     wid = new AvionsWidget();
     wid->init();
-//	wid->setLayout(wid->getMainLayout());
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
     // 5. Meteo Widget
     wid = new MeteoWidget();
