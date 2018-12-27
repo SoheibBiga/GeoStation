@@ -76,9 +76,9 @@ SOURCES += \
     meteomozaicwidget.cpp \
     meteomainwidget.cpp \
     widgetstylesheet.cpp \
-    avionsmainwidget.cpp
-
-
+    pharmaciemainwidget.cpp \
+    avionsmainwidget.cpp \
+    vigicruesmainwidget.cpp
 
 
 
@@ -135,9 +135,9 @@ HEADERS += \
     meteomozaicwidget.h \
     meteomainwidget.h \
     widgetstylesheet.h \
-    avionsmainwidget.h
-
-
+    pharmaciemainwidget.h \
+    avionsmainwidget.h \
+    vigicruesmainwidget.h
 
 
 FORMS += \
@@ -160,7 +160,10 @@ FORMS += \
     sncfmainwidget.ui \
     meteomozaicwidget.ui \
     meteomainwidget.ui \
-    avionsmainwidget.ui
+    pharmaciemainwidget.ui\
+    avionsmainwidget.ui \
+    vigicruesmainwidget.ui
+
 
 
 

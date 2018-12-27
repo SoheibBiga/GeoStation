@@ -35,17 +35,22 @@ class AWidget : public QWidget
 		virtual int					getId() const;
 		virtual QLayout*		getMainLayout() const;
 		virtual QLayout*		getMozaicLayout() const;
-        virtual bool				contentMap() const = 0;
-        virtual bool				hasMozaicLayout() const = 0;
-				virtual bool				refresh() = 0;
-        virtual bool				init() = 0;
-        virtual bool				run() = 0;
-        virtual bool				end() = 0;
-        virtual void				addWidget(QWidget* widget);
+		virtual bool				contentMap() const = 0;
+		virtual bool				hasMainLayout() const = 0;
+		virtual bool				hasMozaicLayout() const = 0;
+		virtual bool				refresh() = 0;
+		virtual bool				init() = 0;
+		virtual bool				run() = 0;
+		virtual bool				end() = 0;
+		virtual void				addWidget(QWidget* widget);
 
 signals:
+    void send_info(QMap<QString,QString>);
     void send_info2(QMap<QString,QVariant>);
-    void send_info2(QMap<QString,QString>);
+    void sncf_send_info(QMap<QString, QVariant>);
+    void evenement_send_info2(QMap<QString, QVariant>);
+    void satellite_send_info2(QMap<QString, QVariant>);
+    void geolocalisation_send_info2(QMap<QString, QVariant>);
 };
 
 #endif // AWIDGET_H_
