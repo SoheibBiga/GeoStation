@@ -33,6 +33,9 @@ public slots:
     void slotSslErrors(QList<QSslError>SslErrors);
     void NetworkStatus(QNetworkAccessManager::NetworkAccessibility NetStatus);
 
+signals:
+    void reply_to_delete();
+
 private:
 
     //float Obs_Latitude, Obs_Longitude,

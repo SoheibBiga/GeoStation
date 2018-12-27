@@ -32,7 +32,7 @@ SatelliteMozaicWidget::SatelliteMozaicWidget(QWidget *parent) :
     //    ui->Longitude->setAttribute(Qt::WA_TranslucentBackground);
     //    ui->Latitude->setAttribute(Qt::WA_TranslucentBackground);
     //    ui->DateLancement->setAttribute(Qt::WA_TranslucentBackground);
-    ui->Titre->setAttribute(Qt::WA_TranslucentBackground);
+    //ui->Titre->setAttribute(Qt::WA_TranslucentBackground);
 
     ui->Satellite_Info->setAutoFillBackground(true);
 
