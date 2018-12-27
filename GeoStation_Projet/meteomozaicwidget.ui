@@ -34,7 +34,7 @@
         <property name="styleSheet">
          <string notr="true">
 #groupBox{
-background-color: rgb(106, 231, 36);
+background-color: #80bfff;
       border-style: outset;
      border-width: 2px;
      border-radius: 10px;
@@ -43,6 +43,39 @@ background-color: rgb(106, 231, 36);
      min-width: 10em;
      padding: 6px;
 }</string>
+<<<<<<< HEAD
+     </property>
+     <property name="title">
+      <string>Météo</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/Images/icons8-rain-cloud-200.svg</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="Line" name="line_9">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(211, 215, 207);
+
+</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="labTmax_4">
+        <property name="styleSheet">
+         <string notr="true">#labTmax_4{
+=======
         </property>
         <property name="title">
          <string>Météo</string>
@@ -80,6 +113,7 @@ background-color: rgb(106, 231, 36);
           <widget class="LabelDyn" name="labePre_4">
            <property name="styleSheet">
             <string notr="true">#labePre_4{
+>>>>>>> a0a309de0884c38ca990e639af123d01eb698518
  background-color: white;
      border-style: outset;
      border-width: 2px;
@@ -89,6 +123,50 @@ background-color: rgb(106, 231, 36);
      min-width: 10em;
      padding: 6px;
 }</string>
+<<<<<<< HEAD
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Temperature Min :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Temperature Max :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string> Prevision :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="Line" name="line_4">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(211, 215, 207);
+</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="LabelDyn" name="labePre_4">
+        <property name="styleSheet">
+         <string notr="true">#labePre_4{
+=======
            </property>
            <property name="text">
             <string>Prévisions Météo : Nuageux - orageux - ciel voilé - Ensoleillé  </string>
@@ -129,6 +207,7 @@ background-color: rgb(106, 231, 36);
           <widget class="QLabel" name="labTmax_4">
            <property name="styleSheet">
             <string notr="true">#labTmax_4{
+>>>>>>> a0a309de0884c38ca990e639af123d01eb698518
  background-color: white;
      border-style: outset;
      border-width: 2px;
@@ -138,6 +217,18 @@ background-color: rgb(106, 231, 36);
      min-width: 10em;
      padding: 6px;
 }</string>
+<<<<<<< HEAD
+        </property>
+        <property name="text">
+         <string>Prévisions Météo : Nuageux - orageux - ciel voilé - Ensoleillé  </string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="labeTmin_4">
+        <property name="styleSheet">
+         <string notr="true">#labeTmin_4{
+=======
            </property>
            <property name="text">
             <string>TextLabel</string>
@@ -155,6 +246,7 @@ background-color: rgb(106, 231, 36);
           <widget class="QLabel" name="labeTmin_4">
            <property name="styleSheet">
             <string notr="true">#labeTmin_4{
+>>>>>>> a0a309de0884c38ca990e639af123d01eb698518
  background-color: white;
      border-style: outset;
      border-width: 2px;
@@ -204,6 +296,8 @@ background-color: rgb(106, 231, 36);
    <header location="global">labeldyn.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

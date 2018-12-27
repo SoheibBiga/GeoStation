@@ -173,3 +173,13 @@ RESOURCES += \
 
 target.path = /home/root
 INSTALLS += target
+
+DISTFILES += \
+    ../../../../Images/beta/blis1.gif \
+    ../../../../Images/beta/BlissfulJoyousFanworms-size_restricted.gif \
+    ../../../../Images/beta/BlissfulJoyousFanworms-size_restricted.gif \
+    ../../../../Images/beta/BlissfulJoyousFanworms-size_restricted.gif \
+    ../../../../Téléchargements/icons8-rain-cloud-200.svg \
+    ../../../../Téléchargements/icons8-rain-cloud-200.svg \
+    ../../../icons8-rain-cloud-200.svg \
+    ../../../icons8-rain-cloud-200.svg

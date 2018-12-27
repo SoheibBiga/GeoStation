@@ -116,7 +116,7 @@ void MuseesMainWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         }
         else {
             PokeMap *map = new PokeMap(PokeMap::CINQ_CENT_M);
-            ui->label_map->setPixmap(map->pixmap().scaled(ui->label_map->parentWidget()->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+            //ui->label_map->setPixmap(map->pixmap().scaled(ui->label_map->parentWidget()->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
             ui->label_map->setPixmap(map->pixmap().scaled(ui->label_map->parentWidget()->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
             ui->label_map->setAlignment(Qt::AlignCenter);
         }
