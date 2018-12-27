@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include <QMap>
+
 namespace Ui {
 class VigicruesMainWidget;
 }
