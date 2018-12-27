@@ -45,8 +45,11 @@ bool				Mozaic::init()
 	hLayout_->addLayout(vLayout2_);
 	setLayout(hLayout_);
 
-	setContentsMargins(0, 0, 0, 0);
-
+	/*
+	hLayout_->setContentsMargins(-1, -1, -1, -1);
+	vLayout1_->setContentsMargins(-1, -1, -1, -1);
+	vLayout2_->setContentsMargins(-1, -1, -1, -1);
+*/
 	return (true);
 }
 
