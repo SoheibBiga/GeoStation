@@ -3,6 +3,7 @@
 
 #include "awidget.h"
 #include "pharmaciemozaicwidget.h"
+#include "pharmaciemainwidget.h"
 
 class PharmacieWidget : public AWidget
 {
@@ -19,6 +20,7 @@ public:
     virtual bool				end();
 
     PharmacieMozaicWidget *pharmacie_mozaic_widget;
+    PharmacieMainWidget *pharmacie_main_widget;
 
 signals:
     void send_info(QMap<QString,QString>);
