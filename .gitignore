@@ -7,3 +7,6 @@ Makefile
 ui_*
 *.pro.user
 *autosave
+mainwindow_*
+GeoStation_Projet_*
+GeoStation_Projet.pro.*

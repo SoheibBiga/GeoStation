@@ -145,9 +145,11 @@ void MuseesApi::onFinished(QNetworkReply* )
         //Ajoute du texte sur la carte au coordonnées x, y de la pixmap
         //carte->addText(100, 200, "Documentation PokeMap");
         QPixmap photoMap = carte->pixmap() ;
-        double* doublePhotoMap =  reinterpret_cast < double* > (&photoMap) ;
-        QVariant ptrMap =  reinterpret_cast < qint64> (doublePhotoMap);
-        map_ameliore.insert("photoMap",  ptrMap );
+        if ( photoMap.isNull() ) {
+            double* doublePhotoMap =  reinterpret_cast < double* > (&photoMap) ;
+            QVariant ptrMap =  reinterpret_cast < qint64> (doublePhotoMap);
+            map_ameliore.insert("photoMap",  ptrMap );
+        }
 
         emit musee_send_info2(map_ameliore);
         finish(0);
