@@ -18,7 +18,6 @@ class PokeMap
 {
 public:
     enum        MAP{CENT_M, DEUX_CENT_M, CINQ_CENT_M, MILLE_M, MILLE_CINQ_CENT_M, CINQ_MILLE_M, TROIS_CENT_KM, HUIT_CENT_KM};
-    enum        COULEUR{NOIR = Qt::black, BLANC = Qt::white, BLEU = Qt::blue, ROUGE = Qt::red, GRIS = Qt::gray, VERT = Qt::green, JAUNE = Qt::yellow};
     PokeMap(MAP index);
     virtual     ~PokeMap();
     void        addPoint(QString latitude, QString longitude);
@@ -44,7 +43,7 @@ private:
         {6, configDef + "map300km.png"},
         {7, configDef + "map800km.png"}
     };
-    //int p = 0;
+    int p = 0;
 };
 
 #endif // POKEMAP_H

@@ -41,9 +41,6 @@ void    PokeMap::addPoint(QString latitude, QString longitude)
                             50, 50);
         painter.end();
     }
-    else {
-        qDebug() << "Out of range !";
-    }
 }
 
 void    PokeMap::addText(int x, int y, QString text)
