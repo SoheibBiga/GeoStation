@@ -52,3 +52,8 @@ bool				SncfWidget::end()
     return (true);
 }
 
+bool				SncfWidget::hasMainLayout() const
+{
+    return true;
+}
+

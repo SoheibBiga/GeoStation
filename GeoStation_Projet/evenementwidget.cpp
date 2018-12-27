@@ -47,3 +47,8 @@ bool				EvenementWidget::end()
 //void				EvenementWidget::addWidget(QWidget* widget)
 //{
 //}
+
+bool				EvenementWidget::hasMainLayout() const
+{
+    return true;
+}

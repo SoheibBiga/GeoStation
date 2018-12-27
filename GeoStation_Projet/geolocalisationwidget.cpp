@@ -43,3 +43,8 @@ bool				GeolocalisationWidget::end()
 {
     return (true);
 }
+
+bool				GeolocalisationWidget::hasMainLayout() const
+{
+    return false;
+}
