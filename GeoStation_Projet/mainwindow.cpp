@@ -19,6 +19,7 @@
 #include "avionswidget.h"
 #include "mainwindow.h"
 #include "sncfwidget.h"
+#include "meteowidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QWidget(parent),
@@ -111,7 +112,7 @@ void						MainWindow::initWidgets()
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
 	// 5. Meteo Widget
-	wid = new SncfWidget();
+    wid = new MeteoWidget();
 	wid->init();
 //	wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);

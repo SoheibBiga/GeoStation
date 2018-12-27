@@ -23,6 +23,6 @@ void MeteoMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         ui->labePre_4->setAlignment(Qt::AlignHCenter);
         ui->labeTmin_4->setAlignment(Qt::AlignHCenter);
         ui->labTmax_4->setAlignment(Qt::AlignHCenter);
-        ui->label_16->setAlignment(Qt::AlignHCenter);
+//        ui->label_16->setAlignment(Qt::AlignHCenter);
         ui->labDate_4->setAlignment(Qt::AlignHCenter);
 }
