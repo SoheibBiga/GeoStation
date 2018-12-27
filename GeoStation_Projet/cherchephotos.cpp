@@ -119,6 +119,13 @@ QPixmap* CherchePhotos::getPhoto()
 
 
 
+bool CherchePhotos::photoExiste()
+{
+    return ! photo->isNull() ;
+}
+
+
+
 
 /*bool CherchePhotos::isMap(){
     return true;

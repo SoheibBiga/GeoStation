@@ -163,7 +163,7 @@ void						MainWindow::initWidgets()
  // 11. Musees Widget
     wid = new MuseesWidget();
     wid->init();
-//	wid->setLayout(wid->getMainLayout());
+    wid->setLayout(wid->getMainLayout());
     mozaic_->addWidget(wid);
     connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
                     wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
