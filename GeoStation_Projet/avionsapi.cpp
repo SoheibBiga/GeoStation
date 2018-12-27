@@ -581,6 +581,6 @@ void avionsapi::envoiverswidget()
 
     //qDebug()<<"LE TEMPS D'EXECUTION EST DE      "<<bigtime - smalltime <<endl;
 
-    finish(1);
+    finish(0);
 
 }

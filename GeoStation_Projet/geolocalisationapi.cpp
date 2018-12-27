@@ -59,7 +59,7 @@ void    GeolocalisationApi::get_map(QNetworkReply *rep)
         map_ameliore.insert("Tableau",QVariant(tableau));
         map_ameliore.insert("Titre",QVariant(parametre));
         emit geolocalisation_send_info2(map_ameliore);
-        finish(1);
+        finish(0);
 
     }
 }
