@@ -59,6 +59,9 @@ void MuseesApi::onFinished(QNetworkReply* )
     QJsonArray musees = jsonObject["records"].toArray() ;
     QString labelAdresse ;
 
+    if (rangMusee >= musees.size()){
+        rangMusee = 0 ;
+    }
     QJsonValue musee = musees[rangMusee] ;
     // On ne traite que les musées dont le nom apparaît dans le JSON
     if ( ! musee["fields"]["nom_du_musee"].isNull()

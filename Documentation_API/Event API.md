@@ -41,7 +41,7 @@ These 3 parameters (latitude, longitude, distance) define a geographical area.
 ### Network server (URL)
 Network server is fed by OpenData's government which broadcasts all event data through dedicated APIs: satellites, museums, trains...
 Main address is available through this specific URL: 
- https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics 
+https://public.opendatasoft.com/explore/dataset/evenements-publics-cibul/api/?disjunctive.tags&disjunctive.placename&disjunctive.city&rows=20&geofilter.distance=&location=2,20.65089,6.15314&basemap=mapquest
 
 ## JSON
 API communicates data between a network browser and a server in text format using JSON syntax.
@@ -51,7 +51,7 @@ Text is read and used as a data format by C++ (programming language).
 ### INPUT
 
 Network request:
-https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=20&sort=date_start&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.date_start="+QString(dateAffichee)+"&geofilter.distance="+QString::number(**latitude**)+"%2C+"+QString::number(**longitude**)+"%2C+"+QString::number(**radius**))
+https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=20&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.date_start=2019-01&geofilter.distance=48.871517%2C+2.346051%2C+5000
     
 
 ### OUTPUT

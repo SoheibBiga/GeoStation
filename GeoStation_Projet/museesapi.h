@@ -13,11 +13,11 @@ class MuseesApi : public AbstractApi
 public:
     MuseesApi(ordonnanceur *ord_, QObject *parent = nullptr);
     //~MuseesApi();
+    static int rangMusee ;
 
 private:
     QNetworkReply* reply ;
     QByteArray response_data ;
-    static int rangMusee ;
 
     void trtReceptionDonnees () ;
 
