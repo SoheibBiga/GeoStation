@@ -45,3 +45,9 @@ void				BorneElectriqueWidget::addWidget(QWidget* widget)
 {
 
 }
+
+bool				BorneElectriqueWidget::hasMainLayout() const
+{
+    return false;
+}
+

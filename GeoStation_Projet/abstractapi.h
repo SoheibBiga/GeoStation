@@ -33,7 +33,7 @@ class AbstractApi : public QObject
 
 public:
     //Lie l'objet à parent, initialise l'attribut id à myId
-    explicit AbstractApi(ordonnanceur *ord_, QObject *parent = 0,QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "500");
+    explicit AbstractApi(ordonnanceur *ord_, QObject *parent = 0,QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "5000");
     virtual ~AbstractApi();
 
 

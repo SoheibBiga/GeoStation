@@ -51,4 +51,9 @@ bool PharmacieWidget::end()
     return(true);
 }
 
+bool				PharmacieWidget::hasMainLayout() const
+{
+    return true;
+}
+
 

@@ -54,3 +54,9 @@ bool				AvionsWidget::end()
 void				AvionsWidget::addWidget(QWidget* widget)
 {
 }
+
+bool				AvionsWidget::hasMainLayout() const
+{
+    return true;
+}
+

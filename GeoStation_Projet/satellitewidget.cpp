@@ -47,3 +47,7 @@ bool				SatelliteWidget::end()
     return (true);
 }
 
+bool				SatelliteWidget::hasMainLayout() const
+{
+    return true;
+}
