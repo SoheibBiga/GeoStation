@@ -20,7 +20,7 @@ void MeteoMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     double max = map_ameliore["Tableau"].toList().at(0).toMap().value("Temperature Maximale").toDouble() - 273.15;
     double min = map_ameliore["Tableau"].toList().at(0).toMap().value("Temperature Minimale").toDouble() - 273.15;
 
-    ui->labTmax_4->setText(QString::number(max)+ "°");
-    ui->labeTmin_4->setText(QString::number(min)+ "°");
+    //ui->labTmax_4->setText(QString::number(max)+ "°");
+  //  ui->labeTmin_4->setText(QString::number(min)+ "°");
 
 }
