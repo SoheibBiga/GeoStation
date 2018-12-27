@@ -171,7 +171,7 @@ void						MainWindow::initWidgets()
 
 void						MainWindow::initTimer()
 {
-    timer_->setInterval(10000);
+    timer_->setInterval(1000);
     timer_->start();
 }
 
@@ -190,7 +190,7 @@ bool						MainWindow::init()
     mozaic_->init();
     initLayout();
 
-//	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
+    connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
 
 
     return (true);
@@ -205,7 +205,7 @@ bool				MainWindow::show()
     ordonnanceur_->run();
 
 //	widgets_->show();
-    mozaic_->show();
+//    mozaic_->show();
 
     return (true);
 }
