@@ -19,7 +19,7 @@ void PollutionMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     int n = map_ameliore["Tableau"].toList().at(0).toMap()["AQI"].toInt();
 
     if(n<=50){
-        ui->textEdit->setStyleSheet("background:#00e400;font-size:20px");
+        ui->textEdit->setStyleSheet("background:#00e400;color:black;font-size:20px");
         ui->textEdit->setAlignment(Qt::AlignCenter);
         //ui->textEdit->setFont(m_font);
         ui->textEdit->setText(QString("Indice de qualité de l'air :\t\n%1\nBon").arg(QString::number(n)));

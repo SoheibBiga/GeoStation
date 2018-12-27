@@ -15,5 +15,5 @@ VigicruesMainWidget::~VigicruesMainWidget()
 
 void VigicruesMainWidget::receive_info(QMap<QString, QString> map_formulaire)
 {
-
+qDebug()<<" warning";
 }
