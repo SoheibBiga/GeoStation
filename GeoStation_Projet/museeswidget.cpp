@@ -58,5 +58,5 @@ bool				MuseesWidget::end()
 
 bool				MuseesWidget::hasMainLayout() const
 {
-    return true;
+    return false;
 }

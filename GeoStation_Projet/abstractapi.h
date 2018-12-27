@@ -33,7 +33,7 @@ class AbstractApi : public QObject
 
 public:
     //Lie l'objet à parent, initialise l'attribut id à myId
-    explicit AbstractApi(ordonnanceur *ord_, QObject *parent = 0,QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "5000");
+    explicit AbstractApi(ordonnanceur *ord_, QObject *parent = 0,QString longitude_ = "2.346051", QString latitude_ = "48.871517", QString radius_ = "10000");
     virtual ~AbstractApi();
 
 
@@ -65,6 +65,8 @@ protected:
     void add_titre(QString titre);
     //Ajoute le nombre d'entrée dans les parametres de map_ameliore
     void add_nb_entree(int nb_entree);
+
+    void add_coord(QString lat,QString lon);
 
 signals:
     void send_info(QMap<QString, QString>);

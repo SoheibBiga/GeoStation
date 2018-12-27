@@ -48,6 +48,6 @@ bool				Vigicrueswidget::end()
 
 bool				Vigicrueswidget::hasMainLayout() const
 {
-    return true;
+    return false;
 }
 

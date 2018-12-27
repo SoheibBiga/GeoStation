@@ -50,5 +50,5 @@ bool				EvenementWidget::end()
 
 bool				EvenementWidget::hasMainLayout() const
 {
-    return true;
+    return false;
 }

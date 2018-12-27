@@ -4,11 +4,6 @@
 PharmacieApi::PharmacieApi(ordonnanceur *ord_, QObject *parent): AbstractApi(ord_, parent)
 {
     manager = new QNetworkAccessManager(parent);
-
-    latitude = 48.871671;
-    longitude = 2.346106;
-    radius = 500;
-
     request.setUrl(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=finess-etablissements&q=Pharmacie+d%27Officine&geofilter.distance="
                         + QString::number(latitude) + "%2C+" + QString::number(longitude) + "%2C+" + QString::number(radius)));
 

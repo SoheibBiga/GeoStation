@@ -31,7 +31,6 @@ void SncfApi::result_liste_gare(QNetworkReply* reply)
     QString ul_prochain_depart = "https://"+token_sncf+"@api.sncf.com/v1/coverage/sncf/stop_areas/stop_area:OCE:SA:"+code_uic_gare+"/departures?datetime=20181212T174530";
     QUrl url(ul_prochain_depart);
     manager_prochain_depart->get(QNetworkRequest(url));
-
 }
 
 
@@ -51,9 +50,13 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
         QString ligne;
         QString affiche;
         QString date;
+        QString lat_gare;
+        QString long_gare;
+        lat_gare = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(0).toObject().toVariantMap()["stop_point"].toMap()["coord"].toMap()["lat"].toString();
+        long_gare = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(0).toObject().toVariantMap()["stop_point"].toMap()["coord"].toMap()["lon"].toString();
         //QString heure, minute;
         //QString string_color;
-
+        add_coord(lat_gare,long_gare);
         QMap<QString,QVariant> element;
 
         //Rajoute un titre dans parametre
@@ -75,7 +78,7 @@ void SncfApi::result_prochain_depart(QNetworkReply* reply)
             element.insert("Direction",QVariant(direction));
             element.insert("Ligne",QVariant(ligne));
             element.insert("Date",QVariant(date));
-
+            //element.insert()
             //Ajoute l'element dans tableau (correspond au i-eme element)
             add_list(element);
             //QString string_color = jsdoc.toVariant().toMap()["departures"].toJsonArray().at(i).toObject().toVariantMap()["display_informations"].toMap()["color"].toString();

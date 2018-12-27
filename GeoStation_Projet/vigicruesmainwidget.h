@@ -2,7 +2,6 @@
 #define VIGICRUESMAINWIDGET_H
 
 #include <QWidget>
-#include <qdebug.h>
 #include <QMap>
 
 namespace Ui {

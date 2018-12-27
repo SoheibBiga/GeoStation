@@ -90,3 +90,8 @@ void AbstractApi::add_nb_entree(int nb_entree)
 {
     parametre.insert("Nb entree",nb_entree);
 }
+
+void AbstractApi::add_coord(QString lat,QString lon){
+    parametre.insert("long",lon);
+    parametre.insert("lat",lat);
+}
