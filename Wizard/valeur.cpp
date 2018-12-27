@@ -13,17 +13,15 @@ Valeur::Valeur(QWidget *parent) :
     rayon_edit = new QLineEdit(rayon);
     error = new QLabel;
 
-
     setTitle("Données");
     setSubTitle("Veuillez inserez vos coordonnées dans les champs suivants.");
 
-    latitude_edit->setPlaceholderText("46,546854");
-    latitude_edit->setValidator(new QDoubleValidator(-90.0, 90.0, 6, this));
+    latitude_edit->setPlaceholderText("46.546854");
 
-    longitude_edit->setPlaceholderText("2,84652");
-    longitude_edit->setValidator(new QDoubleValidator(-180.0, 180.0, 6, this));
+    longitude_edit->setPlaceholderText("2.84652");
+
     rayon_edit->setPlaceholderText("100");
-    rayon_edit->setValidator(new QIntValidator(0, 1000000, this));
+    rayon_edit->setValidator(new QIntValidator);
     error->setWordWrap(true);
 
     layout->addWidget(latitude);
@@ -95,12 +93,13 @@ bool    Valeur::checkValue() const
     double rayon = rayon_edit->text().toDouble();
 
     error->setText("");
-    if (rayon > 1000000)
-        error->setText(error->text().append("Votre rayon est beaucoup trop grand. Il doit etre inferieur à 1 000 000.\n"));
+    if (rayon > 1000000 || rayon < 50)
+        error->setText(error->text().append("Votre rayon est beaucoup trop grand. Il doit etre compris entre 50 et 1 000 000.\n"));
     if (latitude < -90 || latitude > 90)
         error->setText(error->text().append("La latitude doit etre comprise entre -90 et 90.\n"));
     if (longitude < -180 || longitude > 180)
         error->setText(error->text().append("La longitude doit etre comprise entre -180 et 180.\n"));
-
+    if (error->text().size() > 0)
+        return (false);
     return (true);
 }
