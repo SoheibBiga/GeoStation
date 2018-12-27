@@ -10,7 +10,9 @@ SncfWidget::SncfWidget(QWidget *parent) :
     sncf_main_widget = new SncfMainWidget();
     mainLayout_ = new QHBoxLayout();
     mainLayout_->addWidget(sncf_main_widget);
+
     connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
+    connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),sncf_main_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
 }
 
 SncfWidget::~SncfWidget()
@@ -48,5 +50,10 @@ bool				SncfWidget::run()
 bool				SncfWidget::end()
 {
     return (true);
+}
+
+bool				SncfWidget::hasMainLayout() const
+{
+    return true;
 }
 

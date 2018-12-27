@@ -45,3 +45,8 @@ bool				pollutionwidget::end()
 }
 
 //gilles@gillesmaire.com
+
+bool				pollutionwidget::hasMainLayout() const
+{
+    return false;
+}

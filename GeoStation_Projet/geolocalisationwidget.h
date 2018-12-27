@@ -12,7 +12,8 @@ public:
 
     virtual bool				contentMap() const;
     virtual bool				hasMozaicLayout() const;
-		virtual bool				refresh();
+    virtual bool				hasMainLayout() const ;
+    virtual bool				refresh();
     virtual bool				init();
     virtual bool				run();
     virtual bool				end();
@@ -21,7 +22,7 @@ public:
 
 
 signals:
-    void send_info(QMap<QString,QString>);
+
     void send_info2(QMap<QString,QVariant>);
 };
 

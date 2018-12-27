@@ -12,6 +12,7 @@ class BorneElectriqueWidget : public AWidget
 
 		bool				contentMap() const;
 		bool				hasMozaicLayout() const;
+        bool				hasMainLayout() const ;
 		bool				refresh();
 		bool				init();
 		bool				run();

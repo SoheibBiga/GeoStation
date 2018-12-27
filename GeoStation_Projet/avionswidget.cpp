@@ -6,8 +6,13 @@ AvionsWidget::AvionsWidget(QWidget *parent) :
     avions_mozaic_widget = new AvionsMozaicWidget();
     mozaicLayout_ = new QHBoxLayout();
     mozaicLayout_->addWidget(avions_mozaic_widget);
-//    connect(this,SIGNAL(send_info(QMap<QString,QString>)),avions_mozaic_widget,SLOT(receive_info(QMap<QString,QString>)));
-connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),avions_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
+
+   avions_main_widget = new AvionsMainWidget();
+    mainLayout_ = new QHBoxLayout();
+    mainLayout_->addWidget(avions_main_widget);
+
+
+    connect(this,SIGNAL(send_info2(QMap<QString,QVariant>)),avions_mozaic_widget,SLOT(receive_info2(QMap<QString,QVariant>)));
 
 }
 
@@ -49,3 +54,9 @@ bool				AvionsWidget::end()
 void				AvionsWidget::addWidget(QWidget* widget)
 {
 }
+
+bool				AvionsWidget::hasMainLayout() const
+{
+    return true;
+}
+

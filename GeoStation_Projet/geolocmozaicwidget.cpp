@@ -16,10 +16,7 @@ GeoLocMozaicWidget::~GeoLocMozaicWidget()
     delete ui;
 }
 
-void GeoLocMozaicWidget::receive_info(QMap<QString, QString>)
-{
 
-}
 
 void GeoLocMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {

@@ -74,24 +74,60 @@ void MuseesMainWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 
 
         // Affichage des photos :
-        long long doublePhoto1 = map_ameliore["photo1"] . toLongLong();
-        photo1 = reinterpret_cast <QPixmap*> (doublePhoto1) ;
-        long long doublePhoto2 = map_ameliore["photo2"] . toLongLong();
-        photo2 = reinterpret_cast <QPixmap*> (doublePhoto2) ;
-        long long doublePhoto3 = map_ameliore["photo3"] . toLongLong();
-        photo3 = reinterpret_cast <QPixmap*> (doublePhoto3) ;
-        long long doublePhoto4 = map_ameliore["photo4"] . toLongLong();
-        photo4 = reinterpret_cast <QPixmap*> (doublePhoto4) ;
-        long long doublePhotoMap = map_ameliore["photoMap"] . toLongLong();
-        photoMap = reinterpret_cast <QPixmap*> (doublePhotoMap) ;
+        if ( map_ameliore.contains("photo1") ){
+            long long doublePhoto1 = map_ameliore["photo1"] . toLongLong();
+            photo1 = reinterpret_cast <QPixmap*> (doublePhoto1) ;
+            int w1 = ui->label_photo1->width();
+            int h1 = ui->label_photo1->height();
+            ui->label_photo1->setPixmap((*photo1).scaled(w1,h1,Qt::KeepAspectRatio));
+            ui->label_photo1->setAlignment(Qt::AlignCenter);
+        }
+        if ( map_ameliore.contains("photo2") ){
+            long long doublePhoto2 = map_ameliore["photo2"] . toLongLong();
+            photo2 = reinterpret_cast <QPixmap*> (doublePhoto2) ;
+            int w2 = ui->label_photo2->width();
+            int h2 = ui->label_photo2->height();
+            ui->label_photo2->setPixmap((*photo2).scaled(w2,h2,Qt::KeepAspectRatio));
+            ui->label_photo2->setAlignment(Qt::AlignCenter);
+        }
+        if ( map_ameliore.contains("photo3") ){
+            long long doublePhoto3 = map_ameliore["photo3"] . toLongLong();
+            photo3 = reinterpret_cast <QPixmap*> (doublePhoto3) ;
+            int w3 = ui->label_photo3->width();
+            int h3 = ui->label_photo3->height();
+            ui->label_photo3->setPixmap((*photo3).scaled(w3,h3,Qt::KeepAspectRatio));
+            ui->label_photo3->setAlignment(Qt::AlignCenter);
+        }
+        if ( map_ameliore.contains("photo4") ){
+            long long doublePhoto4 = map_ameliore["photo4"] . toLongLong();
+            photo4 = reinterpret_cast <QPixmap*> (doublePhoto4) ;
+            int w4 = ui->label_photo4->width();
+            int h4 = ui->label_photo4->height();
+            ui->label_photo4->setPixmap((*photo4).scaled(w4,h4,Qt::KeepAspectRatio));
+            ui->label_photo4->setAlignment(Qt::AlignCenter);
+        }
+        if ( map_ameliore.contains("photoMap") ){
+            long long doublePhotoMap = map_ameliore["photoMap"] . toLongLong();
+            photoMap = reinterpret_cast <QPixmap*> (doublePhotoMap) ;
+            int w5 = ui->label_map->width();
+            int h5 = ui->label_map->height();
+            ui->label_map->setPixmap((*photoMap).scaled(w5,h5,Qt::KeepAspectRatio));
+            ui->label_map->setAlignment(Qt::AlignCenter);
+        }
+        else {
+            PokeMap *map = new PokeMap(PokeMap::CINQ_CENT_M);
+            //ui->label_map->setPixmap(map->pixmap().scaled(ui->label_map->parentWidget()->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+            ui->label_map->setPixmap(map->pixmap().scaled(ui->label_map->parentWidget()->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+            ui->label_map->setAlignment(Qt::AlignCenter);
+        }
 
-        ajusteTaillesPhoto() ;
+        //ajusteTaillesPhoto() ;
 }
 
 
 
 
-void MuseesMainWidget::ajusteTaillesPhoto()
+/*void MuseesMainWidget::ajusteTaillesPhoto()
 {
     // get label dimensions
     int w1 = ui->label_photo1->width();
@@ -106,18 +142,28 @@ void MuseesMainWidget::ajusteTaillesPhoto()
     int h5 = ui->label_map->height();
 
     // set a scaled pixmap to a w x h window keeping its aspect ratio
-    ui->label_photo1->setPixmap((*photo1).scaled(w1,h1,Qt::KeepAspectRatio));
-    ui->label_photo2->setPixmap((*photo2).scaled(w2,h2,Qt::KeepAspectRatio));
-    ui->label_photo3->setPixmap((*photo3).scaled(w3,h3,Qt::KeepAspectRatio));
-    ui->label_photo4->setPixmap((*photo4).scaled(w4,h4,Qt::KeepAspectRatio));
-    ui->label_map->setPixmap((*photoMap).scaled(w5,h5,Qt::KeepAspectRatio));
+    if ( ! photo1->isNull()){
+        ui->label_photo1->setPixmap((*photo1).scaled(w1,h1,Qt::KeepAspectRatio));
+    }
+    if ( ! photo2->isNull()){
+        ui->label_photo2->setPixmap((*photo2).scaled(w2,h2,Qt::KeepAspectRatio));
+    }
+    if ( ! photo3->isNull()){
+        ui->label_photo3->setPixmap((*photo3).scaled(w3,h3,Qt::KeepAspectRatio));
+    }
+    if ( ! photo4->isNull()){
+        ui->label_photo4->setPixmap((*photo4).scaled(w4,h4,Qt::KeepAspectRatio));
+    }
+    if ( ! photoMap->isNull()){
+        ui->label_map->setPixmap((*photoMap).scaled(w5,h5,Qt::KeepAspectRatio));
+    }
 
     ui->label_photo1->setAlignment(Qt::AlignCenter);
     ui->label_photo2->setAlignment(Qt::AlignCenter);
     ui->label_photo3->setAlignment(Qt::AlignCenter);
     ui->label_photo4->setAlignment(Qt::AlignCenter);
     ui->label_map->setAlignment(Qt::AlignCenter);
-}
+}*/
 
 
 

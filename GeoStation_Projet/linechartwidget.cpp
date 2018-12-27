@@ -5,6 +5,7 @@ LineChartWidget::LineChartWidget(QWidget *parent) :
 {
 
 nb_row=0;
+if(uniteAbscisses.isNull()) uniteAbscisses=QString("m");
 
 }
 
@@ -40,6 +41,11 @@ bool LineChartWidget::refresh(QMap<QString, QString> map_formulaire)
     formatdateaxe = QString("HH:mm");
     formatdateaxeavecannees = QString("yyyy-MM-ddTHH");}
     return true;
+}
+
+void LineChartWidget::setUniteAbscisses(QString unite)
+{
+    uniteAbscisses = unite;
 }
 
 QPoint LineChartWidget::TransformationCoordonnees(QPoint point)
@@ -116,7 +122,6 @@ for(int i=0;i<=hauteurMax;i++)
     pointsSurLesAxes[i]=TransformationCoordonnees(QPoint(0,(hauteurgraphique*1.0)*(static_cast<float>(i))/(hauteurMax*1.0)));
     i0=i;
 }
-
 //positionnement des points pour l'axe des dates
 QDateTime datebuffer = QDateTime::fromString(datedebut.toString(formatdateaxeavecannees),formatdateaxeavecannees);
 if(typePeriode==QString("semaine"))
@@ -149,15 +154,15 @@ painter.setPen(penText);
 
 painter.drawText(QPoint(0,hauteurwidget),datedebut.toString(formatdateaxe));
 
-QRect rectangle = QRect(0, 0, hauteurwidget, largeurwidget);
+//QRect rectangle = QRect(0, 0, hauteurwidget, largeurwidget);
 //painter.drawText(rect, Qt::AlignRight|Qt::AlignBottom, datefin.toString(formatdateaxe)));
 //painter.drawText(rect, Qt::AlignRight, "datefin.toString(formatdateaxe)");
 //painter.drawText(rect(),Qt::AlignRight|Qt::AlignBottom,tr(datefin.toString(formatdateaxe).to()));
 
-painter.drawText(QPoint(largeurgraphique*0.93,hauteurwidget),datefin.toString(formatdateaxe));
+painter.drawText(QPoint(largeurgraphique*0.99,hauteurwidget),datefin.toString(formatdateaxe));
 QString hauteur;
 hauteur.setNum(hauteurMax,'g',6);
-painter.drawText(QPoint(largeurgraphique*0.12,hauteurwidget*0.14),hauteur.append(QString(" m")));
+painter.drawText(QPoint(largeurgraphique*0.12,hauteurwidget*0.10),hauteur.append(QString(" ").append(uniteAbscisses)));
 
 }
 
