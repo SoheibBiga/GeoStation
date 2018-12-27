@@ -2,7 +2,6 @@
 
 WidgetStyleSheet::WidgetStyleSheet(QWidget *parent) : QWidget(parent)
 {
-
     QTimer::singleShot(0, [=] {InitQwidgets();});
 }
 
@@ -11,7 +10,8 @@ WidgetStyleSheet::WidgetStyleSheet(QWidget *parent) : QWidget(parent)
 void WidgetStyleSheet::InitQwidgets()
 {
 
-    this->parentWidget()->setStyleSheet("background-image: url(none);"
+    this->parentWidget()->setStyleSheet(
+                "background-image: url(none);"
                 "background-color: rgba(31, 46, 56, 1);"
                 "font: 75 11pt \"Nimbus Sans L\";"
                 "color: white;"
@@ -21,7 +21,7 @@ void WidgetStyleSheet::InitQwidgets()
 
 
     this->setStyleSheet("QLabel{background-color:rgba(48, 166, 109, 0.8);}");
-    this->setMinimumSize(250,477);
+
 
 
 }

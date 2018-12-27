@@ -8,7 +8,7 @@ GeoLocMozaicWidget::GeoLocMozaicWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->setFixedSize(300, 477);
+    this->setMinimumSize(300, 477);
 }
 
 GeoLocMozaicWidget::~GeoLocMozaicWidget()
@@ -31,6 +31,7 @@ void GeoLocMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         ui->label_4->setFont(font);
         ui->label_5->setFont(font);
         ui->label_6->setFont(font);
+
         ui->label_3->setText(map_ameliore["Tableau"].toList().at(0).toMap()["adresse"].toString());
         ui->label_4->setText(map_ameliore["Tableau"].toList().at(0).toMap()["codePostal"].toString());
         ui->label_5->setText(map_ameliore["Tableau"].toList().at(0).toMap()["ville"].toString());
@@ -41,7 +42,7 @@ void GeoLocMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         if (!map_ameliore["Tableau"].toList().at(0).toMap()["map"].toByteArray().isNull())
         {
             pix.loadFromData(map_ameliore["Tableau"].toList().at(0).toMap()["map"].toByteArray());
-            ui->label_2->setPixmap(pix.scaled(ui->label->parentWidget()->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+            ui->label_2->setPixmap(pix.scaled(ui->label_2->parentWidget()->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
         }
     }
 
