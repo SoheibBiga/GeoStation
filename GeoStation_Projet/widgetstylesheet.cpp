@@ -13,7 +13,7 @@ void WidgetStyleSheet::InitQwidgets()
     this->parentWidget()->setStyleSheet(
                 "background-image: url(none);"
                 "background-color: rgba(31, 46, 56, 1);"
-                "font: 75 11pt \"Nimbus Sans L\";"
+                "font: 75 13pt \"Nimbus Sans L\";"
                 "color: white;"
                 "border : 5px solid rgba(33, 105, 125, 1);"
                 "border-style: groove;"

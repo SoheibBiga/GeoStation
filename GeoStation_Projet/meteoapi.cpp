@@ -38,34 +38,23 @@ void MeteoApi::Read(QNetworkReply *reply)
 
    // double weatherid=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["id"].toDouble();
    // QString weathermain=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["main"].toString();
-    //QString weatherdescription=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["description"].toString();
+    QString weatherdescription=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["description"].toString();
    // QString weathericon=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["icon"].toString();
 
 
   //  QString weatherbase=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["base"].toString();
-  //  double mainhum=doc.toVariant().toHash()["main"].toHash()["humidity"].toDouble();
-
-
-    //double tempmax=doc.toVariant().toHash()["main"].toHash()["temp_max"].toDouble();
-    //QString tempmax2=doc.toVariant().toHash()["main"].toHash()["temp_max"].toString();
-    //qDebug()<<tempmax<<tempmax2;
-/*
-    double weatherid=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["id"].toDouble();
-    QString weathermain=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["main"].toString();
-    QString weatherdescription=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["description"].toString();
-    QString weathericon=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["icon"].toString();
-
-    QString weatherbase=doc.toVariant().toHash()["weather"].toList().at(0).toMap()["base"].toString();
-    //double mainhum=doc.toVariant().toHash()["main"].toHash()["humidity"].toDouble();
-*/
-
+    double mainhum=doc.toVariant().toHash()["main"].toHash()["humidity"].toDouble();
     double maintempmin=doc.toVariant().toHash()["main"].toHash()["temp_min"].toDouble();
     double maintempmax=doc.toVariant().toHash()["main"].toHash()["temp_max"].toDouble();
+    double pressure=doc.toVariant().toHash()["main"].toHash()["pressure"].toDouble();
 
     add_titre("Meteo du jour");
     QMap<QString,QVariant> element;
     element.insert("Temperature Maximale",QVariant(maintempmax));
     element.insert("Temperature Minimale", QVariant(maintempmin));
+    element.insert("Temps", QVariant(weatherdescription));
+    element.insert("Humidite", QVariant(mainhum));
+    element.insert("Pression", QVariant(pressure));
 
 
     add_list(element);
