@@ -29,6 +29,8 @@
 
 #include <QTextStream>
 #include <QTimer>
+#include<QPixmap>
+#include "pokemap.h"
 
 
 #include <QMainWindow>
@@ -96,6 +98,8 @@ private:
     QString calculatedistance();
 
     void envoiverswidget();
+
+    QPixmap generer_carte();
 
 
 private slots:
