@@ -73,33 +73,6 @@ void						MainWindow::initWidgets()
 {
 	AWidget*			wid;
 
-	// 1. Geolocalisation Widget
-	wid = new GeolocalisationWidget();
-	wid->init();
-//	wid->setLayout(wid->getMainLayout());
-	widgets_->addWidget(wid);
-	mozaic_->addWidget(wid);
-	connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
-					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
-	// 2. BorneElectrique Widget
-	wid = new BorneElectriqueWidget();
-	wid->init();
-//	wid->setLayout(wid->getMainLayout());
-	widgets_->addWidget(wid);
-	mozaic_->addWidget(wid);
-	connect(ordonnanceur_, SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)),
-					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
-	// 3. Satellite Widget
-	wid = new SatelliteWidget();
-	wid->init();
-//	wid->setLayout(wid->getMainLayout());
-	widgets_->addWidget(wid);
-	mozaic_->addWidget(wid);
-	connect(ordonnanceur_, SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),
-					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
 	// 4. Avions Widget
 	wid = new AvionsWidget();
 	wid->init();

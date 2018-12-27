@@ -24,12 +24,12 @@ void PollutionMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
         //ui->textEdit->setFont(m_font);
         ui->textEdit->setText(QString("Indice de qualité de l'air :\t\n%1\nBon").arg(QString::number(n)));
     }else if (n<=100) {
-        ui->textEdit->setStyleSheet("background:#ff0;font-size:20px");
+        ui->textEdit->setStyleSheet("background:#ff0;color:black;font-size:20px");
         ui->textEdit->setAlignment(Qt::AlignCenter);
         //ui->textEdit->setFont(m_font);
         ui->textEdit->setText(QString(" Indice de qualité de l'air :\t\n%1\nModéré").arg(QString::number(n)));
      }else if (n<=150) {
-        ui->textEdit->setStyleSheet("background:#ff7e00;font-size:20px");
+        ui->textEdit->setStyleSheet("background:#ff7e00;color:black;font-size:20px");
         ui->textEdit->setAlignment(Qt::AlignCenter);
         //ui->textEdit->setFont(m_font);
         ui->textEdit->setText(QString(" Indice de qualité de l'air :\t\n%1\nMauvais\npour les groupes\nsensibles").arg(QString::number(n)));
@@ -54,5 +54,5 @@ void PollutionMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     ui->label2->setFixedHeight(50);
     ui->textEdit->setFixedHeight(200);
 
-    ui->label2->setText(QString("pollution"));
+    ui->label2->setText(QString("Pollution"));
 }
