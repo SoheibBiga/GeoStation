@@ -27,13 +27,10 @@ void PharmacieMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     photoPixmap= new QPixmap(":/Images/enseignePharmacie2.png");
     int w =ui->label_photo->width();
     int h = ui->label_photo->height();
-    //photoPixmap->scaled(200,100);
     ui->label_photo->setPixmap(*photoPixmap);
-
     ui->label_photo->setPixmap(photoPixmap->scaled(w,h, Qt::KeepAspectRatio));
     ui->label_photo->setAlignment(Qt::AlignCenter);
 
-    //ui->tableWidget->refresh_ameliore(map_ameliore);
 
     //ui->label_nom->setVisible(true);
     ui->label_nom2->setText(map_ameliore["Tableau"].toList().at(0).toMap().value("Nom").toString());

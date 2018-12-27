@@ -55,3 +55,8 @@ bool				MuseesWidget::end()
 /*void				MuseesWidget::addWidget(QWidget* )
 {
 }*/
+
+bool				MuseesWidget::hasMainLayout() const
+{
+    return true;
+}

@@ -1,6 +1,9 @@
 #include <QDebug>
-#include <QPushButton>
 
+
+
+#include <QDesktopWidget>
+#include <QRect>
 #include <stdlib.h>
 #include <time.h>
 #include "borneelectriquewidget.h"
@@ -25,9 +28,9 @@ MainWindow::MainWindow(QWidget* parent)
       mozaic_(Q_NULLPTR),
       timer_(Q_NULLPTR)
 {
-        widgets_ = new QStackedWidget(this);
+		widgets_ = new QStackedWidget(this);
     ordonnanceur_ = new ordonnanceur();
-        mozaic_ = new Mozaic();
+		mozaic_ = new Mozaic();
     timer_ = new QTimer();
 }
 
@@ -52,13 +55,13 @@ MainWindow::~MainWindow()
 {
     if (mozaic_)
     {
-                delete (mozaic_);
-                mozaic_ = Q_NULLPTR;
+				delete (mozaic_);
+				mozaic_ = Q_NULLPTR;
     }
     if (timer_)
     {
-                delete (timer_);
-                timer_ = Q_NULLPTR;
+				delete (timer_);
+				timer_ = Q_NULLPTR;
     }
 }
 
@@ -69,145 +72,135 @@ MainWindow::~MainWindow()
  */
 void						MainWindow::initWidgets()
 {
-    AWidget*			wid;
+	AWidget*			wid;
 
-    // 1. Geolocalisation Widget
-    wid = new GeolocalisationWidget();
-    wid->init();
+	// 4. Avions Widget
+	wid = new AvionsWidget();
+	wid->init();
 //	wid->setLayout(wid->getMainLayout());
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(geolocalisation_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
-    // 2. BorneElectrique Widget
-    wid = new BorneElectriqueWidget();
-    wid->init();
-//	wid->setLayout(wid->getMainLayout());
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(borneelectrique_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
-    // 3. Satellite Widget
-    wid = new SatelliteWidget();
-    wid->init();
-//	wid->setLayout(wid->getMainLayout());
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(satellite_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
-    // 4. Avions Widget
-    wid = new AvionsWidget();
-    wid->init();
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
 					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-    // 5. Meteo Widget
+	// 5. Meteo Widget
     wid = new MeteoWidget();
-    wid->init();
+	wid->init();
 //	wid->setLayout(wid->getMainLayout());
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(meteo_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-    // 6. SNCF Widget
-    wid = new SncfWidget();
-    wid->init();
-    wid->setLayout(wid->getMainLayout());
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
-
-    // 7. Pollution Widget
-    wid = new pollutionwidget();
-    wid->init();
+	// 6. SNCF Widget
+	wid = new SncfWidget();
+	wid->init();
 //	wid->setLayout(wid->getMainLayout());
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(sncf_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-    // 8. Pharmacie Widget
-    wid = new PharmacieWidget();
-    wid->init();
+	// 7. Pollution Widget
+	wid = new pollutionwidget();
+	wid->init();
 //	wid->setLayout(wid->getMainLayout());
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(pollution_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-    // 9. Evenement Widget
-    wid = new EvenementWidget();
-    wid->init();
+	// 8. Pharmacie Widget
+	wid = new PharmacieWidget();
+	wid->init();
 //	wid->setLayout(wid->getMainLayout());
-    widgets_->addWidget(wid);
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(evenement_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(pharmacie_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 
-    // 10. Vigicrue Widget
+	// 9. Evenement Widget
+	wid = new EvenementWidget();
+	wid->init();
+//	wid->setLayout(wid->getMainLayout());
+	widgets_->addWidget(wid);
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(evenement_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+
+	// 10. Vigicrue Widget
  wid = new Vigicrueswidget();
  wid->init();
 // wid->setLayout(wid->getMainLayout());
  widgets_->addWidget(wid);
  mozaic_->addWidget(wid);
  connect(ordonnanceur_, SIGNAL(vigicrues_send_info(QMap<QString,QString>)),
-                 wid, SIGNAL(send_info2(QMap<QString,QString>)));
+                 wid, SIGNAL(send_info(QMap<QString,QString>)));
 
  // 11. Musees Widget
-    wid = new MuseesWidget();
-    wid->init();
+	wid = new MuseesWidget();
+	wid->init();
 //	wid->setLayout(wid->getMainLayout());
-    mozaic_->addWidget(wid);
-    connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
-                    wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
+	mozaic_->addWidget(wid);
+	connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
+					wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
 }
 
 void						MainWindow::initTimer()
 {
-    timer_->setInterval(10000);
+    timer_->setInterval(1000);
     timer_->start();
 }
 
 void						MainWindow::initLayout()
 {
-    setLayout(new QHBoxLayout(this));
-    layout()->addWidget(widgets_);
+	setLayout(new QHBoxLayout(this));
+	layout()->addWidget(widgets_);
+}
+
+void						MainWindow::initScreen()
+{
+/*
+	QDesktopWidget*		dw;
+	QRect							screen;
+
+	dw = new QDesktopWidget();
+	//screen = dw->screenGeometry();
+
+	QDesktopWidget::;
+
+	delete (dw);
+*/
 }
 
 bool						MainWindow::init()
 {
-    setWindowState(Qt::WindowFullScreen);
-    srand(time(NULL));
-    initTimer();
-    initWidgets();
-    mozaic_->init();
-    initLayout();
+	setWindowState(Qt::WindowFullScreen);
+	srand(time(NULL));
+	initTimer();
+	initWidgets();
+	mozaic_->init();
+	initLayout();
+	initScreen();
 
-//	connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
+    connect(timer_, SIGNAL(timeout()), this, SLOT(changeWidget()));
 
 
-    return (true);
+	return (true);
 }
 
 bool				MainWindow::show()
 {
-    setWindowState(Qt::WindowFullScreen);
-    QWidget::show();
+	setWindowState(Qt::WindowFullScreen);
+	QWidget::show();
 
 
-    ordonnanceur_->run();
+	ordonnanceur_->run();
 
 //	widgets_->show();
-    mozaic_->show();
+//	mozaic_->show();
 
-    return (true);
+	return (true);
 }
 
 bool				MainWindow::run()
@@ -218,32 +211,41 @@ bool				MainWindow::run()
 
 bool				MainWindow::end()
 {
-    mozaic_->end();
+//	AWidget*	wid;
 
-    return (true);
+	mozaic_->end();
+/*
+	while (widgets_->count() > 0)
+		{
+			wid = widgets_->widget(0);
+			widgets_->removeWidget(wid);
+			delete (wid);
+		}
+*/
+	return (true);
 }
 
 void						MainWindow::changeWidget()
 {
-    static int		idx = 0;
-    int						nbWidgets;
+	static int		idx = 0;
+	int						nbWidgets;
 
-    nbWidgets = widgets_->count();
+	nbWidgets = widgets_->count();
 //	idx = rand() % nbWidgets;
 
-    idx++;
-    if (idx < nbWidgets)
-        widgets_->setCurrentIndex(idx);
-    else if (idx == nbWidgets)
-        {
-            mozaic_->show();
-            hide();
-        }
-    else
-        {
-            idx = 0;
-            widgets_->setCurrentIndex(idx);
-            show();
-            mozaic_->hide();
-        }
+	idx++;
+	if (idx < nbWidgets)
+		widgets_->setCurrentIndex(idx);
+	else if (idx == nbWidgets)
+		{
+			mozaic_->show();
+			hide();
+		}
+	else
+		{
+			idx = 0;
+			widgets_->setCurrentIndex(idx);
+			show();
+			mozaic_->hide();
+		}
 }

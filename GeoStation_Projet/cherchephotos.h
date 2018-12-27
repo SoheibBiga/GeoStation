@@ -36,6 +36,7 @@ public:
     CherchePhotos(QString, int/*, ordonnanceur *ord_ = nullptr, QObject *parent = nullptr*/);
     QPixmap* getPhoto() ;
     bool chargementPhotoFini() ;
+    bool photoExiste() ;
 
     // fonction inutile pour cette classe, mais
     // elle doit être là car notre classe hérite de AbstractApi

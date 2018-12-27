@@ -46,3 +46,7 @@ bool				MeteoWidget::end()
     return (true);
 }
 
+bool				MeteoWidget::hasMainLayout() const
+{
+    return false;
+}

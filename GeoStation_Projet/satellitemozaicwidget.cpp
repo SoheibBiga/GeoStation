@@ -54,7 +54,6 @@ SatelliteMozaicWidget::~SatelliteMozaicWidget()
 
 void SatelliteMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
 {
-    qDebug() << "receive ok";
     data_map = map_ameliore;
     map_size = 0;
     map_size = map_ameliore["Parametre"].toMap()["Nb entree"].toInt();

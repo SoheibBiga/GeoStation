@@ -177,7 +177,7 @@ void avionsapi::parseplanelist( int i)
         QString dist = calculatedistance();
         if (dist != "")
         {
-            cle = ("Distance \n " );
+            cle = ("Distance " );
             element.insert(cle, QVariant(calculatedistance()));
         }
 
@@ -234,7 +234,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         if(plane_model_name != "")
         {
             //cle = "Modele \n";
-            cle = ("Modele \n" );
+            cle = ("Modele " );
             element.insert(cle, plane_model_name);
 
         }
@@ -244,8 +244,8 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         readairports();
         if (airport_name != "")
         {
-            //cle = "Provenance \n";
-            cle = ("Provenance \n" );
+            //cle = "Provenance ";
+            cle = ("Provenance " );
 
             element.insert(cle, airport_name);
         }
@@ -259,7 +259,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         if (airport_name != "")
         {
             //cle= "Destination \n ";
-            cle = ("Destination \n" );
+            cle = ("Destination " );
 
             element.insert(cle , airport_name);
         }
@@ -617,4 +617,25 @@ void avionsapi::envoiverswidget()
 
     finish(0);
 
+}
+
+
+
+QPixmap avionsapi::generer_carte()
+{
+
+
+    QPixmap resultat;
+    PokeMap *carte = new PokeMap(PokeMap::CINQ_MILLE_M); // CENT_M correspond à la carte de rayon 100 mètres.
+
+    //Ajoute les différents points sur la carte
+    carte->addPoint("48.871554", "2.346000");
+    carte->addPoint("48.871554", "2.346300");
+
+    //Ajoute du texte sur la carte au coordonnées x, y de la pixmap
+    carte->addText(100, 200, "Documentation PokeMap");
+
+    resultat = carte->pixmap(); // Retourne la carte final;
+
+    return resultat;
 }

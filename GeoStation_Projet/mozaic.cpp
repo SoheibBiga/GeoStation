@@ -41,9 +41,11 @@ bool	Mozaic::refresh()
 bool				Mozaic::init()
 {
 	setWindowState(Qt::WindowFullScreen);
-	setLayout(hLayout_);
 	hLayout_->addLayout(vLayout1_);
 	hLayout_->addLayout(vLayout2_);
+	setLayout(hLayout_);
+
+	setContentsMargins(0, 0, 0, 0);
 
 	return (true);
 }

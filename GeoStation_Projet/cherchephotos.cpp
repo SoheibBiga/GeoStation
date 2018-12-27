@@ -44,7 +44,8 @@ void CherchePhotos::jsonFinished(QNetworkReply* )
                         .toObject() ["items"] ;
 
     manager_photo = new QNetworkAccessManager(/*this*/);
-    QString strUrl = images[0]["media"].toString() ;
+    //QString strUrl = images[0]["media"].toString() ;
+    QString strUrl = images[combientieme-1]["media"].toString() ;
     loop_json.exit() ;
 
     if ( strUrl.isEmpty() ) {
@@ -115,6 +116,13 @@ void CherchePhotos::trtReceptionJSON()
 QPixmap* CherchePhotos::getPhoto()
 {
     return photo ;
+}
+
+
+
+bool CherchePhotos::photoExiste()
+{
+    return ! photo->isNull() ;
 }
 
 
