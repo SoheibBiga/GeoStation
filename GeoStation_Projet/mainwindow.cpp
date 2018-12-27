@@ -171,7 +171,7 @@ void						MainWindow::initWidgets()
 
 void						MainWindow::initTimer()
 {
-    timer_->setInterval(1000);
+    timer_->setInterval(5000);
     timer_->start();
 }
 
