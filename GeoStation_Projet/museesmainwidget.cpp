@@ -128,9 +128,9 @@ void MuseesMainWidget::ajusteTaillesPhoto()
     if ( ! photo4->isNull()){
         ui->label_photo4->setPixmap((*photo4).scaled(w4,h4,Qt::KeepAspectRatio));
     }
-    if ( ! photoMap->isNull()){
+    /*if ( ! photoMap->isNull()){
         ui->label_map->setPixmap((*photoMap).scaled(w5,h5,Qt::KeepAspectRatio));
-    }
+    }*/
 
     ui->label_photo1->setAlignment(Qt::AlignCenter);
     ui->label_photo2->setAlignment(Qt::AlignCenter);
