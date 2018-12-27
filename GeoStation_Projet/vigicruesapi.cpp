@@ -5,9 +5,9 @@ VigicruesApi::VigicruesApi(ordonnanceur *ord_,QObject *parent): AbstractApi(ord_
 {
 
   // initialisation param
-  latitude = 48.8660601;
+  /*latitude = 48.8660601;
   longitude = 2.3565281;
-  radius = 5000;
+  radius = 5000;*/
   Nb_rows = "10000";
   elementsRequete[0] = "https://public.opendatasoft.com/api/records/1.0/search/?dataset=vigicrues&";
   elementsRequete[1] = "q=timestamp%3E";
