@@ -101,6 +101,7 @@ void						MainWindow::initWidgets()
     // 4. Avions Widget
     wid = new AvionsWidget();
     wid->init();
+    wid->setLayout(wid->getMainLayout());
 	widgets_->addWidget(wid);
 	mozaic_->addWidget(wid);
 	connect(ordonnanceur_, SIGNAL(avions_send_info2(QMap<QString,QVariant>)),
@@ -164,6 +165,7 @@ void						MainWindow::initWidgets()
     wid = new MuseesWidget();
     wid->init();
     wid->setLayout(wid->getMainLayout());
+    widgets_->addWidget(wid);
     mozaic_->addWidget(wid);
     connect(ordonnanceur_, SIGNAL(musee_send_info2(QMap<QString,QVariant>)),
                     wid, SIGNAL(send_info2(QMap<QString,QVariant>)));
