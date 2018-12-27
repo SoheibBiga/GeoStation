@@ -12,6 +12,8 @@
 #include <QMap>
 #include <QVariant>
 
+#include "pokemap.h"
+
 namespace Ui {
 class MuseesMainWidget;
 }
@@ -33,7 +35,7 @@ private:
     QPixmap* photoMap ;
 
     void trtReceptionDonnees () ;
-    void ajusteTaillesPhoto() ;
+    //void ajusteTaillesPhoto() ;
     //void resizeEvent ( QResizeEvent *  );
 
 
