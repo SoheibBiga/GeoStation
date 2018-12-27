@@ -172,12 +172,12 @@ void avionsapi::parseplanelist( int i)
         view_airlinecompanies();
         write_APi1_info.append("L'avion du vol "+flight_number+ " de companie aerienne "+airline_name+" \n");
 
-        add_titre(QString("Vol "+ flight_number));
+        add_titre(QString("Vol " +airline_name+" "+ flight_number));
 
         QString dist = calculatedistance();
         if (dist != "")
         {
-            cle = ("Distance \n "+flight_number );
+            cle = ("Distance \n " );
             element.insert(cle, QVariant(calculatedistance()));
         }
 
@@ -234,7 +234,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         if(plane_model_name != "")
         {
             //cle = "Modele \n";
-            cle = ("Modele \n"+flight_number );
+            cle = ("Modele \n" );
             element.insert(cle, plane_model_name);
 
         }
@@ -245,7 +245,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         if (airport_name != "")
         {
             //cle = "Provenance \n";
-            cle = ("Provenance \n"+flight_number );
+            cle = ("Provenance \n" );
 
             element.insert(cle, airport_name);
         }
@@ -259,7 +259,7 @@ void avionsapi::getAPi2info(QNetworkReply* reply_singleplane)
         if (airport_name != "")
         {
             //cle= "Destination \n ";
-            cle = ("Destination \n"+flight_number );
+            cle = ("Destination \n" );
 
             element.insert(cle , airport_name);
         }
