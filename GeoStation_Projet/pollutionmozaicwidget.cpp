@@ -54,5 +54,5 @@ void PollutionMozaicWidget::receive_info2(QMap<QString, QVariant> map_ameliore)
     ui->label2->setFixedHeight(50);
     ui->textEdit->setFixedHeight(200);
 
-    ui->label2->setText(QString("pollution"));
+    ui->label2->setText(QString("Pollution"));
 }
